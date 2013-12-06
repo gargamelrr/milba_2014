@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <form> 
+            <table border="1px">
+                <tr><td>Please supply your name: </td>
+                    <td><input type="text" name="name" id="basic" data-mini="true" placeholder="Here"/></td></tr>
+                <tr><td>What is your age? </td>
+                    <td><input type="range" name="name" id="basic" 
+                               data-mini="true" value="20" min="18" max="120" /></td></tr>
+                <tr><td colspan="2">
+                        <fieldset data-role="controlgroup">
+                            <legend>Choose your gender: </legend>
+                            <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+                            <label for="radio-choice-1">Male</label>
+                            <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+                            <label for="radio-choice-2">Female</label>               
+                        </fieldset>
+                    </td></tr>
+
+                <tr><td colspan="2">                
+                        <div data-role="collapsible">
+                            <h3>Why do need this data</h3>
+                            <p>lalalalalalal.</p>
+                        </div></td></tr>
+                <tr>
+                    <td colspan="2">
+                        You MUST agree to our 
+                        <a href="http://www.google.com"> Terms Of Use! </a> <br>
+                        <input type="checkbox" value="Yes" id="checkbox"/>
+                        <label for="checkbox"> I agree! </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Let's Go" data-inline="true"/>
+                    </td>
+                </tr>
+            </table>
+        </form>    </body>
+</html>
