@@ -15,51 +15,51 @@ and open the template in the editor.
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
-             <div data-role="header" data-theme="f">
+            <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a><br/>
             </div><!-- /header -->
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                        <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
-                        <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Create </a><br/>
-                        <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Join </a><br/>
-                        <a href="Groups.html" data-role="button"  data-theme="b" data-icon="grid" > Groups </a><br/>
-                        <a href="Settings.html" data-role="button"  data-theme="b" data-icon="gear" > Settings </a><br/>
-                        <a href="" data-role="button"  data-theme="b" data-icon="info" > About </a><br/>
-                        <a href="" data-role="button"  data-theme="b" data-icon="arrow-r" > Contact Us </a><br/>
-                        <a href="" data-role="button"  data-theme="b" data-icon="minus" > Logout </a>
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
+                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Create </a><br/>
+                <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Join </a><br/>
+                <a href="Groups.html" data-role="button"  data-theme="b" data-icon="grid" > Groups </a><br/>
+                <a href="Settings.html" data-role="button"  data-theme="b" data-icon="gear" > Settings </a><br/>
+                <a href="" data-role="button"  data-theme="b" data-icon="info" > About </a><br/>
+                <a href="" data-role="button"  data-theme="b" data-icon="arrow-r" > Contact Us </a><br/>
+                <a href="" data-role="button"  data-theme="b" data-icon="minus" > Logout </a>
             </div>
             <div data-role="content">
-                <div id="newTask">
-                    <label>Task Name:</label>
-                    <input type="text" name="taskName" id="taskName"/> <br>
-                    <label>Due Date:</label>
-                    <input type="date" name="taskDate" id="taskDate"/> <br>
-                    <label>Due Time:</label>
-                    <input type="time" name= "taskTime" id="taskTime"/> <br>
-                    <label>Task Description:</label>
-                    <textarea cols="30" rows="50" name ="taskDetails" id="taskDetails"> </textarea> <br> 
-                    <fieldset data-role="controlgroup" data-type="horizontal" >
-                        <legend>Choose Task Difficulty:</legend>
-                        <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
-                        <label for="easy">Easy</label>
-                        <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
-                        <label for="hard">Hard</label>
-                    </fieldset><br> 
-                    <a href="" data-role="button"  data-theme="a" data-icon="gear" > Choose from Dropbox: </a><br/>
+                <form method="post">
+                    <div id="newTask">
+                        <label>Task Name:</label>
+                        <input type="text" name="taskName" id="taskName"/> <br>
+                        <label>Due Date:</label>
+                        <input type="date" name="taskDate" id="taskDate"/> <br>
+                        <label>Due Time:</label>
+                        <input type="time" name= "taskTime" id="taskTime"/> <br>
+                        <label>Task Description:</label>
+                        <textarea cols="30" rows="50" name ="taskDetails" id="taskDetails"> </textarea> <br> 
+                        <fieldset data-role="controlgroup" data-type="horizontal" >
+                            <legend>Choose Task Difficulty:</legend>
+                            <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
+                            <label for="easy">Easy</label>
+                            <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
+                            <label for="hard">Hard</label>
+                        </fieldset><br> 
+                        <a href="" data-role="button"  data-theme="a" data-icon="gear" > Choose from Dropbox: </a><br/>
+                            <a href="" data-role="button"  data-theme="b" data-icon="gear" onclick="$('#newGroup').show();"> New group </a><br/>
+                    </div>
+                    <div style="display: none" id="newGroup">
+                        <label>Please specify teacher name: </label>
+                        <input type="text" name="teacherName" id="teacherName" />
+                        <label>Please specify course name: </label>
+                        <input type="text" name="courseName" id="courseName" />
+                        <label>Please specify teacher e-mail address (optional): </label>
+                        <input type="text" name="teacherEmail" id="teacherEmail" />
+                    </div>
                     <input type="submit" value="Publish"/>
-                    <br> <br>
-                    <a href="" data-role="button"  data-theme="b" data-icon="gear" onclick="$('#newGroup').show();"> New group </a><br/>
+                </form>
 
-                </div>
-                <div style="display: none" id="newGroup">
-                    <label>Please specify teacher name: </label>
-                    <input type="text" name="teacherName" id="teacherName" />
-                    <label>Please specify course name: </label>
-                    <input type="text" name="courseName" id="courseName" />
-                    <label>Please specify teacher e-mail address (optional): </label>
-                    <input type="text" name="teacherEmail" id="teacherEmail" />
-                    <input type="submit" value="Create"/>
-                </div>
             </div>
         </div>
     </body>
