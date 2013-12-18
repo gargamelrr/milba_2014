@@ -15,27 +15,12 @@ and open the template in the editor.
     <body>
         <form method="post"> 
             <label>Institute:</label>
-            <select name="institue" id="institue" data-native-menu="false" data-theme="b">
-                <option value="IDC"> IDC </option>
-                <option value="TAU"> TAU </option>
-                <option value="BGU"> BGU </option>
-                <option value="TECH"> Technion </option>
-            </select>
-            <br/>
-            Degree:
-            <select name="degree" id="degree" data-native-menu="false" data-theme="b">
-                <option value="Computer Science"> Computer Science </option>
-                <option value="Communications"> Communications </option>
-                <option value="Law"> Law </option>
-                <option value="Accounting"> Accounting </option>
-            </select><br/>
-            Year:
-            <select name="year" id="year" data-native-menu="false" data-theme="b">
-                <option value="2013"> 2013 </option>
-                <option value="2012"> 2012 </option>
-                <option value="2011"> 2011 </option>
-                <option value="1934"> 1934 </option>
-            </select>
+            <input type="text" name="institute" id="institute"/> <br>
+            <label>School:</label>
+            <input type="text" name="school" id="school"/> <br>
+            <label>Year of start:</label>
+            <input type="text" name="year_start" id="year_start"/> <br>
+            <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
         </form>
 
         <div>
