@@ -1,99 +1,153 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-    <head>
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+	<head>
     </head>
-    <body>
-        <form method="post"> 
-            <label>Institute:</label>
-            <select name="institue" id="institue" data-native-menu="false" data-theme="b">
-                <option value="IDC"> IDC </option>
-                <option value="TAU"> TAU </option>
-                <option value="BGU"> BGU </option>
-                <option value="TECH"> Technion </option>
-            </select>
-            <br/>
-            Degree:
-            <select name="degree" id="degree" data-native-menu="false" data-theme="b">
-                <option value="Computer Science"> Computer Science </option>
-                <option value="Communications"> Communications </option>
-                <option value="Law"> Law </option>
-                <option value="Accounting"> Accounting </option>
-            </select><br/>
-            Year:
-            <select name="year" id="year" data-native-menu="false" data-theme="b">
-                <option value="2013"> 2013 </option>
-                <option value="2012"> 2012 </option>
-                <option value="2011"> 2011 </option>
-                <option value="1934"> 1934 </option>
-            </select>
-            <div id="fb-root"></div>
-            <script>
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId: '691029124265305',
-                        status: true, // check login status
-                        cookie: true, // enable cookies to allow the server to access the session
-                        xfbml: true  // parse XFBML
-                    });
+	<body>
+		<button onclick="login()">Login</button>
+		<button onclick="me()">Me</button>
+		<!--<button onclick="getSession()">Get session</button>-->
+		<button onclick="getLoginStatus()">Get login</button>
+		<button onclick="logout()">Logout</button>
+		<button onclick="facebookWallPost()">facebookWallPost</button>
+		<button onclick="publishStoryFriend()">friendstory</button>
+        
+        <div id="data">loading ...</div>
+        
+        <!--<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>-->
+        <div id="fb-root"></div>
+        <!-- cordova -->
+		<script src="cordova.js"></script>
+	    <!-- cordova facebook plugin -->
+		<script src="cdv-plugin-fb-connect.js"></script>
+	    <!-- facebook js sdk -->
+		<script src="facebook_js_sdk.js"></script>
+        
+		<script>
+            
+            FB.Event.subscribe('auth.login', function(response) {
+                               alert('auth.login event');
+                               });
+            
+            FB.Event.subscribe('auth.logout', function(response) {
+                               alert('auth.logout event');
+                               });
+            
+            FB.Event.subscribe('auth.sessionChange', function(response) {
+                               alert('auth.sessionChange event');
+                               });
+            
+            FB.Event.subscribe('auth.statusChange', function(response) {
+                               alert('auth.statusChange event');
+                               });
+            
+            /*function getSession() {
+                alert("session: " + JSON.stringify(FB.getSession()));
+            }
+            */
+            function getLoginStatus() {
+                FB.getLoginStatus(function(response) {
+                                  if (response.status == 'connected') {
+                                  alert('logged in');
+                                  } else {
+                                  alert('not logged in');
+                                  }
+                                  });
+            }
+            var friendIDs = [];
+			var fdata;
+            function me() {
+                FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
+                       if (response.error) {
+                       alert(JSON.stringify(response.error));
+                       } else {
+                       var data = document.getElementById('data');
+					   fdata=response.data;
+					   console.log("fdata: "+fdata);
+                       response.data.forEach(function(item) {
+                                             var d = document.createElement('div');
+                                             d.innerHTML = "<img src="+item.picture+"/>"+item.name;
+                                             data.appendChild(d);
+                                             });
+                       }
+					var friends = response.data;
+					console.log(friends.length); 
+					for (var k = 0; k < friends.length && k < 200; k++) {
+				        var friend = friends[k];
+				        var index = 1;
 
+				        friendIDs[k] = friend.id;
+				        //friendsInfo[k] = friend;
+					}
+					console.log("friendId's: "+friendIDs);
+                       });
+            }
+            
+            function logout() {
+                FB.logout(function(response) {
+                          alert('logged out');
+                          });
+            }
+            
+            function login() {
+                FB.login(
+                         function(response) {
+                         if (response.session) {
+                         alert('logged in');
+                         } else {
+                         alert('not logged in');
+                         }
+                         },
+                         { scope: "email" }
+                         );
+            }
+			
+			
+			function facebookWallPost() {
+			    console.log('Debug 1');
+				var params = {
+				    method: 'feed',
+				    name: 'Facebook Dialogs',
+				    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+				    picture: 'http://fbrell.com/f8.jpg',
+				    caption: 'Reference Documentation',
+				    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+				  };
+				console.log(params);
+			    FB.ui(params, function(obj) { console.log(obj);});
+			}
+            
+			function publishStoryFriend() {
+				randNum = Math.floor ( Math.random() * friendIDs.length ); 
 
-                    FB.Event.subscribe('auth.authResponseChange', function(response) {
-                        // Here we specify what we do with the response anytime this event occurs. 
-                        if (response.status === 'connected') {
-                            testAPI();
-                        } else if (response.status === 'not_authorized') {
-                            FB.login();
-                        } else {
-                            FB.login();
-                        }
-                    });
-                };
-
-                // Load the SDK asynchronously
-                (function(d) {
-                    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                    if (d.getElementById(id)) {
-                        return;
-                    }
-                    js = d.createElement('script');
-                    js.id = id;
-                    js.async = true;
-                    js.src = "//connect.facebook.net/en_US/all.js";
-                    ref.parentNode.insertBefore(js, ref);
-                }(document));
-
-                // Here we run a very simple test of the Graph API after login is successful. 
-                // This testAPI() function is only called in those cases. 
-                function testAPI() {
-                    console.log('Welcome!  Fetching your information.... ');
-                    FB.api('/me', function(response) {
-                        console.log('Good to see you, ' + response.name + '.');
-                    });
-                }
+				var friendID = friendIDs[randNum];
+				if (friendID == undefined){
+					alert('please click the me button to get a list of friends first');
+				}else{
+			    	console.log("friend id: " + friendID );
+			        console.log('Opening a dialog for friendID: ', friendID);
+			        var params = {
+			        	method: 'feed',
+			            to: friendID.toString(),
+			            name: 'Facebook Dialogs',
+			            link: 'https://developers.facebook.com/docs/reference/dialogs/',
+			            picture: 'http://fbrell.com/f8.jpg',
+			            caption: 'Reference Documentation',
+			            description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+			     	};
+					FB.ui(params, function(obj) { console.log(obj);});
+			    }
+			}
+            
+            document.addEventListener('deviceready', function() {
+                                      try {
+                                      alert('Device is ready! Make sure you set your app_id below this alert.');
+                                      FB.init({ appId: "691029124265305", nativeInterface: CDV.FB, useCachedDialogs: false });
+                                      document.getElementById('data').innerHTML = "";
+                                      } catch (e) {
+                                      alert(e);
+                                      }
+                                      }, false);
             </script>
-
-            <!--
-              Below we include the Login Button social plugin. This button uses the JavaScript SDK to
-              present a graphical Login button that triggers the FB.login() function when clicked. -->
-
-            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-            <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
-        </form>
-
-        <div>
-            This application requires access to your profile information.<br>
- Your personal information is required in order to help us identify the courses that might be relevant for you.<br>
-            This application will never post on your behalf<br>
-        </div>
-    </body>
+        <div id="log"></div>
+	</body>
 </html>
