@@ -11,6 +11,13 @@ and open the template in the editor.
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+          <!-- cordova -->
+  <script type="text/javascript" src="phonegap.js"></script>
+  <!-- cordova facebook plugin -->
+  <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+  <!-- facebook js sdk -->
+  <script type="text/javascript" src="facebook-js-sdk.js"></script>
+  
     </head>
     <body>
         <form method="post"> 
@@ -43,7 +50,7 @@ and open the template in the editor.
                 window.fbAsyncInit = function() {
                     FB.init({
                         appId: '691029124265305', // App ID
-                        channelUrl: 'http://localhost:8383/milab_2014/index.html', // Channel File
+                        channelUrl: 'index.html', // Channel File
                         status: true, // check login status
                         cookie: true, // enable cookies to allow the server to access the session
                         xfbml: true,
