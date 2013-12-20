@@ -11,13 +11,13 @@ and open the template in the editor.
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-          <!-- cordova -->
-  <script type="text/javascript" src="phonegap.js"></script>
-  <!-- cordova facebook plugin -->
-  <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
-  <!-- facebook js sdk -->
-  <script type="text/javascript" src="facebook-js-sdk.js"></script>
-  
+        <!-- cordova -->
+        <script type="text/javascript" src="phonegap.js"></script>
+        <!-- cordova facebook plugin -->
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+        <!-- facebook js sdk -->
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+
     </head>
     <body>
         <form method="post"> 
@@ -47,37 +47,42 @@ and open the template in the editor.
 
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
-                window.fbAsyncInit = function() {
+                document.addEventListener('deviceready', function() {
+                    //window.fbAsyncInit = function() {
                     FB.init({
                         appId: '691029124265305', // App ID
                         channelUrl: 'index.html', // Channel File
                         status: true, // check login status
-                        cookie: true, // enable cookies to allow the server to access the session
-                        xfbml: true,
+                        //cookie: true, // enable cookies to allow the server to access the session
+                        //xfbml: true,
+                        useCachedDialogs: false
                     });
 
                     FB.Event.subscribe('auth.statusChange', handleStatusChange);
                     FB.getLoginStatus(handleStatusChange);
 
                 };
+                        // Load the SDK Asynchronously
+                                (function(d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id))
+                                        return;
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = "//connect.facebook.net/en_US/all.js";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));
 
-                // Load the SDK Asynchronously
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id))
-                        return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
+                        function promptLogin() {
+                            FB.login(null, {scope: 'email'});
+                        }
 
             </script>
             <!--
               Below we include the Login Button social plugin. This button uses the JavaScript SDK to
               present a graphical Login button that triggers the FB.login() function when clicked. -->
-
-            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+            <a onclick="promptLogin()" class="login-button"> Login</a>
+            
             <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
         </form>
 
