@@ -66,46 +66,48 @@ and open the template in the editor.
                         nativeInterface: CDV.FB,
                         useCachedDialogs: false
                     });
+                    alert('yey');
+                });
 
-                    var auth = new function() {
+                var auth = new function() {
 
-                        this.fbId = "691029124265305";
+                    this.fbId = "691029124265305";
 
-                        this.FBlogin = function() {
+                    this.FBlogin = function() {
 
-                            FB.login(function(response) {
+                        FB.login(function(response) {
 
-                                var uid = null;
+                            var uid = null;
+                            try {
+                                uid = response.authResponse.userId;
+                            } catch (e) {
+                                main.errorLog(e, "FB.login");
+                            }
+
+                            // iOs Hack other property name
+                            if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
                                 try {
-                                    uid = response.authResponse.userId;
+                                    uid = response.authResponse.userID;
                                 } catch (e) {
                                     main.errorLog(e, "FB.login");
                                 }
+                            }
 
-                                // iOs Hack other property name
-                                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
-                                    try {
-                                        uid = response.authResponse.userID;
-                                    } catch (e) {
-                                        main.errorLog(e, "FB.login");
-                                    }
-                                }
+                            if (response.status == 'connected') {
+                                main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
+                                    fbId: uid,
+                                    access_token: response.authResponse.accessToken,
+                                    secret: TOP_SECRET_GENERATED_HASH
+                                }, auth.successLogin, auth.errorLogin);
 
-                                if (response.status == 'connected') {
-                                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
-                                        fbId: uid,
-                                        access_token: response.authResponse.accessToken,
-                                        secret: TOP_SECRET_GENERATED_HASH
-                                    }, auth.successLogin, auth.errorLogin);
-
-                                } else if (response.status === 'not_authorized') {
-                                    alert('Error in authentication: not authorized');
-                                } else {
-                                    alert('Unknown error in authentication');
-                                }
-                            }, {scope: "email"});
-                        }
+                            } else if (response.status === 'not_authorized') {
+                                alert('Error in authentication: not authorized');
+                            } else {
+                                alert('Unknown error in authentication');
+                            }
+                        }, {scope: "email"});
                     }
+                }
 
 //                document.addEventListener("deviceready", onDeviceReady(), false);
 //
