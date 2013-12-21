@@ -47,13 +47,26 @@ and open the template in the editor.
 
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
+                // Load the SDK asynchronously
+                (function(d) {
+                    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement('script');
+                    js.id = id;
+                    js.async = true;
+                    js.src = "//connect.facebook.net/en_US/all.js";
+                    ref.parentNode.insertBefore(js, ref);
+                }(document));
+
                 document.addEventListener("deviceready", onDeviceReady(), false);
 
                 function onDeviceReady() {
                     alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
-                        nativeInterface: CDV.FB,
+                        //nativeInterface: CDV.FB,
                         xfbml: true,
                         useCachedDialogs: false,
                         status: true,
@@ -65,17 +78,6 @@ and open the template in the editor.
                     FB.getLoginStatus(handleStatusChange);
                 }
 
-
-                // Load the SDK Asynchronously
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id))
-                        return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-js-sdk'));
 
                 function promptLogin() {
                     FB.login(null, {scope: 'email'});
