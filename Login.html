@@ -49,6 +49,7 @@ and open the template in the editor.
             <script type="text/javascript">
                 document.addEventListener('deviceready', function() {
                     //window.fbAsyncInit = function() {
+                    alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
                         channelUrl: 'index.html', // Channel File
@@ -57,9 +58,12 @@ and open the template in the editor.
                         //xfbml: true,
                         useCachedDialogs: false
                     });
+                    alert('2');
 
                     FB.Event.subscribe('auth.statusChange', handleStatusChange);
                     FB.getLoginStatus(handleStatusChange);
+                                        alert('3');
+
 
                 };
                         // Load the SDK Asynchronously
@@ -72,8 +76,11 @@ and open the template in the editor.
                                     js.src = "//connect.facebook.net/en_US/all.js";
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }(document, 'script', 'facebook-jssdk'));
+                    alert('4');
 
                         function promptLogin() {
+                                                alert('5');
+
                             FB.login(null, {scope: 'email'});
                         }
 
