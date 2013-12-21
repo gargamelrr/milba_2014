@@ -47,6 +47,12 @@ and open the template in the editor.
 
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
+                document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+                    alert('11');
+}
+                
                 document.addEventListener('deviceready', function() {
                     //window.fbAsyncInit = function() {
                     alert('1');
