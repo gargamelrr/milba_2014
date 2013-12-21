@@ -49,12 +49,7 @@ and open the template in the editor.
             <script type="text/javascript">
                 document.addEventListener("deviceready", onDeviceReady(), false);
 
-function onDeviceReady() {
-                    alert('11');
-}
-                
-                document.addEventListener('deviceready', function() {
-                    //window.fbAsyncInit = function() {
+                function onDeviceReady() {
                     alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
@@ -68,7 +63,9 @@ function onDeviceReady() {
 
                     FB.Event.subscribe('auth.statusChange', handleStatusChange);
                     FB.getLoginStatus(handleStatusChange);
-                });
+                }
+
+
                 // Load the SDK Asynchronously
                 (function(d, s, id) {
                     var js, fjs = d.getElementsByTagName(s)[0];
