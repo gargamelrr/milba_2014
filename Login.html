@@ -12,11 +12,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <!-- cordova -->
-        <script src="phonegap.js"></script>
+        <script src="js/cordova.js"></script>
         <!-- cordova facebook plugin -->
-        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+        <script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
         <!-- facebook js sdk -->
-        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="js/facebook-js-sdk.js"></script>
 
     </head>
     <body>
@@ -47,7 +47,7 @@ and open the template in the editor.
 
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
-                                    alert('0');
+                alert('0');
 
                 document.addEventListener('deviceready', function() {
                     //window.fbAsyncInit = function() {
@@ -55,6 +55,7 @@ and open the template in the editor.
                     FB.init({
                         appId: '691029124265305', // App ID
                         channelUrl: 'index.html', // Channel File
+                        nativeInterface: CDV.FB,
                         status: true, // check login status
                         //cookie: true, // enable cookies to allow the server to access the session
                         //xfbml: true,
@@ -64,10 +65,7 @@ and open the template in the editor.
 
                     FB.Event.subscribe('auth.statusChange', handleStatusChange);
                     FB.getLoginStatus(handleStatusChange);
-                                        alert('3');
-
-
-                };
+                    });
                         // Load the SDK Asynchronously
                                 (function(d, s, id) {
                                     var js, fjs = d.getElementsByTagName(s)[0];
@@ -78,10 +76,10 @@ and open the template in the editor.
                                     js.src = "//connect.facebook.net/en_US/all.js";
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }(document, 'script', 'facebook-jssdk'));
-                    alert('4');
+                        alert('4');
 
                         function promptLogin() {
-                                                alert('5');
+                            alert('5');
 
                             FB.login(null, {scope: 'email'});
                         }
