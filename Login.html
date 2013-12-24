@@ -67,40 +67,28 @@ and open the template in the editor.
                     alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
-                        nativeInterface: CDV.FB,
-                        useCachedDialogs : false
-
+                        //nativeInterface: CDV.FB,
+                        xfbml: true,
+                        useCachedDialogs: false,
+                        status: true,
+                        cookie: true
                     });
                     alert('2');
 
+                    FB.Event.subscribe('auth.statusChange', handleStatusChange);
+                    FB.getLoginStatus(handleStatusChange);
                 }
 
 
                 function promptLogin() {
                     FB.login(null, {scope: 'email'});
                 }
-                
-                   function login() {
-        FB.login(function(response) {
-            alert('test');
-            if (response.authResponse) {
-                alert('logged in');
-                var access_token =   FB.getAuthResponse()['accessToken'];
-                alert(access_token);
-                 window.location = "test.html"
-            } else {
-                alert('not logged in');
-            }
-        }, {
-            scope : "email"
-        });
-    }
 
             </script>
             <!--
               Below we include the Login Button social plugin. This button uses the JavaScript SDK to
               present a graphical Login button that triggers the FB.login() function when clicked. -->
-            <a onclick="login()"  data-role="button">Login with Facebook</a>
+            <a onclick="promptLogin()"  data-role="button">Login with Facebook</a>
 
             <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
         </form>
