@@ -17,7 +17,7 @@ and open the template in the editor.
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
         <!-- facebook js sdk -->
         <script type="text/javascript" src="facebook-js-sdk.js"></script>
-<script src="http://debug.phonegap.com/target/target-script-min.js#anonymous"></script>
+        <script src="http://debug.phonegap.com/target/target-script-min.js#anonymous"></script>
     </head>
     <body>
         <form method="post"> 
@@ -81,14 +81,23 @@ and open the template in the editor.
 
 
                 function promptLogin() {
-                    FB.login(null, {scope: 'email'});
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                            alret('im in!');
+                            window.location = 'index.html';
+                        } else {
+                            // The person cancelled the login dialog
+                        }
+                    }, {scope: 'email'});
                 }
+
 
             </script>
             <!--
               Below we include the Login Button social plugin. This button uses the JavaScript SDK to
               present a graphical Login button that triggers the FB.login() function when clicked. -->
             <a onclick="promptLogin()"  data-role="button">Login with Facebook</a>
+            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 
             <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
         </form>
