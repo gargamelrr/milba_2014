@@ -12,11 +12,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <!-- cordova -->
-        <script src="js/cordova.js"></script>
+        <script src="cordova.js"></script>
         <!-- cordova facebook plugin -->
-        <script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
         <!-- facebook js sdk -->
-        <script type="text/javascript" src="js/facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
 
     </head>
     <body>
@@ -67,7 +67,7 @@ and open the template in the editor.
                     alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
-                        //nativeInterface: CDV.FB,
+                        nativeInterface: CDV.FB,
                         xfbml: true,
                         useCachedDialogs: false,
                         status: true,
