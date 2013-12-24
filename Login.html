@@ -64,7 +64,6 @@ and open the template in the editor.
                 document.addEventListener("deviceready", onDeviceReady(), false);
 
                 function onDeviceReady() {
-                    alert('1');
                     FB.init({
                         appId: '691029124265305', // App ID
                         nativeInterface: CDV.FB,
@@ -83,7 +82,7 @@ and open the template in the editor.
                 function promptLogin() {
                     FB.login(function(response) {
                         if (response.authResponse) {
-                            alret('im in!');
+                            alert('im in!');
                             window.location = 'index.html';
                         } else {
                             // The person cancelled the login dialog
@@ -96,7 +95,7 @@ and open the template in the editor.
             <!--
               Below we include the Login Button social plugin. This button uses the JavaScript SDK to
               present a graphical Login button that triggers the FB.login() function when clicked. -->
-            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+            <a onclick="promptLogin()"  data-role="button">Login with Facebook</a>
 
             <a href="JoinGroups.html" data-role="button"  data-theme="b" data-icon="info">Login with Facebook</a>
         </form>
