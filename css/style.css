@@ -1,0 +1,10 @@
+#custom-btn {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+}
+
+#custom-btn span {
+    padding-top: 30%;
+    white-space:normal
+}

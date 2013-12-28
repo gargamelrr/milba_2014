@@ -36,6 +36,15 @@ and open the template in the editor.
                     <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">course 9</div></div>
                 </div>
                 <a href="index.php" data-role="button"  data-theme="d">Join</a>
+                
+                                    <div style="display: none" id="newGroup">
+                        <label>Please specify teacher name: </label>
+                        <input type="text" name="teacherName" id="teacherName" />
+                        <label>Please specify course name: </label>
+                        <input type="text" name="courseName" id="courseName" />
+                        <label>Please specify teacher e-mail address (optional): </label>
+                        <input type="text" name="teacherEmail" id="teacherEmail" />
+                    </div>
             </div>
         </div>
     </body>
