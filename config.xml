@@ -97,6 +97,6 @@
     <access origin="*"/> 
 	
 	<!--open the login page first-->
-	<content src="Login.php" />
+	<content src="Login.html" />
 
 </widget>
