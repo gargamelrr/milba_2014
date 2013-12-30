@@ -19,9 +19,11 @@ and open the template in the editor.
             <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a><br/>
             </div><!-- /header -->
-            <?php
-            include_once 'Menu.php';
-            ?>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+            </div>
+            <script type="text/javascript">
+                $('#nav-panel').load('Menu.html').trigger("create");
+            </script>
             <div data-role="content">
                 <form method="post">
                     <div id="newTask">

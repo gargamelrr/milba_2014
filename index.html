@@ -18,9 +18,11 @@ and open the template in the editor.
                 <h1>Sheets</h1>
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
-            <?php
-                include_once 'Menu.php';
-            ?>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+            </div>
+            <script type="text/javascript">
+                $('#nav-panel').load('Menu.html').trigger("create");
+            </script>
             <div data-role="content">
                 <ul data-role="listview" class="ui-listview">
                     <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">Today <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">2</span></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>

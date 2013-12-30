@@ -18,9 +18,11 @@ and open the template in the editor.
                 <h1>Search</h1>
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
-            <?php
-            include_once 'Menu.php';
-            ?>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+            </div>
+            <script type="text/javascript">
+                $('#nav-panel').load('Menu.html').trigger("create");
+            </script>
             <div data-role="content">
                 <label for="search-basic">Search Groups:</label>
                 <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/teachers/friends"/>

@@ -16,9 +16,11 @@ and open the template in the editor.
                 <h1>Settings</h1>
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
-            <?php
-            include_once 'Menu.php';
-            ?>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+            </div>
+            <script type="text/javascript">
+                $('#nav-panel').load('Menu.html').trigger("create");
+            </script>
             <div data-role="content">
                 <h3> Tom Blotman </h3>
                 <img border="0" src="http://images.globes.co.il/Images/NewGlobes/big_image/2011/693923[6.jpg" > <br> <br>
