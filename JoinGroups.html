@@ -19,10 +19,12 @@ and open the template in the editor.
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
+                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add </a><br/>
+                <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
+                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
+                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="gear" > Notification </a><br/>
             </div>
-            <script type="text/javascript">
-                $('#nav-panel').load('Menu.html').trigger("create");
-            </script>
             <div data-role="content">
                 <label for="search-basic">Search Groups:</label>
                 <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/teachers/friends"/>
@@ -38,15 +40,15 @@ and open the template in the editor.
                     <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">course 9</div></div>
                 </div>
                 <a href="index.php" data-role="button"  data-theme="d">Join</a>
-                
-                                    <div style="display: none" id="newGroup">
-                        <label>Please specify teacher name: </label>
-                        <input type="text" name="teacherName" id="teacherName" />
-                        <label>Please specify course name: </label>
-                        <input type="text" name="courseName" id="courseName" />
-                        <label>Please specify teacher e-mail address (optional): </label>
-                        <input type="text" name="teacherEmail" id="teacherEmail" />
-                    </div>
+
+                <div style="display: none" id="newGroup">
+                    <label>Please specify teacher name: </label>
+                    <input type="text" name="teacherName" id="teacherName" />
+                    <label>Please specify course name: </label>
+                    <input type="text" name="courseName" id="courseName" />
+                    <label>Please specify teacher e-mail address (optional): </label>
+                    <input type="text" name="teacherEmail" id="teacherEmail" />
+                </div>
             </div>
         </div>
     </body>
