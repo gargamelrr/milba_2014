@@ -1,20 +1,31 @@
 .ui-li>.ui-btn-inner {
   padding-top: 0px;
   padding-bottom: 0px;
-  
 }
 
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
-    max-height: 55px;
+    max-height: 45px;
     padding-left: 10px;
+    min-height: 30px;
 }
 
 .ui-li-thumb{
-    max-height: 60px;
-    max-width: 60px;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .ui-li .ui-btn-inner a.ui-link-inherit{
-    padding: 5px 100px 5px;
+    padding: 0px 70px 20px;
 }
 
+.ui-mobile .ui-header{
+    min-height: 35px;
+}
+
+.ui-btn-icon-right>.ui-btn-inner>.ui-icon{
+    margin-top: -19px;
+}
+
+.ui-li{
+    max-height: 50px;
+}
