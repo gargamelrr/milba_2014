@@ -1,8 +1,20 @@
 .ui-li>.ui-btn-inner {
   padding-top: 0px;
   padding-bottom: 0px;
+  
 }
 
-.ui-li-has-thumb{
-    max-height: 75px;
+.ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
+    max-height: 55px;
+    padding-left: 10px;
 }
+
+.ui-li-thumb{
+    max-height: 60px;
+    max-width: 60px;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit{
+    padding: 5px 100px 5px;
+}
+
