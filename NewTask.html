@@ -14,27 +14,32 @@ and open the template in the editor.
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <script type="text/javascript">
-            var flag = 0;
+            $(document).on('pagecreate', function(event) {
+                $('#groups a').bind('click', function() {
+                    $('#groups a').attr("data-theme", "c").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
+                    $(this).attr("data-theme", "b").removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+
+                });
+            });
+
+            var isEnable = true;
             function toggleStatus() {
-                if(flag == 0) {
-                    var divs = document.getElementsByTagName("input");
-                     var i=divs.length;
-                    while (i--) {
-                        divs[i].removeAttribute("disabled");
-                    }
-                    flag = 1;
+                if (isEnable == false) {
+                    $('#elementsToOperateOn input').textinput('enable');
+                    $('textarea').attr('disabled', '');
+                    $('#popupCourse').popup("close");
+                    isEnable = true;
+
                 } else {
-                    var divs = document.getElementsByTagName("input");
-                     var i=divs.length;
-                    while (i--) {
-                        divs[i].setAttribute("disabled", "diabled");
-                    }
-                    flag = 0;
+                    $('#elementsToOperateOn input').textinput('disable');
+                    $('#taskDetails').attr('disabled', 'disabled');
+                    isEnable = false;
                 }
             }
+
         </script>
     </head>
-    <body>
+    <body onload="toggleStatus()">
         <div data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a><br/>
@@ -50,49 +55,52 @@ and open the template in the editor.
                 <form method="post">
                     <div id="newTask">
                         <div id="groups">
-                            <a href="" data-role="button"  id="custom-btn" data-inline="true" data-theme="b"> Search </a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button"  data-position-to="window"  id="custom-btn" data-inline="true" onclick="toggleStatus()">מילאב</a>
-                            <a href="" data-role="button"  id="custom-btn" data-inline="true">אלגברה לינארית</a>
-                            <a href="" data-role="button"  id="custom-btn" data-inline="true">דיני עסקים</a>
+                            <a href="JoinGroups.html" data-role="button"  data-inline="true" data-theme="e"> Search </a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button"  data-position-to="window" data-transition="flip" data-inline="true">מילאב</a>
+                            <a href="" data-role="button"  data-inline="true">אלגברה לינארית</a>
+                            <a href="" data-role="button"  data-inline="true">דיני עסקים</a>
                         </div>
                         <br/>
-                        
-                        <div name="elementsToOperateOn">
+
+                        <div id="elementsToOperateOn">
                             <label>Task Name:</label>
-                            <input type="text" disabled="disabled" name="taskName" id="taskName"/> <br>
+                            <input type="text" name="taskName" id="taskName"/> <br>
                             <label>Due Date:</label>
-                            <input type="date"  disabled="disabled" name="taskDate" id="taskDate"/> <br>
+                            <input type="date" name="taskDate" id="taskDate"/> <br>
                             <label>Due Time:</label>
-                            <input type="time"  disabled="disabled" name= "taskTime" id="taskTime"/> <br>
+                            <input type="time" name="taskTime" id="taskTime"/> <br>
                             <label>Task Description:</label>
-                            <textarea cols="40"  disabled="disabled" rows="80" name="taskDetails" id="taskDetails"> </textarea> <br> 
+                            <div data-role="fieldcontain">
+                                <textarea  name="taskDetails" id="taskDetails"> </textarea> <br> 
+                            </div>
                             <fieldset data-role="controlgroup" data-type="horizontal" >
                                 <legend>Choose Task Difficulty:</legend>
-                                <input disabled="disabled" type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
+                                <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
                                 <label for="easy">Easy</label>
-                                <input  disabled="disabled" type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
+                                <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
                                 <label for="hard">Hard</label>
                             </fieldset><br> 
-                            <a href="" data-role="button"  data-theme="a" data-icon="gear" > Choose from Dropbox: </a><br/>
+                            <a href="" data-role="button"  data-theme="a" data-icon="gear" > Choose from Dropbox/Gallery: </a><br/>
                         </div>
                     </div>
                     <input  type="submit" value="Publish"/>
                 </form>
-                <div data-role="popup" id="popupCourse">
+                <div data-role="popup" id="popupCourse" data-theme="b">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
                     <h2>Media Lab</h2>
                     <h4>Ziv Rozen</h4>
-                <br><br>
-                Assigment 1: <br>
-                Added: 03/12/2013 <br>
-                Finish Client-Side<br>
-                Assigment 2:<br>
-                Added: 03/01/2014<br>
-                Prepare speech<br>
-                <p></p> <br><br>
-                <input type="button" name="chooseCourse" value="Add some sheet to your week"/>
+                    <br><br>
+                    Assigment 1: <br>
+                    Added: 03/12/2013 <br>
+                    Finish Client-Side<br>
+                    Assigment 2:<br>
+                    Added: 03/01/2014<br>
+                    Prepare speech<br>
+                    <br><br>
+                    <a href="" data-role="button" data-theme="b" id="choose" onclick="toggleStatus();">Add some sheet to your week</a>
                 </div>
             </div>
-            
+
         </div>
     </body>
 </html>

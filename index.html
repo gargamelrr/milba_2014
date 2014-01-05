@@ -12,6 +12,15 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/style.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <script>
+            $(document).on('pagecreate', function(event) {
+                $('#days li').bind('click', function() {
+                    $('#days li').attr("data-theme", "c").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
+                    $(this).attr("data-theme", "b").removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+
+                });
+            });
+        </script>
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel" >
@@ -27,52 +36,54 @@ and open the template in the editor.
             </div>
 
             <div data-role="content">
-                <ul data-role="listview" class="ui-listview" >
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li">
-                            <div class="ui-btn-text"><a href="#today" class="ui-link-inherit" data-transition="flip" data-rel="popup" data-position-to="window">
-                                    <img src="images/hard.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Today</h3>
-                                    <p class="ui-li-desc">מילאב, מדיה וטכנולוגיה</p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/hard.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Tomorrow</h3>
-                                    <p class="ui-li-desc">אוטומטים, אינפי א</p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/fun.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Friday</h3>
-                                    <p class="ui-li-desc"></p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/fun.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Saturday</h3>
-                                    <p class="ui-li-desc"></p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/easy.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Sunday</h3>
-                                    <p class="ui-li-desc">דיני עסקים</p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/hard.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Monday</h3>
-                                    <p class="ui-li-desc">HTML, C programming</p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/fun.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Tuesday</h3>
-                                    <p class="ui-li-desc"></p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
-                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
-                                    <img src="images/easy.png" class="ui-li-thumb">
-                                    <h3 class="ui-li-heading">Wensday</h3>
-                                    <p class="ui-li-desc">מילאב</p>
-                                </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                <div id="days">
+                    <ul data-role="listview" class="ui-listview" >
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li">
+                                <div class="ui-btn-text"><a href="#today" class="ui-link-inherit" data-transition="flip" data-rel="popup" data-position-to="window">
+                                        <img src="images/hard.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Today</h3>
+                                        <p class="ui-li-desc">מילאב, מדיה וטכנולוגיה</p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/hard.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Tomorrow</h3>
+                                        <p class="ui-li-desc">אוטומטים, אינפי א</p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/fun.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Friday</h3>
+                                        <p class="ui-li-desc"></p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/fun.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Saturday</h3>
+                                        <p class="ui-li-desc"></p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/easy.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Sunday</h3>
+                                        <p class="ui-li-desc">דיני עסקים</p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/hard.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Monday</h3>
+                                        <p class="ui-li-desc">HTML, C programming</p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/fun.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Tuesday</h3>
+                                        <p class="ui-li-desc"></p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="index.html" class="ui-link-inherit">
+                                        <img src="images/easy.png" class="ui-li-thumb">
+                                        <h3 class="ui-li-heading">Wensday</h3>
+                                        <p class="ui-li-desc">מילאב</p>
+                                    </a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
 
-                </ul>
-
-                <div data-role="popup" id="today">
+                    </ul>
+                </div>
+                <div data-role="popup" id="today" data-theme="b">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
                     <p>מדיה וטכנולוגיה
                         <br/>
                         Due: 8.1.14 16:00<br/>
