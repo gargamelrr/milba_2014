@@ -22,24 +22,22 @@ and open the template in the editor.
                 });
             });
 
-            var isEnable = true;
-            function toggleStatus() {
-                if (isEnable == false) {
-                    $('#elementsToOperateOn input').textinput('enable');
-                    $('textarea').attr('disabled', '');
-                    $('#popupCourse').popup("close");
-                    isEnable = true;
-
-                } else {
+            function toggleStatus(status) {
+                if (status == 'disable') {
                     $('#elementsToOperateOn input').textinput('disable');
-                    $('#taskDetails').attr('disabled', 'disabled');
-                    isEnable = false;
+                    $("input[type='radio']").checkboxradio('disable');
+                    //$('#taskDetails').attr('disabled', 'disabled');
+                } else {
+                    $('#elementsToOperateOn input').textinput('enable');
+                   // $('textarea').attr('disabled', '');
+                    $("input[type='radio']").checkboxradio('enable');
+                    $('#popupCourse').popup("close");
                 }
             }
 
         </script>
     </head>
-    <body onload="toggleStatus()">
+    <body onload="toggleStatus('disable')">
         <div data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a><br/>
@@ -76,9 +74,9 @@ and open the template in the editor.
                             <fieldset data-role="controlgroup" data-type="horizontal" >
                                 <legend>Choose Task Difficulty:</legend>
                                 <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
-                                <label for="easy">Easy</label>
+                                <label for="easy">Friendly Sheet</label>
                                 <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
-                                <label for="hard">Hard</label>
+                                <label for="hard">Massive sheet</label>
                             </fieldset><br> 
                             <a href="" data-role="button"  data-theme="a" data-icon="gear" > Choose from Dropbox/Gallery: </a><br/>
                         </div>
@@ -97,7 +95,7 @@ and open the template in the editor.
                     Added: 03/01/2014<br>
                     Prepare speech<br>
                     <br><br>
-                    <a href="" data-role="button" data-theme="b" id="choose" onclick="toggleStatus();">Add some sheet to your week</a>
+                    <a href="" data-role="button" data-theme="b" id="choose" onclick="toggleStatus('enable');">Add some sheet to your week</a>
                 </div>
             </div>
 
