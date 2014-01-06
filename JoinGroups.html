@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <meta charset="UTF-8">
@@ -27,18 +28,20 @@ and open the template in the editor.
             </div>
             <div data-role="content">
                 <label for="search-basic">Search Groups:</label>
-                <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/teachers/friends"/>
+                <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends"/>
+                
                 <div class="ui-grid-b">
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">course 1</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">course 2</div></div>
-                    <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">course 3</div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">course 4</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">course 5</div></div>
-                    <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">course 6</div></div>
-                    <div class="ui-block-a"><div class="ui-bar ui-bar-e" style="height:60px">course 7</div></div>
-                    <div class="ui-block-b"><div class="ui-bar ui-bar-e" style="height:60px">course 8</div></div>
-                    <div class="ui-block-c"><div class="ui-bar ui-bar-e" style="height:60px">course 9</div></div>
+                    <div class="ui-block-a" data-transition="fade" data-shadow="true" data-transition="flip" data-position-to="window"><button id="btnhome" data-theme="e">Algorithms</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="e">Automata and Formal Languages</button></div>
+                    <div class="ui-block-c"><button id="btnhome" data-theme="e">Calculus II</button></div>
+                    <div class="ui-block-a"><button id="btnhome" data-theme="e">מאקרו כלכלה</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="e">Probability</button></div>
+                    <div class="ui-block-c"><button id="btnhome" data-theme="e">דיני עסקים</button></div>
+                    <div class="ui-block-a"><button id="btnhome" data-theme="e">Set Theory</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="e">מבוא למדעי כדור הארץ</button></div>
+                    <div class="ui-block-c"><button id="btnhome" data-theme="e">Computation</button></div>
                 </div>
+
                 <a href="index.php" data-role="button"  data-theme="d">Join</a>
 
                 <div style="display: none" id="newGroup">

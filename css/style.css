@@ -2,6 +2,12 @@
   padding-top: 0px;
   padding-bottom: 0px;
 }
+#header {
+    height: 588px;
+    width: 588px;
+    margin: 2em auto;   
+    }
+    
 
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     max-height: 45px;
