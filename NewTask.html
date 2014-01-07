@@ -14,35 +14,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/owl.theme.css">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        <script src="./js/owl.carousel.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#groups").owlCarousel({
-                    items: 5
-                });
-
-                $('.link').on('click', function(event) {
-                    var $this = $(this);
-                    if ($this.hasClass('clicked')) {
-                        $this.removeAttr('style').removeClass('clicked');
-                    } else {
-                        $this.css('background', '#7fc242').addClass('clicked');
-                    }
-                });
-
-                $('#elementsToOperateOn input').textinput('disable');
-                $("input[type='radio']").checkboxradio('disable');
-                $("textarea[name='taskdetails']").prop('disabled', true);
-
-                $("#choose").click(function() {
-                    $('#elementsToOperateOn input').textinput('enable');
-                    $("input[type='radio']").checkboxradio('enable');
-                    $("textarea[name='taskdetails']").prop('disabled', false);
-                });
-            });
-        </script>
+        <script src="js/owl.carousel.js"></script>
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
@@ -112,7 +84,33 @@ and open the template in the editor.
                     <a href="javascript:void(0)" data-role="button" data-rel="back" data-theme="b" id="choose">Add some sheet to your week</a>
                 </div>
             </div>
-
         </div>
+        
+                <script type="text/javascript">
+            $(document).ready(function() {
+                $("#groups").owlCarousel({
+                    items: 5
+                });
+
+                $('.link').on('click', function(event) {
+                    var $this = $(this);
+                    if ($this.hasClass('clicked')) {
+                        $this.removeAttr('style').removeClass('clicked');
+                    } else {
+                        $this.css('background', '#7fc242').addClass('clicked');
+                    }
+                });
+
+                $('#elementsToOperateOn input').textinput('disable');
+                $("input[type='radio']").checkboxradio('disable');
+                $("textarea[name='taskdetails']").prop('disabled', true);
+
+                $("#choose").click(function() {
+                    $('#elementsToOperateOn input').textinput('enable');
+                    $("input[type='radio']").checkboxradio('enable');
+                    $("textarea[name='taskdetails']").prop('disabled', false);
+                });
+            });
+        </script>
     </body>
 </html>
