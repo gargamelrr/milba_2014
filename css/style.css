@@ -1,13 +1,13 @@
 .ui-li>.ui-btn-inner {
-  padding-top: 0px;
-  padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 #header {
     height: 588px;
     width: 588px;
     margin: 2em auto;   
-    }
-    
+}
+
 
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     max-height: 45px;
@@ -34,4 +34,27 @@
 
 .ui-li{
     max-height: 50px;
+}
+
+#groups .item{
+    display: block;
+    cursor: pointer;
+    background: #42bdc2;
+    margin: 5px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    padding: 20px 0;
+}
+#groups .item:hover{
+    background: #F2CD00;
+}
+
+
+.ui-body-c, .ui-overlay-c{
+    text-shadow: none;
+    text-decoration: none;
 }

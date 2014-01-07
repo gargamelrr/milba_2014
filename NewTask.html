@@ -11,19 +11,31 @@ and open the template in the editor.
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <!-- Important Owl stylesheet -->
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <!-- Default Theme -->
+        <link rel="stylesheet" href="css/owl.theme.css">
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="vzkm43r52cqx950"></script>
-        <script type="text/javascript">
-            $(document).on('pagecreate', function(event) {
-                $('#groups a').bind('click', function() {
-                    $('#groups a').attr("data-theme", "c").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
-                    $(this).attr("data-theme", "b").removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+        <script src="js/owl.carousel.js"></script>
 
-                });
-            });
+        <script type="text/javascript">
+
 
             $(document).ready(function() {
-                toggleStatus("disable");
+
+                $("#groups").owlCarousel({
+                    items: 5
+                });
+
+                $('.link').on('click', function(event) {
+                    var $this = $(this);
+                    if ($this.hasClass('clicked')) {
+                        $this.removeAttr('style').removeClass('clicked');
+                    } else {
+                        $this.css('background', '#7fc242').addClass('clicked');
+                    }
+                });
             });
 
 //            $("#choose").click(function() {
@@ -63,11 +75,19 @@ and open the template in the editor.
             <div data-role="content">
                 <form method="post">
                     <div id="newTask">
-                        <div id="groups">
-                            <a href="JoinGroups.html" data-role="button"  data-inline="true" data-theme="e"> Search </a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button"  data-position-to="window" data-transition="flip" data-inline="true">מילאב</a>
-                            <a href="" data-role="button"  data-inline="true">אלגברה לינארית</a>
-                            <a href="" data-role="button"  data-inline="true">דיני עסקים</a>
+                        <div>
+                            <div class="row">
+                                <div id="groups" class="owl-carousel">
+                                    <a href="JoinGroups.html" class="item link"  data-theme="e"> Search </a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מילאב</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מדיה חדשים</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">אינפי א</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">דיני עסקים</a>
+                                </div>
+                            </div>
                         </div>
                         <br/>
 
