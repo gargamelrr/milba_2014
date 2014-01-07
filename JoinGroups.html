@@ -41,12 +41,12 @@ and open the template in the editor.
                 <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends"/>
 
                 <div class="ui-grid-a">
-                    <div class="ui-block-a" data-transition="fade" data-shadow="true" data-transition="flip" data-position-to="window"><button id="btnhome" data-theme="b">Algorithms</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="b">Automata and Formal Languages</button></div>
-                    <div class="ui-block-a"><button id="btnhome" data-theme="b">מאקרו כלכלה</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="b">Probability</button></div>
-                    <div class="ui-block-a"><button id="btnhome" data-theme="b">Set Theory</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="b">מבוא למדעי כדור הארץ</button></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מילאב</a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Automata and Formal Languages</a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מאקרו כלכלה</a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Probability</a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Set Theory</a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">מבוא למדעי כדור הארץ</a></div>
                 </div>
 
                 <a href="index.html" data-role="button"  data-theme="d">Join</a>
@@ -61,5 +61,15 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <script>
+            $('.choosen').on('click', function() {
+                var $this = $(this);
+                if ($this.hasClass('clicked')) {
+                    $this.removeAttr('style').removeClass('clicked');
+                } else {
+                    $this.css('background', '#7fc242').addClass('clicked');
+                }
+            });
+        </script>
     </body>
 </html>
