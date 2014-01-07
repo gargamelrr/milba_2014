@@ -10,13 +10,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <!-- Important Owl stylesheet -->
         <link rel="stylesheet" href="css/owl.carousel.css">
-        <!-- Default Theme -->
         <link rel="stylesheet" href="css/owl.theme.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="vzkm43r52cqx950"></script>
         <script src="js/owl.carousel.js"></script>
 
         <script type="text/javascript">
@@ -36,27 +33,18 @@ and open the template in the editor.
                         $this.css('background', '#7fc242').addClass('clicked');
                     }
                 });
+
+                $('#elementsToOperateOn input').textinput('disable');
+                $("input[type='radio']").checkboxradio('disable');
+                $("textarea[name='taskdetails']").prop('disabled', true);
             });
 
-//            $("#choose").click(function() {
-//                $("#taskdetails").attr("disabled", "");
-//                $('#elementsToOperateOn input').textinput('enable');
-//
-//            });
-
-            function toggleStatus(status) {
-                if (status == 'disable') {
-                    $('#elementsToOperateOn input').textinput('disable');
-                    $("input[type='radio']").checkboxradio('disable');
-                    $("textarea[name='taskdetails']").prop('disabled', true);
-                } else {
+            $("#choose").click(function() {
                     $('#elementsToOperateOn input').textinput('enable');
                     $("input[type='radio']").checkboxradio('enable');
                     $("textarea[name='taskdetails']").prop('disabled', false);
+            });
 
-                    $('#popupCourse').popup("close");
-                }
-            }
 
         </script>
     </head>
@@ -109,7 +97,6 @@ and open the template in the editor.
                                 <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
                                 <label for="hard">Massive sheet</label>
                             </fieldset><br> 
-                            <input type="dropbox-chooser" name="selected-file" style="visibility: hidden;"/>
                         </div>
                     </div>
                     <input  type="submit" value="Publish"/>
@@ -126,7 +113,7 @@ and open the template in the editor.
                     Added: 03/01/2014<br>
                     Prepare speech<br>
                     <br><br>
-                    <a href="" data-role="button" data-rel="back" data-theme="b" id="choose" onclick="toggleStatus('enable')">Add some sheet to your week</a>
+                    <a href="#" data-role="button" data-rel="back" data-theme="b" id="choose">Add some sheet to your week</a>
                 </div>
             </div>
 
