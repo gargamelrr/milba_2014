@@ -30,9 +30,8 @@ and open the template in the editor.
             <div data-role="content">
                 <form method="post">
                     <div id="newTask">
-                        <div>
                             <div class="row">
-                                <div id="groups" class="owl-carousel">
+              <div id="owl-example" class="owl-carousel">
                                     <a href="JoinGroups.html" class="item link"  data-theme="e"> Search </a>
                                     <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מילאב</a>
                                     <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מדיה חדשים</a>
@@ -43,7 +42,6 @@ and open the template in the editor.
                                     <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">דיני עסקים</a>
                                 </div>
                             </div>
-                        </div>
                         <br/>
 
                         <div id="elementsToOperateOn">
@@ -85,7 +83,13 @@ and open the template in the editor.
             </div>
         </div>
                 <script src="js/owl.carousel.min.js"></script>
-
+                    <!-- Frontpage Demo -->
+    <script>
+    $(document).ready(function($) {
+      $("#owl-example").owlCarousel();
+    });
+    </script>
+<!--
                 <script type="text/javascript">
             $(document).ready(function() {
                 $("#groups").owlCarousel({
@@ -111,6 +115,6 @@ and open the template in the editor.
                     $("textarea[name='taskdetails']").prop('disabled', false);
                 });
             });
-        </script>
+        </script>-->
     </body>
 </html>
