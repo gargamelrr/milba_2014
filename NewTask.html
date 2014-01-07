@@ -14,6 +14,15 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/owl.theme.css">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <script>
+            $(document).on('pagecreate', function(event) {
+                $('#groups a').bind('click', function() {
+                    $('#groups a').attr("data-theme", "c").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
+                    $(this).attr("data-theme", "b").removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+
+                });
+            });
+        </script>
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
@@ -31,14 +40,14 @@ and open the template in the editor.
                 <form method="post">
                     <div id="newTask">
                         <div id="groups">
-                            <a href="JoinGroups.html"  data-role="button" class="group" data-theme="b" data-inline="true"> Search </a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מילאב</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מדיה חדשים</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">אינפי א</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">דיני עסקים</a>
+                            <a href="JoinGroups.html"  data-role="button" data-theme="a" data-inline="true"> Search </a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מילאב</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מדיה חדשים</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">אינפי א</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">דיני עסקים</a>
                         </div>
                         <br/>
 
