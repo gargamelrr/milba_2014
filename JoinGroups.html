@@ -16,7 +16,6 @@ and open the template in the editor.
     <body>
         <div data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="f">
-                <h1>Search</h1>
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
@@ -27,19 +26,27 @@ and open the template in the editor.
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="gear" > Notification </a><br/>
             </div>
             <div data-role="content">
+                <div id="groups">
+                    <a href="JoinGroups.html"  data-role="button" class="group" data-theme="b" data-inline="true"> Search </a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מילאב</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מדיה חדשים</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">אינפי א</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
+                    <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">דיני עסקים</a>
+                </div>
+                <br/>
                 <label for="search-basic">Search Groups:</label>
                 <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends"/>
-                
+
                 <div class="ui-grid-b">
-                    <div class="ui-block-a" data-transition="fade" data-shadow="true" data-transition="flip" data-position-to="window"><button id="btnhome" data-theme="e">Algorithms</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="e">Automata and Formal Languages</button></div>
-                    <div class="ui-block-c"><button id="btnhome" data-theme="e">Calculus II</button></div>
-                    <div class="ui-block-a"><button id="btnhome" data-theme="e">מאקרו כלכלה</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="e">Probability</button></div>
-                    <div class="ui-block-c"><button id="btnhome" data-theme="e">דיני עסקים</button></div>
-                    <div class="ui-block-a"><button id="btnhome" data-theme="e">Set Theory</button></div>
-                    <div class="ui-block-b"><button id="btnhome" data-theme="e">מבוא למדעי כדור הארץ</button></div>
-                    <div class="ui-block-c"><button id="btnhome" data-theme="e">Computation</button></div>
+                    <div class="ui-block-a" data-transition="fade" data-shadow="true" data-transition="flip" data-position-to="window"><button id="btnhome" data-theme="b">Algorithms</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="b">Automata and Formal Languages</button></div>
+                    <div class="ui-block-a"><button id="btnhome" data-theme="b">מאקרו כלכלה</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="b">Probability</button></div>
+                    <div class="ui-block-a"><button id="btnhome" data-theme="b">Set Theory</button></div>
+                    <div class="ui-block-b"><button id="btnhome" data-theme="b">מבוא למדעי כדור הארץ</button></div>
                 </div>
 
                 <a href="index.php" data-role="button"  data-theme="d">Join</a>

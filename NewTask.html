@@ -30,18 +30,16 @@ and open the template in the editor.
             <div data-role="content">
                 <form method="post">
                     <div id="newTask">
-                            <div class="row">
-              <div id="owl-example" class="owl-carousel">
-                                    <a href="JoinGroups.html" class="item link"  data-theme="e"> Search </a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מילאב</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מדיה חדשים</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">אינפי א</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
-                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">דיני עסקים</a>
-                                </div>
-                            </div>
+                        <div id="groups">
+                            <a href="JoinGroups.html"  data-role="button" class="group" data-theme="b" data-inline="true"> Search </a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מילאב</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מדיה חדשים</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">אינפי א</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
+                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="e" data-position-to="window" data-transition="flip">דיני עסקים</a>
+                        </div>
                         <br/>
 
                         <div id="elementsToOperateOn">
@@ -82,39 +80,32 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-                <script src="js/owl.carousel.min.js"></script>
-                    <!-- Frontpage Demo -->
-    <script>
-    $(document).ready(function($) {
-      $("#owl-example").owlCarousel();
-    });
-    </script>
-<!--
-                <script type="text/javascript">
-            $(document).ready(function() {
-                $("#groups").owlCarousel({
-                    items: 5
-                });
 
-                $('.link').on('click', function(event) {
-                    var $this = $(this);
-                    if ($this.hasClass('clicked')) {
-                        $this.removeAttr('style').removeClass('clicked');
-                    } else {
-                        $this.css('background', '#7fc242').addClass('clicked');
-                    }
-                });
-
-                $('#elementsToOperateOn input').textinput('disable');
-                $("input[type='radio']").checkboxradio('disable');
-                $("textarea[name='taskdetails']").prop('disabled', true);
-
-                $("#choose").click(function() {
-                    $('#elementsToOperateOn input').textinput('enable');
-                    $("input[type='radio']").checkboxradio('enable');
-                    $("textarea[name='taskdetails']").prop('disabled', false);
-                });
-            });
-        </script>-->
+        <!--                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#groups").owlCarousel({
+                            items: 5
+                        });
+        
+                        $('.link').on('click', function(event) {
+                            var $this = $(this);
+                            if ($this.hasClass('clicked')) {
+                                $this.removeAttr('style').removeClass('clicked');
+                            } else {
+                                $this.css('background', '#7fc242').addClass('clicked');
+                            }
+                        });
+        
+                        $('#elementsToOperateOn input').textinput('disable');
+                        $("input[type='radio']").checkboxradio('disable');
+                        $("textarea[name='taskdetails']").prop('disabled', true);
+        
+                        $("#choose").click(function() {
+                            $('#elementsToOperateOn input').textinput('enable');
+                            $("input[type='radio']").checkboxradio('enable');
+                            $("textarea[name='taskdetails']").prop('disabled', false);
+                        });
+                    });
+                </script>-->
     </body>
 </html>
