@@ -43,27 +43,28 @@ and open the template in the editor.
                             <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מילאב</a>
                             <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מדיה חדשים</a>
                             <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
-                         </div>
+                        </div>
                         <br/>
-
-                        <div id="elementsToOperateOn">
-                            <label>Task Name:</label>
-                            <input type="text" name="taskName" id="taskName"/> <br>
-                            <label>Due Date:</label>
-                            <input type="date" name="date-1" id="date-1"/> <br>
-                            <label>Due Time:</label>
-                            <input type="time" name="taskTime" id="taskTime"/> <br>
-                            <label>Task Description:</label>
-                            <div data-role="fieldcontain">
-                                <textarea name="taskdetails" id="taskdetails"> </textarea> <br> 
+                        <div class="ui-body ui-body-b">
+                            <div id="elementsToOperateOn">
+                                <label>Task Name:</label>
+                                <input type="text" name="taskName" id="taskName" required/> <br>
+                                <label>Due Date:</label>
+                                <input type="date" name="date-1" id="date-1" required/> <br>
+                                <label>Due Time:</label>
+                                <input type="time" name="taskTime" id="taskTime" required/> <br>
+                                <label>Task Description:</label>
+                                <div data-role="fieldcontain">
+                                    <textarea name="taskdetails" id="taskdetails"> </textarea> <br> 
+                                </div>
+                                <fieldset data-role="controlgroup" data-type="horizontal" >
+                                    <legend>Choose Task Difficulty:</legend>
+                                    <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
+                                    <label for="easy">Friendly Sheet</label>
+                                    <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
+                                    <label for="hard">Massive sheet</label>
+                                </fieldset><br> 
                             </div>
-                            <fieldset data-role="controlgroup" data-type="horizontal" >
-                                <legend>Choose Task Difficulty:</legend>
-                                <input type="radio" name="radio-difficulty" id="easy" value="easy-1" checked="checked"/> 
-                                <label for="easy">Friendly Sheet</label>
-                                <input type="radio" name="radio-difficulty" id="hard" value="hard-1"/>
-                                <label for="hard">Massive sheet</label>
-                            </fieldset><br> 
                         </div>
                     </div>
                     <input  type="submit" value="Publish"/>
