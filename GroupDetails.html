@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div data-role="page" class="ui-responsive-panel">
+            <div data-role="header" data-theme="f">
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+            </div>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
+                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add </a><br/>
+                <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
+                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
+                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="gear" > Notification </a><br/>
+            </div>
+            <div data-role="content">
+
+                <div id="teac_details">
+                    <h3><span id="name">מדיה וטכנולוגיה</span></h3>
+                    <h4><span id="teac_name">גיא הופמן</span>&nbsp;&nbsp;&nbsp;<span id="email">guy@idc.ac.il</span></h4>
+                </div>
+
+                <div id="tasks">
+                    <h4><span id="name1">מדיה וטכנולוגיה</span></h4>
+                    Due: 8.1.14 16:00<br/>
+                    Details: רפרט-מצגת מול הכיתה + הגשה במסמך וורד. ביקורת על מאמר
+                    </p><hr/>
+                    <h4><span id="name2">מילאב</span></h4>
+                    Due: 8.1.14 09:00<br/>
+                    Details: מצגת במיקרוסופט. הכנת דמו וסגירת איפיון
+                    </p>
+                </div>
+                <br/>
+                <a href="NewTask.html" data-role="button"  data-theme="b" data-icon="plus" > Add a sheet </a><br/>
+                <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" data-inline="true"> Leave Course </a><br/>
+
+                <div data-role="popup" id="leave">
+                    <p>Are you sure you want to leave this course?<p>
+                    <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <a href="NewTask.html" data-role="button"  data-theme="b" data-inline="true"> Yes </a>
+                        <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+</html>

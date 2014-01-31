@@ -36,24 +36,6 @@
     max-height: 50px;
 }
 
-#owl-example .item{
-    display: block;
-    cursor: pointer;
-    background: #42bdc2;
-    margin: 5px;
-    color: #FFF;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-align: center;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
-    padding: 20px 0;
-}
-#owl-example .item:hover{
-    background: #F2CD00;
-}
-
-
 .ui-body-c, .ui-overlay-c{
     text-shadow: none;
     text-decoration: none;
@@ -61,4 +43,12 @@
 
 .group{
     width: 150px;
+}
+
+.count_friend{
+    font-size: 0.6em;
+}
+
+#teac_details, #tasks{
+ text-align: center;
 }

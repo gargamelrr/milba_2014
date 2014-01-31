@@ -26,34 +26,26 @@ and open the template in the editor.
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="gear" > Notification </a><br/>
             </div>
             <div data-role="content">
+                <h3>My courses</h3>
                 <div id="groups">
                     <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מילאב</a>
                     <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מדיה חדשים</a>
                     <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מיקרו כלכלה</a>
                 </div>
                 <br/>
-                <label for="search-basic">Search Groups:</label>
-                <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends"/>
-
+                <h3>Search courses</h3>
+                <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" />
+                <a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >New group</a>
                 <div class="ui-grid-a">
-                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">יסודות המימון</a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Automata and Formal Languages</a></div>
-                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מאקרו כלכלה</a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Probability</a></div>
-                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Set Theory</a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">מבוא למדעי כדור הארץ</a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">יסודות המימון<br/><div class="count_friend">40 of your friends</div></a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Automata and Formal Languages<br/><div class="count_friend">40 of your friends</div></a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מאקרו כלכלה<br/><div class="count_friend">30 of your friends</div></a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Probability<br/><div class="count_friend">10 of your friends</div></a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Set Theory<br/><div class="count_friend">3 of your friends</div></a></div>
+                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">מבוא למדעי כדור הארץ<br/><div class="count_friend">13 of your friends</div></a></div>
                 </div>
 
                 <a href="index.html" data-role="button"  data-theme="d">Join</a>
-
-                <div style="display: none" id="newGroup">
-                    <label>Please specify teacher name: </label>
-                    <input type="text" name="teacherName" id="teacherName" />
-                    <label>Please specify course name: </label>
-                    <input type="text" name="courseName" id="courseName" />
-                    <label>Please specify teacher e-mail address (optional): </label>
-                    <input type="text" name="teacherEmail" id="teacherEmail" />
-                </div>
             </div>
         </div>
         <script>
