@@ -17,45 +17,45 @@ and open the template in the editor.
         <script src="js/owl.carousel.js"></script>
         <script>
 
-            document.addEventListener("deviceready", onDeviceReady, false);
+            document.addEventListener("deviceready", onDeviceReady(), false);
 
             // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
             //
             function onDeviceReady() {
-                // Now safe to use the PhoneGap API
+                $(document).on('pagecreate', function(event) {
+                    $('#groups a').bind('click', function() {
+                        $('#groups a').removeAttr('style').removeClass('clicked');
+                        $(this).css('background', '#7fc242').addClass('clicked');
+                    });
+                });
+
+                $(document).on('pageinit', function(event) {
+
+                    $("#groups").owlCarousel({
+                        items: 3
+                    });
+
+                    $('.link').on('click', function(event) {
+                        var $this = $(this);
+                        if ($this.hasClass('clicked')) {
+                            $this.removeAttr('style').removeClass('clicked');
+                        } else {
+                            $this.css('background', '#7fc242').addClass('clicked');
+                        }
+                    });
+
+                    $('input').prop('disabled', true);
+                    $("input[type='radio']").checkboxradio('disable');
+                    $("textarea[name='taskdetails']").prop('disabled', true);
+
+                    $("#choose").click(function() {
+                        $('input').prop('disabled', false);
+                        $("input[type='radio']").checkboxradio('enable');
+                        $("textarea[name='taskdetails']").prop('disabled', false);
+                    });
+                });
             }
-            $(document).on('pagecreate', function(event) {
-                $('#groups a').bind('click', function() {
-                    $('#groups a').removeAttr('style').removeClass('clicked');
-                    $(this).css('background', '#7fc242').addClass('clicked');
-                });
-            });
 
-            $(document).on('pageinit', function(event) {
-
-                $("#groups").owlCarousel({
-                    items: 3
-                });
-
-                $('.link').on('click', function(event) {
-                    var $this = $(this);
-                    if ($this.hasClass('clicked')) {
-                        $this.removeAttr('style').removeClass('clicked');
-                    } else {
-                        $this.css('background', '#7fc242').addClass('clicked');
-                    }
-                });
-
-                $('input').prop('disabled', true);
-                $("input[type='radio']").checkboxradio('disable');
-                $("textarea[name='taskdetails']").prop('disabled', true);
-
-                $("#choose").click(function() {
-                    $('input').prop('disabled', false);
-                    $("input[type='radio']").checkboxradio('enable');
-                    $("textarea[name='taskdetails']").prop('disabled', false);
-                });
-            });
         </script>
     </head>
     <body>
