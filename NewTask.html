@@ -16,51 +16,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/owl.theme.css">
         <!-- cordova -->
         <script src="cordova.js"></script>
-
         <script src="js/owl.carousel.js"></script>
-        <script>
-
-
-
-            function onDeviceReady() {
-//            $(document).on('pagecreate', function(event) {
-//                $('#groups a').bind('click', function() {
-//                    $('#groups a').removeAttr('style').removeClass('clicked');
-//                    $(this).css('background', '#7fc242').addClass('clicked');
-//                });
-//            });
-
-                   
-                    alert("im here");
-
-                    $("#groups").owlCarousel({
-                        items: 3
-                    });
-
-//                    $('.link').on('click', function(event) {
-//                        var $this = $(this);
-//                        if ($this.hasClass('clicked')) {
-//                            $this.removeAttr('style').removeClass('clicked');
-//                        } else {
-//                            $this.css('background', '#7fc242').addClass('clicked');
-//                        }
-//                    });
-//
-//                    $('input').prop('disabled', true);
-//                    $("input[type='radio']").checkboxradio('disable');
-//                    $("textarea[name='taskdetails']").prop('disabled', true);
-//
-//                    $("#choose").click(function() {
-//                        $('input').prop('disabled', false);
-//                        $("input[type='radio']").checkboxradio('enable');
-//                        $("textarea[name='taskdetails']").prop('disabled', false);
-//                    });
-               
-            }
-
-            document.addEventListener("deviceready", onDeviceReady, false);
-
-        </script>
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
@@ -136,5 +92,29 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+
+
+
+        <script>
+            $(document).ready(function() {
+                // are we running in native app or in browser?
+                window.isphone = false;
+                if (document.URL.indexOf("http://") === -1
+                        && document.URL.indexOf("https://") === -1) {
+                    window.isphone = true;
+                }
+
+                if (window.isphone) {
+                    document.addEventListener("deviceready", onDeviceReady, false);
+                } else {
+                    onDeviceReady();
+                }
+            });
+
+            function onDeviceReady() {
+                alert("hey");
+            }
+
+        </script>
     </body>
 </html>
