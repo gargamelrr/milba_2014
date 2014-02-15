@@ -17,8 +17,6 @@ and open the template in the editor.
         <!-- cordova -->
         <script src="cordova.js"></script>
         <script src="js/owl.carousel.js"></script>
-                <script src="http://debug.phonegap.com/target/target-script-min.js#anonymous"></script>
-
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
@@ -101,8 +99,38 @@ and open the template in the editor.
             document.addEventListener("deviceready", onDeviceReady(), false);
 
             function onDeviceReady() {
-                alert("hey");
+//            $(document).on('pagecreate', function(event) {
+//                $('#groups a').bind('click', function() {
+//                    $('#groups a').removeAttr('style').removeClass('clicked');
+//                    $(this).css('background', '#7fc242').addClass('clicked');
+//                });
+//            });
 
+               $(document).bind('pageinit', function(event) {
+                    
+                    $("#groups").owlCarousel({
+                        items: 3
+                    });
+
+                    $('.link').on('click', function(event) {
+                        var $this = $(this);
+                        if ($this.hasClass('clicked')) {
+                            $this.removeAttr('style').removeClass('clicked');
+                        } else {
+                            $this.css('background', '#7fc242').addClass('clicked');
+                        }
+                    });
+
+                    $('input').prop('disabled', true);
+                    $("input[type='radio']").checkboxradio('disable');
+                    $("textarea[name='taskdetails']").prop('disabled', true);
+
+                    $("#choose").click(function() {
+                        $('input').prop('disabled', false);
+                        $("input[type='radio']").checkboxradio('enable');
+                        $("textarea[name='taskdetails']").prop('disabled', false);
+                    });
+                });
             }
 
         </script>
