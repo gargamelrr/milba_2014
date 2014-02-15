@@ -16,6 +16,14 @@ and open the template in the editor.
         <script src="js/jquery.mobile-1.4.1.min.js"></script>
         <script src="js/owl.carousel.js"></script>
         <script>
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+            //
+            function onDeviceReady() {
+                // Now safe to use the PhoneGap API
+            }
             $(document).on('pagecreate', function(event) {
                 $('#groups a').bind('click', function() {
                     $('#groups a').removeAttr('style').removeClass('clicked');
@@ -23,7 +31,7 @@ and open the template in the editor.
                 });
             });
 
-            $(document).on('pageinit', function(event){
+            $(document).on('pageinit', function(event) {
 
                 $("#groups").owlCarousel({
                     items: 3
