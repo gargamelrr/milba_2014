@@ -99,15 +99,15 @@ and open the template in the editor.
             document.addEventListener("deviceready", onDeviceReady(), false);
 
             function onDeviceReady() {
-//            $(document).on('pagecreate', function(event) {
-//                $('#groups a').bind('click', function() {
-//                    $('#groups a').removeAttr('style').removeClass('clicked');
-//                    $(this).css('background', '#7fc242').addClass('clicked');
+//                $(document).on('pagecreate', function(event) {
+//                    $('#groups a').bind('click', function() {
+//                        $('#groups a').removeAttr('style').removeClass('clicked');
+//                        $(this).css('background', '#7fc242').addClass('clicked');
+//                    });
 //                });
-//            });
 
-               $(document).bind('pageinit', function(event) {
-                    
+                $(document).bind('pageinit', function(event) {
+
                     $("#groups").owlCarousel({
                         items: 3
                     });
