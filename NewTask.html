@@ -94,27 +94,16 @@ and open the template in the editor.
         </div>
 
 
+        <script type="text/javascript">
 
-        <script>
-            $(document).ready(function() {
-                // are we running in native app or in browser?
-                window.isphone = false;
-                if (document.URL.indexOf("http://") === -1
-                        && document.URL.indexOf("https://") === -1) {
-                    window.isphone = true;
-                }
-
-                if (window.isphone) {
-                    document.addEventListener("deviceready", onDeviceReady(), false);
-                } else {
-                    onDeviceReady();
-                }
-            });
+            document.addEventListener("deviceready", onDeviceReady(), false);
 
             function onDeviceReady() {
                 alert("hey");
+
             }
 
         </script>
+
     </body>
 </html>
