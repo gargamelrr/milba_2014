@@ -32,7 +32,9 @@ and open the template in the editor.
 //                });
 //            });
 
-                $(document).on('pageinit', function(event) {
+                $(document).on('ready', function(event) {
+                    
+                    alert("im here");
 
                     $("#groups").owlCarousel({
                         items: 3
