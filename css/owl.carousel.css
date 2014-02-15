@@ -39,6 +39,12 @@
 	
 .owl-carousel .owl-item{
 	float: left;
+        margin:10px;
+        padding: 10px 0px;
+        background: #42bdc2;
+        text-align: center;
+        width: 150px;
+
 }
 .owl-controls .owl-page,
 .owl-controls .owl-buttons div{
@@ -51,11 +57,6 @@
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-/* mouse grab icon */
-.grabbing { 
-    cursor:url(grabbing.png) 8 8, move;
 }
 
 /* fix */

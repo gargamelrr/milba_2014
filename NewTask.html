@@ -10,9 +10,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
-
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/owl.theme.css">
+        <link rel="stylesheet" href="css/custom.css">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <script src="js/owl.carousel.js"></script>
         <script>
             $(document).on('pagecreate', function(event) {
                 $('#groups a').bind('click', function() {
@@ -22,6 +25,20 @@ and open the template in the editor.
             });
 
             $(document).ready(function() {
+
+                $("#groups").owlCarousel({
+                    items: 3
+                });
+
+                $('.link').on('click', function(event) {
+                    var $this = $(this);
+                    if ($this.hasClass('clicked')) {
+                        $this.removeAttr('style').removeClass('clicked');
+                    } else {
+                        $this.css('background', '#7fc242').addClass('clicked');
+                    }
+                });
+
                 $('input').prop('disabled', true);
                 $("input[type='radio']").checkboxradio('disable');
                 $("textarea[name='taskdetails']").prop('disabled', true);
@@ -49,11 +66,20 @@ and open the template in the editor.
             <div data-role="content">
                 <form method="post">
                     <div id="newTask">
-                        <div id="groups">
-                            <a href="JoinGroups.html"  data-role="button" data-theme="a" data-inline="true"> Search </a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מילאב</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מדיה חדשים</a>
-                            <a href="#popupCourse" data-rel="popup" data-role="button" class="group" data-inline="true" data-theme="c" data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                        <div>
+                            <div class="row">
+                                <div id="groups" class="owl-carousel">
+                                    <a href="JoinGroups.html" class="item link" data-theme="e"> Search </a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מילאב</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מדיה חדשים</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מיקרו כלכלה</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא לאמצעי טכנולוגיה</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">אינפי א</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">מבוא למדעי המחשב</a>
+                                    <a href="#popupCourse" data-rel="popup" class="item link"  data-position-to="window" data-transition="flip">דיני עסקים</a>
+
+                                </div>
+                            </div>
                         </div>
                         <br/>
                         <div class="ui-body ui-body-b">
