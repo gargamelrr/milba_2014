@@ -8,12 +8,14 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.css">
-        <script src="js/jquery-2.0.2.min.js"></script>
-        <script src="js/jquery.mobile-1.4.1.min.js"></script>
+        <!-- cordova -->
+        <script src="cordova.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <script src="js/owl.carousel.js"></script>
         <script>
 
@@ -22,38 +24,38 @@ and open the template in the editor.
             // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
             //
             function onDeviceReady() {
-//                $(document).on('pagecreate', function(event) {
-//                    $('#groups a').bind('click', function() {
-//                        $('#groups a').removeAttr('style').removeClass('clicked');
-//                        $(this).css('background', '#7fc242').addClass('clicked');
-//                    });
+//            $(document).on('pagecreate', function(event) {
+//                $('#groups a').bind('click', function() {
+//                    $('#groups a').removeAttr('style').removeClass('clicked');
+//                    $(this).css('background', '#7fc242').addClass('clicked');
 //                });
+//            });
 
-                alert("im here");
+                $(document).on('pageinit', function(event) {
 
-                $("#groups").owlCarousel({
-                    items: 3
+                    $("#groups").owlCarousel({
+                        items: 3
+                    });
+
+                    $('.link').on('click', function(event) {
+                        var $this = $(this);
+                        if ($this.hasClass('clicked')) {
+                            $this.removeAttr('style').removeClass('clicked');
+                        } else {
+                            $this.css('background', '#7fc242').addClass('clicked');
+                        }
+                    });
+
+                    $('input').prop('disabled', true);
+                    $("input[type='radio']").checkboxradio('disable');
+                    $("textarea[name='taskdetails']").prop('disabled', true);
+
+                    $("#choose").click(function() {
+                        $('input').prop('disabled', false);
+                        $("input[type='radio']").checkboxradio('enable');
+                        $("textarea[name='taskdetails']").prop('disabled', false);
+                    });
                 });
-
-                $('.link').on('click', function(event) {
-                    var $this = $(this);
-                    if ($this.hasClass('clicked')) {
-                        $this.removeAttr('style').removeClass('clicked');
-                    } else {
-                        $this.css('background', '#7fc242').addClass('clicked');
-                    }
-                });
-
-                $('input').prop('disabled', true);
-                $("input[type='radio']").checkboxradio('disable');
-                $("textarea[name='taskdetails']").prop('disabled', true);
-
-                $("#choose").click(function() {
-                    $('input').prop('disabled', false);
-                    $("input[type='radio']").checkboxradio('enable');
-                    $("textarea[name='taskdetails']").prop('disabled', false);
-                });
-
             }
 
         </script>
