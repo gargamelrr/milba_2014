@@ -10,7 +10,42 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+         <script type="text/javascript">
+
+            document.addEventListener("deviceready", onDeviceReady(), false);
+
+            function onDeviceReady() {
+                alert("yeah"); 
+                $(document).bind('pageinit', function(event) {
+
+                    $("#groups").owlCarousel({
+                        items: 3
+                    });
+
+                    $('.link').on('click', function(event) {
+                        var $this = $(this);
+                        if ($this.hasClass('clicked')) {
+                            $this.removeAttr('style').removeClass('clicked');
+                        } else {
+                            $this.css('background', '#7fc242').addClass('clicked');
+                        }
+                    });
+
+                    $('input').prop('disabled', true);
+                    $("input[type='radio']").checkboxradio('disable');
+                    $("textarea[name='taskdetails']").prop('disabled', true);
+                    
+                    $("#choose").click(function() {
+                        $('input').prop('disabled', false);
+                        $("input[type='radio']").checkboxradio('enable');
+                        $("textarea[name='taskdetails']").prop('disabled', false);
+                    });
+                });
+            }
+
+        </script>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.css">
@@ -92,41 +127,5 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-
-
-        <script type="text/javascript">
-
-            document.addEventListener("deviceready", onDeviceReady(), false);
-
-            function onDeviceReady() {
-                $(document).bind('pageinit', function(event) {
-
-                    $("#groups").owlCarousel({
-                        items: 3
-                    });
-
-                    $('.link').on('click', function(event) {
-                        var $this = $(this);
-                        if ($this.hasClass('clicked')) {
-                            $this.removeAttr('style').removeClass('clicked');
-                        } else {
-                            $this.css('background', '#7fc242').addClass('clicked');
-                        }
-                    });
-
-                    $('input').prop('disabled', true);
-                    $("input[type='radio']").checkboxradio('disable');
-                    $("textarea[name='taskdetails']").prop('disabled', true);
-                    
-                    $("#choose").click(function() {
-                        $('input').prop('disabled', false);
-                        $("input[type='radio']").checkboxradio('enable');
-                        $("textarea[name='taskdetails']").prop('disabled', false);
-                    });
-                });
-            }
-
-        </script>
-
     </body>
 </html>

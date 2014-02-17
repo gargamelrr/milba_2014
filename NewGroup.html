@@ -10,10 +10,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
-
+        
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"> </script>
     </head>
     <body>
         <div data-role="page" class="ui-responsive-panel">
@@ -29,7 +28,7 @@ and open the template in the editor.
             </div>
             <div data-role="content">
                 <div id="newGroup">
-                    <form method="post">
+                    <form id= "insertGroup" method="post">
                         <label>Course name: </label>
                         <input type="text" name="courseName" id="courseName" required/>
                         <label>Teacher name: </label>
@@ -47,12 +46,55 @@ and open the template in the editor.
                         <label>Would you like to add your first sheet?</label>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
                             <a href="NewTask.html" data-role="button"  data-theme="b" data-inline="true"> Yes </a>
-                            <a href="index.html" data-role="button"  data-theme="b" data-inline="true"> No, just submit </a>
+                            <a href="" id="noJustSumbit" data-role="button"  data-theme="b" data-inline="true"> No, just submit </a>
                         </div>
+                         <button id="submit">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
+        <script  type="text/javascript">
+            alert("yeah"); 
+            
+            function isValidForm() {
+                return true;
+            }
+            
+            function post() {
+                    alert("yedgfh");
+                    if (isValidForm()) {
+                        $.ajax({
+                            //add full 
+                            url: 'php/insertGroup.php',
+                            method: 'POST',
+                            data: { 
+                                courseName: $("#courseName").val(), 
+                                teacherName: $("#teacherName").val() 
+                            },
+                            success: function (data) {
+                                alert(data);
+                                var jason = JSON.parse(data);
+                                if (jason.success == 1) {
+                                    alert("yeah"); 
+                                }
+                            },
+                            error: function () {
+                                alert("error");
+                            }
+                        });
+                 }
+            }
+                
+            $(document).ready(function() {
+                 //bind function to submit
+                $("#noJustSumbit").click(post);
+            });
+            
+
+    
+    /*
+            */
+        </script>
     </body>
 </html>
 
