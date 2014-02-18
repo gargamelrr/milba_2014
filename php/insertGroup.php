@@ -8,18 +8,17 @@ $db = new DB_CONNECT();
 
 if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
 
-
-    // array for JSON response
-
-    $response = array();
+   $response = array();
     $name = $_POST['courseName'];
     $teacher = $_POST['teacherName'];
     $email = $_POST['teacherMail'];
+    $duration = $_POST['duration'];
     $year = date("Y");
+    $date = date("Y-m-d");
     $user = "ronny";
 
-    $result = mysql_query("INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`) "
-            . "VALUES (NULL,'$name', '$teacher','$user',1,$year,'active','$email')");
+    $result = mysql_query("INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`,`created`,`duration`) "
+            . "VALUES (NULL,'$name', '$teacher','$user',1,$year,'active','$email','$date','$duration')");
 
     
 // check if row inserted or not

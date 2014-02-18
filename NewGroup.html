@@ -37,17 +37,20 @@ and open the template in the editor.
                         <input type="text" name="teacherEmail" id="teacherEmail" />
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                             <legend>Course duration:</legend>
-                            <input type="radio" name="dur" id="radio-year" value="year" checked="checked">
+                            <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
                             <label for="radio-year">All Year</label>
-                            <input type="radio" name="dur" id="radio-sem" value="sem">
+                            <input type="radio" name="dur" id="radio-sem" value="0">
                             <label for="radio-sem">Semester</label>
                         </fieldset>
                         <br/>
                         <label>Would you like to add your first sheet?</label>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <a href="NewTask.html" data-role="button"  data-theme="b" data-inline="true"> Yes </a>
-                            <a href="javascript:void(0)" id="noJustSumbit" data-role="button"  data-theme="b" data-inline="true" onclick="post()"> No, just submit </a>
+                            <input type="radio" name="new" id="radio-yes" value="yes" checked="checked">
+                            <label for="radio-yes">Yes!</label>
+                            <input type="radio" name="new" id="radio-no" value="no">
+                            <label for="radio-no">No, just submit</label>
                         </div>
+                        <input type="submit" value="Publish" id="submit"/>
                     </form>
                 </div>
             </div>
@@ -58,7 +61,7 @@ and open the template in the editor.
                 return true;
             }
 
-            function post() {
+           $('#submit').click(function() {
                 if (isValidForm()) {
                     $.ajax({
                         //add full 
@@ -67,6 +70,7 @@ and open the template in the editor.
                         data: {
                             courseName: $("#courseName").val(),
                             teacherName: $("#teacherName").val(),
+                            duration:  $("input:radio[name=dur]:checked").val(),
                             teacherMail: $("#teacherEmail").val()
                         },
                         success: function(data) {
@@ -76,11 +80,11 @@ and open the template in the editor.
                             }
                         },
                         error: function() {
-                            alert("error");
+                            alert(data.message);
                         }
                     });
                 }
-            }
+            });
         </script>
     </body>
 </html>
