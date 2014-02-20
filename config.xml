@@ -97,6 +97,6 @@
     <access origin="*"/> 
 	
 	<!--open the login page first-->
-	<content src="NewTask.html" />
+	<content src="index.html" />
 
 </widget>

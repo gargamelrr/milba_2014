@@ -19,8 +19,8 @@ and open the template in the editor.
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
-                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add </a><br/>
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > My Sheety Week </a><br/>
+                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add a Sheet</a><br/>
                 <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
@@ -33,19 +33,58 @@ and open the template in the editor.
                 </div>
 
                 <div id="tasks">
-                    <h4><span id="name1">מדיה וטכנולוגיה</span></h4>
-                    Due: 8.1.14 16:00<br/>
-                    Details: רפרט-מצגת מול הכיתה + הגשה במסמך וורד. ביקורת על מאמר
-                    </p><hr/>
-                    <h4><span id="name2">מילאב</span></h4>
-                    Due: 8.1.14 09:00<br/>
-                    Details: מצגת במיקרוסופט. הכנת דמו וסגירת איפיון
-                    </p>
+                    <table data-role="table" id="tasks-table-custom"  class="tasks-list">
+                        <thead>
+                            <tr><td></td><td></td></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 class="ui-li-heading">עבודת אמצע</h2>
+                                    Due: 8.1.14 16:00       
+                                </td>
+                                  <td>
+                                     <a href="" data-icon="gear" data-iconpos="notext">edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="ui-li-heading">עבודת סוף</h2>
+                                    Due: 8.4.14 11:00       
+                                </td>
+                                <td>
+                                     <a href="" data-icon="gear" data-iconpos="notext">edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <br/>
-                <a href="NewTask.html" data-role="button"  data-theme="b" data-icon="plus" > Add a sheet </a><br/>
-                <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" data-inline="true"> Leave Course </a><br/>
 
+                Sharing your sheet with others is always a nice thing to do.
+                <div class="ui-body ui-body-b">
+                    <div id="elementsToOperateOn">
+                        <label>Task Name:</label>
+                        <input type="text" name="taskName" id="taskName" required/> <br>
+                        <label>Due Date:</label>
+                        <input type="date" name="date-1" id="date-1" required/> <br>
+                        <label>Due Time:</label>
+                        <input type="time" name="taskTime" id="taskTime" required/> <br>
+                        <label>Task Description:</label>
+                        <div data-role="fieldcontain">
+                            <textarea name="taskdetails" id="taskdetails"> </textarea> <br> 
+                        </div>
+                        <fieldset data-role="controlgroup" data-type="horizontal" >
+                            <legend>Choose Task Difficulty:</legend>
+                            <input type="radio" name="radio-difficulty" id="easy" value="easy" checked="checked"/> 
+                            <label for="easy">Friendly Sheet</label>
+                            <input type="radio" name="radio-difficulty" id="hard" value="hard"/>
+                            <label for="hard">Massive sheet</label>
+                        </fieldset><br> 
+                    </div>
+                </div>
+
+                <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" data-inline="true"> Leave Course </a><br/>
                 <div data-role="popup" id="leave">
                     <p>Are you sure you want to leave this course?<p>
                     <div data-role="controlgroup" data-type="horizontal" data-mini="true">

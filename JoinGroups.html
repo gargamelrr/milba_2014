@@ -19,30 +19,32 @@ and open the template in the editor.
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > Home </a><br/>
-                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add </a><br/>
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > My Sheety Week </a><br/>
+                <a href="NewTask.html" data-role="button" data-theme="b" data-icon="plus" > Add a Sheet</a><br/>
                 <a href="JoinGroups.html" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
             <div data-role="content">
-                <h3>My courses</h3>
-                <div id="groups">
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מילאב</a>
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מדיה חדשים</a>
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מיקרו כלכלה</a>
-                </div>
                 <br/>
-                <h3>Search courses</h3>
-                <input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" />
-                <a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >New group</a>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" /></div>
+                    <div class="ui-block-b"><a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >+</a></div>
+                </div>
+                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <input type="radio" name="dur" id="radio-sug" value="1" checked="checked">
+                    <label for="radio-sug">Suggested courses</label>
+                    <input type="radio" name="dur" id="radio-your" value="0">
+                    <label for="radio-your">Your courses</label>
+                </fieldset>
+
                 <div class="ui-grid-a">
                     <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">יסודות המימון<br/><div class="count_friend">40 of your friends</div></a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Automata and Formal Languages<br/><div class="count_friend">40 of your friends</div></a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Automata and Formal Languages<br/><div class="count_friend">40 of your friends</div></a></div>
                     <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מאקרו כלכלה<br/><div class="count_friend">30 of your friends</div></a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">Probability<br/><div class="count_friend">10 of your friends</div></a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Probability<br/><div class="count_friend">10 of your friends</div></a></div>
                     <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">Set Theory<br/><div class="count_friend">3 of your friends</div></a></div>
-                    <div class="ui-block-b"><a href="" data-role="button" class="choosen" data-theme="b">מבוא למדעי כדור הארץ<br/><div class="count_friend">13 of your friends</div></a></div>
+                    <div class="ui-block-a"><a href="" data-role="button" class="choosen" data-theme="b">מבוא למדעי כדור הארץ<br/><div class="count_friend">13 of your friends</div></a></div>
                 </div>
 
                 <a href="index.html" data-role="button"  data-theme="d">Join</a>

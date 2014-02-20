@@ -52,3 +52,23 @@
 #teac_details, #tasks{
  text-align: center;
 }
+
+.tasks-list thead th,
+.tasks-list tbody tr:last-child {
+    border-bottom: 1px solid #d6d6d6; /* non-RGBA fallback */
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.tasks-list tbody th,
+.tasks-list tbody td {
+    border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.tasks-list tbody tr:last-child th,
+.tasks-list tbody tr:last-child td {
+    border-bottom: 0;
+}
+.tasks-list tbody tr:nth-child(odd) td,
+.tasks-list tbody tr:nth-child(odd) th {
+    background-color: #eeeeee; /* non-RGBA fallback  */
+    background-color: rgba(0,0,0,.04);
+}
