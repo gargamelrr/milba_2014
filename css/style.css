@@ -10,7 +10,7 @@
 
 
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
-    max-height: 45px;
+    //max-height: 45px;
     padding-left: 10px;
     min-height: 30px;
 }
@@ -18,9 +18,10 @@
 .ui-li-thumb{
     max-height: 50px;
     max-width: 50px;
+    margin-top: -10px;
 }
 
-.ui-li .ui-btn-inner a.ui-link-inherit{
+.ui-li .ui-btn-inner .ui-btn-text{
     padding: 0px 70px 20px;
 }
 
@@ -33,7 +34,7 @@
 }
 
 .ui-li{
-    max-height: 50px;
+    //max-height: 50px;
 }
 
 .ui-body-c, .ui-overlay-c{
