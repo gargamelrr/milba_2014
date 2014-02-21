@@ -100,5 +100,27 @@ and open the template in the editor.
 
             </div>
         </div>
+
+        <script  type="text/javascript">
+
+            $.ajax({
+                url: 'php/viewWeek.php',
+                method: 'POST',
+                data: {
+                    //todo
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.success == 1) {
+                        alert(data);
+                    } else {
+
+                    }
+                },
+                error: function() {
+                }
+            });
+
+        </script>
     </body>
 </html>
