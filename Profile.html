@@ -52,16 +52,9 @@ and open the template in the editor.
                     <option value="1934"> 1934 </option>
                 </select>
 
-                <h3>My courses:</h3>
-                <div id="groups">
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מילאב</a>
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מדיה חדשים</a>
-                    <a href="#popupCourse"  data-role="button" class="group" data-inline="true" data-theme="c" >מיקרו כלכלה</a>
-                </div>
-
                 <h3>Notifications</h3>
                 <div data-role="fieldcontain">
-                    <label for="flip-group">Invitation to a group:</label>
+                    <label for="flip-group">Invitation to a group</label>
                     <select name="flip-group" id="flip-group" data-role="slider" >
                         <option value="off">Off</option>
                         <option value="on">On</option>
@@ -69,7 +62,7 @@ and open the template in the editor.
                 </div>
 
                 <div data-role="fieldcontain">
-                    <label for="flip-task">New task:</label>
+                    <label for="flip-task">New task</label>
                     <select name="flip-task" id="flip-task" data-role="slider" >
                         <option value="off">Off</option>
                         <option value="on">On</option>
@@ -77,23 +70,24 @@ and open the template in the editor.
                 </div>
 
                 <div data-role="fieldcontain">
-                    <label for="flip-custom">Custom alert:</label>
-                    <select name="flip-custom" id="flip-custom" data-role="slider" >
-                        <option value="off">Off</option>
-                        <option value="on">On</option>
-                    </select> 
-                    <input type="number" name="days" id="days" value="" data-inline="true" > days ahead
+                    <label for="test">Custom alert</label>
+                    <div id="test">
+                        <select name="flip-custom" id="flip-custom" data-role="slider" >
+                            <option value="off">Off</option>
+                            <option value="on">On</option>
+                        </select> 
+                        <input type="number" name="days" id="days" value="" data-inline="true" style="float: left;"> days ahead
+                    </div>
                 </div>
 
                 <div data-role="fieldcontain">
-                    <label for="flip-sound">Sound:</label>
+                    <label for="flip-sound">Sound</label>
                     <select name="flip-sound" id="flip-sound" data-role="slider" >
                         <option value="off">Off</option>
                         <option value="on">On</option>
                     </select> 
                 </div>
-
             </div>
         </div>
-</body>
+    </body>
 </html>
