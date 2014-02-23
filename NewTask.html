@@ -88,7 +88,7 @@ and open the template in the editor.
                                 <label>Task Name:</label>
                                 <input type="text" name="taskName" id="taskName" required/> <br>
                                 <label>Due Date:</label>
-                                <input type="date" name="date-1" id="date-1" required/> <br>
+                                <input type="date" name="date-1" id="date1" required/> <br>
                                 <label>Due Time:</label>
                                 <input type="time" name="taskTime" id="taskTime" required/> <br>
                                 <label>Task Description:</label>
@@ -97,9 +97,9 @@ and open the template in the editor.
                                 </div>
                                 <fieldset data-role="controlgroup" data-type="horizontal" >
                                     <legend>Choose Task Difficulty:</legend>
-                                    <input type="radio" name="radio-difficulty" id="easy" value="easy" checked="checked"/> 
+                                    <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
                                     <label for="easy">Friendly Sheet</label>
-                                    <input type="radio" name="radio-difficulty" id="hard" value="hard"/>
+                                    <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
                                     <label for="hard">Massive sheet</label>
                                 </fieldset><br> 
 
@@ -126,5 +126,32 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <script>
+            
+           $('#submit').click(function() {
+                    $.ajax({
+                        //add full 
+                        url: 'php/insertTask.php',
+                        method: 'POST',
+                        data: {
+                            taskName: $("#taskName").val(),
+                            date1: $("#date1").val(),
+                            taskTime: $("#taskTime").val(), 
+                            radiodifficulty:  $("input:radio[name=radiodifficulty]:checked").val(),
+                            taskdetails: $("#taskdetails").val()
+                        },
+                        success: function(data) {
+                            alert(data);
+                            var json = JSON.parse(data);
+                            if (json.success == 1) {
+                                window.location.href = "index.html";
+                            }
+                        },
+                        error: function() {
+                            alert(data.message);
+                        }
+                    });
+            });
+        </script>
     </body>
 </html>
