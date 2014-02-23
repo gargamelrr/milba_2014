@@ -25,7 +25,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     }
     
     $result = mysql_query("INSERT INTO `Tasks`(`index`, `course_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
-            . "VALUES ('1111', '11', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')");
+            . "VALUES ('1111', '5', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')");
     
 // check if row inserted or not
     if ($result) {

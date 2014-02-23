@@ -21,7 +21,7 @@
     margin-top: -10px;
 }
 
-.ui-li .ui-btn-inner .ui-btn-text{
+#days .ui-li .ui-btn-inner .ui-btn-text{
     padding: 0px 70px 20px;
 }
 
@@ -79,4 +79,12 @@
         text-align: center;
         font-weight: normal;
 
+}
+
+#face_but{
+        background-image: url(../images/active_404.png);
+}
+
+#face_but:hover{
+        background-image: url(../images/pressed_404.png);
 }

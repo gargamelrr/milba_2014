@@ -131,12 +131,12 @@ and open the template in the editor.
                             $.each(json.data[i].tasks.data, function(j, val) {
                                 if (j + 1 == json.data[i].tasks.count) {
                                     $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name);
-                                    $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u></br></br>" +
-                                            json.data[i].tasks.data[j].task_name + "</b></br></br>" + json.data[i].tasks.data[j].due_date);
+                                    $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
+                                            json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
                                 } else {
                                     $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ",");
-                                    $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u></br></br>" +
-                                            json.data[i].tasks.data[j].task_name + "</b></br></br>" + json.data[i].tasks.data[j].due_date + "</br><hr>");
+                                    $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
+                                            json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
                                 }
                                 if (json.data[i].tasks.count < 2) {
                                     $("#day" + day + " img").attr("src", "images/easy.png")
