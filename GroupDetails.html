@@ -10,6 +10,77 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/style.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript">
+            
+            function reformatDate(date)
+            {
+                dateArray = date.split("-");
+                return dateArray[2]+ "/" + dateArray[1]+ "/" + dateArray[0].substring(2);
+            }
+            
+            function buildPage(allTasks) {
+                
+                var table = document.getElementById("tasks-table-custom");
+        
+                var tblBody = document.createElement("tbody");
+
+                
+                for (var i = 0; i < allTasks.length; i++) {
+                    
+                    var row = document.createElement("tr");
+ 
+                    var cell1 = document.createElement("td");
+                    var heading2 = document.createElement("h2");
+                    heading2.innerHTML = allTasks[i].name;
+                    //doesnt seem to work
+                    //heading2.class = 'ui-li-heading';
+                    cell1.appendChild(heading2);
+                    var dateTimeArray = (allTasks[i].due_date).split(" ");
+                    var date = reformatDate(dateTimeArray[0]);
+                    var time = dateTimeArray[1];
+                    var cellText2 = document.createTextNode("Due: " + date + " at " + time);
+                    cell1.appendChild(cellText2);
+                    row.appendChild(cell1);
+                    
+                    var cell2 = document.createElement("td");
+                    var editLink = document.createElement("a");
+                    
+                    editLink.href = "";
+                    //doesnt seem to work
+//                    editLink.attribues['data-icon']='gear';
+//                    editLink.attributes['data-iconpos']='notext';
+                    
+                    editLink.innerHTML = "edit";
+                    cell2.appendChild(editLink);
+                    row.appendChild(cell2);
+                    tblBody.appendChild(row);
+                }
+
+                table.appendChild(tblBody);
+        
+            }
+            
+            function get() {
+                $.ajax({
+                    url: 'php/fetchTasks.php',
+                    method: 'GET',
+                    success: function (data) {
+                        var jason = JSON.parse(data);
+                        if (jason.success == 1) {
+                            buildPage(jason.allTasks);
+                        }
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            }
+            
+            $(document).ready(function() {
+                get();
+                //setInterval("get()", 5000);
+            });
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
@@ -26,12 +97,12 @@ and open the template in the editor.
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
             <div data-role="content">
-
+                
                 <div id="teac_details">
                     <h3><span id="name">מדיה וטכנולוגיה</span></h3>
                     <h4><span id="teac_name">גיא הופמן</span>&nbsp;&nbsp;&nbsp;<span id="email">guy@idc.ac.il</span></h4>
                 </div>
-
+                
                 <div id="tasks">
                     <table data-role="table" id="tasks-table-custom"  class="tasks-list">
                         <thead>
@@ -43,8 +114,8 @@ and open the template in the editor.
                                     <h2 class="ui-li-heading">עבודת אמצע</h2>
                                     Due: 8.1.14 16:00       
                                 </td>
-                                  <td>
-                                     <a href="" data-icon="gear" data-iconpos="notext">edit</a>
+                                <td>
+                                    <a href="" data-icon="gear" data-iconpos="notext">edit</a>
                                 </td>
                             </tr>
                             <tr>
@@ -53,14 +124,14 @@ and open the template in the editor.
                                     Due: 8.4.14 11:00       
                                 </td>
                                 <td>
-                                     <a href="" data-icon="gear" data-iconpos="notext">edit</a>
+                                    <a href="" data-icon="gear" data-iconpos="notext">edit</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <br/>
-
+                
                 Sharing your sheet with others is always a nice thing to do.
                 <div class="ui-body ui-body-b">
                     <div id="elementsToOperateOn">
@@ -83,7 +154,7 @@ and open the template in the editor.
                         </fieldset><br> 
                     </div>
                 </div>
-
+                
                 <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" data-inline="true"> Leave Course </a><br/>
                 <div data-role="popup" id="leave">
                     <p>Are you sure you want to leave this course?<p>
@@ -93,8 +164,8 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-
-
+            
+            
         </div>
     </body>
 </html>
