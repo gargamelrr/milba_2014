@@ -30,7 +30,7 @@
 }
 
 .ui-btn-icon-right>.ui-btn-inner>.ui-icon{
-   // margin-top: -19px;
+    // margin-top: -19px;
 }
 
 .ui-li{
@@ -51,7 +51,7 @@
 }
 
 #teac_details, #tasks{
- text-align: center;
+    text-align: center;
 }
 
 .tasks-list thead th,
@@ -75,16 +75,24 @@
 }
 
 .details{
-        background-color:#ac9;
-        text-align: center;
-        font-weight: normal;
+    background-color:#ac9;
+    text-align: center;
+    font-weight: normal;
 
 }
 
 #face_but{
-        background-image: url(../images/active_404.png);
+    width: 202px;
+    height: 46px;
+    background: url(../images/active_404.png) no-repeat;
+    border: none;
+
 }
 
 #face_but:hover{
-        background-image: url(../images/pressed_404.png);
+    width: 202px;
+    height: 46px;
+    background-image: url(../images/pressed_404.png) no-repeat;
+    border: none;
+
 }
