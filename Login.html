@@ -12,7 +12,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <!-- cordova -->
-      <script src="cordova.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
         <script type="text/javascript" src="facebook-js-sdk.js"></script>
         <script src="http://debug.phonegap.com/target/target-script-min.js#anonymous"></script>
@@ -60,16 +60,16 @@ and open the template in the editor.
                         ref.parentNode.insertBefore(js, ref);
                     }(document));
 
-                    //document.addEventListener("deviceready", onDeviceReady(), false);
+                    document.addEventListener("deviceready", onDeviceReady(), false);
 
-                    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-                        document.addEventListener("deviceready", onDeviceReady(), false);
-                    } else {
-                        onDeviceReady();
-                    }
+//                    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+//                        document.addEventListener("deviceready", onDeviceReady(), false);
+//                    } else {
+//                        onDeviceReady();
+//                    }
 
                     function onDeviceReady() {
-                         window.fbAsyncInit = function() {
+                        alert("onDeviceReady");
                         FB.init({
                             appId: '691029124265305', // App ID
                             nativeInterface: CDV.FB,
@@ -78,12 +78,17 @@ and open the template in the editor.
                             status: true,
                             cookie: true
                         });
-                    }
+                                                alert("onDeviceReady -2");
+
                     }
 
                     function promptLogin() {
+                        alert("promptLogin");
+
                         FB.login(function(response) {
                             if (response.authResponse) {
+                                                        alert("im in");
+
                                 /* make the API call */
                                 FB.api(
                                         "/me",
