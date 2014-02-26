@@ -79,7 +79,7 @@ and open the template in the editor.
                             status: true,
                             cookie: true
                         });
-                                                alert("onDeviceReady -2");
+                        alert("onDeviceReady -2");
 
                     }
 
@@ -87,8 +87,9 @@ and open the template in the editor.
                         alert("promptLogin");
 
                         FB.login(function(response) {
+                            alert("im in");
                             if (response.authResponse) {
-                                                        alert("im in");
+
 
                                 /* make the API call */
                                 FB.api(
