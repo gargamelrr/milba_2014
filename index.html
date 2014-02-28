@@ -145,19 +145,27 @@ and open the template in the editor.
                                 }
                             });
                         } else {
-                            $("#day" + day + " img").attr("src", "images/fun.png")
+                            $("#day" + day + " img").attr("src", "images/fun.png");
                         }
                         day++;
                     });
-                    if (json.count == 0) {
-                        //popup - empty cal
+                    if (json.status == 2) {
+                        $("#empty").popup();
+                        $("#empty").trigger("create");
+                        $("#empty").popup("open");
                     }
-
                 },
                 error: function() {
                 }
             });
 
         </script>
+
+        <div data-role="popup" id="empty" class="ui-content">
+            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <p>Your week is empty<br/><br/>Add  some courses<br/>
+                <a href="JoinGroups.html" data-role="button" data-theme="a">Add</a>
+            </p>
+        </div>
     </body>
 </html>
