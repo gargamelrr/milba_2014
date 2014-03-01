@@ -35,7 +35,7 @@ and open the template in the editor.
                         <input type="text" name="teacherName" id="teacherName" required/>
                         <label>Teacher e-mail (optional): </label>
                         <input type="text" name="teacherEmail" id="teacherEmail" />
-                        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                     <!--   <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                             <legend>Course duration:</legend>
                             <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
                             <label for="radio-year">All Year</label>
@@ -45,11 +45,11 @@ and open the template in the editor.
                         <br/>
                         <label>Would you like to add your first sheet?</label>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input type="radio" name="new" id="radioyes" value="yes" checked="checked">
+                            <input type="radio" name="new" id="radio-yes" value="yes" checked="checked">
                             <label for="radio-yes">Yes!</label>
-                            <input type="radio" name="new" id="radiono" value="no">
+                            <input type="radio" name="new" id="radio-no" value="no">
                             <label for="radio-no">No, just submit</label>
-                        </div>
+                        </div>-->
                         <input type="submit" value="Publish" id="submit"/>
                     </form>
                 </div>
@@ -66,7 +66,7 @@ and open the template in the editor.
                     data: {                       
                         courseName: $("#courseName").val(),
                         teacherName: $("#teacherName").val(),
-                        duration:  $("input:radio[name=dur]:checked").val(),
+                       // duration:  $("input:radio[name=dur]:checked").val(),
                         teacherMail: $("#teacherEmail").val()
                     },
                     success: function(data) {

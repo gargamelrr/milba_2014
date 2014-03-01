@@ -20,7 +20,8 @@ if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
     $result = mysql_query("INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`,`created`,`duration`) "
             . "VALUES (NULL,'$name', '$teacher','$user',1,$year,'active','$email','$date','$duration')");
 
-    
+    $response["debug"] = "INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`,`created`,`duration`) "
+            . "VALUES (NULL,'$name', '$teacher','$user',1,$year,'active','$email','$date','$duration')";
 // check if row inserted or not
     if ($result) {
         // successfully updated
