@@ -28,22 +28,25 @@ and open the template in the editor.
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
             <div data-role="content">
-                <br/>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a"><input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" /></div>
-                    <div class="ui-block-b"><a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >+</a></div>
-                </div>
-                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                    <input type="radio" name="dur" id="radio-sug" value="1" checked="checked">
-                    <label for="radio-sug">Suggested courses</label>
-                    <input type="radio" name="dur" id="radio-your" value="0">
-                    <label for="radio-your">Your courses</label>
-                </fieldset>
+                <form>
+                    <br/>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" /></div>
+                        <div class="ui-block-b"><a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >+</a></div>
+                    </div>
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <input type="radio" name="dur" id="radio-sug" value="1" checked="checked">
+                        <label for="radio-sug">Suggested courses</label>
+                        <input type="radio" name="dur" id="radio-your" value="0">
+                        <label for="radio-your">Your courses</label>
+                    </fieldset>
 
-                <div class="ui-grid-a" id="coursesContainer">
-                </div>
+                    <div class="ui-grid-a" id="coursesContainer">
+                    </div>
 
-                <input type="submit" value="Join" id="submit"/>
+                    <a href="index.html" data-role="button" id="join" data-theme="a"> Join </a>
+
+                </form>
             </div>
         </div>
         <script>
@@ -94,10 +97,8 @@ and open the template in the editor.
 
             $(document).ready(function() {
                 var action = getQueryVariable("action");
-                if(action == "join"){
-                    $("#submit").prop('value', 'Join').button("refresh");
-                }else{
-                     $("#submit").prop('value', 'Select').button("refresh");
+                if (action != "join") {
+                    $("#join").hide();
                 }
                 get();
             });
