@@ -7,5 +7,5 @@ function getQueryVariable(variable) {
             return pair[1];
         }
     } 
-    alert('Course code was not selected: ' + variable + ' not found');
+    return "";
 }
