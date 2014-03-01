@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <link rel="stylesheet" href="css/style.css" />
-<script src="js/scripts.js" type="text/javascript"></script>
+        <script src="js/scripts.js" type="text/javascript"></script>
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     </head>
@@ -45,9 +45,9 @@ and open the template in the editor.
                         <br/>
                         <label>Would you like to add your first sheet?</label>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input type="radio" name="new" id="radio-yes" value="yes" checked="checked">
+                            <input type="radio" name="new" id="radioyes" value="yes" checked="checked">
                             <label for="radio-yes">Yes!</label>
-                            <input type="radio" name="new" id="radio-no" value="no">
+                            <input type="radio" name="new" id="radiono" value="no">
                             <label for="radio-no">No, just submit</label>
                         </div>
                         <input type="submit" value="Publish" id="submit"/>
@@ -57,27 +57,29 @@ and open the template in the editor.
         </div>
         <script  type="text/javascript">
 
-           $('#submit').click(function() {
-                    $.ajax({
-                        //add full 
-                        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
-                        method: 'POST',
-                        data: {
-                            courseName: $("#courseName").val(),
-                            teacherName: $("#teacherName").val(),
-                            duration:  $("input:radio[name=dur]:checked").val(),
-                            teacherMail: $("#teacherEmail").val()
-                        },
-                        success: function(data) {
-                            var json = JSON.parse(data);
-                            if (json.success == 1) {
-                                window.location.href = "index.html";
-                            }
-                        },
-                        error: function() {
-                            alert(data.message);
+            $('#submit').click(function() {
+                alert('dude');
+                $.ajax({
+                    //add full 
+                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
+                    method: 'POST',
+                    data: {                       
+                        courseName: $("#courseName").val(),
+                        teacherName: $("#teacherName").val(),
+                        duration:  $("input:radio[name=dur]:checked").val(),
+                        teacherMail: $("#teacherEmail").val()
+                    },
+                    success: function(data) {
+                        var json = JSON.parse(data);
+                        if (json.success == 1) {
+                            window.location.href = "index.html";
                         }
-                    });
+                    },
+                    error: function() {
+                        alert("erroror");
+                        alert(data.message);
+                    }
+                });
             });
         </script>
     </body>

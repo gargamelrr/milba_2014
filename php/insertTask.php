@@ -9,12 +9,13 @@ $db = new DB_CONNECT();
 if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTime"])
         && isset($_POST["radiodifficulty"]) && isset($_POST["taskdetails"])) {
 
-   $response = array();
+    $response = array();
     $taskName = $_POST['taskName'];
     $dueDate = $_POST['date1'];
     $taskTime = $_POST['taskTime'];
     $radioDifficulty = $_POST['radiodifficulty'];
     $taskDetails = $_POST['taskdetails'];
+    $courseID = $_POST['courseID'];
     $date = date("Y-m-d");
     
     //SQL column for difficulty is boolean, ajust it. 
@@ -25,7 +26,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     }
     
     $result = mysql_query("INSERT INTO `Tasks`(`index`, `course_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
-            . "VALUES (NULL, '5', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')");
+            . "VALUES (NULL, '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')");
 
     
 // check if row inserted or not
@@ -35,13 +36,14 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
         $response["message"] = "User successfully updated.";
     } else {
         //error
+        echo "dammm1212";
         $response["success"] = 0;
-        $response["message"] = mysql_error();
+        $response["message"] = "sql failed nigger";
     }
 } else {
     //error
     $response["success"] = 0;
-    $response["message"] = mysql_error();
+    $response["message"] = "failed at the entry if";
 }
 
 echo json_encode($response);

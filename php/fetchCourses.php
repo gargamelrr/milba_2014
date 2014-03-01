@@ -5,7 +5,7 @@ require_once __DIR__ . '/db_connect.php';
 $db = new DB_CONNECT();
 
 //User is hard coded now.. look for PHP session later
-$result = mysql_query("SELECT name FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=1") or die(mysql_error());
+$result = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=1") or die(mysql_error());
 
 if (mysql_num_rows($result) > 0) {
     
@@ -15,6 +15,7 @@ if (mysql_num_rows($result) > 0) {
         
         $course = array();
         $task["name"] = $row["name"];
+        $task["courseID"] = $row["course_id"];
         array_push($response["userCourses"], $task);
         
     }

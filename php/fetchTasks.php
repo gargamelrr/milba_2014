@@ -5,8 +5,8 @@ $response = array();
 require_once __DIR__ . '/db_connect.php';
 
 $db = new DB_CONNECT();
-
-$result = mysql_query("SELECT name, due_date FROM `Tasks`") or die(mysql_error());
+$courseID = $_GET['courseID'];
+$result = mysql_query("SELECT name, due_date FROM `Tasks` Where course_id = '$courseID' ") or die(mysql_error());
 
 if (mysql_num_rows($result) > 0) {
     

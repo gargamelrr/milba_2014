@@ -34,7 +34,7 @@ if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
 } else {
     //error
     $response["success"] = 0;
-    $response["message"] = mysql_error();
+    $response["message"] = "params werent set habibi";
 }
 
 echo json_encode($response);
