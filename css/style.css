@@ -78,7 +78,10 @@
     background-color:#ede;
     text-align: center;
     font-weight: normal;
+}
 
+#tasks-table-custom td{
+    text-align: center;
 }
 
 #face_but{
