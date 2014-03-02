@@ -34,14 +34,19 @@ and open the template in the editor.
                         <div class="ui-block-a"><input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" /></div>
                         <div class="ui-block-b"><a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >+</a></div>
                     </div>
-                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input type="radio" name="dur" id="radio-sug" value="1" checked="checked">
-                        <label for="radio-sug">Suggested courses</label>
-                        <input type="radio" name="dur" id="radio-your" value="0">
-                        <label for="radio-your">Your courses</label>
-                    </fieldset>
+                    <div id="radio">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <input type="radio" name="courses" class="courses" id="radio-sug" value="1" checked>
+                            <label for="radio-sug">Suggested courses</label>
+                            <input type="radio" name="courses" class="courses" id="radio-your" value="0">
+                            <label for="radio-your">Your courses</label>
+                        </fieldset>
+                    </div>
 
-                    <div class="ui-grid-a" id="coursesContainer">
+                    <div class="ui-grid-a" id="coursesMy">
+                    </div>
+
+                    <div class="ui-grid-a" id="coursesSug">
                     </div>
 
                     <a href="index.html" data-role="button" id="join" > Join </a>
@@ -50,16 +55,16 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            function createCoursesButtons(userCourses) {
-                var mainDiv = document.getElementById("coursesContainer");
-                for (var i = 0; i < userCourses.length; i++) {
+            function createCoursesButtons(coursesList, div) {
+                var mainDiv = document.getElementById(div);
+                for (var i = 0; i < coursesList.length; i++) {
                     var subDiv = document.createElement("div");
                     var a = document.createElement("a");
                     a.id = "a";
-                    a.href = "GroupDetails.html" + "?courseID=" + userCourses[i].courseID;
+                    a.href = "GroupDetails.html" + "?courseID=" + coursesList[i].courseID;
 
-                    $(a).attr("data-ID", userCourses[i].courseID);
-                    a.innerHTML = userCourses[i].name;
+                    $(a).attr("data-ID", coursesList[i].courseID);
+                    a.innerHTML = coursesList[i].name;
                     var br = document.createElement("br");
                     var subsubDiv = document.createElement("div");
 
@@ -70,24 +75,25 @@ and open the template in the editor.
                     mainDiv.appendChild(subDiv);
                 }
 
-                $('#coursesContainer div').attr("class", "ui-block-a");
-                $('#coursesContainer a').attr("class", "choosen");
-                $('#coursesContainer a').attr("data-role", "button");
-                $('#coursesContainer a').attr("data-theme", "b");
+                $('#' + div + ' div').attr("class", "ui-block-a");
+                $('#' + div + ' a').attr("class", "choosen");
+                $('#' + div + ' a').attr("data-role", "button");
+                $('#' + div + ' a').attr("data-theme", "b");
                 $("#a div").attr("class", "count_friend");
-                $('#coursesContainer').trigger('create');
+                $('#' + div).trigger('create');
 
             }
 
             function get() {
                 $.ajax({
-                    url: 'php/fetchCourses.php',
+                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
                     method: 'GET',
                     success: function(data) {
-                        var jason = JSON.parse(data);
-                        if (jason.success == 1) {
-                            createCoursesButtons(jason.userCourses);
+                        var json = JSON.parse(data);
+                        if (json.success == 1) {
+                            createCoursesButtons(json.userCourses, "coursesMy");
                         }
+                        createCoursesButtons(json.courses, "coursesSug");
                     },
                     error: function() {
                         alert("error");
@@ -101,8 +107,23 @@ and open the template in the editor.
                     $("#join").hide();
                 }
                 get();
+
+                $('#coursesMy').hide();
             });
 
+            $(function() {
+                $("input[name='courses']").on("change", function() {
+                    if (this.value == 1) {
+                        $("#coursesMy").hide();
+                        $("#coursesSug").show();
+                    }
+                    else {
+                        $("#coursesSug").hide();
+                        $("#coursesMy").show();
+                    }
+                });
+
+            });
 
         </script>
     </body>

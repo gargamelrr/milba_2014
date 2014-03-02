@@ -20,22 +20,15 @@ and open the template in the editor.
                 return dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0].substring(2);
             }
 
-            function buildPage(allTasks) {
+            function buildTasks(allTasks) {
 
                 var table = document.getElementById("tasks-table-custom");
-
                 var tblBody = document.createElement("tbody");
-
-
                 for (var i = 0; i < allTasks.length; i++) {
-
                     var row = document.createElement("tr");
-
                     var cell1 = document.createElement("td");
                     var heading2 = document.createElement("h2");
                     heading2.innerHTML = allTasks[i].name;
-                    //doesnt seem to work
-                    //heading2.class = 'ui-li-heading';
                     cell1.appendChild(heading2);
                     var dateTimeArray = (allTasks[i].due_date).split(" ");
                     var date = reformatDate(dateTimeArray[0]);
@@ -48,10 +41,6 @@ and open the template in the editor.
                     var editLink = document.createElement("a");
 
                     editLink.href = "";
-                    //doesnt seem to work
-                    //                    editLink.attribues['data-icon']='gear';
-                    //                    editLink.attributes['data-iconpos']='notext';
-
                     editLink.innerHTML = "edit";
                     cell2.appendChild(editLink);
                     row.appendChild(cell2);
@@ -70,10 +59,19 @@ and open the template in the editor.
                         courseID: selectedCourse
                     },
                     success: function(data) {
-                        var jason = JSON.parse(data);
-                        if (jason.success == 1) {
-                            buildPage(jason.allTasks);
+                        var json = JSON.parse(data);
+                        if (json.success == 1) {
+                            buildTasks(json.allTasks);
                         }
+                        if (json.is_user == "1") {
+                            $("#join-course").hide();
+                        } else {
+                            $("#leave-course").hide();
+                        }
+                        $('#name').text(json.courseDetails.name);
+                        $('#teac_name').text(json.courseDetails.lecturer);
+                        $('#email').text(json.courseDetails.teacherEmail);
+
                     },
                     error: function() {
                         alert("error");
@@ -105,8 +103,8 @@ and open the template in the editor.
             <div data-role="content">
 
                 <div id="teac_details">
-                    <h3><span id="name">מדיה וטכנולוגיה</span></h3>
-                    <h4><span id="teac_name">גיא הופמן</span>&nbsp;&nbsp;&nbsp;<span id="email">guy@idc.ac.il</span></h4>
+                    <h3><span id="name"></span></h3>
+                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
                 </div>
 
                 <div id="tasks">
@@ -117,8 +115,9 @@ and open the template in the editor.
                     </table>
                 </div>
                 <br/>
-
-                Sharing your sheet with others is always a nice thing to do.
+                <a href="#join" data-role="button" data-theme="b" data-icon="add" id="join-course" data-inline="true"> Join Course </a><br/>
+                <br/><br/>
+                <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
                 <form method="post">
                     <div id="elementsToOperateOn">
                         <label>Task Name:</label>
@@ -139,11 +138,11 @@ and open the template in the editor.
                             <label for="hard">Massive sheet</label>
                         </fieldset><br> 
 
-                        <label>It’s always fun to share your Sheets with friends!</label>
+                        <label><i>It’s always fun to share your Sheets with friends!</i></label>
 
                     </div>
-
-                    <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" data-inline="true"> Leave Course </a><br/>
+                    <br/><br/>
+                    <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
                     <div data-role="popup" id="leave">
                         <p>Are you sure you want to leave this course?<p>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -174,6 +173,26 @@ and open the template in the editor.
                         var json = JSON.parse(data);
                         if (json.success == 1) {
                             window.location.href = "index.html";
+                        }
+                    },
+                    error: function() {
+                        alert(data.message);
+                    }
+                });
+            });
+
+            $('#join-course').click(function() {
+                $.ajax({
+                    //add full 
+                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/joinCourses.php',
+                    method: 'GET',
+                    data: {
+                        courseID: getQueryVariable("courseID")
+                    },
+                    success: function(data) {
+                        var json = JSON.parse(data);
+                        if (json.success == 1) {
+                            //window.location.href = "index.html";
                         }
                     },
                     error: function() {

@@ -134,7 +134,7 @@ and open the template in the editor.
                                     $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
                                             json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
                                 } else {
-                                    $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ",");
+                                    $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ", ");
                                     $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
                                             json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
                                 }

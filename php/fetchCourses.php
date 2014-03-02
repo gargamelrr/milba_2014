@@ -4,31 +4,44 @@ require_once __DIR__ . '/db_connect.php';
 
 $db = new DB_CONNECT();
 
-//User is hard coded now.. look for PHP session later
-$result = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=1") or die(mysql_error());
+session_start();
 
-if (mysql_num_rows($result) > 0) {
-    
+$user_id = $_SESSION["user_id"];
+
+//User is hard coded now.. look for PHP session later
+$result_my = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=$user_id");
+
+$result_else = mysql_query("SELECT `index`,`name` FROM `Courses`");
+
+if (mysql_num_rows($result_my) > 0) {
+
     $response["userCourses"] = array();
 
-    while ($row = mysql_fetch_array($result)) {
-        
+    while ($row = mysql_fetch_array($result_my)) {
+
         $course = array();
-        $task["name"] = $row["name"];
-        $task["courseID"] = $row["course_id"];
-        array_push($response["userCourses"], $task);
-        
+        $course["name"] = $row["name"];
+        $course["courseID"] = $row["course_id"];
+        array_push($response["userCourses"], $course);
     }
 
-    $response["success"] = 1;
 
-    echo json_encode($response);
-    
+    $response["success"] = 1;
 } else {
-    
+
     $response["success"] = 0;
     $response["message"] = "No tasks found";
-
-    echo json_encode($response);
 }
+
+$response["courses"] = array();
+
+while ($row = mysql_fetch_array($result_else)) {
+
+    $course = array();
+    $course["name"] = $row["name"];
+    $course["courseID"] = $row["index"];
+    array_push($response["courses"], $course);
+}
+
+echo json_encode($response);
 ?>
