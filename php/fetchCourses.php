@@ -11,7 +11,7 @@ $user_id = $_SESSION["user_id"];
 //User is hard coded now.. look for PHP session later
 $result_my = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=$user_id");
 
-$result_else = mysql_query("SELECT `index`,`name` FROM `Courses`");
+$result_else = mysql_query("SELECT name, `index` FROM `Courses` where `index` not in (select course_id from `Users_Courses` where student_id=$user_id)");
 
 if (mysql_num_rows($result_my) > 0) {
 

@@ -26,16 +26,25 @@ and open the template in the editor.
                 var tblBody = document.createElement("tbody");
                 for (var i = 0; i < allTasks.length; i++) {
                     var row = document.createElement("tr");
+                    var cell1Div = document.createElement("div");
+                    cell1Div.setAttribute("class", "btn-task");
+
                     var cell1 = document.createElement("td");
-                    var heading2 = document.createElement("h2");
+                    var heading2 = document.createElement("h3");
                     heading2.innerHTML = allTasks[i].name;
                     cell1.appendChild(heading2);
                     var dateTimeArray = (allTasks[i].due_date).split(" ");
                     var date = reformatDate(dateTimeArray[0]);
                     var time = dateTimeArray[1];
                     var cellText2 = document.createTextNode("Due: " + date + " at " + time);
+
+                    var cell2Div = document.createElement("div");
+                    cell2Div.setAttribute("class", "details");
+                    cell2Div.appendChild(document.createTextNode(allTasks[i].description));
                     cell1.appendChild(cellText2);
-                    row.appendChild(cell1);
+                    cell1.appendChild(cell2Div);
+                    cell1Div.appendChild(cell1);
+                    row.appendChild(cell1Div);
 
                     var cell2 = document.createElement("td");
                     var editLink = document.createElement("a");
@@ -46,9 +55,7 @@ and open the template in the editor.
                     row.appendChild(cell2);
                     tblBody.appendChild(row);
                 }
-
                 table.appendChild(tblBody);
-
             }
 
             function get(selectedCourse) {
@@ -67,11 +74,12 @@ and open the template in the editor.
                             $("#join-course").hide();
                         } else {
                             $("#leave-course").hide();
+                            $("#addTask").hide();
                         }
                         $('#name').text(json.courseDetails.name);
                         $('#teac_name').text(json.courseDetails.lecturer);
                         $('#email').text(json.courseDetails.teacherEmail);
-
+                        $('.details').hide();
                     },
                     error: function() {
                         alert("error");
@@ -82,7 +90,7 @@ and open the template in the editor.
             $(document).ready(function() {
                 var selectedCourse = getQueryVariable("courseID");
                 get(selectedCourse);
-                //setInterval("get()", 5000);
+
             });
         </script>
         <meta charset="UTF-8">
@@ -101,12 +109,11 @@ and open the template in the editor.
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
             <div data-role="content">
-
-                <div id="teac_details">
-                    <h3><span id="name"></span></h3>
-                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
+                <div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner" id="teac_details">
+                    <h1 class="ui-title" role="heading"><span id="name"></span></h1>
+                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
                 </div>
-
+                <br/>
                 <div id="tasks">
                     <table data-role="table" id="tasks-table-custom"  class="tasks-list">
                         <thead>
@@ -116,45 +123,49 @@ and open the template in the editor.
                 </div>
                 <br/>
                 <a href="#join" data-role="button" data-theme="b" data-icon="add" id="join-course" data-inline="true"> Join Course </a><br/>
-                <br/><br/>
-                <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
+
                 <form method="post">
-                    <div id="elementsToOperateOn">
-                        <label>Task Name:</label>
-                        <input type="text" name="taskName" id="taskName" required/> <br>
-                        <label>Due Date:</label>
-                        <input type="date" name="date-1" id="date1" required/> <br>
-                        <label>Due Time:</label>
-                        <input type="time" name="taskTime" id="taskTime" required/> <br>
-                        <label>Task Description:</label>
-                        <div data-role="fieldcontain">
-                            <textarea name="taskdetails" id="taskdetails"> </textarea> <br> 
+                    <div id="addTask" class="ui-body ui-body-b">
+                        <div id="elementsToOperateOn">
+                            <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
+                            <label>Task Name:</label>
+                            <input type="text" name="taskName" id="taskName" required/> 
+                            <label>Due Date:</label>
+                            <input type="date" name="date-1" id="date1" required/> 
+                            <label>Due Time:</label>
+                            <input type="time" name="taskTime" id="taskTime" required/> 
+                            <label>Task Description:</label>
+                            <div data-role="fieldcontain">
+                                <textarea name="taskdetails" id="taskdetails"> </textarea>
+                            </div>
+                            <fieldset data-role="controlgroup" data-type="horizontal" >
+                                <legend>Choose Task Difficulty:</legend>
+                                <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
+                                <label for="easy">Friendly Sheet</label>
+                                <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
+                                <label for="hard">Massive sheet</label>
+                            </fieldset><br> 
+
+                            <label><i>It’s always fun to share your Sheets with friends!</i></label>
+                            <input  type="submit" value="Publish"  id="submit"/>
                         </div>
-                        <fieldset data-role="controlgroup" data-type="horizontal" >
-                            <legend>Choose Task Difficulty:</legend>
-                            <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
-                            <label for="easy">Friendly Sheet</label>
-                            <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
-                            <label for="hard">Massive sheet</label>
-                        </fieldset><br> 
-
-                        <label><i>It’s always fun to share your Sheets with friends!</i></label>
-
                     </div>
                     <br/><br/>
                     <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
                     <div data-role="popup" id="leave">
                         <p>Are you sure you want to leave this course?<p>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <a href="Groups.html?action=select" data-role="button"  data-theme="b" data-inline="true"> Yes </a>
+                            <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
                             <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
                         </div>
                     </div>
-                    <input  type="submit" value="Publish"  id="submit"/>
                 </form>
             </div>
         </div>
         <script>
+            $('.btn-task').click(function() {
+                $(this).find('.details').slideToggle(500);
+            });
 
             $('#submit').click(function() {
                 $.ajax({
@@ -184,15 +195,38 @@ and open the template in the editor.
             $('#join-course').click(function() {
                 $.ajax({
                     //add full 
-                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/joinCourses.php',
+                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
                     method: 'GET',
                     data: {
+                        action: "join",
                         courseID: getQueryVariable("courseID")
                     },
                     success: function(data) {
                         var json = JSON.parse(data);
-                        if (json.success == 1) {
-                            //window.location.href = "index.html";
+                        if (json.success == 0) {
+                            window.location.href = "index.html";
+                        }
+                    },
+                    error: function() {
+                        alert(data.message);
+                    }
+                });
+            });
+
+
+            $('#leavenow').click(function() {
+                $.ajax({
+                    //add full 
+                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
+                    method: 'GET',
+                    data: {
+                        action: "leave",
+                        courseID: getQueryVariable("courseID")
+                    },
+                    success: function(data) {
+                        var json = JSON.parse(data);
+                        if (json.success == 0) {
+                            window.location.href = "index.html";
                         }
                     },
                     error: function() {

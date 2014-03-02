@@ -99,3 +99,11 @@
     border: none;
 
 }
+
+#name{
+    font-size: 34px;
+}
+
+.btn-task{
+    cursor: pointer;
+}
