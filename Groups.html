@@ -83,33 +83,27 @@ and open the template in the editor.
                 $('#' + div).trigger('create');
 
             }
-
-            function get() {
-                $.ajax({
-                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
-                    method: 'GET',
-                    success: function(data) {
-                        var json = JSON.parse(data);
-                        if (json.success == 1) {
-                            createCoursesButtons(json.userCourses, "coursesMy");
-                        }
-                        createCoursesButtons(json.courses, "coursesSug");
-                    },
-                    error: function() {
-                        alert("error");
-                    }
-                });
+            
+            var action = getQueryVariable("action");
+            if (action != "join") {
+                $("#join").hide();
             }
-
-            $(document).ready(function() {
-                var action = getQueryVariable("action");
-                if (action != "join") {
-                    $("#join").hide();
+            $.ajax({
+                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
+                method: 'GET',
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.success == 1) {
+                        createCoursesButtons(json.userCourses, "coursesMy");
+                    }
+                    createCoursesButtons(json.courses, "coursesSug");
+                },
+                error: function() {
+                    alert("error");
                 }
-                get();
-
-                $('#coursesMy').hide();
             });
+            $('#coursesMy').hide();
+
 
             $(function() {
                 $("input[name='courses']").on("change", function() {
