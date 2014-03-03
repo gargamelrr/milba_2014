@@ -7,11 +7,81 @@ and open the template in the editor.
 <html>
     <head>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
         <script src="js/scripts.js" type="text/javascript"></script>
-        <script type="text/javascript">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+      </head>
+    <body>
+        <div data-role="page" class="ui-responsive-panel">
+            <div data-role="header" data-theme="f">
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+            </div>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > My Sheety Week </a><br/>
+                <a href="Groups.html?action=select" data-role="button" data-theme="b" data-icon="plus" > Add a Sheet</a><br/>
+                <a href="Groups.html?action=join" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
+                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
+                <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
+            </div>
+            <div data-role="content">
+                <div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner" id="teac_details">
+                    <h1 class="ui-title" role="heading"><span id="name"></span></h1>
+                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
+                </div>
+                <br/>
+                <div id="tasks">
+                    <table data-role="table" id="tasks-table-custom"  class="tasks-list">
+                        <thead>
+                            <tr><td></td><td></td></tr>
+                        </thead>
+                    </table>
+                </div>
+                <br/>
+                <a href="#join" data-role="button" data-theme="b" data-icon="add" id="join-course" data-inline="true"> Join Course </a><br/>
+
+                <form method="post">
+                    <div id="addTask" class="ui-body ui-body-b">
+                        <div id="elementsToOperateOn">
+                            <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
+                            <label>Task Name:</label>
+                            <input type="text" name="taskName" id="taskName" required/> 
+                            <label>Due Date:</label>
+                            <input type="date" name="date-1" id="date1" required/> 
+                            <label>Due Time:</label>
+                            <input type="time" name="taskTime" id="taskTime" required/> 
+                            <label>Task Description:</label>
+                            <div data-role="fieldcontain">
+                                <textarea name="taskdetails" id="taskdetails"> </textarea>
+                            </div>
+                            <fieldset data-role="controlgroup" data-type="horizontal" >
+                                <legend>Choose Task Difficulty:</legend>
+                                <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
+                                <label for="easy">Friendly Sheet</label>
+                                <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
+                                <label for="hard">Massive sheet</label>
+                            </fieldset><br> 
+
+                            <label><i>It’s always fun to share your Sheets with friends!</i></label>
+                            <input  type="submit" value="Publish"  id="submit"/>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
+                    <div data-role="popup" id="leave">
+                        <p>Are you sure you want to leave this course?<p>
+                        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
+                            <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+          <script type="text/javascript">
 
 
             function reformatDate(date)
@@ -93,75 +163,7 @@ and open the template in the editor.
 
             });
         </script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
-        <div data-role="page" class="ui-responsive-panel">
-            <div data-role="header" data-theme="f">
-                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-            </div>
-            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > My Sheety Week </a><br/>
-                <a href="Groups.html?action=select" data-role="button" data-theme="b" data-icon="plus" > Add a Sheet</a><br/>
-                <a href="Groups.html?action=join" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
-                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
-                <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
-            </div>
-            <div data-role="content">
-                <div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner" id="teac_details">
-                    <h1 class="ui-title" role="heading"><span id="name"></span></h1>
-                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
-                </div>
-                <br/>
-                <div id="tasks">
-                    <table data-role="table" id="tasks-table-custom"  class="tasks-list">
-                        <thead>
-                            <tr><td></td><td></td></tr>
-                        </thead>
-                    </table>
-                </div>
-                <br/>
-                <a href="#join" data-role="button" data-theme="b" data-icon="add" id="join-course" data-inline="true"> Join Course </a><br/>
-
-                <form method="post">
-                    <div id="addTask" class="ui-body ui-body-b">
-                        <div id="elementsToOperateOn">
-                            <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
-                            <label>Task Name:</label>
-                            <input type="text" name="taskName" id="taskName" required/> 
-                            <label>Due Date:</label>
-                            <input type="date" name="date-1" id="date1" required/> 
-                            <label>Due Time:</label>
-                            <input type="time" name="taskTime" id="taskTime" required/> 
-                            <label>Task Description:</label>
-                            <div data-role="fieldcontain">
-                                <textarea name="taskdetails" id="taskdetails"> </textarea>
-                            </div>
-                            <fieldset data-role="controlgroup" data-type="horizontal" >
-                                <legend>Choose Task Difficulty:</legend>
-                                <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
-                                <label for="easy">Friendly Sheet</label>
-                                <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
-                                <label for="hard">Massive sheet</label>
-                            </fieldset><br> 
-
-                            <label><i>It’s always fun to share your Sheets with friends!</i></label>
-                            <input  type="submit" value="Publish"  id="submit"/>
-                        </div>
-                    </div>
-                    <br/><br/>
-                    <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
-                    <div data-role="popup" id="leave">
-                        <p>Are you sure you want to leave this course?<p>
-                        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
-                            <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        
         <script>
             $('.btn-task').click(function() {
                 $(this).find('.details').slideToggle(500);
