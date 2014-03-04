@@ -81,7 +81,7 @@ and open the template in the editor.
                 $('#' + div).trigger('create');
             }
 
-            $(document).ready(function() {
+            //$(document).ready(function() {
                 var action = getQueryVariable("action");
                 if (action != "join") {
                     $("#join").hide();
@@ -102,7 +102,7 @@ and open the template in the editor.
                     }
                 });
                 $('#coursesMy').hide();
-            });
+          //  });
 
             $(function() {
                 $("input[name='courses']").on("change", function() {
