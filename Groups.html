@@ -52,9 +52,8 @@ and open the template in the editor.
 
                 </form>
             </div>
-        </div>
+        
         <script>
-
             function createCoursesButtons(coursesList, div) {
                 var mainDiv = document.getElementById(div);
                 for (var i = 0; i < coursesList.length; i++) {
@@ -81,7 +80,7 @@ and open the template in the editor.
                 $('#' + div).trigger('create');
             }
 
-            //$(document).ready(function() {
+            
                 var action = getQueryVariable("action");
                 if (action != "join") {
                     $("#join").hide();
@@ -102,7 +101,7 @@ and open the template in the editor.
                     }
                 });
                 $('#coursesMy').hide();
-          //  });
+          
 
             $(function() {
                 $("input[name='courses']").on("change", function() {
@@ -116,7 +115,10 @@ and open the template in the editor.
                     }
                 });
             });
+            
+      
 
         </script>
+        </div>
     </body>
 </html>

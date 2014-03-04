@@ -79,7 +79,7 @@ and open the template in the editor.
                     </div>
                 </form>
             </div>
-        </div>
+        
         
           <script type="text/javascript">
 
@@ -157,14 +157,12 @@ and open the template in the editor.
                 });
             }
 
-            $(document).ready(function() {
+            
                 var selectedCourse = getQueryVariable("courseID");
                 get(selectedCourse);
 
-            });
-        </script>
-        
-        <script>
+            
+
             $('.btn-task').click(function() {
                 $(this).find('.details').slideToggle(500);
             });
@@ -237,5 +235,6 @@ and open the template in the editor.
                 });
             });
         </script>
+        </div>
     </body>
 </html>
