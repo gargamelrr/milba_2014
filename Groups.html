@@ -15,14 +15,14 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div data-role="page" class="ui-responsive-panel">
+        <div id="courses" data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                <a href="index.html" data-role="button" data-theme="e" data-icon="home" > My Sheety Week </a><br/>
-                <a href="Groups.html?action=select" data-role="button" data-theme="b" data-icon="plus" > Add a Sheet</a><br/>
-                <a href="Groups.html?action=join" data-role="button" data-theme="b" data-icon="search" > Courses </a><br/>
+                 <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="Groups.html?a" data-role="button" data-theme="b" data-icon="plus" onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
+                <a href="Groups.html?b" data-role="button" data-theme="b" data-icon="search" onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
@@ -48,77 +48,9 @@ and open the template in the editor.
                     <div class="ui-grid-a" id="coursesSug">
                     </div>
 
-                    <a href="index.html" data-role="button" id="join" > Join </a>
 
                 </form>
             </div>
-        
-        <script>
-            function createCoursesButtons(coursesList, div) {
-                var mainDiv = document.getElementById(div);
-                for (var i = 0; i < coursesList.length; i++) {
-                    var subDiv = document.createElement("div");
-                    var a = document.createElement("a");
-                    a.id = "a";
-                    a.href = "GroupDetails.html" + "?courseID=" + coursesList[i].courseID;
-                    $(a).attr("data-ID", coursesList[i].courseID);
-                    a.innerHTML = coursesList[i].name;
-                    var br = document.createElement("br");
-                    var subsubDiv = document.createElement("div");
-                    subsubDiv.innerHTML = "Number of mutual friends - not implemented"
-                    a.appendChild(br);
-                    a.appendChild(subsubDiv);
-                    subDiv.appendChild(a);
-                    mainDiv.appendChild(subDiv);
-                }
-
-                $('#' + div + ' div').attr("class", "ui-block-a");
-                $('#' + div + ' a').attr("class", "choosen");
-                $('#' + div + ' a').attr("data-role", "button");
-                $('#' + div + ' a').attr("data-theme", "b");
-                $("#a div").attr("class", "count_friend");
-                $('#' + div).trigger('create');
-            }
-
-            
-                var action = getQueryVariable("action");
-                if (action != "join") {
-                    $("#join").hide();
-                }
-                $.ajax({
-                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
-                    method: 'POST',
-                    cache: false,
-                    success: function(data) {
-                        var json = JSON.parse(data);
-                        if (json.success == 1) {
-                            createCoursesButtons(json.userCourses, "coursesMy");
-                        }
-                        createCoursesButtons(json.courses, "coursesSug");
-                    },
-                    error: function() {
-                        alert("error");
-                    }
-                });
-                $('#coursesMy').hide();
-          
-
-            $(function() {
-                $("input[name='courses']").on("change", function() {
-                    if (this.value == 1) {
-                        $("#coursesMy").hide();
-                        $("#coursesSug").show();
-                    }
-                    else {
-                        $("#coursesSug").hide();
-                        $("#coursesMy").show();
-                    }
-                });
-            });
-            
-      
-
-        </script>
         </div>
     </body>
 </html>
