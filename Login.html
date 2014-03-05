@@ -12,6 +12,7 @@ and open the template in the editor.
         <script src="js/scripts.js" type="text/javascript"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
         <!-- cordova >
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
@@ -71,10 +72,10 @@ and open the template in the editor.
 
                      window.fbAsyncInit = function() {
                         alert("onDeviceReady");
-                        alert(FB);
+                        alert(CDV);
                         FB.init({
                             appId: '691029124265305', // App ID
-                            //nativeInterface: CDV.FB,
+                            nativeInterface: CDV.FB,
                             xfbml: true,
                             useCachedDialogs: false,
                             status: true,
