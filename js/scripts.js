@@ -161,7 +161,7 @@ $(document).on("pageshow", "#courses", function() {
 function createCoursesButtons(coursesList, div) {
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
-     console.log(mainDiv.id)
+    console.log(mainDiv.id)
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
         var a = document.createElement("a");
@@ -233,3 +233,31 @@ function buildTasks(allTasks) {
     }
     table.appendChild(tblBody);
 }
+
+
+$(document).on("pageshow", "#addCourse", function() {
+    $('#submit').click(function() {
+        $.ajax({
+            //add full 
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
+            method: 'POST',
+            data: {
+                courseName: $("#courseName").val(),
+                teacherName: $("#teacherName").val(),
+                duration: $("input:radio[name=dur]:checked").val(),
+                teacherMail: $("#teacherEmail").val()
+            },
+            success: function(data) {
+                console.log(data);
+                var json = JSON.parse(data);
+                if (json.success == 1) {
+                    window.location.href = "index.html";
+                }
+            },
+            error: function() {
+                alert(data.message);
+            }
+        });
+    });
+});
+    
