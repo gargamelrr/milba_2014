@@ -15,7 +15,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div data-role="page" class="ui-responsive-panel">
+        <div id="profile" data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="f">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
@@ -26,30 +26,17 @@ and open the template in the editor.
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
-            <div data-role="content">
-                <h2> Tom Blotman </h2>
-
-                <h3>Settings</h3>
+            <div  data-role="content">
+                <h2><span id="name"></span> </h2>
+              
                 Institue:
-                <select name = "institue" id="institue" data-native-menu="false" data-theme = "b">
-                    <option value="IDC"> IDC </option>
-                    <option value="TAU"> TAU </option>
-                    <option value="BGU"> BGU </option>
-                    <option value="TECH"> Technion </option>
-                </select>
+                <select name="institue" id="institue" data-native-menu="false" data-theme="b">
+                 </select>
                 Degree:
-                <select name = "degree" id="degree" data-native-menu="false" data-theme = "b">
-                    <option value="Computer Science"> Computer Science </option>
-                    <option value="Communications"> Communications </option>
-                    <option value="Law"> Law </option>
-                    <option value="Accounting"> Accounting </option>
+                <select name="degree" id="degree" data-native-menu="false" data-theme="b">
                 </select>
                 Year:
-                <select name = "year" id="year" data-native-menu="false" data-theme = "b">
-                    <option value="2013"> 2013 </option>
-                    <option value="2012"> 2012 </option>
-                    <option value="2011"> 2011 </option>
-                    <option value="1934"> 1934 </option>
+                <select name="year" id="year" data-native-menu="false" data-theme="b">
                 </select>
 
                 <h3>Notifications</h3>

@@ -1,15 +1,3 @@
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        if (pair[0] == variable) {
-            return pair[1];
-        }
-    }
-    return "";
-}
-
 var currentCoursePage = "";
 var currentCourseId = "";
 
@@ -248,7 +236,6 @@ $(document).on("pageshow", "#addCourse", function() {
                 teacherMail: $("#teacherEmail").val()
             },
             success: function(data) {
-                console.log(data);
                 var json = JSON.parse(data);
                 if (json.success == 1) {
                     window.location.href = "index.html";
@@ -260,4 +247,43 @@ $(document).on("pageshow", "#addCourse", function() {
         });
     });
 });
-    
+
+$(document).on("pageshow", "#profile", function() {
+    $.ajax({
+        //add full 
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+        method: 'POST',
+        data: {
+            data: "school"
+        },
+        success: function(data) {
+            console.log(data);
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+                var sel = $("#institue");
+                sel.empty();
+                for (var i = 0; i < json.schools.length; i++) {
+                    if (json.schools[i].name == json.user_school) {
+                        sel.append('<option value="' + i + '" selected>' + json.schools[i].name + '</option>');
+                    } else {
+                        sel.append('<option value="' + i + '">' + json.schools[i].name + '</option>');
+                    }
+                }
+                sel.selectmenu('refresh');
+                var sel = $("#year");
+                sel.empty();
+                for (var i = 2020; i > 2010; i--) {
+                    if (i == json.user_year) {
+                        sel.append('<option value="' + i + '" selected>' + i + '</option>');
+                    } else {
+                        sel.append('<option value="' + i + '">' + i + '</option>');
+                    }
+                }
+                sel.selectmenu('refresh');
+            }
+        },
+        error: function() {
+            alert(data);
+        }
+    });
+});  
