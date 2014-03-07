@@ -270,6 +270,18 @@ $(document).on("pageshow", "#profile", function() {
                     }
                 }
                 sel.selectmenu('refresh');
+
+                var sel = $("#degree");
+                sel.empty();
+                for (var i = 0; i < json.degrees.length; i++) {
+                    if (json.degrees[i].name == json.user_degree) {
+                        sel.append('<option value="' + json.degrees[i].index + '" selected>' + json.degrees[i].name + '</option>');
+                    } else {
+                        sel.append('<option value="' + json.degrees[i].index + '">' + json.degrees[i].name + '</option>');
+                    }
+                }
+                sel.selectmenu('refresh');
+
                 var sel = $("#year");
                 sel.empty();
                 for (var i = 2020; i > 2010; i--) {
