@@ -254,48 +254,80 @@ $(document).on("pageshow", "#profile", function() {
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
         method: 'POST',
         data: {
-            data: "school"
+            dataUser: "yes"
         },
         success: function(data) {
-            console.log(data);
             var json = JSON.parse(data);
             if (json.success == 1) {
-                var sel = $("#institue");
-                sel.empty();
-                for (var i = 0; i < json.schools.length; i++) {
-                    if (json.schools[i].name == json.user_school) {
-                        sel.append('<option value="' + i + '" selected>' + json.schools[i].name + '</option>');
-                    } else {
-                        sel.append('<option value="' + i + '">' + json.schools[i].name + '</option>');
-                    }
-                }
-                sel.selectmenu('refresh');
-
-                var sel = $("#degree");
-                sel.empty();
-                for (var i = 0; i < json.degrees.length; i++) {
-                    if (json.degrees[i].name == json.user_degree) {
-                        sel.append('<option value="' + json.degrees[i].index + '" selected>' + json.degrees[i].name + '</option>');
-                    } else {
-                        sel.append('<option value="' + json.degrees[i].index + '">' + json.degrees[i].name + '</option>');
-                    }
-                }
-                sel.selectmenu('refresh');
-
-                var sel = $("#year");
-                sel.empty();
-                for (var i = 2020; i > 2010; i--) {
-                    if (i == json.user_year) {
-                        sel.append('<option value="' + i + '" selected>' + i + '</option>');
-                    } else {
-                        sel.append('<option value="' + i + '">' + i + '</option>');
-                    }
-                }
-                sel.selectmenu('refresh');
+                parseProfile(json);
             }
         },
         error: function() {
             alert(data);
         }
     });
-});  
+
+
+    $('select').on('change', function() {
+
+        $.ajax({
+            //add full 
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+            method: 'POST',
+            data: {
+                field: this.id,
+                value: this.value,
+                dataUser: "yes"
+            },
+            success: function(data) {
+                            console.log(data);
+
+                var json = JSON.parse(data);
+                if (json.success == 1) {
+                    parseProfile(json);
+                }
+            },
+            error: function() {
+                alert(data.message);
+            }
+        });
+    });
+
+});
+
+
+
+function parseProfile(json) {
+    var sel = $("#institue");
+    sel.empty();
+    for (var i = 0; i < json.schools.length; i++) {
+        if (json.schools[i].name == json.user_school) {
+            sel.append('<option value="' + json.schools[i].name + '" selected>' + json.schools[i].name + '</option>');
+        } else {
+            sel.append('<option value="' + json.schools[i].name + '">' + json.schools[i].name + '</option>');
+        }
+    }
+    sel.selectmenu('refresh');
+
+    var sel = $("#degree");
+    sel.empty();
+    for (var i = 0; i < json.degrees.length; i++) {
+        if (json.degrees[i].name == json.user_degree) {
+            sel.append('<option value="' + json.degrees[i].index + '" selected>' + json.degrees[i].name + '</option>');
+        } else {
+            sel.append('<option value="' + json.degrees[i].index + '">' + json.degrees[i].name + '</option>');
+        }
+    }
+    sel.selectmenu('refresh');
+
+    var sel = $("#year");
+    sel.empty();
+    for (var i = 2020; i > 2010; i--) {
+        if (i == json.user_year) {
+            sel.append('<option value="' + i + '" selected>' + i + '</option>');
+        } else {
+            sel.append('<option value="' + i + '">' + i + '</option>');
+        }
+    }
+    sel.selectmenu('refresh');
+}
