@@ -36,10 +36,11 @@ if (isset($_POST["dataUser"])) {
         mysql_query("update Users set `School_id`=$index where Users.index=$user_id");
     }
 
-    $result_users = mysql_query("select name,year,degree from Schools join Users on Users.school_id=Schools.index where Users.index=$user_id");
+    $result_users = mysql_query("select first_name,last_name,name,year,degree from Schools join Users on Users.school_id=Schools.index where Users.index=$user_id");
     $row_user = mysql_fetch_array($result_users);
     $name = $row_user["name"];
 
+    $response["user_name"] =$row["first_name"] + " " + $row["last_name"];
     $response["user_school"] = $row_user["name"];
     $response["user_year"] = $row_user["year"];
     $response["user_degree"] = $row_user["degree"];
@@ -53,7 +54,6 @@ while ($row = mysql_fetch_array($result)) {
     $degree["index"] = $row["index"];
     $degrees[] = $degree;
 }
-$response["debug"] = "update Users set `School_id`=$index where Users.index=$user_id";
 $response["schools"] = $schools;
 $response["degrees"] = $degrees;
 $response["success"] = 1;

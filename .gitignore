@@ -3,3 +3,5 @@ js/jquery.mobile-1.4.1.js
 js/jquery.mobile.js
 js/jquery.mobile.js
 *.properties
+*.properties
+nbproject/private/private.xml
