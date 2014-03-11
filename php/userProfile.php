@@ -20,12 +20,12 @@ if (isset($_POST["dataUser"])) {
     if (isset($_POST["field"]) && $_POST["field"] != "institue") {
         $value = $_POST["value"];
         $field = $_POST["field"];
-        if($field == "degree"){
-           $field = "School_id";
+        if ($field == "degree") {
+            $field = "School_id";
         }
         mysql_query("update Users set `$field`=$value where Users.index=$user_id");
-        
-    // change school
+
+        // change school
     } elseif (isset($_POST["field"]) && $_POST["field"] == "institue") {
         $value = urldecode($_POST["value"]);
 
@@ -40,7 +40,7 @@ if (isset($_POST["dataUser"])) {
     $row_user = mysql_fetch_array($result_users);
     $name = $row_user["name"];
 
-    $response["user_name"] =$row["first_name"] + " " + $row["last_name"];
+    $response["user_name"] = $row_user["first_name"] . " " . $row_user["last_name"];
     $response["user_school"] = $row_user["name"];
     $response["user_year"] = $row_user["year"];
     $response["user_degree"] = $row_user["degree"];

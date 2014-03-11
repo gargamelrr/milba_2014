@@ -1,5 +1,6 @@
 var currentCoursePage = "";
 var currentCourseId = "";
+var currentTaskId = "";
 
 
 function setCurrentCoursePage(val) {
@@ -10,6 +11,67 @@ function setCurrentCoursePage(val) {
 function setCurrentCourseId(val) {
     currentCourseId = val;
 }
+
+function setCurrentTaskId(val) {
+    currentTaskId = val;
+}
+
+
+//$(document).on("pageshow", "#home", function() {
+//    $('.details').hide();
+//    $('.ui-btn-text').click(function() {
+//        $(this).find('.details').slideToggle(500);
+//    });
+//
+//    $.ajax({
+//        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
+//        method: 'POST',
+//        cache: false,
+//        data: {
+//            //todo
+//        },
+//        success: function(data) {
+//            var json = JSON.parse(data);
+//            var day = 0;
+//            $.each(json.data, function(i, val) {
+//                $("#day" + day + " h3").append(json.data[i].date);
+//                if (json.data[i].tasks.count > 0) {
+//                    $.each(json.data[i].tasks.data, function(j, val) {
+//                        if (j + 1 == json.data[i].tasks.count) {
+//                            $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name);
+//                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
+//                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
+//                        } else {
+//                            $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ", ");
+//                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
+//                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
+//                        }
+//                        if (json.data[i].tasks.count < 2) {
+//                            $("#day" + day + " img").attr("src", "images/easy.png")
+//                        } else {
+//                            $("#day" + day + " img").attr("src", "images/hard.png")
+//                        }
+//
+//                        $('#task' + i + "_" + j).click(function() {
+//                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
+//                        });
+//                    });
+//                } else {
+//                    $("#day" + day + " img").attr("src", "images/fun.png");
+//                }
+//                day++;
+//            });
+//            if (json.status == 2) {
+//                $("#empty").popup();
+//                $("#empty").trigger("create");
+//                $("#empty").popup("open");
+//            }
+//        },
+//        error: function() {
+//        }
+//    });
+//});
+
 
 $(document).on("pageshow", "#courseDetails", function() {
     $.ajax({
@@ -25,6 +87,8 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
             if (json.is_user == "1") {
                 $("#join-course").hide();
+                $("#addTask").show();
+                $("#leave-course").show();
             } else {
                 $("#leave-course").hide();
                 $("#addTask").hide();
@@ -33,14 +97,19 @@ $(document).on("pageshow", "#courseDetails", function() {
             $('#teac_name').text(json.courseDetails.lecturer);
             $('#email').text(json.courseDetails.teacherEmail);
             $('.details').hide();
+
+            $('.btn-task').click(function() {
+                $(this).find('.details').slideToggle(500);
+            });
+            
+            if(currentTaskId != ""){
+                $("#" + currentTaskId).find('.details').slideToggle(500);
+                setCurrentTaskId("");
+            }
         },
         error: function() {
             alert("error");
         }
-    });
-
-    $('.btn-task').click(function() {
-        $(this).find('.details').slideToggle(500);
     });
 
     $('#submit').click(function() {
@@ -192,6 +261,7 @@ function buildTasks(allTasks) {
         var row = document.createElement("tr");
         var cell1Div = document.createElement("div");
         cell1Div.setAttribute("class", "btn-task");
+        cell1Div.setAttribute("id", allTasks[i].index);
 
         var cell1 = document.createElement("td");
         var heading2 = document.createElement("h3");
@@ -258,7 +328,9 @@ $(document).on("pageshow", "#profile", function() {
         },
         success: function(data) {
             var json = JSON.parse(data);
+            console.log(data);
             if (json.success == 1) {
+                $("#name").text(json.user_name);
                 parseProfile(json);
             }
         },
@@ -280,8 +352,6 @@ $(document).on("pageshow", "#profile", function() {
                 dataUser: "yes"
             },
             success: function(data) {
-                            console.log(data);
-
                 var json = JSON.parse(data);
                 if (json.success == 1) {
                     parseProfile(json);

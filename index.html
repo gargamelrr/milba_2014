@@ -15,12 +15,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div data-role="page" class="ui-responsive-panel" >
+        <div id="home" data-role="page" class="ui-responsive-panel" >
             <div data-role="header" data-theme="d">
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                 <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
                 <a href="Groups.html?a" data-role="button" data-theme="b" data-icon="plus" onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
                 <a href="Groups.html?b" data-role="button" data-theme="b" data-icon="search" onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
@@ -99,6 +99,13 @@ and open the template in the editor.
 
                     </ul>
                 </div>
+
+                <div data-role="popup" id="empty" class="ui-content">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Your week is empty<br/><br/>Add  some courses<br/>
+                        <a href="Groups.html?action=join" data-role="button" data-theme="a">Add</a>
+                    </p>
+                </div>
             </div>
 
             <script  type="text/javascript">
@@ -124,11 +131,11 @@ and open the template in the editor.
                                     $.each(json.data[i].tasks.data, function(j, val) {
                                         if (j + 1 == json.data[i].tasks.count) {
                                             $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name);
-                                            $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
+                                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
                                                     json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
                                         } else {
                                             $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ", ");
-                                            $("#day" + day + " .details").append("<b><u>" + json.data[i].tasks.data[j].course_name + "</u><br/><br/>" +
+                                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
                                                     json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
                                         }
                                         if (json.data[i].tasks.count < 2) {
@@ -136,6 +143,11 @@ and open the template in the editor.
                                         } else {
                                             $("#day" + day + " img").attr("src", "images/hard.png")
                                         }
+
+                                        $('#task' + i + "_" + j).click(function() {
+                                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
+                                            setCurrentTaskId(json.data[i].tasks.data[j].index);
+                                        });
                                     });
                                 } else {
                                     $("#day" + day + " img").attr("src", "images/fun.png");
@@ -152,22 +164,9 @@ and open the template in the editor.
                         }
                     });
                 });
-
-                $(document).on('pagecreate', function(event) {
-                    $('#days li').bind('click', function() {
-                        $('#days li').attr("data-theme", "c").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
-                        $(this).attr("data-theme", "b").removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
-
-                    });
-                });
             </script>
 
-            <div data-role="popup" id="empty" class="ui-content">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-                <p>Your week is empty<br/><br/>Add  some courses<br/>
-                    <a href="Groups.html?action=join" data-role="button" data-theme="a">Add</a>
-                </p>
-            </div>
+
         </div>
     </body>
 </html>
