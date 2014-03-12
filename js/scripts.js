@@ -7,7 +7,6 @@ function setCurrentCoursePage(val) {
     currentCoursePage = val;
 }
 
-
 function setCurrentCourseId(val) {
     currentCourseId = val;
 }
@@ -401,3 +400,9 @@ function parseProfile(json) {
     }
     sel.selectmenu('refresh');
 }
+
+$(document).on("pageshow", "#Notifications", function() {
+    alert("dodo");
+    var d=new Date();
+    alert(d);
+});
