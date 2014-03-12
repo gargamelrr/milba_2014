@@ -5,3 +5,4 @@ js/jquery.mobile.js
 *.properties
 *.properties
 nbproject/private/private.xml
+nbproject/private/private.properties
