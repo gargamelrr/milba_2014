@@ -45,92 +45,6 @@ and open the template in the editor.
                     <option value="2011"> 2011 </option>
                     <option value="1934"> 1934 </option>
                 </select>
-                <div id="fb-root"></div>
-
-                <!-- Facebook JavaScript -->
-                <script type="text/javascript">
-                    // Load the SDK asynchronously
-                    (function(d) {
-                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                        if (d.getElementById(id)) {
-                            return;
-                        }
-                        js = d.createElement('script');
-                        js.id = id;
-                        js.async = true;
-                        js.src = "http://connect.facebook.net/en_US/all.js";
-                        ref.parentNode.insertBefore(js, ref);
-                    }(document));
-
-                    
-
-//                    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-//                        document.addEventListener("deviceready", onDeviceReady(), false);
-//                    } else {
-//                        onDeviceReady();
-//                    }
-
-                     window.fbAsyncInit = function() {
-                        alert("onDeviceReady");
-                        alert(CDV);
-                        FB.init({
-                            appId: '691029124265305', // App ID
-                            nativeInterface: CDV.FB,
-                            xfbml: true,
-                            useCachedDialogs: false,
-                            status: true,
-                            cookie: true
-                        });
-                        alert("onDeviceReady -2");
-                    };
-
-                    function promptLogin() {
-                        alert("promptLogin");
-
-                        FB.login(function(response) {
-                            alert("im in");
-                            if (response.authResponse) {
-
-
-                                /* make the API call */
-                                FB.api(
-                                        "/me",
-                                        function(response) {
-                                            if (response && !response.error) {
-                                                $.ajax({
-                                                    //add full 
-                                                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
-                                                    method: 'POST',
-                                                    data: {
-                                                        first_name: response.first_name,
-                                                        last_name: response.last_name,
-                                                        sex: response.gender,
-                                                        birthday: response.birthday,
-                                                        location: response.location,
-                                                        email: response.email
-                                                    },
-                                                    success: function(data) {
-                                                        var json = JSON.parse(data);
-                                                        if (json.success == 1) {
-                                                            window.location.href = "index.html";
-                                                        }
-                                                    },
-                                                    error: function() {
-                                                        alert(data.message);
-                                                    }
-                                                });
-                                            }
-                                        }
-                                );
-                                alert('im in!');
-                            } else {
-                                // The person cancelled the login dialog
-                            }
-                        }, {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'});
-                    }
-
-
-                </script>
                 <br/>
                 <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
             </form>
@@ -140,5 +54,103 @@ and open the template in the editor.
                 This application will never post on your behalf<br>
             </div>
         </div>
+
+
+
+        <!-- Facebook JavaScript -->
+        <script type="text/javascript">
+            // Load the SDK asynchronously
+//                    (function(d) {
+//                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//                        if (d.getElementById(id)) {
+//                            return;
+//                        }
+//                        js = d.createElement('script');
+//                        js.id = id;
+//                        js.async = true;
+//                        js.src = "http://connect.facebook.net/en_US/all.js";
+//                        ref.parentNode.insertBefore(js, ref);
+//                    }(document));
+
+
+
+//                    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+//                        document.addEventListener("deviceready", onDeviceReady(), false);
+//                    } else {
+//                        onDeviceReady();
+//                    }
+
+//                     window.fbAsyncInit = function() {
+//                        alert("onDeviceReady");
+//                        alert(CDV);
+//                        FB.init({
+//                            appId: '691029124265305', // App ID
+//                            nativeInterface: CDV.FB,
+//                            xfbml: true,
+//                            useCachedDialogs: false,
+//                            status: true,
+//                            cookie: true
+//                        });
+//                        alert("onDeviceReady -2");
+//                    };
+
+            document.addEventListener('deviceready', function() {
+                try {
+                    alert('Device is ready! Make sure you set your app_id below this alert.');
+                    FB.init({appId: "691029124265305", nativeInterface: CDV.FB, useCachedDialogs: false});
+                    // document.getElementById('data').innerHTML = "";
+                } catch (e) {
+                    alert("e1");
+                }
+                alert("e2");
+            }, false);
+
+            function promptLogin() {
+                alert("promptLogin");
+
+                FB.login(function(response) {
+                    alert("im in");
+                    if (response.authResponse) {
+
+
+                        /* make the API call */
+                        FB.api(
+                                "/me",
+                                function(response) {
+                                    if (response && !response.error) {
+                                        $.ajax({
+                                            //add full 
+                                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
+                                            method: 'POST',
+                                            data: {
+                                                first_name: response.first_name,
+                                                last_name: response.last_name,
+                                                sex: response.gender,
+                                                birthday: response.birthday,
+                                                location: response.location,
+                                                email: response.email
+                                            },
+                                            success: function(data) {
+                                                var json = JSON.parse(data);
+                                                if (json.success == 1) {
+                                                    window.location.href = "index.html";
+                                                }
+                                            },
+                                            error: function() {
+                                                alert(data.message);
+                                            }
+                                        });
+                                    }
+                                }
+                        );
+                        alert('im in!');
+                    } else {
+                        // The person cancelled the login dialog
+                    }
+                }, {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'});
+            }
+
+
+        </script>
     </body>
 </html>
