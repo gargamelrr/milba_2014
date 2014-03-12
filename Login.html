@@ -130,7 +130,11 @@ and open the template in the editor.
             document.addEventListener('deviceready', function() {
                 try {
                     alert('Device is ready! Make sure you set your app_id below this alert.');
-                    FB.init({appId: "691029124265305", nativeInterface: CDV.FB, useCachedDialogs: false});
+                    FB.init({appId: "691029124265305", 
+                        nativeInterface: CDV.FB, 
+                        useCachedDialogs: false,
+                        status: true, // check login status
+                        cookie: true});
                     // document.getElementById('data').innerHTML = "";
                 } catch (e) {
                     alert("e1");
