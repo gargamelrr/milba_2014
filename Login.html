@@ -14,8 +14,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
 
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+
         <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
     </head>
     <body>
         <div data-role="content">
@@ -45,7 +46,7 @@ and open the template in the editor.
                 </select>
                 <br/>
                 <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
-                <button onclick="me()" id='face_but'>Facebook test</button>
+                <button onclick="me()">Facebook test</button>
             </form>
 
             <div>
@@ -54,13 +55,23 @@ and open the template in the editor.
             </div>
         </div>
 
-
+     
         <div id="fb-root"></div>
         <!-- Facebook JavaScript -->
         <script type="text/javascript">
             alert(FB);
 
 
+            if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
+                alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+            if (typeof CDV == 'undefined')
+                alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+            if (typeof FB == 'undefined')
+                alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+
+            FB.Event.subscribe('authResponseChange', function(response) {
+                alert('auth.login blablabl');
+            });
 
             FB.Event.subscribe('auth.login', function(response) {
                 alert('auth.login event');
@@ -79,8 +90,8 @@ and open the template in the editor.
             });
 
 
-            var friendIDs = [];
-            var fdata;
+          
+            
             // Load the SDK asynchronously
 //                    (function(d) {
 //                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -118,19 +129,24 @@ and open the template in the editor.
 
             document.addEventListener('deviceready', function() {
                 try {
-                    alert('Device is ready! Make sure you set your app_id below this alert.');
-                    FB.init({appId: "691029124265305", nativeInterface: CDV.FB, useCachedDialogs: false});
+                    
+                    FB.init({appId: "691029124265305",
+                        nativeInterface: CDV.FB,
+                        useCachedDialogs: false,
+                        status: true, // check login status
+                        cookie: true});
                     // document.getElementById('data').innerHTML = "";
                 } catch (e) {
                     alert("e1");
                 }
-                alert("e2");
+                alert('Device is ready! Make sure you set your app_id below this alert.');
             }, false);
 
             function promptLogin() {
                 alert("promptLogin");
                 FB.login(
                         function(response) {
+                            alert("ME123");
                             if (response.session) {
                                 alert('logged in');
                             } else {
@@ -139,37 +155,17 @@ and open the template in the editor.
                         },
                         {scope: "email"}
                 );
-                alert("ME123");
-                
+
+
             }
 
 
 
-            function me() {
-                alert("ME");
-                FB.api('/me/friends', {fields: 'id, name, picture'}, function(response) {
-                    if (response.error) {
-                        alert(JSON.stringify(response.error));
-                    } else {
-                        var data = document.getElementById('data');
-                        fdata = response.data;
-                        console.log("fdata: " + fdata);
-                        response.data.forEach(function(item) {
-                            var d = document.createElement('div');
-                            d.innerHTML = "<img src=" + item.picture + "/>" + item.name;
-                            data.appendChild(d);
-                        });
-                    }
-                    var friends = response.data;
-                    console.log(friends.length);
-                    for (var k = 0; k < friends.length && k < 200; k++) {
-                        var friend = friends[k];
-                        var index = 1;
 
-                        friendIDs[k] = friend.id;
-                        //friendsInfo[k] = friend;
-                    }
-                    console.log("friendId's: " + friendIDs);
+            function me() {
+                alert('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                    alert('Good to see you, ' + response.name + '.');
                 });
             }
 
