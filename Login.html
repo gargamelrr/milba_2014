@@ -45,6 +45,7 @@ and open the template in the editor.
                 </select>
                 <br/>
                 <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
+                <button onclick="me()" id='face_but'>Facebook test</button>
             </form>
 
             <div>
@@ -76,6 +77,10 @@ and open the template in the editor.
             FB.Event.subscribe('auth.statusChange', function(response) {
                 alert('auth.statusChange event');
             });
+
+
+            var friendIDs = [];
+            var fdata;
             // Load the SDK asynchronously
 //                    (function(d) {
 //                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -135,7 +140,7 @@ and open the template in the editor.
                         {scope: "email"}
                 );
                 alert("ME123");
-                me();
+                
             }
 
 
