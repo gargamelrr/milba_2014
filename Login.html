@@ -55,13 +55,10 @@ and open the template in the editor.
             </div>
         </div>
 
-     
+
         <div id="fb-root"></div>
         <!-- Facebook JavaScript -->
         <script type="text/javascript">
-            alert(FB);
-
-
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
                 alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined')
@@ -91,24 +88,19 @@ and open the template in the editor.
 
             document.addEventListener('deviceready', function() {
                 try {
-                    
                     FB.init({appId: "691029124265305",
                         nativeInterface: CDV.FB,
                         useCachedDialogs: false,
                         status: true, // check login status
                         cookie: true});
-                    // document.getElementById('data').innerHTML = "";
                 } catch (e) {
                     alert("e1");
                 }
-                alert('Device is ready! Make sure you set your app_id below this alert.');
             }, false);
 
             function promptLogin() {
-                alert("promptLogin");
                 FB.login(
                         function(response) {
-                            alert("ME123");
                             if (response.session) {
                                 alert('logged in');
                             } else {
@@ -117,13 +109,7 @@ and open the template in the editor.
                         },
                         {scope: "email"}
                 );
-
-
             }
-
-
-
-
             function me() {
                 alert('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
