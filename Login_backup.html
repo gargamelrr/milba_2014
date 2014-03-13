@@ -14,21 +14,35 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
 
         <script type="text/javascript" src="cordova.js"></script>
+
         <script type="text/javascript" src="facebook-js-sdk.js"></script>
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
     </head>
     <body>
         <div data-role="content">
+
             <form method="post"> 
                 <label>Institute:</label>
                 <select name="institue" id="institue" data-native-menu="false" data-theme="b">
+                    <option value="IDC"> IDC </option>
+                    <option value="TAU"> TAU </option>
+                    <option value="BGU"> BGU </option>
+                    <option value="TECH"> Technion </option>
                 </select>
                 <br/>
                 Degree:
                 <select name="degree" id="degree" data-native-menu="false" data-theme="b">
+                    <option value="Computer Science"> Computer Science </option>
+                    <option value="Communications"> Communications </option>
+                    <option value="Law"> Law </option>
+                    <option value="Accounting"> Accounting </option>
                 </select><br/>
                 Year:
                 <select name="year" id="year" data-native-menu="false" data-theme="b">
+                    <option value="2013"> 2013 </option>
+                    <option value="2012"> 2012 </option>
+                    <option value="2011"> 2011 </option>
+                    <option value="1934"> 1934 </option>
                 </select>
                 <br/>
                 <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
@@ -41,10 +55,13 @@ and open the template in the editor.
             </div>
         </div>
 
-
+     
         <div id="fb-root"></div>
         <!-- Facebook JavaScript -->
         <script type="text/javascript">
+            alert(FB);
+
+
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
                 alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined')
@@ -72,21 +89,64 @@ and open the template in the editor.
                 alert('auth.statusChange event');
             });
 
+
+          
+            
+            // Load the SDK asynchronously
+//                    (function(d) {
+//                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//                        if (d.getElementById(id)) {
+//                            return;
+//                        }
+//                        js = d.createElement('script');
+//                        js.id = id;
+//                        js.async = true;
+//                        js.src = "http://connect.facebook.net/en_US/all.js";
+//                        ref.parentNode.insertBefore(js, ref);
+//                    }(document));
+
+
+
+//                    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+//                        document.addEventListener("deviceready", onDeviceReady(), false);
+//                    } else {
+//                        onDeviceReady();
+//                    }
+
+//                     window.fbAsyncInit = function() {
+//                        alert("onDeviceReady");
+//                        alert(CDV);
+//                        FB.init({
+//                            appId: '691029124265305', // App ID
+//                            nativeInterface: CDV.FB,
+//                            xfbml: true,
+//                            useCachedDialogs: false,
+//                            status: true,
+//                            cookie: true
+//                        });
+//                        alert("onDeviceReady -2");
+//                    };
+
             document.addEventListener('deviceready', function() {
                 try {
+                    
                     FB.init({appId: "691029124265305",
                         nativeInterface: CDV.FB,
                         useCachedDialogs: false,
                         status: true, // check login status
                         cookie: true});
+                    // document.getElementById('data').innerHTML = "";
                 } catch (e) {
                     alert("e1");
                 }
+                alert('Device is ready! Make sure you set your app_id below this alert.');
             }, false);
 
             function promptLogin() {
+                alert("promptLogin");
                 FB.login(
                         function(response) {
+                            alert("ME123");
                             if (response.session) {
                                 alert('logged in');
                             } else {
@@ -95,12 +155,17 @@ and open the template in the editor.
                         },
                         {scope: "email"}
                 );
+
+
             }
 
+
+
+
             function me() {
+                alert('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
                     alert('Good to see you, ' + response.name + '.');
-                    window.location.href = "index.html";
                 });
             }
 
