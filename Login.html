@@ -66,25 +66,20 @@ and open the template in the editor.
             if (typeof FB == 'undefined')
                 alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-//            FB.Event.subscribe('authResponseChange', function(response) {
-//                alert('auth.login blablabl');
-//            });
-//
-//            FB.Event.subscribe('auth.login', function(response) {
-//                alert('auth.login event');
-//            });
-//
-//            FB.Event.subscribe('auth.logout', function(response) {
-//                alert('auth.logout event');
-//            });
-//
-//            FB.Event.subscribe('auth.sessionChange', function(response) {
-//                alert('auth.sessionChange event');
-//            });
-//
-//            FB.Event.subscribe('auth.statusChange', function(response) {
-//                alert('auth.statusChange event');
-//            });
+            FB.Event.subscribe('authResponseChange', function(response) {
+            });
+
+            FB.Event.subscribe('auth.login', function(response) {
+            });
+
+            FB.Event.subscribe('auth.logout', function(response) {
+            });
+
+            FB.Event.subscribe('auth.sessionChange', function(response) {
+            });
+
+            FB.Event.subscribe('auth.statusChange', function(response) {
+            });
 
             document.addEventListener('deviceready', function() {
                 try {
