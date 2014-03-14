@@ -314,7 +314,7 @@ $(document).on("pageshow", "#profile", function() {
             console.log(data);
             if (json.success == 1) {
                 $("#name").text(json.user_name);
-                parseProfile(json,true);
+                parseProfile(json, true);
             }
         },
         error: function() {
@@ -334,7 +334,7 @@ $(document).on("pageshow", "#profile", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
-                    parseProfile(json,true);
+                    parseProfile(json, true);
                 }
             },
             error: function() {
@@ -497,3 +497,42 @@ function monthNumberToString(number) {
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
 }
+
+
+$(document).on("pageshow", "#login", function() {
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+        method: 'POST',
+        data: {
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+                parseProfile(json, true);
+            }
+        },
+        error: function() {
+            alert(data);
+        }
+    });
+    $('select').on('change', function() {
+
+        $.ajax({
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+            method: 'POST',
+            data: {
+                field: this.id,
+                value: this.value
+            },
+            success: function(data) {
+                var json = JSON.parse(data);
+                if (json.success == 1) {
+                    parseProfile(json, false);
+                }
+            },
+            error: function() {
+                alert(data.message);
+            }
+        });
+    });
+});
