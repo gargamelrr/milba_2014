@@ -94,6 +94,7 @@ and open the template in the editor.
                         useCachedDialogs: false,
                         status: true, // check login status
                         cookie: true});
+                    // document.getElementById('data').innerHTML = "";
                 } catch (e) {
                     alert("e1");
                 }
@@ -102,6 +103,7 @@ and open the template in the editor.
             function promptLogin() {
                 FB.login(
                         function(response) {
+                            alert("ME123");
                             if (response.session) {
                                 alert('logged in');
                             } else {
@@ -110,7 +112,12 @@ and open the template in the editor.
                         },
                         {scope: "email"}
                 );
+
+
             }
+
+
+
 
             function me() {
                 alert('Welcome!  Fetching your information.... ');
