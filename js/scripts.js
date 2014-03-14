@@ -401,58 +401,89 @@ function parseProfile(json) {
 }
 
 $(document).on("pageshow", "#Notifications", function() {
-    var i=0;
-    buildNotifictions(i);
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
         success: function(data) {
-            buildNotifications(data);
+            var json = JSON.parse(data);          
+            if (json.success == 1) {
+                alert(json);
+                    buildNotifications(json.allTasks);
+                }
+            
         },
         error:function() {
-            
+            alert("fucka");
         }
-    })
+    });
 });
 
-function buildNotifictions(data) {
-
+function buildNotifications(data) {
     
     for(var i = 6; i>=0; i--) {
-        var currentDayLi = document.getElementById(i);
-        if(data[i].length = 0) {
+
+        var currentDayLi = document.getElementById(""+i);
+
+        if(data[i] == null) {
             $('#'+currentDayLi).hide();
             continue;
         }
+
+        //$('#'+currentDayLi).show();
+
         var currentDate = new Date();
         currentDate.setDate(currentDate.getDate() - i);
         var currentDay = dayNumberToString(currentDate.getDay());
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
+        var currentYear = currentDate.getFullYear();
         
+        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
+        currentDayLi.innerHTML = finalDateToDisplay;
+
         for(var j=0; j <= data[i].length; j++) {
-            var notification = document.createElement("li");
-            $(notification).attr("data-corners", "false");
-            $(notification).attr("data-shadow", "false");
-            $(notification).attr("data-iconshadow", "true");
-            $(notification).attr("data-wrapperels", "div");
-            $(notification).attr("data-icon", "arrow-r");
-            $(notification).attr("data-iconpos", "right");
-            $(notification).attr("data-theme", "c");
-            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-            var div1 = document.createElement("div");
-            $(div1).attr("class", "ui-btn-inner ui-li");
-            var div2 = document.createElement("div");
-            $(div2).attr("class", "ui-btn-text");
-            
-        
-        
+//            var notification = document.createElement("li");
+//            $(notification).attr("data-corners", "false");
+//            $(notification).attr("data-shadow", "false");
+//            $(notification).attr("data-iconshadow", "true");
+//            $(notification).attr("data-wrapperels", "div");
+//            $(notification).attr("data-icon", "arrow-r");
+//            $(notification).attr("data-iconpos", "right");
+//            $(notification).attr("data-theme", "c");
+//            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
+//            var div1 = document.createElement("div");
+//            $(div1).attr("class", "ui-btn-inner ui-li");
+//            var div2 = document.createElement("div");
+//            $(div2).attr("class", "ui-btn-text");
+//            var p1 = document.createElement("p");
+//            $(p1).attr("class","ui-li-desc");
+//            p1.innerHTML = data[i][j];
+//            var h2= document.createElement("h2");
+//            $(p1).attr("class","ui-li-heading");
+//            var strong = document.createElement("strong");
+//            //strong.innerHTML = EXTRACT INFO FROM DATA
+//            h2.appendChild(strong);
+//            var p2 = document.createElement("p");
+//            $(p2).attr("class","ui-li-desc");
+//            //p2.innerHTML = EXTRACT INFO FROM DATA
+//            div2.appendChild(p1);
+//            div2.appendChild(h2);
+//            div2.appendChild(p2);
+//            var span =  document.createElement("span");
+//            $(span).attr("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
+//            span.innerHTML = "&nbsp;"
+//            div1.appendChild(div2);
+//            div1.appendChild(span);
+//            notification.appendChild(div1);
+//            currentDayLi.appendChild(notification);
+
+               currentDayLi.innerHTML = data[i][j] + "<br>";
         }
         
     }
 }
 
-//
+
 //<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
 //                                <p class="ui-li-desc">A new task added to</p>
 //                                <h2 class="ui-li-heading"><strong>אוטומטים</strong></h2>
