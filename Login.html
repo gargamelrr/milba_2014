@@ -55,7 +55,7 @@ and open the template in the editor.
             </div>
         </div>
 
-     
+
         <div id="fb-root"></div>
         <!-- Facebook JavaScript -->
         <script type="text/javascript">
@@ -90,8 +90,8 @@ and open the template in the editor.
             });
 
 
-          
-            
+
+
             // Load the SDK asynchronously
 //                    (function(d) {
 //                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -129,7 +129,7 @@ and open the template in the editor.
 
             document.addEventListener('deviceready', function() {
                 try {
-                    
+
                     FB.init({appId: "691029124265305",
                         nativeInterface: CDV.FB,
                         useCachedDialogs: false,
@@ -149,6 +149,9 @@ and open the template in the editor.
                             alert("ME123");
                             if (response.session) {
                                 alert('logged in');
+                                me();
+                                window.location.href = "index.html";
+
                             } else {
                                 alert('not logged in');
                             }

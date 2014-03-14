@@ -1,8 +1,6 @@
 var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
-
-
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
 }
@@ -96,11 +94,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             $('#teac_name').text(json.courseDetails.lecturer);
             $('#email').text(json.courseDetails.teacherEmail);
             $('.details').hide();
-
             $('.btn-task').click(function() {
                 $(this).find('.details').slideToggle(500);
             });
-
             if (currentTaskId != "") {
                 $("#" + currentTaskId).find('.details').slideToggle(500);
                 setCurrentTaskId("");
@@ -110,10 +106,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             alert("error");
         }
     });
-
     $('#submit').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
             data: {
@@ -135,10 +130,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
         });
     });
-
     $('#join-course').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
             method: 'GET',
             data: {
@@ -156,11 +150,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
         });
     });
-
-
     $('#leavenow').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
             method: 'GET',
             data: {
@@ -179,7 +171,6 @@ $(document).on("pageshow", "#courseDetails", function() {
         });
     });
 });
-
 $(document).on("pageshow", "#courses", function() {
 
     $("input[name='courses']").on("change", function() {
@@ -192,8 +183,6 @@ $(document).on("pageshow", "#courses", function() {
             $("#coursesMy").show();
         }
     });
-
-
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
@@ -211,9 +200,6 @@ $(document).on("pageshow", "#courses", function() {
     });
     $('#coursesMy').hide();
 });
-
-
-
 function createCoursesButtons(coursesList, div) {
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
@@ -243,7 +229,6 @@ function createCoursesButtons(coursesList, div) {
     $('#' + div + ' a').attr("data-theme", "b");
     $("#a div").attr("class", "count_friend");
     $('#' + div).trigger('create');
-
 }
 
 function reformatDate(date)
@@ -262,7 +247,6 @@ function buildTasks(allTasks) {
         var cell1Div = document.createElement("div");
         cell1Div.setAttribute("class", "btn-task");
         cell1Div.setAttribute("id", allTasks[i].index);
-
         var cell1 = document.createElement("td");
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
@@ -271,7 +255,6 @@ function buildTasks(allTasks) {
         var date = reformatDate(dateTimeArray[0]);
         var time = dateTimeArray[1];
         var cellText2 = document.createTextNode("Due: " + date + " at " + time);
-
         var cell2Div = document.createElement("div");
         cell2Div.setAttribute("class", "details");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
@@ -279,19 +262,15 @@ function buildTasks(allTasks) {
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
         row.appendChild(cell1Div);
-
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
         editLink.href = "";
         editLink.innerHTML = "edit|";
-
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
-
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
-
         row.appendChild(cell2);
         tblBody.appendChild(row);
     }
@@ -302,7 +281,7 @@ function buildTasks(allTasks) {
 $(document).on("pageshow", "#addCourse", function() {
     $('#submit').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
             method: 'POST',
             data: {
@@ -323,7 +302,6 @@ $(document).on("pageshow", "#addCourse", function() {
         });
     });
 });
-
 $(document).on("pageshow", "#profile", function() {
     alert("rronny");
     $.ajax({
@@ -345,12 +323,10 @@ $(document).on("pageshow", "#profile", function() {
             alert(data);
         }
     });
-
-
     $('select').on('change', function() {
 
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
             method: 'POST',
             data: {
@@ -369,9 +345,7 @@ $(document).on("pageshow", "#profile", function() {
             }
         });
     });
-
 });
-
 function parseProfile(json) {
     var sel = $("#institue");
     sel.empty();
@@ -383,7 +357,6 @@ function parseProfile(json) {
         }
     }
     sel.selectmenu('refresh');
-
     var sel = $("#degree");
     sel.empty();
     for (var i = 0; i < json.degrees.length; i++) {
@@ -394,7 +367,6 @@ function parseProfile(json) {
         }
     }
     sel.selectmenu('refresh');
-
     var sel = $("#year");
     sel.empty();
     for (var i = 2020; i > 2010; i--) {
@@ -408,51 +380,29 @@ function parseProfile(json) {
 }
 
 $(document).on("pageshow", "#Notifications", function() {
-<<<<<<< HEAD
-    var i = 0;
-    buildNotifictions(i);
-=======
->>>>>>> e6f6ce6236f14e1cebdd80c46dbaa6aaf2405592
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
         success: function(data) {
-            var json = JSON.parse(data);          
+            var json = JSON.parse(data);
             if (json.success == 1) {
                 alert(json);
-                    buildNotifications(json.allTasks);
-                }
-            
-        },
-<<<<<<< HEAD
-        error: function() {
+                buildNotifications(json.allTasks);
+            }
 
-=======
-        error:function() {
+        },
+        error: function() {
             alert("fucka");
->>>>>>> e6f6ce6236f14e1cebdd80c46dbaa6aaf2405592
         }
     });
 });
-
-<<<<<<< HEAD
-function buildNotifictions(data) {
-
+function buildNotifications(data) {
 
     for (var i = 6; i >= 0; i--) {
-        var currentDayLi = document.getElementById(i);
-        if (data[i].length = 0) {
+
+        var currentDayLi = document.getElementById("" + i);
+        if (data[i] == null) {
             $('#' + currentDayLi).hide();
-=======
-function buildNotifications(data) {
-    
-    for(var i = 6; i>=0; i--) {
-
-        var currentDayLi = document.getElementById(""+i);
-
-        if(data[i] == null) {
-            $('#'+currentDayLi).hide();
->>>>>>> e6f6ce6236f14e1cebdd80c46dbaa6aaf2405592
             continue;
         }
 
@@ -463,7 +413,6 @@ function buildNotifications(data) {
         var currentDay = dayNumberToString(currentDate.getDay());
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
-<<<<<<< HEAD
 
         for (var j = 0; j <= data[i].length; j++) {
             var notification = document.createElement("li");
@@ -479,16 +428,10 @@ function buildNotifications(data) {
             $(div1).attr("class", "ui-btn-inner ui-li");
             var div2 = document.createElement("div");
             $(div2).attr("class", "ui-btn-text");
-
-
-
-=======
-        var currentYear = currentDate.getFullYear();
-        
-        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
-        currentDayLi.innerHTML = finalDateToDisplay;
-
-        for(var j=0; j <= data[i].length; j++) {
+            var currentYear = currentDate.getFullYear();
+            var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
+            currentDayLi.innerHTML = finalDateToDisplay;
+            for (var j = 0; j <= data[i].length; j++) {
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
 //            $(notification).attr("data-shadow", "false");
@@ -524,13 +467,13 @@ function buildNotifications(data) {
 //            notification.appendChild(div1);
 //            currentDayLi.appendChild(notification);
 
-               currentDayLi.innerHTML = data[i][j] + "<br>";
->>>>>>> e6f6ce6236f14e1cebdd80c46dbaa6aaf2405592
-        }
+                currentDayLi.innerHTML = data[i][j] + "<br>";
+            }
 
+
+        }
     }
 }
-
 
 //<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
 //                                <p class="ui-li-desc">A new task added to</p>
