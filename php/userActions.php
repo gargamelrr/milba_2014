@@ -19,7 +19,9 @@ $user = $_POST["email"];
 $result = mysql_query("select index from Users where email='$user'");
 if (mysql_num_rows($result) > 0) {
     // do we need to update the fields? maybe..
-    $id = mysql_fetch_assoc($result)["index"];
+    $row = mysql_fetch_array($result);
+    $id = $row["index"];
+    
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
@@ -38,6 +40,8 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
+$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`, `status`, `created`) "
+            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',[value-8],'active','$date')";
 $response["success"] = "1";
 
 echo json_encode($response);
