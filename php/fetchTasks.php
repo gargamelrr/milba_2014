@@ -12,7 +12,7 @@ $user_id = $_SESSION["user_id"];
 $courseID = $_GET['courseID'];
 
 $resultUser = mysql_query("SELECT * FROM Users_Courses Where course_id='$courseID' and student_id='$user_id'");
-$result = mysql_query("SELECT `index`,name, due_date,description FROM `Tasks` Where course_id = '$courseID' order by due_date");
+$result = mysql_query("SELECT `index`,name, due_date,description FROM `Tasks` Where course_id = '$courseID' and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
 $resultCourse = mysql_query("SELECT name, lecturer, teacherEmail FROM `Courses` Where `index` = '$courseID'");
 
 
