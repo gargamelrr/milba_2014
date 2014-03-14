@@ -149,8 +149,6 @@ and open the template in the editor.
                             alert("ME123");
                             if (response.session) {
                                 alert('logged in');
-                                me();
-                                window.location.href = "index.html";
 
                             } else {
                                 alert('not logged in');
@@ -169,6 +167,8 @@ and open the template in the editor.
                 alert('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
                     alert('Good to see you, ' + response.name + '.');
+                    window.location.href = "index.html";
+
                 });
             }
 
