@@ -116,13 +116,13 @@ and open the template in the editor.
 
             function me() {
                 alert('Welcome!  Fetching your information.... ');
-                FB.api('/me', function(response) {
-                    alert('Good to see you, ' + response.name + '.');
-                    window.location.href = "index.html";
-                });
+//                FB.api('/me', function(response) {
+//                    alert('Good to see you, ' + response.name + '.');
+//                });
                 FB.api(
                         "/me",
                         function(response) {
+                            alert("im ready for ajax");
                             if (response && !response.error) {
                                 $.ajax({
                                     //add full 
@@ -140,6 +140,7 @@ and open the template in the editor.
                                             : function(data) {
                                                 var json = JSON.parse(data);
                                                 if (json.success == 1) {
+                                                    alert("success!");
                                                     window.location.href = "index.html";
                                                 }
                                             },
