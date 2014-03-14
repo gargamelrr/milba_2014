@@ -97,7 +97,7 @@ and open the template in the editor.
                 success: function(data) {
                     var json = JSON.parse(data);
                     if (json.success == 1) {
-                        parseProfile(json);
+                        parseProfile(json,true);
                     }
                 },
                 error: function() {
@@ -116,7 +116,7 @@ and open the template in the editor.
                     success: function(data) {
                         var json = JSON.parse(data);
                         if (json.success == 1) {
-                            parseProfile(json);
+                            parseProfile(json,false);
                         }
                     },
                     error: function() {
@@ -129,7 +129,7 @@ and open the template in the editor.
                 FB.login(
                         function(response) {
                             if (response.session) {
-                                alert('logged in');
+                                me();
                             } else {
                                 alert('not logged in');
                             }

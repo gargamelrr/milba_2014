@@ -314,7 +314,7 @@ $(document).on("pageshow", "#profile", function() {
             console.log(data);
             if (json.success == 1) {
                 $("#name").text(json.user_name);
-                parseProfile(json);
+                parseProfile(json,true);
             }
         },
         error: function() {
@@ -334,7 +334,7 @@ $(document).on("pageshow", "#profile", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
-                    parseProfile(json);
+                    parseProfile(json,true);
                 }
             },
             error: function() {
@@ -343,7 +343,7 @@ $(document).on("pageshow", "#profile", function() {
         });
     });
 });
-function parseProfile(json) {
+function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();
     for (var i = 0; i < json.schools.length; i++) {
@@ -364,16 +364,18 @@ function parseProfile(json) {
         }
     }
     sel.selectmenu('refresh');
-    var sel = $("#year");
-    sel.empty();
-    for (var i = 2020; i > 2010; i--) {
-        if (i == json.user_year) {
-            sel.append('<option value="' + i + '" selected>' + i + '</option>');
-        } else {
-            sel.append('<option value="' + i + '">' + i + '</option>');
+    if (isYear) {
+        var sel = $("#year");
+        sel.empty();
+        for (var i = 2020; i > 2010; i--) {
+            if (i == json.user_year) {
+                sel.append('<option value="' + i + '" selected>' + i + '</option>');
+            } else {
+                sel.append('<option value="' + i + '">' + i + '</option>');
+            }
         }
+        sel.selectmenu('refresh');
     }
-    sel.selectmenu('refresh');
 }
 
 $(document).on("pageshow", "#Notifications", function() {
