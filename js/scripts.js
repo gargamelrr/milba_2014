@@ -303,9 +303,7 @@ $(document).on("pageshow", "#addCourse", function() {
     });
 });
 $(document).on("pageshow", "#profile", function() {
-    alert("rronny");
     $.ajax({
-        //add full 
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
         method: 'POST',
         data: {
@@ -326,7 +324,6 @@ $(document).on("pageshow", "#profile", function() {
     $('select').on('change', function() {
 
         $.ajax({
-//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
             method: 'POST',
             data: {
