@@ -19,24 +19,25 @@ and open the template in the editor.
         <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
     </head>
     <body>
-        <div id="login" data-role="content">
+        <div id="login" data-role="page" data-role="content">
+            <div data-role="content">
 
-            <form method="post"> 
-                <label>Institute:</label>
-                <select name="institue" id="institue" data-native-menu="false" data-theme="b">
-                </select>
-                <br/>
-                Degree:
-                <select name="degree" id="degree" data-native-menu="false" data-theme="b">
-                </select><br/>
-                Year:
-                <select name="year" id="year" data-native-menu="false" data-theme="b">
-                </select>
-                <br/>
-                <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
-                <button onclick="me()">Facebook test</button>
-            </form>
-
+                <form method="post"> 
+                    <label>Institute:</label>
+                    <select name="institue" id="institue" data-native-menu="false" data-theme="b">
+                    </select>
+                    <br/>
+                    Degree:
+                    <select name="degree" id="degree" data-native-menu="false" data-theme="b">
+                    </select><br/>
+                    Year:
+                    <select name="year" id="year" data-native-menu="false" data-theme="b">
+                    </select>
+                    <br/>
+                    <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
+                    <button onclick="me()">Facebook test</button>
+                </form>
+            </div>
             <div>
                 This application requires access to your profile information.<br>Your personal information is required in order to help us identify the courses that might be relevant for you.<br>
                 This application will never post on your behalf<br>

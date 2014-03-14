@@ -27,7 +27,7 @@ if (mysql_num_rows($result) > 0) {
     $last = $_POST["last_name"];
     $date = date("Y-m-d");
     $gender = ($_POST["sex"] == "male") ? 0 : 1;
-    $location = $_POST["location"];
+    $location = $_POST["location"][0];
     $bday = date("Y-m-d", $_POST["birthday"]);
     $name = $first . " " . $last;
 
