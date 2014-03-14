@@ -59,34 +59,34 @@ and open the template in the editor.
         <div id="fb-root"></div>
         <!-- Facebook JavaScript -->
         <script type="text/javascript">
-            console.log(FB);
+            alert(FB);
 
 
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
-                console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
+                alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined')
-                console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+                alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined')
-                console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+                alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
             FB.Event.subscribe('authResponseChange', function(response) {
-                console.log('auth.login blablabl');
+                alert('auth.login blablabl');
             });
 
             FB.Event.subscribe('auth.login', function(response) {
-                console.log('auth.login event');
+                alert('auth.login event');
             });
 
             FB.Event.subscribe('auth.logout', function(response) {
-                console.log('auth.logout event');
+                alert('auth.logout event');
             });
 
             FB.Event.subscribe('auth.sessionChange', function(response) {
-                console.log('auth.sessionChange event');
+                alert('auth.sessionChange event');
             });
 
             FB.Event.subscribe('auth.statusChange', function(response) {
-                console.log('auth.statusChange event');
+                alert('auth.statusChange event');
             });
 
 
@@ -114,8 +114,8 @@ and open the template in the editor.
 //                    }
 
 //                     window.fbAsyncInit = function() {
-//                        console.log("onDeviceReady");
-//                        console.log(CDV);
+//                        alert("onDeviceReady");
+//                        alert(CDV);
 //                        FB.init({
 //                            appId: '691029124265305', // App ID
 //                            nativeInterface: CDV.FB,
@@ -124,7 +124,7 @@ and open the template in the editor.
 //                            status: true,
 //                            cookie: true
 //                        });
-//                        console.log("onDeviceReady -2");
+//                        alert("onDeviceReady -2");
 //                    };
 
             document.addEventListener('deviceready', function() {
@@ -137,20 +137,20 @@ and open the template in the editor.
                         cookie: true});
                     // document.getElementById('data').innerHTML = "";
                 } catch (e) {
-                    console.log("e1");
+                    alert("e1");
                 }
-                console.log('Device is ready! Make sure you set your app_id below this console.log.');
+                alert('Device is ready! Make sure you set your app_id below this alert.');
             }, false);
 
             function promptLogin() {
-                console.log("promptLogin");
+                alert("promptLogin");
                 FB.login(
                         function(response) {
-                            console.log("ME123");
+                            alert("ME123");
                             if (response.session) {
-                                console.log('logged in');
+                                alert('logged in');
                             } else {
-                                console.log('not logged in');
+                                alert('not logged in');
                             }
                         },
                         {scope: "email"}
@@ -163,7 +163,7 @@ and open the template in the editor.
 
 
             function me() {
-                console.log('Welcome!  Fetching your information.... ');
+                alert('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
                     alert('Good to see you, ' + response.name + '.');
                 });
