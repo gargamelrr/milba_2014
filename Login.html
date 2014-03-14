@@ -124,6 +124,8 @@ and open the template in the editor.
                         function(response) {
                             alert("im ready for ajax");
                             if (response && !response.error) {
+                                alert("im in ajax");
+                                alert(response);
                                 $.ajax({
                                     //add full 
                                     url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
