@@ -106,27 +106,51 @@ and open the template in the editor.
                         function(response) {
                             if (response.session) {
                                 alert('logged in');
-
                             } else {
                                 alert('not logged in');
                             }
                         },
-                        {scope: "email"}
+                        {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                 );
             }
-
-
-
 
             function me() {
                 alert('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
                     alert('Good to see you, ' + response.name + '.');
                     window.location.href = "index.html";
-
                 });
+                FB.api(
+                        "/me",
+                        function(response) {
+                            if (response && !response.error) {
+                                $.ajax({
+                                    //add full 
+                                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
+                                    method: 'POST',
+                                    data: {
+                                        first_name: response.first_name,
+                                        last_name: response.last_name,
+                                        sex: response.gender,
+                                        birthday: response.birthday,
+                                        location: response.location,
+                                        email: response.email
+                                    },
+                                    success
+                                            : function(data) {
+                                                var json = JSON.parse(data);
+                                                if (json.success == 1) {
+                                                    window.location.href = "index.html";
+                                                }
+                                            },
+                                    error
+                                            : function() {
+                                                alert(data.message);
+                                            }
+                                });
+                            }
+                        });
             }
-
 
         </script>
     </body>
