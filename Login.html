@@ -36,7 +36,7 @@ and open the template in the editor.
                     <br/>
                     <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
                     <button onclick="me()">Facebook test</button>
-                    
+
                     <input type="hidden" value="" id="institue-hi"/>
                     <input type="hidden" value="" id="degree-hi"/>
                     <input type="hidden" value="" id="year-hi"/>
@@ -106,14 +106,14 @@ and open the template in the editor.
 
                 function me() {
                     alert('Welcome!  Fetching your information.... ');
-    //                FB.api('/me', function(response) {
-    //                    alert('Good to see you, ' + response.name + '.');
-    //                });
+                    //                FB.api('/me', function(response) {
+                    //                    alert('Good to see you, ' + response.name + '.');
+                    //                });
                     FB.api(
                             "/me",
                             function(response) {
-                                alert('Good to see you, ' + response.name + '.');
                                 if (response && !response.error) {
+                                    alert('Good to see you, ' + response.name + '.');
                                     $.ajax({
                                         //add full 
                                         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -124,9 +124,9 @@ and open the template in the editor.
                                             sex: response.gender,
                                             birthday: response.birthday,
                                             location: response.location,
-                                            email: response.email,
-                                            year: ("#year").val(),
-                                            degree: ("#degree").val()
+                                            email: response.email
+//                                            year: ("#year").val(),
+//                                            degree: ("#degree").val()
                                         },
                                         success: function(data) {
                                             alert(data);
