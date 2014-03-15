@@ -385,7 +385,7 @@ $(document).on("pageshow", "#Notifications", function() {
         success: function(data) {
             var json = JSON.parse(data);
             if (json.success == 1) {
-                alert(json);
+                
                 buildNotifications(json.allTasks);
             }
         },
@@ -400,8 +400,9 @@ function buildNotifications(data) {
     for (var i = 6; i >= 0; i--) {
 
         var currentDayLi = document.getElementById("" + i);
+        
         if (data[i] == null) {
-            $('#' + currentDayLi).hide();
+            $(currentDayLi).hide();
             continue;
         }
 
@@ -418,23 +419,22 @@ function buildNotifications(data) {
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
-            var notification = document.createElement("li");
-            $(notification).attr("data-corners", "false");
-            $(notification).attr("data-shadow", "false");
-            $(notification).attr("data-iconshadow", "true");
-            $(notification).attr("data-wrapperels", "div");
-            $(notification).attr("data-icon", "arrow-r");
-            $(notification).attr("data-iconpos", "right");
-            $(notification).attr("data-theme", "c");
-            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-            var div1 = document.createElement("div");
-            $(div1).attr("class", "ui-btn-inner ui-li");
-            var div2 = document.createElement("div");
-            $(div2).attr("class", "ui-btn-text");
-            var currentYear = currentDate.getFullYear();
-            var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
-            currentDayLi.innerHTML = finalDateToDisplay;
+//            var notification = document.createElement("li");
+//            $(notification).attr("data-corners", "false");
+//            $(notification).attr("data-shadow", "false");
+//            $(notification).attr("data-iconshadow", "true");
+//            $(notification).attr("data-wrapperels", "div");
+//            $(notification).attr("data-icon", "arrow-r");
+//            $(notification).attr("data-iconpos", "right");
+//            $(notification).attr("data-theme", "c");
+//            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
+//            var div1 = document.createElement("div");
+//            $(div1).attr("class", "ui-btn-inner ui-li");
+//            var div2 = document.createElement("div");
+//            $(div2).attr("class", "ui-btn-text");
+            
             for (var j = 0; j <= data[i].length; j++) {
+                
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
 //            $(notification).attr("data-shadow", "false");
@@ -470,7 +470,7 @@ function buildNotifications(data) {
 //            notification.appendChild(div1);
 //            currentDayLi.appendChild(notification);
 
-                currentDayLi.innerHTML = data[i][j] + "<br>";
+                currentDayLi.innerHTML += data[i][j];
             }
 
         }
