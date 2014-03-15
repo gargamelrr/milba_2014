@@ -1,8 +1,6 @@
 var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
-
-
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
 }
@@ -96,12 +94,10 @@ $(document).on("pageshow", "#courseDetails", function() {
             $('#teac_name').text(json.courseDetails.lecturer);
             $('#email').text(json.courseDetails.teacherEmail);
             $('.details').hide();
-            
             $('.btn-task').click(function() {
                 $(this).find('.details').slideToggle(500);
             });
-            
-            if(currentTaskId != ""){
+            if (currentTaskId != "") {
                 $("#" + currentTaskId).find('.details').slideToggle(500);
                 setCurrentTaskId("");
             }
@@ -110,10 +106,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             alert("error");
         }
     });
-    
     $('#submit').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
             data: {
@@ -135,10 +130,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
         });
     });
-    
     $('#join-course').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
             method: 'GET',
             data: {
@@ -156,11 +150,9 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
         });
     });
-    
-    
     $('#leavenow').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
             method: 'GET',
             data: {
@@ -179,9 +171,8 @@ $(document).on("pageshow", "#courseDetails", function() {
         });
     });
 });
-
 $(document).on("pageshow", "#courses", function() {
-    
+
     $("input[name='courses']").on("change", function() {
         if (this.value == 1) {
             $("#coursesMy").hide();
@@ -192,8 +183,6 @@ $(document).on("pageshow", "#courses", function() {
             $("#coursesMy").show();
         }
     });
-    
-    
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
@@ -211,9 +200,6 @@ $(document).on("pageshow", "#courses", function() {
     });
     $('#coursesMy').hide();
 });
-
-
-
 function createCoursesButtons(coursesList, div) {
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
@@ -236,14 +222,13 @@ function createCoursesButtons(coursesList, div) {
         subDiv.appendChild(a);
         mainDiv.appendChild(subDiv);
     }
-    
+
     $('#' + div + ' div').attr("class", "ui-block-a");
     $('#' + div + ' a').attr("class", "choosen");
     $('#' + div + ' a').attr("data-role", "button");
     $('#' + div + ' a').attr("data-theme", "b");
     $("#a div").attr("class", "count_friend");
     $('#' + div).trigger('create');
-    
 }
 
 function reformatDate(date)
@@ -253,15 +238,15 @@ function reformatDate(date)
 }
 
 function buildTasks(allTasks) {
-    
+
     var table = document.getElementById("tasks-table-custom");
+    table.innerHTML = "";
     var tblBody = document.createElement("tbody");
     for (var i = 0; i < allTasks.length; i++) {
         var row = document.createElement("tr");
         var cell1Div = document.createElement("div");
         cell1Div.setAttribute("class", "btn-task");
         cell1Div.setAttribute("id", allTasks[i].index);
-        
         var cell1 = document.createElement("td");
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
@@ -270,7 +255,6 @@ function buildTasks(allTasks) {
         var date = reformatDate(dateTimeArray[0]);
         var time = dateTimeArray[1];
         var cellText2 = document.createTextNode("Due: " + date + " at " + time);
-        
         var cell2Div = document.createElement("div");
         cell2Div.setAttribute("class", "details");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
@@ -278,13 +262,15 @@ function buildTasks(allTasks) {
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
         row.appendChild(cell1Div);
-        
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
-        
         editLink.href = "";
-        editLink.innerHTML = "edit";
+        editLink.innerHTML = "edit|";
+        var delLink = document.createElement("a");
+        delLink.href = "";
+        delLink.innerHTML = "delete";
         cell2.appendChild(editLink);
+        cell2.appendChild(delLink);
         row.appendChild(cell2);
         tblBody.appendChild(row);
     }
@@ -295,7 +281,7 @@ function buildTasks(allTasks) {
 $(document).on("pageshow", "#addCourse", function() {
     $('#submit').click(function() {
         $.ajax({
-            //add full 
+//add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
             method: 'POST',
             data: {
@@ -316,11 +302,8 @@ $(document).on("pageshow", "#addCourse", function() {
         });
     });
 });
-
 $(document).on("pageshow", "#profile", function() {
-    alert("rronny");
     $.ajax({
-        //add full 
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
         method: 'POST',
         data: {
@@ -331,19 +314,16 @@ $(document).on("pageshow", "#profile", function() {
             console.log(data);
             if (json.success == 1) {
                 $("#name").text(json.user_name);
-                parseProfile(json);
+                parseProfile(json, true);
             }
         },
         error: function() {
             alert(data);
         }
     });
-    
-    
     $('select').on('change', function() {
-        
+
         $.ajax({
-            //add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
             method: 'POST',
             data: {
@@ -354,7 +334,7 @@ $(document).on("pageshow", "#profile", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
-                    parseProfile(json);
+                    parseProfile(json, true);
                 }
             },
             error: function() {
@@ -362,10 +342,8 @@ $(document).on("pageshow", "#profile", function() {
             }
         });
     });
-    
 });
-
-function parseProfile(json) {
+function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();
     for (var i = 0; i < json.schools.length; i++) {
@@ -376,7 +354,6 @@ function parseProfile(json) {
         }
     }
     sel.selectmenu('refresh');
-    
     var sel = $("#degree");
     sel.empty();
     for (var i = 0; i < json.degrees.length; i++) {
@@ -387,17 +364,18 @@ function parseProfile(json) {
         }
     }
     sel.selectmenu('refresh');
-    
-    var sel = $("#year");
-    sel.empty();
-    for (var i = 2020; i > 2010; i--) {
-        if (i == json.user_year) {
-            sel.append('<option value="' + i + '" selected>' + i + '</option>');
-        } else {
-            sel.append('<option value="' + i + '">' + i + '</option>');
+    if (isYear) {
+        var sel = $("#year");
+        sel.empty();
+        for (var i = 2020; i > 2010; i--) {
+            if (i == json.user_year) {
+                sel.append('<option value="' + i + '" selected>' + i + '</option>');
+            } else {
+                sel.append('<option value="' + i + '">' + i + '</option>');
+            }
         }
+        sel.selectmenu('refresh');
     }
-    sel.selectmenu('refresh');
 }
 
 $(document).on("pageshow", "#Notifications", function() {
@@ -405,27 +383,44 @@ $(document).on("pageshow", "#Notifications", function() {
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
         success: function(data) {
+<<<<<<< HEAD
             var json = JSON.parse(data);        
             if (json.success == 1) {
                 
                     buildNotifications(json.allTasks);
                 }
             
+=======
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+                alert(json);
+                buildNotifications(json.allTasks);
+            }
+
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         },
-        error:function() {
+        error: function() {
             alert("fucka");
         }
     });
 });
-
 function buildNotifications(data) {
+<<<<<<< HEAD
 
     for(var i = 6; i>=0; i--) {
+=======
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
 
-        var currentDayLi = document.getElementById(""+i);
+    for (var i = 6; i >= 0; i--) {
 
+<<<<<<< HEAD
         if(data[i] == null) {
           $(currentDayLi).hide();
+=======
+        var currentDayLi = document.getElementById("" + i);
+        if (data[i] == null) {
+            $('#' + currentDayLi).hide();
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
             continue;
         }
 
@@ -436,6 +431,7 @@ function buildNotifications(data) {
         var currentDay = dayNumberToString(currentDate.getDay());
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
+<<<<<<< HEAD
         var currentYear = currentDate.getFullYear();
 
         var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear ;
@@ -443,6 +439,27 @@ function buildNotifications(data) {
 
         for(var j=0; j <= data[i].length; j++) {
             
+=======
+
+        for (var j = 0; j <= data[i].length; j++) {
+            var notification = document.createElement("li");
+            $(notification).attr("data-corners", "false");
+            $(notification).attr("data-shadow", "false");
+            $(notification).attr("data-iconshadow", "true");
+            $(notification).attr("data-wrapperels", "div");
+            $(notification).attr("data-icon", "arrow-r");
+            $(notification).attr("data-iconpos", "right");
+            $(notification).attr("data-theme", "c");
+            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
+            var div1 = document.createElement("div");
+            $(div1).attr("class", "ui-btn-inner ui-li");
+            var div2 = document.createElement("div");
+            $(div2).attr("class", "ui-btn-text");
+            var currentYear = currentDate.getFullYear();
+            var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
+            currentDayLi.innerHTML = finalDateToDisplay;
+            for (var j = 0; j <= data[i].length; j++) {
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
 //            $(notification).attr("data-shadow", "false");
@@ -478,12 +495,17 @@ function buildNotifications(data) {
 //            notification.appendChild(div1);
 //            currentDayLi.appendChild(notification);
 
+<<<<<<< HEAD
                currentDayLi.innerHTML += data[i][j];
+=======
+                currentDayLi.innerHTML = data[i][j] + "<br>";
+            }
+
+
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         }
-        
     }
 }
-
 
 //<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
 //                                <p class="ui-li-desc">A new task added to</p>
@@ -493,18 +515,57 @@ function buildNotifications(data) {
 
 function dayNumberToString(number)
 {
-    var weekday=new Array(7);
-    weekday[0]="Sunday";
-    weekday[1]="Monday";
-    weekday[2]="Tuesday";
-    weekday[3]="Wednesday";
-    weekday[4]="Thursday";
-    weekday[5]="Friday";
-    weekday[6]="Saturday";
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
     return weekday[number];
 }
 
 function monthNumberToString(number) {
-    var month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
 }
+
+
+$(document).on("pageshow", "#login", function() {
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+        method: 'POST',
+        data: {
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+                parseProfile(json, true);
+            }
+        },
+        error: function() {
+            alert(data);
+        }
+    });
+    $('select').on('change', function() {
+
+        $.ajax({
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+            method: 'POST',
+            data: {
+                field: this.id,
+                value: this.value
+            },
+            success: function(data) {
+                var json = JSON.parse(data);
+                if (json.success == 1) {
+                    parseProfile(json, false);
+                }
+            },
+            error: function() {
+                alert(data.message);
+            }
+        });
+    });
+});

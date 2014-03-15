@@ -45,7 +45,11 @@ if (isset($_POST["dataUser"])) {
     $response["user_year"] = $row_user["year"];
     $response["user_degree"] = $row_user["degree"];
 } else {
-    
+    $name = $schools[0]["name"];
+
+    if (isset($_POST["field"]) && $_POST["field"] == "institue") {
+        $name = urldecode($_POST["value"]);
+    }
 }
 
 $result = mysql_query("select `index`,degree from Schools where name='" . $name . "' order by degree");
@@ -57,8 +61,6 @@ while ($row = mysql_fetch_array($result)) {
 $response["schools"] = $schools;
 $response["degrees"] = $degrees;
 $response["success"] = 1;
-
-
 
 echo json_encode($response);
 ?>
