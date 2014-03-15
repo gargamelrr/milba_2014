@@ -414,7 +414,7 @@ function buildNotifications(data) {
         var currentMonthDay = currentDate.getDate();
         var currentYear = currentDate.getFullYear();
 
-        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear ;
+        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
@@ -537,4 +537,5 @@ $(document).on("pageshow", "#login", function() {
                 alert(data.message);
             }
         });
-    });
+    })
+});
