@@ -50,6 +50,7 @@ if (isset($_POST["dataUser"])) {
     if (isset($_POST["field"]) && $_POST["field"] == "institue") {
         $name = urldecode($_POST["value"]);
     }
+    $response["user_school"] = $name;
 }
 
 $result = mysql_query("select `index`,degree from Schools where name='" . $name . "' order by degree");
