@@ -35,7 +35,7 @@ and open the template in the editor.
                     </select>
                     <br/>
                     <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
-                    <button onclick="me()">Facebook test</button>
+                    <!--<button onclick="me()">Facebook test</button>-->
 
                     <input type="hidden" value="" id="institue-hi"/>
                     <input type="hidden" value="" id="degree-hi"/>
@@ -50,30 +50,30 @@ and open the template in the editor.
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
                 if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
-                    alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+                    console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
                 if (typeof CDV == 'undefined')
-                    alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+                    console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
                 if (typeof FB == 'undefined')
-                    alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+                    console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
                 FB.Event.subscribe('authResponseChange', function(response) {
-                    alert('auth.login blablabl');
+                    console.log('auth.login blablabl');
                 });
 
                 FB.Event.subscribe('auth.login', function(response) {
-                    alert('auth.login event');
+                    console.log('auth.login event');
                 });
 
                 FB.Event.subscribe('auth.logout', function(response) {
-                    alert('auth.logout event');
+                    console.log('auth.logout event');
                 });
 
                 FB.Event.subscribe('auth.sessionChange', function(response) {
-                    alert('auth.sessionChange event');
+                    console.log('auth.sessionChange event');
                 });
 
                 FB.Event.subscribe('auth.statusChange', function(response) {
-                    alert('auth.statusChange event');
+                    console.log('auth.statusChange event');
                 });
 
                 document.addEventListener('deviceready', function() {
@@ -86,34 +86,35 @@ and open the template in the editor.
                             cookie: true});
                         // document.getElementById('data').innerHTML = "";
                     } catch (e) {
-                        alert("e1");
+                        console.log("e1");
                     }
-                    alert('Device is ready! ');
+                    console.log('Device is ready! ');
                 }, false);
 
                 function promptLogin() {
                     FB.login(
                             function(response) {
                                 if (response.session) {
-                                    me();
+                                    console.log('logged in');
                                 } else {
-                                    alert('not logged in');
+                                    console.log('not logged in');
                                 }
                             },
                             {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                     );
+                    me();
                 }
 
                 function me() {
-                    alert('Welcome!  Fetching your information.... ');
+                    console.log('Welcome!  Fetching your information.... ');
                     //                FB.api('/me', function(response) {
-                    //                    alert('Good to see you, ' + response.name + '.');
+                    //                    console.log('Good to see you, ' + response.name + '.');
                     //                });
                     FB.api(
                             "/me",
                             function(response) {
                                 if (response && !response.error) {
-                                    alert('Good to see you, ' + response.name + '.');
+                                    console.log('Good to see you, ' + response.name + '.');
                                     $.ajax({
                                         //add full 
                                         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -123,7 +124,7 @@ and open the template in the editor.
                                             last_name: response.last_name,
                                             sex: response.gender,
                                             birthday: response.birthday,
-                                            location: response.location,
+                                            location: response.location.name,
                                             email: response.email,
                                             year: $("#year").val(),
                                             degree: $("#degree").val()
@@ -132,12 +133,11 @@ and open the template in the editor.
                                             alert(data);
                                             var json = JSON.parse(data);
                                             if (json.success == 1) {
-                                                alert("success!");
                                                 window.location.href = "index.html";
                                             }
                                         },
                                         error: function() {
-                                            alert(data);
+                                            console.log(data);
                                         }
                                     });
                                 }
