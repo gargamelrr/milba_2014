@@ -405,9 +405,9 @@ $(document).on("pageshow", "#Notifications", function() {
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
         success: function(data) {
-            var json = JSON.parse(data);          
+            var json = JSON.parse(data);        
             if (json.success == 1) {
-                alert(json);
+                
                     buildNotifications(json.allTasks);
                 }
             
@@ -419,13 +419,13 @@ $(document).on("pageshow", "#Notifications", function() {
 });
 
 function buildNotifications(data) {
-    
+
     for(var i = 6; i>=0; i--) {
 
         var currentDayLi = document.getElementById(""+i);
 
         if(data[i] == null) {
-            $('#'+currentDayLi).hide();
+          $(currentDayLi).hide();
             continue;
         }
 
@@ -437,11 +437,12 @@ function buildNotifications(data) {
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
         var currentYear = currentDate.getFullYear();
-        
-        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
+
+        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear ;
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for(var j=0; j <= data[i].length; j++) {
+            
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
 //            $(notification).attr("data-shadow", "false");
@@ -477,7 +478,7 @@ function buildNotifications(data) {
 //            notification.appendChild(div1);
 //            currentDayLi.appendChild(notification);
 
-               currentDayLi.innerHTML = data[i][j] + "<br>";
+               currentDayLi.innerHTML += data[i][j];
         }
         
     }
