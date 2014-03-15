@@ -384,6 +384,7 @@ $(document).on("pageshow", "#Notifications", function() {
         method: 'GET',
         success: function(data) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var json = JSON.parse(data);        
             if (json.success == 1) {
                 
@@ -393,10 +394,17 @@ $(document).on("pageshow", "#Notifications", function() {
 =======
             var json = JSON.parse(data);
             if (json.success == 1) {
+=======
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
                 alert(json);
                 buildNotifications(json.allTasks);
             }
 
+<<<<<<< HEAD
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
+=======
 >>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         },
         error: function() {
@@ -405,6 +413,7 @@ $(document).on("pageshow", "#Notifications", function() {
     });
 });
 function buildNotifications(data) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     for(var i = 6; i>=0; i--) {
@@ -421,6 +430,14 @@ function buildNotifications(data) {
         if (data[i] == null) {
             $('#' + currentDayLi).hide();
 >>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
+=======
+
+    for (var i = 6; i >= 0; i--) {
+
+        var currentDayLi = document.getElementById("" + i);
+        if (data[i] == null) {
+            $('#' + currentDayLi).hide();
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
             continue;
         }
 
@@ -432,6 +449,7 @@ function buildNotifications(data) {
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
 <<<<<<< HEAD
+<<<<<<< HEAD
         var currentYear = currentDate.getFullYear();
 
         var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear ;
@@ -441,6 +459,9 @@ function buildNotifications(data) {
             
 =======
 
+=======
+
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         for (var j = 0; j <= data[i].length; j++) {
             var notification = document.createElement("li");
             $(notification).attr("data-corners", "false");
@@ -459,6 +480,9 @@ function buildNotifications(data) {
             var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
             currentDayLi.innerHTML = finalDateToDisplay;
             for (var j = 0; j <= data[i].length; j++) {
+<<<<<<< HEAD
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
+=======
 >>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
@@ -496,12 +520,18 @@ function buildNotifications(data) {
 //            currentDayLi.appendChild(notification);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                currentDayLi.innerHTML += data[i][j];
 =======
+=======
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
                 currentDayLi.innerHTML = data[i][j] + "<br>";
             }
 
 
+<<<<<<< HEAD
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
+=======
 >>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         }
     }
@@ -568,4 +598,8 @@ $(document).on("pageshow", "#login", function() {
             }
         });
     });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
