@@ -31,9 +31,10 @@ if (mysql_num_rows($result) > 0) {
     $bday = date("Y-m-d", strtotime($_POST["birthday"]));
     $name = $first . " " . $last;
     $school_id = $_POST["degree"];
+    $year = $_POST["year"];
 
-    $result = mysql_query("INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'active','$date')");
+    $result = mysql_query("INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','active','$date')");
 }
 $id = mysql_insert_id();
 
@@ -41,8 +42,8 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
-$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'active','$date')";
+$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','active','$date')";
 $response["success"] = "1";
 
 echo json_encode($response);
