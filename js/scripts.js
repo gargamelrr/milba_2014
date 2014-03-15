@@ -383,61 +383,25 @@ $(document).on("pageshow", "#Notifications", function() {
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
         success: function(data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            var json = JSON.parse(data);        
-            if (json.success == 1) {
-                
-                    buildNotifications(json.allTasks);
-                }
-            
-=======
             var json = JSON.parse(data);
             if (json.success == 1) {
-=======
-            var json = JSON.parse(data);
-            if (json.success == 1) {
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
                 alert(json);
                 buildNotifications(json.allTasks);
             }
-
-<<<<<<< HEAD
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
-=======
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         },
         error: function() {
             alert("fucka");
         }
     });
 });
+
 function buildNotifications(data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    for(var i = 6; i>=0; i--) {
-=======
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
-
-    for (var i = 6; i >= 0; i--) {
-
-<<<<<<< HEAD
-        if(data[i] == null) {
-          $(currentDayLi).hide();
-=======
-        var currentDayLi = document.getElementById("" + i);
-        if (data[i] == null) {
-            $('#' + currentDayLi).hide();
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
-=======
 
     for (var i = 6; i >= 0; i--) {
 
         var currentDayLi = document.getElementById("" + i);
         if (data[i] == null) {
             $('#' + currentDayLi).hide();
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
             continue;
         }
 
@@ -448,20 +412,11 @@ function buildNotifications(data) {
         var currentDay = dayNumberToString(currentDate.getDay());
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
-<<<<<<< HEAD
-<<<<<<< HEAD
         var currentYear = currentDate.getFullYear();
 
         var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear ;
         currentDayLi.innerHTML = finalDateToDisplay;
 
-        for(var j=0; j <= data[i].length; j++) {
-            
-=======
-
-=======
-
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         for (var j = 0; j <= data[i].length; j++) {
             var notification = document.createElement("li");
             $(notification).attr("data-corners", "false");
@@ -480,10 +435,6 @@ function buildNotifications(data) {
             var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
             currentDayLi.innerHTML = finalDateToDisplay;
             for (var j = 0; j <= data[i].length; j++) {
-<<<<<<< HEAD
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
-=======
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
 //            $(notification).attr("data-shadow", "false");
@@ -519,20 +470,9 @@ function buildNotifications(data) {
 //            notification.appendChild(div1);
 //            currentDayLi.appendChild(notification);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-               currentDayLi.innerHTML += data[i][j];
-=======
-=======
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
                 currentDayLi.innerHTML = data[i][j] + "<br>";
             }
 
-
-<<<<<<< HEAD
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
-=======
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
         }
     }
 }
@@ -598,8 +538,3 @@ $(document).on("pageshow", "#login", function() {
             }
         });
     });
-<<<<<<< HEAD
-});
-=======
-});
->>>>>>> cc1f37eff613dad109675d6a97325e80008d79de
