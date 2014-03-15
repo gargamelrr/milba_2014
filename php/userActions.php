@@ -16,11 +16,12 @@ session_start();
 $user = $_POST["email"];
 
 //check if user exist
-$result = mysql_query("select index from Users where email='$user'");
+$result = mysql_query("select `index`,first_name,last_name from Users where email='$user'");
 if (mysql_num_rows($result) > 0) {
     // do we need to update the fields? maybe..
     $row = mysql_fetch_array($result);
     $id = $row["index"];
+    $name = $row["first_name"] . " " . $row["last_name"];
     
 } else {
     $first = $_POST["first_name"];
@@ -35,15 +36,14 @@ if (mysql_num_rows($result) > 0) {
 
     $result = mysql_query("INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
             . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','active','$date')");
+    $id = mysql_insert_id();
 }
-$id = mysql_insert_id();
 
 $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
-$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','active','$date')";
+$response["debug"] = $id;
 $response["success"] = "1";
 
 echo json_encode($response);
