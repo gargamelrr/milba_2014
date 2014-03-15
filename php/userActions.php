@@ -35,7 +35,7 @@ if (mysql_num_rows($result) > 0) {
     $year = $_POST["year"];
 
     $result = mysql_query("INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','active','$date')");
+            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')");
     $id = mysql_insert_id();
 }
 
