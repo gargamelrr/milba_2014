@@ -18,20 +18,35 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
             
     
     //Creating notifications for new tasks
-    $newTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator From Tasks, Courses Where Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DAT(Tasks.created)) = $x");
-
+    $newTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator From Tasks, Courses Where Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.created)) = $x");
+    $editedTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator From Tasks, Courses Where Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.modified)) = $x and Tasks.created != Tasks.modified");
+)
     if(mysql_num_rows($newTasks) > 0) {
         
         $response["allTasks"][$x] = array();
-        while($row = mysql_fetch_array($newTasks)) {
+        while($row = mysql_fetch_array($newTasks) || $row2 = mysql_fetch_array($editedTasks)) {
             $checkInput = 1;
+            if(!empty($row)) {
             $msg = 
                 '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
                 '<p class="ui-li-desc"> A new task ' . $row["tName"] . ' was added to:</p> ' .
                 '<h2 class="ui-li-heading"> <strong> ' . $row["cName"] . '</strong></h2> ' .
                 '<p class="ui-li-desc"> by: <strong>' . $row["creator"] . '</strong> </p>' .
                 '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';
+            
+            
              array_push($response["allTasks"][$x], $msg);
+            }
+            if(!empty($row2)) {
+                $msg = 
+                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
+                '<p class="ui-li-desc"> ' . $row2["tName"] . ' was edited:</p> ' .
+                '<h2 class="ui-li-heading"> <strong> ' . $row2["cName"] . '</strong></h2> ' .
+                '<p class="ui-li-desc"> by: <strong>' . $row2["creator"] . '</strong> </p>' .
+                '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';
+    
+             array_push($response["allTasks"][$x], $msg);
+            }
         }
     }
 }
@@ -40,7 +55,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
     } else {
 
         $response["success"] = 0;
-        $response["message"] = "No tasks found";
+        $response["message"] = "No notifications found";
     }
     echo str_replace('\\/', '/', json_encode($response));
 

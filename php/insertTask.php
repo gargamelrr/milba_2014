@@ -16,8 +16,9 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     $radioDifficulty = $_POST['radiodifficulty'];
     $taskDetails = $_POST['taskdetails'];
     $courseID = $_POST['courseID'];
-    $date = date("Y-m-d");
-    
+   // $date = date('Y-m-d H:i:s', time());
+    $date = date('Y-m-d H:i:s'); 
+
     //SQL column for difficulty is boolean, ajust it. 
     if($radioDifficulty == "hard") {
         $radioDifficulty = 1;
@@ -36,7 +37,6 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
         $response["message"] = "User successfully updated.";
     } else {
         //error
-        echo "dammm1212";
         $response["success"] = 0;
         $response["message"] = "sql failed nigger";
     }
