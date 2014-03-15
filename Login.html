@@ -36,115 +36,115 @@ and open the template in the editor.
                     <br/>
                     <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
                     <button onclick="me()">Facebook test</button>
+                    
+                    <input type="hidden" value="" id="institue-hi"/>
+                    <input type="hidden" value="" id="degree-hi"/>
+                    <input type="hidden" value="" id="year-hi"/>
                 </form>
+                <div>
+                    This application requires access to your profile information.<br>Your personal information is required in order to help us identify the courses that might be relevant for you.<br>
+                    This application will never post on your behalf<br>
+                </div>
             </div>
-            <div>
-                This application requires access to your profile information.<br>Your personal information is required in order to help us identify the courses that might be relevant for you.<br>
-                This application will never post on your behalf<br>
-            </div>
+            <div id="fb-root"></div>
+            <!-- Facebook JavaScript -->
+            <script type="text/javascript">
+                if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
+                    alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+                if (typeof CDV == 'undefined')
+                    alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+                if (typeof FB == 'undefined')
+                    alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+
+                FB.Event.subscribe('authResponseChange', function(response) {
+                    alert('auth.login blablabl');
+                });
+
+                FB.Event.subscribe('auth.login', function(response) {
+                    alert('auth.login event');
+                });
+
+                FB.Event.subscribe('auth.logout', function(response) {
+                    alert('auth.logout event');
+                });
+
+                FB.Event.subscribe('auth.sessionChange', function(response) {
+                    alert('auth.sessionChange event');
+                });
+
+                FB.Event.subscribe('auth.statusChange', function(response) {
+                    alert('auth.statusChange event');
+                });
+
+                document.addEventListener('deviceready', function() {
+                    try {
+
+                        FB.init({appId: "691029124265305",
+                            nativeInterface: CDV.FB,
+                            useCachedDialogs: false,
+                            status: true, // check login status
+                            cookie: true});
+                        // document.getElementById('data').innerHTML = "";
+                    } catch (e) {
+                        alert("e1");
+                    }
+                    alert('Device is ready! ');
+                }, false);
+
+                function promptLogin() {
+                    FB.login(
+                            function(response) {
+                                if (response.session) {
+                                    me();
+                                } else {
+                                    alert('not logged in');
+                                }
+                            },
+                            {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
+                    );
+                }
+
+                function me() {
+                    alert('Welcome!  Fetching your information.... ');
+    //                FB.api('/me', function(response) {
+    //                    alert('Good to see you, ' + response.name + '.');
+    //                });
+                    FB.api(
+                            "/me",
+                            function(response) {
+                                alert('Good to see you, ' + response.name + '.');
+                                if (response && !response.error) {
+                                    $.ajax({
+                                        //add full 
+                                        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
+                                        method: 'POST',
+                                        data: {
+                                            first_name: response.first_name,
+                                            last_name: response.last_name,
+                                            sex: response.gender,
+                                            birthday: response.birthday,
+                                            location: response.location,
+                                            email: response.email,
+                                            year: ("#year").val(),
+                                            degree: ("#degree").val()
+                                        },
+                                        success: function(data) {
+                                            alert(data);
+                                            var json = JSON.parse(data);
+                                            if (json.success == 1) {
+                                                alert("success!");
+                                                window.location.href = "index.html";
+                                            }
+                                        },
+                                        error: function() {
+                                            alert(data);
+                                        }
+                                    });
+                                }
+                            });
+                }
+            </script>
         </div>
 
-
-        <div id="fb-root"></div>
-        <!-- Facebook JavaScript -->
-        <script type="text/javascript">
-            if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
-                alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-            if (typeof CDV == 'undefined')
-                alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-            if (typeof FB == 'undefined')
-                alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-            FB.Event.subscribe('authResponseChange', function(response) {
-                alert('auth.login blablabl');
-            });
-
-            FB.Event.subscribe('auth.login', function(response) {
-                alert('auth.login event');
-            });
-
-            FB.Event.subscribe('auth.logout', function(response) {
-                alert('auth.logout event');
-            });
-
-            FB.Event.subscribe('auth.sessionChange', function(response) {
-                alert('auth.sessionChange event');
-            });
-
-            FB.Event.subscribe('auth.statusChange', function(response) {
-                alert('auth.statusChange event');
-            });
-
-            document.addEventListener('deviceready', function() {
-                try {
-
-                    FB.init({appId: "691029124265305",
-                        nativeInterface: CDV.FB,
-                        useCachedDialogs: false,
-                        status: true, // check login status
-                        cookie: true});
-                    // document.getElementById('data').innerHTML = "";
-                } catch (e) {
-                    alert("e1");
-                }
-                alert('Device is ready! ');
-            }, false);
-
-            function promptLogin() {
-                FB.login(
-                        function(response) {
-                            if (response.session) {
-                                me();
-                            } else {
-                                alert('not logged in');
-                            }
-                        },
-                        {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
-                );
-            }
-
-            function me() {
-                alert('Welcome!  Fetching your information.... ');
-//                FB.api('/me', function(response) {
-//                    alert('Good to see you, ' + response.name + '.');
-//                });
-                FB.api(
-                        "/me",
-                        function(response) {
-                            alert("im ready for ajax");
-                            if (response && !response.error) {
-                                alert(response);
-                                $.ajax({
-                                    //add full 
-                                    url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
-                                    method: 'POST',
-                                    data: {
-                                        first_name: response.first_name,
-                                        last_name: response.last_name,
-                                        sex: response.gender,
-                                        birthday: response.birthday,
-                                        location: response.location,
-                                        email: response.email,
-                                        year: ("#year").val(),
-                                        school: ("#institue").val(),
-                                        degree: ("#degree").val()
-                                    },
-                                    success: function(data) {
-                                        alert(data);
-                                        var json = JSON.parse(data);
-                                        if (json.success == 1) {
-                                            alert("success!");
-                                            window.location.href = "index.html";
-                                        }
-                                    },
-                                    error: function() {
-                                        alert(data.message);
-                                    }
-                                });
-                            }
-                        });
-            }
-
-        </script>
     </body>
 </html>

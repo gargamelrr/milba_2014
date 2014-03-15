@@ -8,8 +8,9 @@ $db = new DB_CONNECT;
 
 session_start();
 
-$_SESSION["user_id"] = 1;
-
+if ($_SESSION["user_id"] == "") {
+    $_SESSION["user_id"] = 1;
+}
 $user_id = $_SESSION["user_id"];
 $courses_str = "";
 $courses_str_or = "";
