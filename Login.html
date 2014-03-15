@@ -95,13 +95,14 @@ and open the template in the editor.
                     FB.login(
                             function(response) {
                                 if (response.session) {
-                                    me();
+                                    console.log('logged in');
                                 } else {
                                     console.log('not logged in');
                                 }
                             },
                             {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                     );
+                    me();
                 }
 
                 function me() {
