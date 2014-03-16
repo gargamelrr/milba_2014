@@ -525,7 +525,8 @@ $(document).on("pageshow", "#login", function() {
             method: 'POST',
             data: {
                 field: this.id,
-                value: this.value
+                value: this.value,
+                school: $("#institue").val()
             },
             success: function(data) {
                 var json = JSON.parse(data);

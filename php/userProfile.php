@@ -45,11 +45,13 @@ if (isset($_POST["dataUser"])) {
     $response["user_year"] = $row_user["year"];
     $response["user_degree"] = $row_user["degree"];
 } else {
-    $name = $schools[0]["name"];
 
     if (isset($_POST["field"]) && $_POST["field"] == "institue") {
         $name = urldecode($_POST["value"]);
+    }else{
+        $name = !isset($_POST["school"]) ? $schools[0]["name"] : $_POST["school"];
     }
+
     $response["user_school"] = $name;
 }
 
