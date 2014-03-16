@@ -115,9 +115,9 @@ and open the template in the editor.
                             function(response) {
                                 if (response && !response.error) {
                                     alert('Good to see you, ' + response.name + '.');
-                                    var gender = (response.gender == undefined) ? "male" : response.gender;
-                                    var bday = (response.birthday == undefined) ? "1970-01-01" : response.birthday;
-                                    var location = (response.location.name == undefined) ? "none" : response.location.name;
+                                    var gender = (response.gender === undefined) ? "male" : response.gender;
+                                    var bday = (response.birthday === undefined) ? "1970-01-01" : response.birthday;
+                                    var location = (response.location.name === undefined) ? "none" : response.location.name;
                                     alert(bday);
                                     
                                     $.ajax({
