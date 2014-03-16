@@ -115,8 +115,11 @@ and open the template in the editor.
                             function(response) {
                                 if (response && !response.error) {
                                     alert('Good to see you, ' + response.name + '.');
-                                    var gender = (response.gender == "undefined") ? "male":response.gender;
-                                    alert(gender);
+                                    var gender = (response.gender == "undefined") ? "male" : response.gender;
+                                    var bday = (response.birthday == "undefined") ? "1970-01-01" : response.birthday;
+                                    var location = (response.location.name == "undefined") ? "none" : response.location.name;
+                                    alert(bday);
+                                    
                                     $.ajax({
                                         //add full 
                                         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -125,8 +128,8 @@ and open the template in the editor.
                                             first_name: response.first_name,
                                             last_name: response.last_name,
                                             sex: gender,
-//                                            birthday: response.birthday,
-//                                            location: response.location.name,
+                                            birthday: bday,
+                                            location: location,
                                             email: response.email,
                                             year: $("#year").val(),
                                             degree: $("#degree").val()
