@@ -117,8 +117,8 @@ and open the template in the editor.
                                     alert('Good to see you, ' + response.name + '.');
                                     var gender = (response.gender === null) ? "male" : response.gender;
                                     var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
-                                    //var location = (response.location.name === null) ? "none" : response.location.name;
-                                    alert(bday);
+                                    var location = (response.location.name === null) ? "none" : response.location.name;
+                                    alert(location);
                                     
                                     $.ajax({
                                         //add full 
