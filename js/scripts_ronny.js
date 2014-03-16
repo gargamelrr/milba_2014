@@ -96,7 +96,7 @@ $(document).on("pageshow", "#profile", function() {
         });
     });
 });
-function parseProfile(json, field) {
+function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();
     for (var i = 0; i < json.schools.length; i++) {
@@ -148,24 +148,25 @@ $(document).on("pageshow", "#login", function() {
         }
     });
     $('select').on('change', function() {
-
-        $.ajax({
-            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
-            method: 'POST',
-            data: {
-                field: this.id,
-                value: this.value,
-                school: $("#institue").val()
-            },
-            success: function(data) {
-                var json = JSON.parse(data);
-                if (json.success == 1) {
-                    parseProfile(json, this.id);
+        if (this.id == "institue") {
+            $.ajax({
+                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
+                method: 'POST',
+                data: {
+                    field: this.id,
+                    value: this.value,
+                    school: $("#institue").val()
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.success == 1) {
+                        parseProfile(json, true);
+                    }
+                },
+                error: function() {
+                    alert(data.message);
                 }
-            },
-            error: function() {
-                alert(data.message);
-            }
-        });
+            });
+        }
     });
 });
