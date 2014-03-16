@@ -433,7 +433,7 @@ function buildNotifications(data) {
 //            var div2 = document.createElement("div");
 //            $(div2).attr("class", "ui-btn-text");
             
-            for (var j = 0; j <= data[i].length; j++) {
+            for (var j = 0; j < data[i].length; j++) {
                 
 //            var notification = document.createElement("li");
 //            $(notification).attr("data-corners", "false");
