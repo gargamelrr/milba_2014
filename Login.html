@@ -119,12 +119,13 @@ and open the template in the editor.
                                     var gender = (response.gender === null) ? "male" : response.gender;
                                     var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                                     //var location = (response.location.name === null) ? "none" : response.location.name;
-                                     
+
                                     $.ajax({
                                         //add full 
                                         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
                                         method: 'POST',
                                         data: {
+                                            fb_id: response.id,
                                             first_name: response.first_name,
                                             last_name: response.last_name,
                                             sex: gender,
