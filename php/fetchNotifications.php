@@ -18,8 +18,8 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
             
     
     //Creating notifications for new tasks
-    $newTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator, Tasks.due_date From Tasks, Courses Where Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.created)) = $x");
-    $editedTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator, Tasks.due_date From Tasks, Courses Where Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.modified)) = $x and Tasks.created != Tasks.modified");
+    $newTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator, Tasks.due_date From Tasks, Courses, Users_Courses Where course_id = index and student_id='$user_id' and Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.created)) = $x");
+    $editedTasks = mysql_query("Select Tasks.name as tName, Courses.name as cName, Tasks.creator, Tasks.due_date From Tasks, Courses, Users_Courses Where course_id = index and student_id='$user_id' and Tasks.course_id = Courses.index and DATEDIFF(CURDATE(), DATE(Tasks.modified)) = $x and Tasks.created != Tasks.modified");
 
     if(mysql_num_rows($newTasks) > 0) {
         

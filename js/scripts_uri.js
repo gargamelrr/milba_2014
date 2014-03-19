@@ -208,7 +208,8 @@ function buildTasks(allTasks) {
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
         editLink.href = "";
-        editLink.innerHTML = "edit|";
+        editLink.innerHTML = "edit | ";
+        editLink.onclick(editTask($(this).parent().prev().id));
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
@@ -220,6 +221,33 @@ function buildTasks(allTasks) {
     table.appendChild(tblBody);
 }
 
+function editTask(id) {
+    alert(id);
+   $.ajax({
+       url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/editTask.php',
+       method: 'POST',
+       data: {
+               id: id
+           },
+           success: function(data) {
+               alert("nice");
+               var json = JSON.parse(data);
+               if(json.success == 1) {
+                   fillUpFieldsAfterEdit(json);
+               }
+           },
+           error: function() {
+               alert.data(data.message);
+           }
+   }); 
+}
+
+function fillUpFieldsAfterEdit(json) {
+    $("#taskName").text(json.name);
+    $("#date1").val(json.date1);
+    $("#taskTime").val(json.time1);
+    $("#taskdetails").text(json.description);
+}
 
 $(document).on("pageshow", "#addCourse", function() {
     $('#submit').click(function() {
