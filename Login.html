@@ -58,7 +58,12 @@ and open the template in the editor.
                     console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
                 FB.Event.subscribe('authResponseChange', function(response) {
-                    console.log('auth.login blablabl');
+                    alert('auth.login blablabl');
+                    if (response.status === 'connected') {
+                         window.location.href = "index.html";
+             
+                    }
+
                 });
 
                 FB.Event.subscribe('auth.login', function(response) {
@@ -90,6 +95,8 @@ and open the template in the editor.
                         console.log("e1");
                     }
                     console.log('Device is ready! ');
+                    
+                    
                 }, false);
 
                 function promptLogin() {
