@@ -16,12 +16,12 @@ session_start();
 $fb_id = $_POST["fb_id"];
 
 //check if user exist
-$result = mysql_query("select `index`,first_name,last_name from Users where fb_id='$fb_id'");
+$result = mysql_query("select `index`,first_name,last_name,email from Users where fb_id='$fb_id'");
 if (mysql_num_rows($result) > 0) {
     $row = mysql_fetch_array($result);
     $id = $row["index"];
     $name = $row["first_name"] . " " . $row["last_name"];
-    
+    $user = $row["email"];
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
@@ -46,7 +46,7 @@ $_SESSION["user_id"] = $id;
 
 $response["debug1"] = mysql_error();
 $response["debug"] = "INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
+        . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
 $response["success"] = "1";
 
 echo json_encode($response);
