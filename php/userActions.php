@@ -35,7 +35,7 @@ if (mysql_num_rows($result) > 0) {
     $year = $_POST["year"];
     $fb_id = $_POST["fb_id"];
 
-    $result = mysql_query("INSERT INTO `Users`(`index`,`db_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
             . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')");
     $id = mysql_insert_id();
 }
@@ -45,8 +45,8 @@ $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
 $response["debug1"] = mysql_error();
-$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
+$response["debug"] = "INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
 $response["success"] = "1";
 
 echo json_encode($response);
