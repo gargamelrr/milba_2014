@@ -16,6 +16,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     $radioDifficulty = $_POST['radiodifficulty'];
     $taskDetails = $_POST['taskdetails'];
     $courseID = $_POST['courseID'];
+    $taskID = $_POST['taskID'];
    // $date = date('Y-m-d H:i:s', time());
     $date = date('Y-m-d H:i:s'); 
 
@@ -26,8 +27,14 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
         $radioDifficulty = 0;
     }
     
+    //Checking if user has pressed on the edit button
+    if($taskID == -1) {
+        $taskID = NULL;
+    }
+    
     $result = mysql_query("INSERT INTO `Tasks`(`index`, `course_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
-            . "VALUES (NULL, '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')");
+            . "VALUES ('$taskID', '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', 'Ronny', '111', '$date')"
+            . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails'  ");
 
     
 // check if row inserted or not
