@@ -13,16 +13,15 @@ $db = new DB_CONNECT;
 
 session_start();
 
-$user = $_POST["email"];
+$fb_id = $_POST["fb_id"];
 
 //check if user exist
-$result = mysql_query("select `index`,first_name,last_name from Users where email='$user'");
+$result = mysql_query("select `index`,first_name,last_name,email from Users where fb_id='$fb_id'");
 if (mysql_num_rows($result) > 0) {
-    // do we need to update the fields? maybe..
     $row = mysql_fetch_array($result);
     $id = $row["index"];
     $name = $row["first_name"] . " " . $row["last_name"];
-    
+    $user = $row["email"];
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
@@ -33,9 +32,10 @@ if (mysql_num_rows($result) > 0) {
     $name = $first . " " . $last;
     $school_id = $_POST["degree"];
     $year = $_POST["year"];
-    $fb_id = $_POST["fb_id"];
+    $user = $_POST["email"];
 
-    $result = mysql_query("INSERT INTO `Users`(`index`,`db_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+
+    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
             . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')");
     $id = mysql_insert_id();
 }
@@ -45,8 +45,8 @@ $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
 $response["debug1"] = mysql_error();
-$response["debug"] = "INSERT INTO `Users`(`index`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
+$response["debug"] = "INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
+        . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
 $response["success"] = "1";
 
 echo json_encode($response);
