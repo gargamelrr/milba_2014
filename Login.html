@@ -76,6 +76,7 @@ and open the template in the editor.
                 });
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
+                   alert(JSON.stringify(response));
 //                    alert(response.authResponse.userID);
 //                    if (response.status === 'connected') {
 //                        $.ajax({
