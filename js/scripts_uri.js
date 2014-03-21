@@ -117,6 +117,18 @@ $(document).on("pageshow", "#courseDetails", function() {
     });
 });
 $(document).on("pageshow", "#courses", function() {
+    if (currentCoursePage == "join") {
+        $("#radio-sug").attr("checked", "checked");
+        $("input[name='courses']").checkboxradio("refresh");
+        $("#coursesMy").hide();
+        $("#coursesSug").show();
+    }
+    else {
+        $("#radio-your").attr("checked", "checked");
+        $("input[name='courses']").checkboxradio("refresh");
+        $("#coursesSug").hide();
+        $("#coursesMy").show();
+    }
     $("input[name='courses']").on("change", function() {
         if (this.value == 1) {
             $("#coursesMy").hide();
@@ -141,18 +153,8 @@ $(document).on("pageshow", "#courses", function() {
             console.log("error");
         }
     });
-    $("#coursesMy").hide();
-//        if (currentCoursePage == "join") {
-//        $("#radio-sug").prop('checked', true).button("refresh");
-//                    $("#coursesMy").hide();
-//            $("#coursesSug").show();
-//    }
-//    else {
-//         $("#radio-sug").prop('checked', false).button("refresh");
-//        $("#radio-your").prop('checked', true).button("refresh");
-//                    $("#coursesSug").hide();
-//            $("#coursesMy").show();
-//    }
+    //$("#coursesMy").hide();
+
 });
 
 function createCoursesButtons(coursesList, div) {
