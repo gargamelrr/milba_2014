@@ -17,6 +17,7 @@ $fb_id = $_POST["fb_id"];
 
 //check if user exist
 $result = mysql_query("select `index`,first_name,last_name,email from Users where fb_id='$fb_id'");
+$count = mysql_num_rows($result);
 if (mysql_num_rows($result) > 0) {
     $row = mysql_fetch_array($result);
     $id = $row["index"];
@@ -44,8 +45,8 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
-$response["debug1"] = mysql_error();
-$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
+$response["debug1"] = mysql_error() . " " . $fb_id;
+//$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 
 echo json_encode($response);
