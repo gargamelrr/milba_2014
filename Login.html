@@ -116,7 +116,6 @@ and open the template in the editor.
                 }, false);
 
                 function promptLogin() {
-                    $("#face_but").prop("disabled", "disabled");
                     FB.login(
                             function(response) {
                                 if (response.session) {
@@ -127,6 +126,7 @@ and open the template in the editor.
                             },
                             {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                     );
+                    $("#face_but").prop("disabled", "disabled");
                     me();
                 }
 

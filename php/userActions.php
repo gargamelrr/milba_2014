@@ -45,8 +45,7 @@ $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
 $response["debug1"] = mysql_error();
-$response["debug"] = "INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-        . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')";
+$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 
 echo json_encode($response);
