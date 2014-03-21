@@ -32,6 +32,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             } else {
                 $("#leave-course").hide();
                 $("#addTask").hide();
+                $('.actions').hide();
             }
             $('#name').text(json.courseDetails.name);
             $('#teac_name').text(json.courseDetails.lecturer);
@@ -116,7 +117,6 @@ $(document).on("pageshow", "#courseDetails", function() {
     });
 });
 $(document).on("pageshow", "#courses", function() {
-
     $("input[name='courses']").on("change", function() {
         if (this.value == 1) {
             $("#coursesMy").hide();
@@ -130,7 +130,6 @@ $(document).on("pageshow", "#courses", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
-        cache: false,
         success: function(data) {
             var json = JSON.parse(data);
             if (json.success == 1) {
@@ -142,7 +141,18 @@ $(document).on("pageshow", "#courses", function() {
             console.log("error");
         }
     });
-    $('#coursesMy').hide();
+    $("#coursesMy").hide();
+//        if (currentCoursePage == "join") {
+//        $("#radio-sug").prop('checked', true).button("refresh");
+//                    $("#coursesMy").hide();
+//            $("#coursesSug").show();
+//    }
+//    else {
+//         $("#radio-sug").prop('checked', false).button("refresh");
+//        $("#radio-your").prop('checked', true).button("refresh");
+//                    $("#coursesSug").hide();
+//            $("#coursesMy").show();
+//    }
 });
 
 function createCoursesButtons(coursesList, div) {
@@ -207,11 +217,14 @@ function buildTasks(allTasks) {
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
         row.appendChild(cell1Div);
+        var cell3Div = document.createElement("div");
+        cell3Div.setAttribute("class", "actions");
+
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
         editLink.href = "";
         editLink.innerHTML = "edit | ";
-        
+
         $(editLink).click(function() {
             $("#editFlag").val($(this).parent().prev().attr('id'));
             $(document).load();
@@ -221,9 +234,9 @@ function buildTasks(allTasks) {
                 data: {
                     id: $(this).parent().prev().attr('id')
                 },
-                success: function(data) {                  
+                success: function(data) {
                     var json = JSON.parse(data)
-                    if(json.success == 1) {
+                    if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
                     } else {
                         alert("error parsing json");
@@ -232,13 +245,13 @@ function buildTasks(allTasks) {
                 error: function() {
                     alert.data(data.message);
                 }
-            }); 
+            });
         });
-        
+
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
-        
+
         $(delLink).click(function() {
             $(document).load();
             $.ajax({
@@ -247,9 +260,9 @@ function buildTasks(allTasks) {
                 data: {
                     id: $(this).parent().prev().attr('id')
                 },
-                success: function(data) {                  
+                success: function(data) {
                     var json = JSON.parse(data)
-                    if(json.success == 1) {
+                    if (json.success == 1) {
                         window.location.href = "index.html";
                     } else {
                         alert("error parsing json");
@@ -258,13 +271,14 @@ function buildTasks(allTasks) {
                 error: function() {
                     alert.data(data.message);
                 }
-            }); 
+            });
         });
-        
-        
+
+
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
-        row.appendChild(cell2);
+        cell3Div.appendChild(cell2);
+        row.appendChild(cell3Div);
         tblBody.appendChild(row);
     }
     table.appendChild(tblBody);
@@ -274,7 +288,7 @@ function buildTasks(allTasks) {
 function fillUpFieldsAfterEdit(json) {
     alert(json.name);
     $("#taskName").val(json.name);
-    alert(""+json.date);
+    alert("" + json.date);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
@@ -314,7 +328,7 @@ $(document).on("pageshow", "#Notifications", function() {
         success: function(data) {
             var json = JSON.parse(data);
             if (json.success == 1) {
-                
+
                 buildNotifications(json.allTasks);
             }
         },
@@ -329,7 +343,7 @@ function buildNotifications(data) {
     for (var i = 6; i >= 0; i--) {
 
         var currentDayLi = document.getElementById("" + i);
-        
+
         if (data[i] == null) {
             $(currentDayLi).hide();
             continue;
@@ -361,9 +375,9 @@ function buildNotifications(data) {
             //            $(div1).attr("class", "ui-btn-inner ui-li");
             //            var div2 = document.createElement("div");
             //            $(div2).attr("class", "ui-btn-text");
-            
+
             for (var j = 0; j < data[i].length; j++) {
-                
+
                 //            var notification = document.createElement("li");
                 //            $(notification).attr("data-corners", "false");
                 //            $(notification).attr("data-shadow", "false");
