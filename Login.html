@@ -116,6 +116,7 @@ and open the template in the editor.
                 }, false);
 
                 function promptLogin() {
+                    $("#face_but").prop("disabled", "disabled");
                     FB.login(
                             function(response) {
                                 if (response.session) {
@@ -130,15 +131,12 @@ and open the template in the editor.
                 }
 
                 function me() {
-                    alert('Welcome!  Fetching your information.... ');
-                    //                FB.api('/me', function(response) {
-                    //                    console.log('Good to see you, ' + response.name + '.');
-                    //                });
+                    //alert('Fetching your information from FB');
                     FB.api(
                             "/me",
                             function(response) {
                                 if (response && !response.error) {
-                                    alert('Good to see you, ' + response.name + '.');
+                                    alert(response.name + ', Fetching your information from FB.');
                                     var gender = (response.gender === null) ? "male" : response.gender;
                                     var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                                     //var location = (response.location.name === null) ? "none" : response.location.name;

@@ -39,10 +39,10 @@ $(document).on("pageshow", "#courseDetails", function() {
             $('#email').text(json.courseDetails.teacherEmail);
             $('.details').hide();
             $('.btn-task').click(function() {
-                $(this).find('.details').slideToggle(500);
+                $(this).find('.details').slideToggle(200);
             });
             if (currentTaskId != "") {
-                $("#" + currentTaskId).find('.details').slideToggle(500);
+                $("#" + currentTaskId).find('.details').slideToggle(200);
                 setCurrentTaskId("");
             }
         },
