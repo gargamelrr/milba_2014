@@ -349,13 +349,11 @@ function buildNotifications(data) {
     for (var i = 6; i >= 0; i--) {
 
         var currentDayLi = document.getElementById("" + i);
-<<<<<<< HEAD
+
         
         if (data[i] == null || data[i].length == 0) {
-=======
 
         if (data[i] == null) {
->>>>>>> b4b6d1d833e401ff6adf9bf46f9e16ad7ce2c09a
             $(currentDayLi).hide();
             continue;
         }
@@ -370,11 +368,11 @@ function buildNotifications(data) {
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
-<<<<<<< HEAD
+
             for (var j = 0; j < data[i].length; j++) {
-                someNotificationsDetector = 1;
+                
                 $("#noNotifications").hide();
-=======
+
             //            var notification = document.createElement("li");
             //            $(notification).attr("data-corners", "false");
             //            $(notification).attr("data-shadow", "false");
@@ -426,7 +424,7 @@ function buildNotifications(data) {
                 //            notification.appendChild(div1);
                 //            currentDayLi.appendChild(notification);
 
->>>>>>> b4b6d1d833e401ff6adf9bf46f9e16ad7ce2c09a
+
                 currentDayLi.innerHTML += data[i][j];
             }
         }
@@ -456,4 +454,3 @@ function monthNumberToString(number) {
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
 }
-
