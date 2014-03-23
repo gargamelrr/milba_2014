@@ -253,7 +253,8 @@ function buildTasks(allTasks) {
                         window.location.href = "index.html";
                     } else {
                         alert("error parsing json");
-                    }
+                    
+                        מ}
                 },
                 error: function() {
                     alert.data(data.message);
@@ -313,9 +314,12 @@ $(document).on("pageshow", "#Notifications", function() {
         method: 'GET',
         success: function(data) {
             var json = JSON.parse(data);
+
             if (json.success == 1) {
-                
+
                 buildNotifications(json.allTasks);
+            } else {
+
             }
         },
         error: function() {
@@ -330,12 +334,10 @@ function buildNotifications(data) {
 
         var currentDayLi = document.getElementById("" + i);
         
-        if (data[i] == null) {
+        if (data[i] == null || data[i].length == 0) {
             $(currentDayLi).hide();
             continue;
         }
-
-        //$('#'+currentDayLi).show();
 
         var currentDate = new Date();
         currentDate.setDate(currentDate.getDate() - i);
@@ -343,65 +345,15 @@ function buildNotifications(data) {
         var currentMonth = monthNumberToString(currentDate.getMonth());
         var currentMonthDay = currentDate.getDate();
         var currentYear = currentDate.getFullYear();
-
         var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
-            //            var notification = document.createElement("li");
-            //            $(notification).attr("data-corners", "false");
-            //            $(notification).attr("data-shadow", "false");
-            //            $(notification).attr("data-iconshadow", "true");
-            //            $(notification).attr("data-wrapperels", "div");
-            //            $(notification).attr("data-icon", "arrow-r");
-            //            $(notification).attr("data-iconpos", "right");
-            //            $(notification).attr("data-theme", "c");
-            //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-            //            var div1 = document.createElement("div");
-            //            $(div1).attr("class", "ui-btn-inner ui-li");
-            //            var div2 = document.createElement("div");
-            //            $(div2).attr("class", "ui-btn-text");
-            
             for (var j = 0; j < data[i].length; j++) {
-                
-                //            var notification = document.createElement("li");
-                //            $(notification).attr("data-corners", "false");
-                //            $(notification).attr("data-shadow", "false");
-                //            $(notification).attr("data-iconshadow", "true");
-                //            $(notification).attr("data-wrapperels", "div");
-                //            $(notification).attr("data-icon", "arrow-r");
-                //            $(notification).attr("data-iconpos", "right");
-                //            $(notification).attr("data-theme", "c");
-                //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-                //            var div1 = document.createElement("div");
-                //            $(div1).attr("class", "ui-btn-inner ui-li");
-                //            var div2 = document.createElement("div");
-                //            $(div2).attr("class", "ui-btn-text");
-                //            var p1 = document.createElement("p");
-                //            $(p1).attr("class","ui-li-desc");
-                //            p1.innerHTML = data[i][j];
-                //            var h2= document.createElement("h2");
-                //            $(p1).attr("class","ui-li-heading");
-                //            var strong = document.createElement("strong");
-                //            //strong.innerHTML = EXTRACT INFO FROM DATA
-                //            h2.appendChild(strong);
-                //            var p2 = document.createElement("p");
-                //            $(p2).attr("class","ui-li-desc");
-                //            //p2.innerHTML = EXTRACT INFO FROM DATA
-                //            div2.appendChild(p1);
-                //            div2.appendChild(h2);
-                //            div2.appendChild(p2);
-                //            var span =  document.createElement("span");
-                //            $(span).attr("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
-                //            span.innerHTML = "&nbsp;"
-                //            div1.appendChild(div2);
-                //            div1.appendChild(span);
-                //            notification.appendChild(div1);
-                //            currentDayLi.appendChild(notification);
-
+                someNotificationsDetector = 1;
+                $("#noNotifications").hide();
                 currentDayLi.innerHTML += data[i][j];
             }
-
         }
     }
 }
