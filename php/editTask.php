@@ -24,6 +24,7 @@ if(mysql_num_rows($result) == 1) {
     $task["name"] = $row["name"];
     $task["date"] = $row["date1"];
     $task["time"] = $row["time1"];
+    $task["difficulty"] = $row["difficulty"];
     $task["description"] = $row["description"];
     
     array_push($response["tasks"], $task);

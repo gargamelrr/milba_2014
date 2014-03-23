@@ -280,7 +280,6 @@ function buildTasks(allTasks) {
             });
         });
 
-
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
         cell3Div.appendChild(cell2);
@@ -296,6 +295,12 @@ function fillUpFieldsAfterEdit(json) {
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
+    if(json.difficulty == 1) {
+        $('#hard').attr('checked', 'checked');
+    }
+    else {
+        $('#easy').attr('checked', 'checked');
+    }
     $(document).load();
 }
 
@@ -347,7 +352,7 @@ $(document).on("pageshow", "#Notifications", function() {
 
 function buildNotifications(data) {
 
-    for (var i = 6; i >= 0; i--) {
+    for (var i = 0; i <= 6; i++) {
 
         var currentDayLi = document.getElementById("" + i);
 
