@@ -104,7 +104,7 @@ and open the template in the editor.
                 <div data-role="popup" id="empty" class="ui-content">
                     <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
                     <p>Your week is empty<br/><br/>Add  some courses<br/>
-                        <a href="Groups.html?action=join" data-role="button" data-theme="a">Add</a>
+                        <a href="Groups.html?b" data-role="button" data-theme="a" onclick="setCurrentCoursePage('join')">Add</a>
                     </p>
                 </div>
             </div>
@@ -113,7 +113,7 @@ and open the template in the editor.
                 $(document).ready(function() {
                     $('.details').hide();
                     $('.ui-btn-text').click(function() {
-                        $(this).find('.details').slideToggle(500);
+                        $(this).find('.details').slideToggle(200);
                     });
 
                     $.ajax({

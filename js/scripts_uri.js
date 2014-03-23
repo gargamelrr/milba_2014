@@ -32,16 +32,17 @@ $(document).on("pageshow", "#courseDetails", function() {
             } else {
                 $("#leave-course").hide();
                 $("#addTask").hide();
+                $('.actions').hide();
             }
             $('#name').text(json.courseDetails.name);
             $('#teac_name').text(json.courseDetails.lecturer);
             $('#email').text(json.courseDetails.teacherEmail);
             $('.details').hide();
             $('.btn-task').click(function() {
-                $(this).find('.details').slideToggle(500);
+                $(this).find('.details').slideToggle(200);
             });
             if (currentTaskId != "") {
-                $("#" + currentTaskId).find('.details').slideToggle(500);
+                $("#" + currentTaskId).find('.details').slideToggle(200);
                 setCurrentTaskId("");
             }
         },
@@ -116,7 +117,18 @@ $(document).on("pageshow", "#courseDetails", function() {
     });
 });
 $(document).on("pageshow", "#courses", function() {
-
+    if (currentCoursePage == "join") {
+        $("#radio-sug").attr("checked", "checked");
+        $("input[name='courses']").checkboxradio("refresh");
+        $("#coursesMy").hide();
+        $("#coursesSug").show();
+    }
+    else {
+        $("#radio-your").attr("checked", "checked");
+        $("input[name='courses']").checkboxradio("refresh");
+        $("#coursesSug").hide();
+        $("#coursesMy").show();
+    }
     $("input[name='courses']").on("change", function() {
         if (this.value == 1) {
             $("#coursesMy").hide();
@@ -130,7 +142,6 @@ $(document).on("pageshow", "#courses", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
-        cache: false,
         success: function(data) {
             var json = JSON.parse(data);
             if (json.success == 1) {
@@ -142,7 +153,8 @@ $(document).on("pageshow", "#courses", function() {
             console.log("error");
         }
     });
-    $('#coursesMy').hide();
+    //$("#coursesMy").hide();
+
 });
 
 function createCoursesButtons(coursesList, div) {
@@ -207,11 +219,14 @@ function buildTasks(allTasks) {
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
         row.appendChild(cell1Div);
+        var cell3Div = document.createElement("div");
+        cell3Div.setAttribute("class", "actions");
+
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
         editLink.href = "";
         editLink.innerHTML = "edit | ";
-        
+
         $(editLink).click(function() {
             $("#editFlag").val($(this).parent().prev().attr('id'));
             $(document).load();
@@ -221,9 +236,9 @@ function buildTasks(allTasks) {
                 data: {
                     id: $(this).parent().prev().attr('id')
                 },
-                success: function(data) {                  
+                success: function(data) {
                     var json = JSON.parse(data)
-                    if(json.success == 1) {
+                    if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
                     } else {
                         alert("error parsing json");
@@ -232,13 +247,13 @@ function buildTasks(allTasks) {
                 error: function() {
                     alert.data(data.message);
                 }
-            }); 
+            });
         });
-        
+
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
-        
+
         $(delLink).click(function() {
             $(document).load();
             $.ajax({
@@ -247,9 +262,9 @@ function buildTasks(allTasks) {
                 data: {
                     id: $(this).parent().prev().attr('id')
                 },
-                success: function(data) {                  
+                success: function(data) {
                     var json = JSON.parse(data)
-                    if(json.success == 1) {
+                    if (json.success == 1) {
                         window.location.href = "index.html";
                     } else {
                         alert("error parsing json");
@@ -259,13 +274,14 @@ function buildTasks(allTasks) {
                 error: function() {
                     alert.data(data.message);
                 }
-            }); 
+            });
         });
-        
-        
+
+
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
-        row.appendChild(cell2);
+        cell3Div.appendChild(cell2);
+        row.appendChild(cell3Div);
         tblBody.appendChild(row);
     }
     table.appendChild(tblBody);
@@ -275,7 +291,7 @@ function buildTasks(allTasks) {
 function fillUpFieldsAfterEdit(json) {
     alert(json.name);
     $("#taskName").val(json.name);
-    alert(""+json.date);
+    alert("" + json.date);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
@@ -333,8 +349,13 @@ function buildNotifications(data) {
     for (var i = 6; i >= 0; i--) {
 
         var currentDayLi = document.getElementById("" + i);
+<<<<<<< HEAD
         
         if (data[i] == null || data[i].length == 0) {
+=======
+
+        if (data[i] == null) {
+>>>>>>> b4b6d1d833e401ff6adf9bf46f9e16ad7ce2c09a
             $(currentDayLi).hide();
             continue;
         }
@@ -349,9 +370,63 @@ function buildNotifications(data) {
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
+<<<<<<< HEAD
             for (var j = 0; j < data[i].length; j++) {
                 someNotificationsDetector = 1;
                 $("#noNotifications").hide();
+=======
+            //            var notification = document.createElement("li");
+            //            $(notification).attr("data-corners", "false");
+            //            $(notification).attr("data-shadow", "false");
+            //            $(notification).attr("data-iconshadow", "true");
+            //            $(notification).attr("data-wrapperels", "div");
+            //            $(notification).attr("data-icon", "arrow-r");
+            //            $(notification).attr("data-iconpos", "right");
+            //            $(notification).attr("data-theme", "c");
+            //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
+            //            var div1 = document.createElement("div");
+            //            $(div1).attr("class", "ui-btn-inner ui-li");
+            //            var div2 = document.createElement("div");
+            //            $(div2).attr("class", "ui-btn-text");
+
+            for (var j = 0; j < data[i].length; j++) {
+
+                //            var notification = document.createElement("li");
+                //            $(notification).attr("data-corners", "false");
+                //            $(notification).attr("data-shadow", "false");
+                //            $(notification).attr("data-iconshadow", "true");
+                //            $(notification).attr("data-wrapperels", "div");
+                //            $(notification).attr("data-icon", "arrow-r");
+                //            $(notification).attr("data-iconpos", "right");
+                //            $(notification).attr("data-theme", "c");
+                //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
+                //            var div1 = document.createElement("div");
+                //            $(div1).attr("class", "ui-btn-inner ui-li");
+                //            var div2 = document.createElement("div");
+                //            $(div2).attr("class", "ui-btn-text");
+                //            var p1 = document.createElement("p");
+                //            $(p1).attr("class","ui-li-desc");
+                //            p1.innerHTML = data[i][j];
+                //            var h2= document.createElement("h2");
+                //            $(p1).attr("class","ui-li-heading");
+                //            var strong = document.createElement("strong");
+                //            //strong.innerHTML = EXTRACT INFO FROM DATA
+                //            h2.appendChild(strong);
+                //            var p2 = document.createElement("p");
+                //            $(p2).attr("class","ui-li-desc");
+                //            //p2.innerHTML = EXTRACT INFO FROM DATA
+                //            div2.appendChild(p1);
+                //            div2.appendChild(h2);
+                //            div2.appendChild(p2);
+                //            var span =  document.createElement("span");
+                //            $(span).attr("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
+                //            span.innerHTML = "&nbsp;"
+                //            div1.appendChild(div2);
+                //            div1.appendChild(span);
+                //            notification.appendChild(div1);
+                //            currentDayLi.appendChild(notification);
+
+>>>>>>> b4b6d1d833e401ff6adf9bf46f9e16ad7ce2c09a
                 currentDayLi.innerHTML += data[i][j];
             }
         }

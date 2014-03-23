@@ -76,27 +76,27 @@ and open the template in the editor.
                 });
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
-                    //alert('auth.login blablabl');
-//                    if (response.status === 'connected') {
-//                        $.ajax({
-//                            //add full 
-//                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
-//                            method: 'POST',
-//                            data: {
-//                                fb_id: response.authResponse.userID
-//                            },
-//                            success: function(data) {
-//                                //alert(data);
-//                                var json = JSON.parse(data);
-//                                if (json.success == 1) {
-//                                    window.location.href = "index.html";
-//                                }
-//                            },
-//                            error: function() {
-//                                alert(data);
-//                            }
-//                        });
-//                    }
+                   //alert(JSON.stringify(response));
+                    if (response.status === 'connected') {
+                        $.ajax({
+                            //add full 
+                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
+                            method: 'POST',
+                            data: {
+                                fb_id: response.authResponse.userId
+                            },
+                            success: function(data) {
+                                //alert(data);
+                                var json = JSON.parse(data);
+                                if (json.success == 1) {
+                                    window.location.href = "index.html";
+                                }
+                            },
+                            error: function() {
+                                alert(data);
+                            }
+                        });
+                    }
 
                 });
 
@@ -116,6 +116,7 @@ and open the template in the editor.
                 }, false);
 
                 function promptLogin() {
+                    $('#face_but').attr("disabled", "disabled");
                     FB.login(
                             function(response) {
                                 if (response.session) {
@@ -130,15 +131,12 @@ and open the template in the editor.
                 }
 
                 function me() {
-                    alert('Welcome!  Fetching your information.... ');
-                    //                FB.api('/me', function(response) {
-                    //                    console.log('Good to see you, ' + response.name + '.');
-                    //                });
+                    //alert('Fetching your information from FB');
                     FB.api(
                             "/me",
                             function(response) {
                                 if (response && !response.error) {
-                                    alert('Good to see you, ' + response.name + '.');
+                                    alert(response.name + ', Fetching your information from FB.');
                                     var gender = (response.gender === null) ? "male" : response.gender;
                                     var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                                     //var location = (response.location.name === null) ? "none" : response.location.name;
