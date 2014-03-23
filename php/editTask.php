@@ -13,7 +13,7 @@ $user_id = $_SESSION["user_id"];
 $idToEdit = $_POST["id"];
 
 $result = mysql_query("Select name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Tasks Where Tasks.index=$idToEdit");
-
+$response["debug"] = $idToEdit;
 $response["tasks"] = array();
 
 if(mysql_num_rows($result) == 1) {

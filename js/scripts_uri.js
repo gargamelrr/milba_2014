@@ -224,20 +224,23 @@ function buildTasks(allTasks) {
 
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
+        $(editLink).attr('id', allTasks[i].index);
         editLink.href = "";
         editLink.innerHTML = "edit | ";
 
         $(editLink).click(function() {
-            $("#editFlag").val($(this).parent().prev().attr('id'));
+            
+            $("#editFlag").val($(this).attr('id'));
             $(document).load();
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/editTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).parent().prev().attr('id')
+                    id: $(this).attr('id')
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
+                    
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
                     } else {
@@ -260,7 +263,7 @@ function buildTasks(allTasks) {
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/deleteTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).parent().prev().attr('id')
+                    id: $(this).prev().attr('id')
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
@@ -290,7 +293,6 @@ function buildTasks(allTasks) {
 
 function fillUpFieldsAfterEdit(json) {
     $("#taskName").val(json.name);
-    alert("" + json.date);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
