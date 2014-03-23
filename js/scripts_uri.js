@@ -268,8 +268,8 @@ function buildTasks(allTasks) {
                         window.location.href = "index.html";
                     } else {
                         alert("error parsing json");
-                    
-                        }
+
+                    }
                 },
                 error: function() {
                     alert.data(data.message);
@@ -351,9 +351,6 @@ function buildNotifications(data) {
         var currentDayLi = document.getElementById("" + i);
 
         if (data[i] == null || data[i].length == 0) {
-
-
-        if (data[i] == null) {
             $(currentDayLi).hide();
             continue;
         }
@@ -369,23 +366,9 @@ function buildNotifications(data) {
 
         for (var j = 0; j <= data[i].length; j++) {
 
-            for (var j = 0; j < data[i].length; j++) {
-                
-                $("#noNotifications").hide();
 
-            //            var notification = document.createElement("li");
-            //            $(notification).attr("data-corners", "false");
-            //            $(notification).attr("data-shadow", "false");
-            //            $(notification).attr("data-iconshadow", "true");
-            //            $(notification).attr("data-wrapperels", "div");
-            //            $(notification).attr("data-icon", "arrow-r");
-            //            $(notification).attr("data-iconpos", "right");
-            //            $(notification).attr("data-theme", "c");
-            //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-            //            var div1 = document.createElement("div");
-            //            $(div1).attr("class", "ui-btn-inner ui-li");
-            //            var div2 = document.createElement("div");
-            //            $(div2).attr("class", "ui-btn-text");
+            $("#noNotifications").hide();
+
 
             for (var j = 0; j < data[i].length; j++) {
 
@@ -430,6 +413,8 @@ function buildNotifications(data) {
         }
     }
 }
+
+
 
 //<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
 //                                <p class="ui-li-desc">A new task added to</p>
