@@ -289,7 +289,6 @@ function buildTasks(allTasks) {
 
 
 function fillUpFieldsAfterEdit(json) {
-    alert(json.name);
     $("#taskName").val(json.name);
     alert("" + json.date);
     $("#date1").val(json.date);
@@ -339,7 +338,7 @@ $(document).on("pageshow", "#Notifications", function() {
             }
         },
         error: function() {
-            alert("weird error");
+            alert("error");
         }
     });
 });
@@ -365,49 +364,8 @@ function buildNotifications(data) {
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
-
-
             $("#noNotifications").hide();
-
-
             for (var j = 0; j < data[i].length; j++) {
-
-                //            var notification = document.createElement("li");
-                //            $(notification).attr("data-corners", "false");
-                //            $(notification).attr("data-shadow", "false");
-                //            $(notification).attr("data-iconshadow", "true");
-                //            $(notification).attr("data-wrapperels", "div");
-                //            $(notification).attr("data-icon", "arrow-r");
-                //            $(notification).attr("data-iconpos", "right");
-                //            $(notification).attr("data-theme", "c");
-                //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-                //            var div1 = document.createElement("div");
-                //            $(div1).attr("class", "ui-btn-inner ui-li");
-                //            var div2 = document.createElement("div");
-                //            $(div2).attr("class", "ui-btn-text");
-                //            var p1 = document.createElement("p");
-                //            $(p1).attr("class","ui-li-desc");
-                //            p1.innerHTML = data[i][j];
-                //            var h2= document.createElement("h2");
-                //            $(p1).attr("class","ui-li-heading");
-                //            var strong = document.createElement("strong");
-                //            //strong.innerHTML = EXTRACT INFO FROM DATA
-                //            h2.appendChild(strong);
-                //            var p2 = document.createElement("p");
-                //            $(p2).attr("class","ui-li-desc");
-                //            //p2.innerHTML = EXTRACT INFO FROM DATA
-                //            div2.appendChild(p1);
-                //            div2.appendChild(h2);
-                //            div2.appendChild(p2);
-                //            var span =  document.createElement("span");
-                //            $(span).attr("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
-                //            span.innerHTML = "&nbsp;"
-                //            div1.appendChild(div2);
-                //            div1.appendChild(span);
-                //            notification.appendChild(div1);
-                //            currentDayLi.appendChild(notification);
-
-
                 currentDayLi.innerHTML += data[i][j];
             }
         }
