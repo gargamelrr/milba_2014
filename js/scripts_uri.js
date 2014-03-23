@@ -269,7 +269,7 @@ function buildTasks(allTasks) {
                     } else {
                         alert("error parsing json");
                     
-                        מ}
+                        }
                 },
                 error: function() {
                     alert.data(data.message);
@@ -350,8 +350,8 @@ function buildNotifications(data) {
 
         var currentDayLi = document.getElementById("" + i);
 
-        
         if (data[i] == null || data[i].length == 0) {
+
 
         if (data[i] == null) {
             $(currentDayLi).hide();
