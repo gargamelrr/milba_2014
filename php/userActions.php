@@ -45,7 +45,20 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 
-$response["debug1"] = mysql_error() . " " . $fb_id;
+if (isset($_POST["friends"])) {
+    
+    $friends_str = "";
+    foreach ($friend as $_POST["friends"]) {
+        $friends_str .= " or " . $friend["id"];
+    }
+
+    $result = mysql_query("select 'index' from Users where fb_id in ($friends_str)");
+    while ($row = mysql_fetch_array($result)) {
+        $_SESSION["friends"][] = $row["index"];
+    }
+}
+
+$response["debug1"] = "select 'index' from Users where fb_id in ($friends_str)";
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 

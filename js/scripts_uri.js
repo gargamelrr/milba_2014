@@ -133,10 +133,12 @@ $(document).on("pageshow", "#courses", function() {
         if (this.value == 1) {
             $("#coursesMy").hide();
             $("#coursesSug").show();
+            $("#newGroup").hide();
         }
         else {
             $("#coursesSug").hide();
             $("#coursesMy").show();
+            $("#newGroup").hide();
         }
     });
     $.ajax({
@@ -161,6 +163,20 @@ function createCoursesButtons(coursesList, div) {
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
+    // button for create new group
+     var subDiv = document.createElement("div");
+    var a = document.createElement("a");
+    a.id = "a";
+    a.href = "";
+    a.onclick = function() {
+        $("#coursesSug").hide();
+        $("#coursesMy").hide();
+        $("#newGroup").show();
+    };
+    a.innerHTML = "Add a Course";
+   
+    subDiv.appendChild(a);
+    mainDiv.appendChild(subDiv);
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
         var a = document.createElement("a");

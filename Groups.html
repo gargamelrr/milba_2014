@@ -21,18 +21,17 @@ and open the template in the editor.
                 <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                 <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
                 <a href="Groups.html?a" data-role="button" data-theme="b" data-icon="plus" onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
                 <a href="Groups.html?b" data-role="button" data-theme="b" data-icon="search" onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
                 <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
             </div>
             <div data-role="content">
-                <form>
+                <form method="post">
                     <br/>
                     <div class="ui-grid-a">
                         <div class="ui-block-a"><input type="search" name="search" id="search-basic" value="" placeholder="Type courses/ teachers/ friends" /></div>
-                        <div class="ui-block-b"><a href="NewGroup.html"  data-role="button" data-inline="true" data-theme="c" >+</a></div>
                     </div>
                     <div id="radio">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -49,6 +48,25 @@ and open the template in the editor.
                     <div class="ui-grid-a" id="coursesSug">
                     </div>
 
+                    <div id="newGroup" style="display: none">
+                        <form id= "insertGroup" method="post">
+                            <label>Course name: </label>
+                            <input type="text" name="courseName" id="courseName" required/>
+                            <label>Teacher name: </label>
+                            <input type="text" name="teacherName" id="teacherName" required/>
+                            <label>Teacher e-mail (optional): </label>
+                            <input type="text" name="teacherEmail" id="teacherEmail" />
+                            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <legend>Course duration:</legend>
+                                <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
+                                <label for="radio-year">All Year</label>
+                                <input type="radio" name="dur" id="radio-sem" value="0">
+                                <label for="radio-sem">Semester</label>
+                            </fieldset>
+                            <br/>
+                            <input type="submit" value="Publish" id="submit"/>
+                        </form>
+                    </div>
 
                 </form>
             </div>
