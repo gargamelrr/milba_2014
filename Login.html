@@ -175,11 +175,13 @@ and open the template in the editor.
                 }
 
                 function friends() {
+                    alert("im here");
                     FB.api(
                             "me/friends",
                             function(response) {
+                                alert(JSON.stringify(response));
+
                                 if (response && !response.error) {
-                                    alert(JSON.stringify(response));
                                     return response.data;
                                 }
                             }
