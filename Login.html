@@ -79,6 +79,7 @@ and open the template in the editor.
                     //alert(JSON.stringify(response));
                     if (response.status === 'connected') {
                         var friendsList = friends();
+                        alert(friendsList);
                         $.ajax({
                             //add full 
                             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -179,6 +180,7 @@ and open the template in the editor.
                             "me/friends",
                             function(response) {
                                 if (response && !response.error) {
+                                    alert(response.data);
                                     return response.data;
                                 }
                             }
