@@ -240,20 +240,23 @@ function buildTasks(allTasks) {
 
         var cell2 = document.createElement("td");
         var editLink = document.createElement("a");
+        $(editLink).attr('id', allTasks[i].index);
         editLink.href = "";
         editLink.innerHTML = "edit | ";
 
         $(editLink).click(function() {
-            $("#editFlag").val($(this).parent().prev().attr('id'));
+            
+            $("#editFlag").val($(this).attr('id'));
             $(document).load();
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/editTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).parent().prev().attr('id')
+                    id: $(this).attr('id')
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
+                    
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
                     } else {
@@ -276,7 +279,7 @@ function buildTasks(allTasks) {
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/deleteTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).parent().prev().attr('id')
+                    id: $(this).prev().attr('id')
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
@@ -293,7 +296,6 @@ function buildTasks(allTasks) {
             });
         });
 
-
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
         cell3Div.appendChild(cell2);
@@ -305,12 +307,16 @@ function buildTasks(allTasks) {
 
 
 function fillUpFieldsAfterEdit(json) {
-    alert(json.name);
     $("#taskName").val(json.name);
-    alert("" + json.date);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
+    if(json.difficulty == 1) {
+        $('#hard').attr('checked', 'checked');
+    }
+    else {
+        $('#easy').attr('checked', 'checked');
+    }
     $(document).load();
 }
 
@@ -355,14 +361,14 @@ $(document).on("pageshow", "#Notifications", function() {
             }
         },
         error: function() {
-            alert("weird error");
+            alert("error");
         }
     });
 });
 
 function buildNotifications(data) {
 
-    for (var i = 6; i >= 0; i--) {
+    for (var i = 0; i <= 6; i++) {
 
         var currentDayLi = document.getElementById("" + i);
 
@@ -381,49 +387,8 @@ function buildNotifications(data) {
         currentDayLi.innerHTML = finalDateToDisplay;
 
         for (var j = 0; j <= data[i].length; j++) {
-
-
             $("#noNotifications").hide();
-
-
             for (var j = 0; j < data[i].length; j++) {
-
-                //            var notification = document.createElement("li");
-                //            $(notification).attr("data-corners", "false");
-                //            $(notification).attr("data-shadow", "false");
-                //            $(notification).attr("data-iconshadow", "true");
-                //            $(notification).attr("data-wrapperels", "div");
-                //            $(notification).attr("data-icon", "arrow-r");
-                //            $(notification).attr("data-iconpos", "right");
-                //            $(notification).attr("data-theme", "c");
-                //            $(notification).attr("class", "ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c");
-                //            var div1 = document.createElement("div");
-                //            $(div1).attr("class", "ui-btn-inner ui-li");
-                //            var div2 = document.createElement("div");
-                //            $(div2).attr("class", "ui-btn-text");
-                //            var p1 = document.createElement("p");
-                //            $(p1).attr("class","ui-li-desc");
-                //            p1.innerHTML = data[i][j];
-                //            var h2= document.createElement("h2");
-                //            $(p1).attr("class","ui-li-heading");
-                //            var strong = document.createElement("strong");
-                //            //strong.innerHTML = EXTRACT INFO FROM DATA
-                //            h2.appendChild(strong);
-                //            var p2 = document.createElement("p");
-                //            $(p2).attr("class","ui-li-desc");
-                //            //p2.innerHTML = EXTRACT INFO FROM DATA
-                //            div2.appendChild(p1);
-                //            div2.appendChild(h2);
-                //            div2.appendChild(p2);
-                //            var span =  document.createElement("span");
-                //            $(span).attr("class", "ui-icon ui-icon-arrow-r ui-icon-shadow");
-                //            span.innerHTML = "&nbsp;"
-                //            div1.appendChild(div2);
-                //            div1.appendChild(span);
-                //            notification.appendChild(div1);
-                //            currentDayLi.appendChild(notification);
-
-
                 currentDayLi.innerHTML += data[i][j];
             }
         }
