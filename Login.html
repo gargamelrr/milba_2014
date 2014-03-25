@@ -78,7 +78,17 @@ and open the template in the editor.
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
                     //alert(JSON.stringify(response));
                     if (response.status === 'connected') {
-                        var friendsList = friends();
+                        //var friendsList = friends();
+                         FB.api(
+                            "me/friends",
+                            function(response1) {
+                                alert(JSON.stringify(response1));
+
+                                if (response1 && !response1.error) {
+                                    friendsList = response1.data;
+                                }
+                            }
+                    );
                         $.ajax({
                             //add full 
                             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -175,7 +185,6 @@ and open the template in the editor.
                 }
 
                 function friends() {
-                    alert("im here");
                     FB.api(
                             "me/friends",
                             function(response) {
