@@ -355,6 +355,7 @@ $(document).on("pageshow", "#addCourse", function() {
 
 
 $(document).on("pageshow", "#Notifications", function() {
+    uriFriends();
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
@@ -420,6 +421,18 @@ function dayNumberToString(number)
     weekday[6] = "Saturday";
     return weekday[number];
 }
+
+function uriFriends() {
+                    FB.api('/me/friends', function(response) {
+                        if(response.data) {
+                            $.each(response.data,function(index,friend) {
+                                alert(friend.name + ' has id:' + friend.id);
+                            });
+                        } else {
+                            alert("Erroooor!");
+                        }
+                    });
+                }
 
 function monthNumberToString(number) 
 {

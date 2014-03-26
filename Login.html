@@ -173,7 +173,6 @@ and open the template in the editor.
                             });
                         }
                     });
-                    uriFriends();
                 }
 
                 function friends() {
@@ -191,17 +190,7 @@ and open the template in the editor.
                     return "";
                 }
                     
-                function uriFriends() {
-                    FB.api('/me/friends', function(response) {
-                        if(response.data) {
-                            $.each(response.data,function(index,friend) {
-                                alert(friend.name + ' has id:' + friend.id);
-                            });
-                        } else {
-                            alert("Error!");
-                        }
-                    });
-                }
+                
             </script>
         </div>
         
