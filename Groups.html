@@ -41,28 +41,36 @@ and open the template in the editor.
                             <label for="radio-your">Your courses</label>
                         </fieldset>
                     </div>
+                    <div data-role="tabs" id="tabs">
+                        <div data-role="navbar">
+                            <ul>
+                                <li><a href="#coursesSug" data-ajax="false">Suggested courses</a></li>
+                                <li><a href="#coursesMy" data-ajax="false">Your courses</a></li>
+                            </ul>
+                        </div>
 
-                    <div class="ui-grid-a" id="coursesMy">
-                    </div>
+                        <div class="ui-grid-a tablist-content" id="coursesMy">
+                        </div>
 
-                    <div class="ui-grid-a" id="coursesSug">
+                        <div class="ui-grid-a tablist-content" id="coursesSug">
+                        </div>
                     </div>
 
                     <div id="newGroup" style="display: none">
-                        <form id= "insertGroup" method="post">
-                            <label>Course name: </label>
-                            <input type="text" name="courseName" id="courseName" required/>
-                            <label>Teacher name: </label>
-                            <input type="text" name="teacherName" id="teacherName" required/>
-                            <label>Teacher e-mail (optional): </label>
-                            <input type="text" name="teacherEmail" id="teacherEmail" />
-                            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <legend>Course duration:</legend>
-                                <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
-                                <label for="radio-year">All Year</label>
-                                <input type="radio" name="dur" id="radio-sem" value="0">
-                                <label for="radio-sem">Semester</label>
-                            </fieldset>
+                        <form id="insertGroup" method="post">
+                            <input type="text" name="courseName" id="courseName" placeholder="Course name" required/>
+                            <input type="text" name="teacherName" id="teacherName" placeholder="Teacher's name" required/>
+                            <input type="text" name="teacherEmail" id="teacherEmail" placeholder="Teacher's e-mail"/>
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
+                                    <label for="radio-year"  data-role="none">All Year</label>
+                                </div>
+                                <div class="ui-block-b">
+                                    <input type="radio" name="dur" id="radio-sem" value="0">
+                                    <label for="radio-sem"  data-role="none">Semester</label>
+                                </div>
+                            </div>
                             <br/>
                             <input type="submit" value="Publish" id="submit"/>
                         </form>
