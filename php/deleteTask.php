@@ -31,7 +31,7 @@ if(mysql_num_rows($result) == 1) {
 
 
 if (mysql_affected_rows() > 0) {
-    $insertion = mysql_query("Insert into Events(`course_id`, `msg`) Values ('$courseID', 'The task $name was deleted from $courseName')");
+    $insertion = mysql_query("Insert into Events(`course_id`, `msg`) Values ('$courseID', 'The task $name was deleted')");
     if (mysql_affected_rows() > 0) {
         $response["success"] = 1;
     } else {

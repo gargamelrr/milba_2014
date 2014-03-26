@@ -1,6 +1,7 @@
 var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
+
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
 }
@@ -22,9 +23,11 @@ $(document).on("pageshow", "#courseDetails", function() {
         },
         success: function(data) {
             var json = JSON.parse(data);
+            
             if (json.success == 1) {
                 buildTasks(json.allTasks);
             }
+            
             if (json.is_user == "1") {
                 $("#join-course").hide();
                 $("#addTask").show();
@@ -116,7 +119,9 @@ $(document).on("pageshow", "#courseDetails", function() {
         });
     });
 });
+
 $(document).on("pageshow", "#courses", function() {
+    
     if (currentCoursePage == "join") {
         $("#radio-sug").attr("checked", "checked");
         $("input[name='courses']").checkboxradio("refresh");
@@ -156,10 +161,14 @@ $(document).on("pageshow", "#courses", function() {
         }
     });
     //$("#coursesMy").hide();
-
 });
 
+function getFriends() {
+    
+}
+
 function createCoursesButtons(coursesList, div) {
+    
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
@@ -211,7 +220,6 @@ function reformatDate(date)
 }
 
 function buildTasks(allTasks) {
-
     var table = document.getElementById("tasks-table-custom");
     table.innerHTML = "";
     var tblBody = document.createElement("tbody");
@@ -305,19 +313,19 @@ function buildTasks(allTasks) {
     table.appendChild(tblBody);
 }
 
-
 function fillUpFieldsAfterEdit(json) {
+    
     $("#taskName").val(json.name);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
     if(json.difficulty == 1) {
-        $('#hard').attr('checked', 'checked');
+        $('#hard').attr('checked', 'checked');   
     }
     else {
         $('#easy').attr('checked', 'checked');
     }
-    $(document).load();
+    $("input[name='radiodifficulty']").checkboxradio("refresh");
 }
 
 $(document).on("pageshow", "#addCourse", function() {
@@ -367,7 +375,6 @@ $(document).on("pageshow", "#Notifications", function() {
 });
 
 function buildNotifications(data) {
-
     for (var i = 0; i <= 6; i++) {
 
         var currentDayLi = document.getElementById("" + i);
@@ -376,7 +383,7 @@ function buildNotifications(data) {
             $(currentDayLi).hide();
             continue;
         }
-
+       
         var currentDate = new Date();
         currentDate.setDate(currentDate.getDate() - i);
         var currentDay = dayNumberToString(currentDate.getDay());
@@ -394,8 +401,6 @@ function buildNotifications(data) {
         }
     }
 }
-
-
 
 //<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
 //                                <p class="ui-li-desc">A new task added to</p>
@@ -416,7 +421,8 @@ function dayNumberToString(number)
     return weekday[number];
 }
 
-function monthNumberToString(number) {
+function monthNumberToString(number) 
+{
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
 }
