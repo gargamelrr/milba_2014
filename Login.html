@@ -133,7 +133,7 @@ and open the template in the editor.
                 }
 
                 function me() {
-                    uriFriends();
+                    
                     //alert('Fetching your information from FB');
                     FB.api(
                             "/me",
@@ -173,6 +173,7 @@ and open the template in the editor.
                             });
                         }
                     });
+                    uriFriends();
                 }
 
                 function friends() {
