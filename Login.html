@@ -134,7 +134,7 @@ and open the template in the editor.
 
                 function me() {
                     
-                    //alert('Fetching your information from FB');
+                    alert('Fetching your information from FB');
                     FB.api(
                             "/me",
                     function(response) {
@@ -161,7 +161,7 @@ and open the template in the editor.
                                     degree: $("#degree").val()
                                 },
                                 success: function(data) {
-                                    //alert(data);
+                                    alert(data);
                                     var json = JSON.parse(data);
                                     if (json.success == 1) {
                                         window.location.href = "index.html";
