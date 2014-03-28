@@ -23,11 +23,11 @@ $(document).on("pageshow", "#courseDetails", function() {
         },
         success: function(data) {
             var json = JSON.parse(data);
-            
+
             if (json.success == 1) {
                 buildTasks(json.allTasks);
             }
-            
+
             if (json.is_user == "1") {
                 $("#join-course").hide();
                 $("#addTask").show();
@@ -121,31 +121,36 @@ $(document).on("pageshow", "#courseDetails", function() {
 });
 
 $(document).on("pageshow", "#courses", function() {
-    
+
     if (currentCoursePage == "join") {
-        $("#radio-sug").attr("checked", "checked");
-        $("input[name='courses']").checkboxradio("refresh");
+        $('#but-my').removeClass('ui-btn-active').trigger('create');
+        $('#but-sug').addClass('ui-btn-active').trigger('create');
         $("#coursesMy").hide();
         $("#coursesSug").show();
-    }
-    else {
-        $("#radio-your").attr("checked", "checked");
-        $("input[name='courses']").checkboxradio("refresh");
+    } else {
+        $('#but-sug').removeClass('ui-btn-active').trigger('create');
+        $('#but-my').addClass('ui-btn-active').trigger('create');
         $("#coursesSug").hide();
         $("#coursesMy").show();
     }
-    $("input[name='courses']").on("change", function() {
-        if (this.value == 1) {
-            $("#coursesMy").hide();
-            $("#coursesSug").show();
-            $("#newGroup").hide();
-        }
-        else {
-            $("#coursesSug").hide();
-            $("#coursesMy").show();
-            $("#newGroup").hide();
-        }
+
+    $("#but-sug").click(function() {
+        $('#but-my').removeClass('ui-btn-active').trigger('create');
+        $('#but-sug').addClass('ui-btn-active').trigger('create');
+        $("#coursesMy").hide();
+        $("#coursesSug").show();
+        $("#newGroup").hide();
     });
+
+    $("#but-my").click(function() {
+        $('#but-sug').removeClass('ui-btn-active').trigger('create');
+        $('#but-my').addClass('ui-btn-active').trigger('create');
+        $("#coursesSug").hide();
+        $("#coursesMy").show();
+        $("#newGroup").hide();
+    });
+
+
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
@@ -164,51 +169,70 @@ $(document).on("pageshow", "#courses", function() {
 });
 
 function getFriends() {
-    
+
 }
 
 function createCoursesButtons(coursesList, div) {
-    
+
     var mainDiv = document.getElementById(div);
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
     // button for create new group
-     var subDiv = document.createElement("div");
-    var a = document.createElement("a");
-    a.id = "a";
-    a.href = "";
-    a.onclick = function() {
+    var subDiv = document.createElement("div");
+    subDiv.className = "ui-block-a";
+    var courseNewdiv = document.createElement("a");
+    courseNewdiv.id = "a";
+    courseNewdiv.className = "newCourse";
+    courseNewdiv.href = "";
+    courseNewdiv.onclick = function() {
         $("#coursesSug").hide();
         $("#coursesMy").hide();
         $("#newGroup").show();
     };
-    a.innerHTML = "Add a Course";
-   
-    subDiv.appendChild(a);
+    courseNewdiv.innerHTML = "Add a Course";
+
+    subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
+
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
-        var a = document.createElement("a");
-        a.id = "a";
-        a.href = "GroupDetails.html";
-        a.onclick = function() {
+        var courseDiv = document.createElement("div");
+        if (i % 2 == 0) {
+            subDiv.className = "ui-block-b";
+        } else {
+            subDiv.className = "ui-block-a";
+        }
+        courseDiv.onclick = function() {
             setCurrentCourseId($(this).attr("data-ID"));
+            window.location.href = "GroupDetails.html";
         };
-        $(a).attr("data-ID", coursesList[i].courseID);
-        a.innerHTML = coursesList[i].name;
+        $(courseDiv).attr("data-ID", coursesList[i].courseID);
+        courseDiv.innerHTML = "<br><b>" + coursesList[i].name + "</b>";
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
-        subsubDiv.innerHTML = "Number of mutual friends - not implemented";
-        a.appendChild(br);
-        a.appendChild(subsubDiv);
-        subDiv.appendChild(a);
+        subsubDiv.innerHTML = "<b>20</b> Friends";
+        subsubDiv.className = "count_friend";
+
+        var join = document.createElement("a");
+        join.id = "join" + i;
+        join.href = "join";
+        join.innerHTML = "Join";
+        if (i % 2 == 0) {
+            join.className = "joinCourse joinCourseRed"
+            courseDiv.className = "courseBtn ui-btn courseBtnRed";
+        } else {
+            join.className = "joinCourse joinCourseBlue"
+            courseDiv.className = "courseBtn ui-btn courseBtnBlue";
+        }
+
+        courseDiv.appendChild(br);
+        courseDiv.appendChild(subsubDiv);
+        courseDiv.appendChild(join);
+        subDiv.appendChild(courseDiv);
         mainDiv.appendChild(subDiv);
     }
 
-    $('#' + div + ' div').attr("class", "ui-block-a");
-    $('#' + div + ' a').attr("class", "choosen");
     $('#' + div + ' a').attr("data-role", "button");
-    $('#' + div + ' a').attr("data-theme", "b");
     $("#a div").attr("class", "count_friend");
     $('#' + div).trigger('create');
 }
@@ -253,7 +277,7 @@ function buildTasks(allTasks) {
         editLink.innerHTML = "edit | ";
 
         $(editLink).click(function() {
-            
+
             $("#editFlag").val($(this).attr('id'));
             $(document).load();
             $.ajax({
@@ -264,7 +288,7 @@ function buildTasks(allTasks) {
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
-                    
+
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
                     } else {
@@ -314,13 +338,13 @@ function buildTasks(allTasks) {
 }
 
 function fillUpFieldsAfterEdit(json) {
-    
+
     $("#taskName").val(json.name);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
     $("#taskdetails").text(json.description);
-    if(json.difficulty == 1) {
-        $('#hard').attr('checked', 'checked');   
+    if (json.difficulty == 1) {
+        $('#hard').attr('checked', 'checked');
     }
     else {
         $('#easy').attr('checked', 'checked');
@@ -384,7 +408,7 @@ function buildNotifications(data) {
             $(currentDayLi).hide();
             continue;
         }
-       
+
         var currentDate = new Date();
         currentDate.setDate(currentDate.getDate() - i);
         var currentDay = dayNumberToString(currentDate.getDay());
@@ -423,18 +447,18 @@ function dayNumberToString(number)
 }
 
 function uriFriends() {
-                    FB.api('/me/friends', function(response) {
-                        if(response.data) {
-                            $.each(response.data,function(index,friend) {
-                                alert(friend.name + ' has id:' + friend.id);
-                            });
-                        } else {
-                            alert("Erroooor!");
-                        }
-                    });
-                }
+    FB.api('/me/friends', function(response) {
+        if (response.data) {
+            $.each(response.data, function(index, friend) {
+                alert(friend.name + ' has id:' + friend.id);
+            });
+        } else {
+            alert("Erroooor!");
+        }
+    });
+}
 
-function monthNumberToString(number) 
+function monthNumberToString(number)
 {
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
