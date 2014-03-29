@@ -142,25 +142,42 @@ input.ui-input-text {
     font-weight: normal;
 }
 
-/*input[type="checkbox"] {
-    display:none;
+input[type="radio"] {
+    display: none;
 }
-input[type="checkbox"] + label span {
-    display:inline-block;
-    width:19px;
-    height:19px;
-    margin:-1px 4px 0 0;
-    vertical-align:middle;
-    background:url(check_radio_sheet.png) left top no-repeat;
-    cursor:pointer;
+.ui-radio label {
+    height:56px;
+    line-height: 56px;
+    padding-left: 50px;
 }
-input[type="checkbox"]:checked + label span {
-    background:url(check_radio_sheet.png) -19px top no-repeat;
-}*/
+.ui-radio .ui-btn.ui-radio-off:after {
+    background-image: none;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #6E7983;
+    margin-top: -13px;
+}
+.ui-radio .ui-btn.ui-radio-on:after {
+    background-color: #86D51C;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    margin-left: 10px;
+    border: 0;
+}
+.ui-radio .ui-btn.ui-radio-on:before {
+    content:"";
+    position: absolute;
+    display: block;
+    border: 2px solid #6E7983;
+    border-radius: 50%;
+    background-color: transparent;
+    width: 26px;
+    height: 26px;
+    margin-top: 14px;
+    margin-left: -39px;
+}
 
-.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon{
-    background-color: #767b87;
-}
 
 #newGroup .ui-btn-up-c, #newGroup .ui-btn-hover-c {
     border: 0;
@@ -169,10 +186,6 @@ input[type="checkbox"]:checked + label span {
     text-shadow: none;
 
 }
-.ui-checkbox .ui-btn, .ui-radio .ui-btn{
-    z-index: 2;
-}
-
 
 
 #coursesMy,#coursesSug, #newGroup{
@@ -184,9 +197,6 @@ input[type="checkbox"]:checked + label span {
     color:white;
 }
 
-.ui-radio .ui-btn-inner{
-    border:0;
-}
 
 #newGroup .ui-btn-inner{
     border-top:none;
@@ -291,8 +301,8 @@ input[type="checkbox"]:checked + label span {
 }
 
 .joinCourseRed{
-    border:1px solid #ff954b;
-    color:#ff954b;
+    border:1px solid #fd4646;
+    color:#fd4646;
 }
 
 .joinCourseBlue{

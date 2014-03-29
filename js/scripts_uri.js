@@ -165,11 +165,33 @@ $(document).on("pageshow", "#courses", function() {
             console.log("error");
         }
     });
+
     //$("#coursesMy").hide();
 });
 
 function getFriends() {
 
+}
+
+function joinCourse(id) {
+    $.ajax({
+        //add full 
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
+        method: 'GET',
+        data: {
+            action: "join",
+            courseID: id
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+            if (json.success == 0) {
+                $.mobile.changePage("Groups.html");
+            }
+        },
+        error: function() {
+            alert(data.message);
+        }
+    });
 }
 
 function createCoursesButtons(coursesList, div) {
@@ -204,7 +226,7 @@ function createCoursesButtons(coursesList, div) {
         }
         courseDiv.onclick = function() {
             setCurrentCourseId($(this).attr("data-ID"));
-            window.location.href = "GroupDetails.html";
+            $.mobile.changePage("GroupDetails.html");
         };
         $(courseDiv).attr("data-ID", coursesList[i].courseID);
         courseDiv.innerHTML = "<br><b>" + coursesList[i].name + "</b>";
@@ -214,9 +236,19 @@ function createCoursesButtons(coursesList, div) {
         subsubDiv.className = "count_friend";
 
         var join = document.createElement("a");
-        join.id = "join" + i;
-        join.href = "join";
-        join.innerHTML = "Join";
+        join.id = coursesList[i].courseID;
+        if (div != "coursesMy") {
+            join.onclick = function() {
+                joinCourse(this.id);
+            }
+            join.innerHTML = "Join";
+        } else {
+            join.onclick = function() {
+                newSheet(this.id);
+            }
+            join.innerHTML = "Add a Sheet";
+        }
+
         if (i % 2 == 0) {
             join.className = "joinCourse joinCourseRed"
             courseDiv.className = "courseBtn ui-btn courseBtnRed";
@@ -224,7 +256,6 @@ function createCoursesButtons(coursesList, div) {
             join.className = "joinCourse joinCourseBlue"
             courseDiv.className = "courseBtn ui-btn courseBtnBlue";
         }
-
         courseDiv.appendChild(br);
         courseDiv.appendChild(subsubDiv);
         courseDiv.appendChild(join);
