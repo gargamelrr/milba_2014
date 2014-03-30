@@ -169,9 +169,7 @@ $(document).on("pageshow", "#courses", function() {
     //$("#coursesMy").hide();
 });
 
-function getFriends() {
 
-}
 
 function joinCourse(id) {
     $.ajax({

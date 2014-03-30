@@ -44,12 +44,13 @@ if (mysql_num_rows($result) > 0) {
 $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
+$_SESSION["school"] = $school_id;
 
 if (isset($_POST["friends"])) {
     
     $friends_str = "";
     foreach ($friend as $_POST["friends"]) {
-        $friends_str .= " or " . $friend["id"];
+        $friends_str .= ", " . $friend["id"];
     }
 
     $result = mysql_query("select 'index' from Users where fb_id in ($friends_str)");
