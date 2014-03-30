@@ -36,7 +36,7 @@ and open the template in the editor.
                     </select>
                     <br/>
                     <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
-                     <button onclick="Friends()">Friends of Facebook</button>
+                     
                     <!--<button onclick="me()">Facebook test</button>-->
                     
                     <input type="hidden" value="" id="institue-hi"/>
@@ -176,23 +176,7 @@ and open the template in the editor.
                     });
                 }
 
-                function Friends() {
-                    FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
-                        if (response.error) {
-                            alert(JSON.stringify(response.error));
-                        } else {
-                            var data = document.getElementById('data');
-                            fdata=response.data;
-                            console.log("fdata: "+fdata);
-                            var x = "";
-                            response.data.forEach(function(item) {
-                                x = x + item.id + item.name + "\n";
-                                
-                            });
-                            alert(x);
-                        }
-                    });
-                }
+                
                     
                 
             </script>
