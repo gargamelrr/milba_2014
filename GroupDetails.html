@@ -72,6 +72,7 @@ and open the template in the editor.
                     </div>
                     <br/><br/>
                     <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
+                     <button onclick="Friends()">Friends of Facebook</button>
                     <div data-role="popup" id="leave">
                         <p>Are you sure you want to leave this course?<p>
                         <div data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -89,5 +90,25 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+       
+        <script>
+            function Friends() {
+                    FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
+                        if (response.error) {
+                            alert(JSON.stringify(response.error));
+                        } else {
+                            var data = document.getElementById('data');
+                            fdata=response.data;
+                            console.log("fdata: "+fdata);
+                            var x = "";
+                            response.data.forEach(function(item) {
+                                x = x + item.id + item.name + "\n";
+                                
+                            });
+                            alert(x);
+                        }
+                    });
+                }
+            </script> 
     </body>
 </html>

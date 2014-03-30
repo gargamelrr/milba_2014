@@ -68,25 +68,6 @@ and open the template in the editor.
                 </form>
             </div>
         </div>
-        <button onclick="Friends()">Friends of Facebook</button>
-        <script>
-            function Friends() {
-                    FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
-                        if (response.error) {
-                            alert(JSON.stringify(response.error));
-                        } else {
-                            var data = document.getElementById('data');
-                            fdata=response.data;
-                            console.log("fdata: "+fdata);
-                            var x = "";
-                            response.data.forEach(function(item) {
-                                x = x + item.id + item.name + "\n";
-                                
-                            });
-                            alert(x);
-                        }
-                    });
-                }
-            </script> 
+        
     </body>
 </html>
