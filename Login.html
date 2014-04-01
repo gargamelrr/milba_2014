@@ -65,7 +65,7 @@ and open the template in the editor.
                 });
 
                 FB.Event.subscribe('auth.logout', function(response) {
-                    console.log('auth.logout event');
+                    alert('auth.logout event');
                 });
 
                 FB.Event.subscribe('auth.sessionChange', function(response) {
@@ -73,7 +73,7 @@ and open the template in the editor.
                 });
 
                 FB.Event.subscribe('auth.statusChange', function(response) {
-                    console.log('auth.statusChange event');
+                   alert('auth.statusChange event');
                 });
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
