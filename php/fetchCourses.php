@@ -26,7 +26,7 @@ $friends_str = substr($friends_str, 1);
 //$response["ddesdfbugg"] = "SELECT name, course_id FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Users.school_id = $user_school ";
 $result_my = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=$user_id");
 
-$result_else = mysql_query("SELECT name, Courses.index FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Users.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id)");
+$result_else = mysql_query("SELECT name, Courses.index,count(*) as num_fri FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Courses.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id) group by name");
 if (mysql_num_rows($result_my) > 0) {
 
     $response["userCourses"] = array();
@@ -35,6 +35,7 @@ if (mysql_num_rows($result_my) > 0) {
         $course = array();
         $course["name"] = $row["name"];
         $course["courseID"] = $row["course_id"];
+        $course["count"] = 0;
         array_push($response["userCourses"], $course);
     }
 
@@ -53,6 +54,7 @@ while ($row = mysql_fetch_array($result_else)) {
     $course = array();
     $course["name"] = $row["name"];
     $course["courseID"] = $row["index"];
+    $course["count"] = $row["num_fri"];
     array_push($response["courses"], $course);
 }
 

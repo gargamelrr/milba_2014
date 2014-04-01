@@ -231,7 +231,7 @@ function createCoursesButtons(coursesList, div) {
         courseDiv.innerHTML = "<br><b>" + coursesList[i].name + "</b>";
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
-        subsubDiv.innerHTML = "<b>20</b> Friends";
+        subsubDiv.innerHTML = "<b>" + coursesList[i].count +  "</b> Friends";
         subsubDiv.className = "count_friend";
 
         var join = document.createElement("a");
