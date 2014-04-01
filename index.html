@@ -124,6 +124,7 @@ and open the template in the editor.
                             //todo
                         },
                         success: function(data) {
+                            alert(data);
                             var json = JSON.parse(data);
                             var day = 0;
                             $.each(json.data, function(i, val) {
