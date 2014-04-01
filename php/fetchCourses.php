@@ -7,7 +7,12 @@ $db = new DB_CONNECT();
 if( !isset( $_SESSION ) ){
     session_start();
 }
-$response["debug"] = $_SESSION["user_id"];
+
+$_SESSION["user"] = "ronnytest188@gmail.com";
+$_SESSION["name"] = "Ronny";
+$_SESSION["user_id"] = 19;
+$_SESSION["school"] = 2;
+$_SESSION["friends"] = array(16,17,20);
 
 $user_id = $_SESSION["user_id"];
 $user_school = $_SESSION["school"];
@@ -21,7 +26,7 @@ foreach ($_SESSION["friends"] as $friend) {
 //$response["ddesdfbugg"] = "SELECT name, course_id FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Users.school_id = $user_school ";
 $result_my = mysql_query("SELECT name, course_id FROM `Courses` , `Users_Courses` where Users_Courses.course_id = Courses.index and student_id=$user_id");
 
-$result_else = mysql_query("SELECT name, course_id FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Users.school_id = $user_school ");
+$result_else = mysql_query("SELECT name, Courses.index FROM Courses, Users_Courses, Users where Users.index=Users_Courses.student_id and Users_Courses.course_id = Courses.index and Users_Courses.student_id in ($friends_str) and Users.school_id = $user_school ");
 if (mysql_num_rows($result_my) > 0) {
 
     $response["userCourses"] = array();

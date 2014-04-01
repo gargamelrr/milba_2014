@@ -61,7 +61,7 @@ if (isset($_POST["friends"])) {
     }
 }
 
-//$response["debug1"] = var_dump($_SESSION);
+$response["debug1"] = $_SESSION["user_id"];
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 

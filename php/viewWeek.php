@@ -9,11 +9,14 @@ $db = new DB_CONNECT;
 if( !isset( $_SESSION ) ){
     session_start();
 }
-$response["debug"] = $_SESSION["user_id"];
 
-if ($_SESSION["user_id"] == "") {
-    $_SESSION["user_id"] = 1;
-}
+$_SESSION["user"] = "ronnytest188@gmail.com";
+$_SESSION["name"] = "Ronny";
+$_SESSION["user_id"] = 19;
+$_SESSION["school"] = 2;
+$_SESSION["friends"] = array(16,17,20);
+
+
 $user_id = $_SESSION["user_id"];
 $courses_str = "";
 $courses_str_or = "";
