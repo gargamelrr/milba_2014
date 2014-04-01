@@ -135,7 +135,7 @@ and open the template in the editor.
 
                 function me() {
                     
-                    alert('Fetching your information from FB');
+                    //alert('Fetching your information from FB');
                     FB.api(
                             "/me",
                     function(response) {
@@ -178,7 +178,9 @@ and open the template in the editor.
                 }
                 
                 function friends() {
+                    alert("im in");
                     FB.api('/me/friends', { fields: 'id' },  function(response) {
+                        
                         alert(JSON.stringify(response));
                         if (response.error) {
                             return response.error;
