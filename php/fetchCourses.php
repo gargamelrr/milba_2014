@@ -7,7 +7,7 @@ $db = new DB_CONNECT();
 if( !isset( $_SESSION ) ){
     session_start();
 }
-$response["debug"] = $_SESSION["user_id"];
+
 
 $user_id = $_SESSION["user_id"];
 $user_school = $_SESSION["school"];

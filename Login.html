@@ -166,9 +166,12 @@ and open the template in the editor.
                                             degree: $("#degree").val()
                                         },
                                         success: function(data) {
-                                            alert(data);
+                                            //alert(data);
+                                            alert("dsad12as");
                                             var json = JSON.parse(data);
                                             if (json.success == 1) {
+                                            
+                                                alert(json.cookieData);
                                                 window.location.href = "index.html";
                                             }
                                         },
