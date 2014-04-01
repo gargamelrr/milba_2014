@@ -144,7 +144,7 @@ and open the template in the editor.
                             var gender = (response.gender === null) ? "male" : response.gender;
                             var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                             //var location = (response.location.name === null) ? "none" : response.location.name;
-                            //var friendsList = friends();
+                            var friendsList = friends();
                             $.ajax({
                                 //add full 
                                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -156,7 +156,7 @@ and open the template in the editor.
                                     sex: gender,
                                     birthday: bday,
                                     location: "israel",
-                                   // friends: friendsList,
+                                    friends: friendsList,
                                     email: response.email,
                                     year: $("#year").val(),
                                     degree: $("#degree").val()
@@ -177,8 +177,9 @@ and open the template in the editor.
                     });
                 }
                 
-                function Friends() {
+                function friends() {
                     FB.api('/me/friends', { fields: 'id' },  function(response) {
+                        alert(JSON.stringify(response));
                         if (response.error) {
                             return response.error;
                         } else {

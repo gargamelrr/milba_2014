@@ -408,7 +408,7 @@ $(document).on("pageshow", "#addCourse", function() {
 
 
 $(document).on("pageshow", "#Notifications", function() {
-    uriFriends();
+    //uriFriends();
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
