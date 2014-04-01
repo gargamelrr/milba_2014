@@ -60,6 +60,21 @@ and open the template in the editor.
 
 
 
+                document.addEventListener('deviceready', function() {
+                    try {
+
+                        FB.init({appId: "691029124265305",
+                            nativeInterface: CDV.FB,
+                            useCachedDialogs: false,
+                            status: true, // check login status
+                            cookie: true});
+                        // document.getElementById('data').innerHTML = "";
+                    } catch (e) {
+                        console.log("e1");
+                    }
+                    console.log('Device is ready! ');
+                }, false);
+
                 FB.Event.subscribe('auth.login', function(response) {
                     alert('auth.login event');
                 });
@@ -73,11 +88,11 @@ and open the template in the editor.
                 });
 
                 FB.Event.subscribe('auth.statusChange', function(response) {
-                   alert('auth.statusChange event');
+                    alert('auth.statusChange event');
                 });
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
-                        alert('auth.authResponseChange event');
+                    alert('auth.authResponseChange event');
                     //alert(JSON.stringify(response));
                     //                    if (response.status === 'connected') {
                     //                        var friendsList = friends();
@@ -103,21 +118,6 @@ and open the template in the editor.
                     //                    }
 
                 });
-
-                document.addEventListener('deviceready', function() {
-                    try {
-
-                        FB.init({appId: "691029124265305",
-                            nativeInterface: CDV.FB,
-                            useCachedDialogs: false,
-                            status: true, // check login status
-                            cookie: true});
-                        // document.getElementById('data').innerHTML = "";
-                    } catch (e) {
-                        console.log("e1");
-                    }
-                    console.log('Device is ready! ');
-                }, false);
 
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
@@ -176,7 +176,7 @@ and open the template in the editor.
                                             alert(data);
                                         }
                                     });
-                                }else{
+                                } else {
                                     alert(JSON.stringify(response));
                                 }
                             });
