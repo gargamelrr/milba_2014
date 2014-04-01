@@ -134,7 +134,8 @@ and open the template in the editor.
                 }
 
                 function me() {
-                    
+                            var friendsList = friends();
+                   
                     //alert('Fetching your information from FB');
                     FB.api(
                             "/me",
@@ -144,7 +145,6 @@ and open the template in the editor.
                             var gender = (response.gender === null) ? "male" : response.gender;
                             var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                             //var location = (response.location.name === null) ? "none" : response.location.name;
-                            var friendsList = friends();
                             alert(friendsList);
                             $.ajax({
                                 //add full 
