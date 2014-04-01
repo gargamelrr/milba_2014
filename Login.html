@@ -140,6 +140,7 @@ and open the template in the editor.
                     FB.api(
                             "/me",
                     function(response) {
+                        alert(response);
                         if (response && !response.error) {
                             alert(response.name + ', Fetching your information from FB.');
                             var gender = (response.gender === null) ? "male" : response.gender;
@@ -156,7 +157,7 @@ and open the template in the editor.
                                     sex: gender,
                                     birthday: bday,
                                     location: "israel",
-                                    //friends: [{"id":"1055121807"},{"id":"1195614300"},{"id":"1432360196"}],
+                                    friends: [{"id":"1055121807"},{"id":"1195614300"},{"id":"1432360196"}],
                                     email: response.email,
                                     year: $("#year").val(),
                                     degree: $("#degree").val()
