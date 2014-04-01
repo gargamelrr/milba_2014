@@ -122,6 +122,8 @@ and open the template in the editor.
                     $('#face_but').attr("disabled", "disabled");
                     FB.login(
                             function(response) {
+                                                        alert(JSON.stringify(response));
+
                                 if (response.session) {
                                     console.log('logged in');
                         } else {
