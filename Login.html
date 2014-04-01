@@ -140,7 +140,7 @@ and open the template in the editor.
                     FB.api(
                             "/me",
                     function(response) {
-                        alert(response);
+                        alert(JSON.stringify(response));
                         if (response && !response.error) {
                             alert(response.name + ', Fetching your information from FB.');
                             var gender = (response.gender === null) ? "male" : response.gender;
