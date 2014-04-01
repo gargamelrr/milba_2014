@@ -248,12 +248,15 @@ function createCoursesButtons(coursesList, div) {
             join.innerHTML = "Add a Sheet";
         }
 
-        if (i % 2 == 0) {
+        if (i % 3 == 0) {
             join.className = "joinCourse joinCourseRed"
             courseDiv.className = "courseBtn ui-btn courseBtnRed";
+        }else if (i % 3 == 1) {
+                join.className = "joinCourse joinCourseBlue"
+                courseDiv.className = "courseBtn ui-btn courseBtnBlue";
         } else {
-            join.className = "joinCourse joinCourseBlue"
-            courseDiv.className = "courseBtn ui-btn courseBtnBlue";
+            join.className = "joinCourse joinCourseOrange"
+            courseDiv.className = "courseBtn ui-btn courseBtnOrange";
         }
         courseDiv.appendChild(br);
         courseDiv.appendChild(subsubDiv);
