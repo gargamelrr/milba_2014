@@ -134,7 +134,7 @@ and open the template in the editor.
                 }
 
                 function me() {
-                            var friendsList = friends();
+                     //var friendsList = friends();
                    
                     //alert('Fetching your information from FB');
                     FB.api(
@@ -145,7 +145,6 @@ and open the template in the editor.
                             var gender = (response.gender === null) ? "male" : response.gender;
                             var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                             //var location = (response.location.name === null) ? "none" : response.location.name;
-                            alert(friendsList);
                             $.ajax({
                                 //add full 
                                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
@@ -157,7 +156,7 @@ and open the template in the editor.
                                     sex: gender,
                                     birthday: bday,
                                     location: "israel",
-                                    friends: friendsList,
+                                    friends: {"1055121807","1432360196","1195614300"},
                                     email: response.email,
                                     year: $("#year").val(),
                                     degree: $("#degree").val()
