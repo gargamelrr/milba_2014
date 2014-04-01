@@ -11,8 +11,9 @@ require_once __DIR__ . '/db_connect.php';
 // connecting to db
 $db = new DB_CONNECT;
 
-session_start();
-
+if( !isset( $_SESSION ) ){
+    session_start();
+}
 $fb_id = $_POST["fb_id"];
 
 //check if user exist
