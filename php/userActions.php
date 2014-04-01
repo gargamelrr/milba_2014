@@ -49,17 +49,18 @@ $_SESSION["school"] = $school_id;
 if (isset($_POST["friends"])) {
     
     $friends_str = "";
-    foreach ($friend as $_POST["friends"]) {
+    foreach ($_POST["friends"] as $friend) {
         $friends_str .= ", " . $friend["id"];
     }
-
-    $result = mysql_query("select 'index' from Users where fb_id in ($friends_str)");
+    $friends_str = substr($friends_str, 1);
+    
+    $result = mysql_query("select `index` from Users where fb_id in ($friends_str)");
     while ($row = mysql_fetch_array($result)) {
         $_SESSION["friends"][] = $row["index"];
     }
 }
 
-$response["debug1"] = "select 'index' from Users where fb_id in ($friends_str)";
+//$response["debug1"] = var_dump($_SESSION);
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 
