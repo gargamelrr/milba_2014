@@ -121,16 +121,20 @@ and open the template in the editor.
 
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
-                    FB.login(
-                            function(response) {
-                                if (response.session) {
-                                    console.log('logged in');
-                                } else {
-                                    console.log('not logged in');
-                                }
-                            },
-                            {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
-                    );
+                    try {
+                        FB.login(
+                                function(response) {
+                                    if (response.session) {
+                                        console.log('logged in');
+                                    } else {
+                                        console.log('not logged in');
+                                    }
+                                },
+                                {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
+                        );
+                    } catch (e) {
+                           alert(e);
+                    }
                     me();
                 }
 
