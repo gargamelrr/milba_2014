@@ -135,6 +135,9 @@ and open the template in the editor.
                     } catch (e) {
                            alert(e);
                     }
+                    FB.getLoginStatus(function(response) {
+                        alert(JSON.stringify(response));
+                    });
                     me();
                 }
 
