@@ -242,9 +242,6 @@ input[type="radio"] {
     padding: 0
 }
 
-.ui-icon-bars{
-    //background-image: url(../images/sidebar.png);
-}
 
 .courseBtn{
     background-color:white;
@@ -313,4 +310,75 @@ input[type="radio"] {
 .joinCourseOrange{
     border:1px solid #ff954b;
     color:#ff954b;
+}
+
+#profile{
+    background-color: #6a7080 !important;
+    margin:0;
+}
+
+#nav-panel{
+    background-color: #4d5361;
+    background-image: none;
+}
+
+#nav-panel a{
+    background-color: #4d5361;
+    background-image: none;
+    color: #a7adc3;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+    border:0;
+    text-align: left;
+    border-radius: 0;
+    -webkit-border-radius:0;
+}
+
+#nav-panel .ui-btn-inner{
+    border:0;
+}
+
+.ui-panel-inner{
+    padding: 0;
+}
+
+#sidebar .ui-btn-inner {
+    width: 18px;
+    height: 18px;
+    border: none !important;
+}
+.ui-icon-custom {
+    background: url(../images/sidebar.png) no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    margin: 0 !important;
+}
+
+.ui-header,.ui-header .ui-btn-up-d,.ui-header .ui-btn-hover-d {
+    background-color: #6a7080;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+    border:0;
+    border-radius: 0;
+
+}
+
+/*.ui-btn-up-c{
+    background-color: white;
+}*/
+
+
+.ui-header .ui-icon{
+    border-radius: 0;
+}
+
+#sheets{
+    padding-left: 80px;
+    color: #414551;
+    
 }
