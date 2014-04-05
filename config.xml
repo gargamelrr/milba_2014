@@ -55,6 +55,8 @@
 		<param name="APP_NAME" value="Sheets" />
 	</gap:plugin>
 
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
+
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />

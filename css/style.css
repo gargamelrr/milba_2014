@@ -26,7 +26,7 @@
 }
 
 .ui-mobile .ui-header{
-    min-height: 35px;
+    min-height: 39px;
 }
 
 .ui-btn-icon-right>.ui-btn-inner>.ui-icon{
@@ -121,8 +121,9 @@
     font-size:40px;
 }
 
-.ui-body-c, .ui-content, .ui-header{
+.ui-body-c, .ui-content, .ui-header,.ui-panel-animate.ui-panel-content-wrap{
     background-color: #6a7080;
+    background-image: none;
 }
 
 div.ui-input-text {
@@ -325,7 +326,7 @@ input[type="radio"] {
 #nav-panel a{
     background-color: #4d5361;
     background-image: none;
-    color: #a7adc3;
+    color: #c3c5ce;
     text-shadow: none;
     -webkit-box-shadow: none;
     box-shadow:none;
@@ -368,6 +369,7 @@ input[type="radio"] {
 
 }
 
+
 /*.ui-btn-up-c{
     background-color: white;
 }*/
@@ -380,5 +382,23 @@ input[type="radio"] {
 #sheets{
     padding-left: 80px;
     color: #414551;
-    
+    text-shadow: none;
+}
+
+.ui-panel-display-reveal{
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+
+a#addTaskBtn{
+    border: 2px solid #626878;
+    border-radius: 0.5em;
+    height: 230px;
+    width: 210px;
+    margin-left: 25px;
+}
+
+#addTaskBtn .ui-btn-inner{
+    line-height: 210px;
+margin-left: 40px;
 }
