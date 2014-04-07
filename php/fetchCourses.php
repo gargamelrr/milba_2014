@@ -4,10 +4,7 @@ require_once __DIR__ . '/db_connect.php';
 
 $db = new DB_CONNECT();
 
-if (!isset($_SESSION)) {
     session_start();
-    $response["session"] = "down";
-}
 
 $response["debug"] = $_SESSION["user_id"];
 

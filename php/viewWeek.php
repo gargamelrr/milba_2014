@@ -6,9 +6,7 @@ require_once __DIR__ . '/db_connect.php';
 // connecting to db
 $db = new DB_CONNECT;
 
-if( !isset( $_SESSION ) ){
     session_start();
-}
 
 $_SESSION["user"] = "ronnytest188@gmail.com";
 $_SESSION["name"] = "Ronny";

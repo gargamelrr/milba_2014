@@ -383,6 +383,8 @@ input[type="radio"] {
     padding-left: 80px;
     color: #414551;
     text-shadow: none;
+    line-height:40px;
+    font-size: 130%;
 }
 
 .ui-panel-display-reveal{
