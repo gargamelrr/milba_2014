@@ -351,12 +351,19 @@ input.ui-input-text {
 a#addTaskBtn{
     border: 2px solid #626878;
     border-radius: 0.5em;
-    height: 230px;
+    height: 210px;
     width: 210px;
     margin-left: 25px;
+    background-color: white;
+    
+        background-image: url('../images/pencil.png') !important;
+        background-repeat: no-repeat  !important;
+    background-position: 50% 40%;
+
 }
 
 #addTaskBtn .ui-btn-inner{
-    line-height: 210px;
+    line-height: 190px;
     margin-left: 40px;
+    color: #414551;
 }
