@@ -291,27 +291,6 @@ input[type="radio"] {
     text-shadow: none;
 }
 
-.joinCourse{
-    background-image:none;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    box-shadow:none;
-}
-
-.joinCourseRed{
-    border:1px solid #fd4646;
-    color:#fd4646;
-}
-
-.joinCourseBlue{
-    border:1px solid #3cceff;
-    color:#3cceff;
-}
-
-.joinCourseOrange{
-    border:1px solid #ff954b;
-    color:#ff954b;
-}
 
 #profile{
     background-color: #6a7080 !important;
