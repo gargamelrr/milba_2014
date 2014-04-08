@@ -181,7 +181,7 @@ function createCoursesButtons(coursesList, div) {
     var subDiv = document.createElement("div");
     subDiv.className = "ui-block-a";
     var courseNewdiv = document.createElement("a");
-    courseNewdiv.id = "a";
+    courseNewdiv.id = "newCourseBtn";
     courseNewdiv.className = "newCourse";
     courseNewdiv.href = "";
     courseNewdiv.onclick = function() {
@@ -196,29 +196,31 @@ function createCoursesButtons(coursesList, div) {
 
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
-        var courseDiv = document.createElement("div");
+        var courseDiv = document.createElement("a");
         if (i % 2 == 0) {
             subDiv.className = "ui-block-b";
         } else {
             subDiv.className = "ui-block-a";
         }
+        courseDiv.href = "GroupDetails.html";
+        courseDiv.id = "a" + coursesList[i].courseID;
         courseDiv.onclick = function() {
             setCurrentCourseId($(this).attr("data-ID"));
-            $.mobile.changePage("GroupDetails.html");
         };
         $(courseDiv).attr("data-ID", coursesList[i].courseID);
-        courseDiv.innerHTML = "<br><b>" + coursesList[i].name + "</b>";
+        courseDiv.innerHTML = "<b>" + coursesList[i].name + "</b>";
+
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
         subsubDiv.innerHTML = "<b>" + coursesList[i].count + "</b> Friends";
         subsubDiv.className = "count_friend";
 
         if (i % 3 == 0) {
-            courseDiv.className = "courseBtn ui-btn courseBtnRed";
+            courseDiv.className = "courseBtn courseBtnRed";
         } else if (i % 3 == 1) {
-            courseDiv.className = "courseBtn ui-btn courseBtnBlue";
+            courseDiv.className = "courseBtn courseBtnBlue";
         } else {
-            courseDiv.className = "courseBtn ui-btn courseBtnOrange";
+            courseDiv.className = "courseBtn courseBtnPurple";
         }
         courseDiv.appendChild(br);
         courseDiv.appendChild(subsubDiv);

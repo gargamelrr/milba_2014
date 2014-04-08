@@ -138,56 +138,27 @@ div.ui-input-text {
 input.ui-input-text {
     height: 48px;
     line-height: 48px;
-    color: white;
+    color: #ccced6;
     text-align: center;
     font-weight: normal;
 }
 
-input[type="radio"] {
-    display: none;
-}
-.ui-radio label {
-    height:56px;
-    line-height: 56px;
-    padding-left: 50px;
-}
-.ui-radio .ui-btn.ui-radio-off:after {
-    background-image: none;
-    width: 26px;
-    height: 26px;
-    border: 2px solid #6E7983;
-    margin-top: -13px;
-}
-.ui-radio .ui-btn.ui-radio-on:after {
-    background-color: #86D51C;
-    width: 14px;
-    height: 14px;
-    margin-top: -6px;
-    margin-left: 10px;
-    border: 0;
-}
-.ui-radio .ui-btn.ui-radio-on:before {
-    content:"";
-    position: absolute;
-    display: block;
-    border: 2px solid #6E7983;
-    border-radius: 50%;
-    background-color: transparent;
-    width: 26px;
-    height: 26px;
-    margin-top: 14px;
-    margin-left: -39px;
-}
-
-
 #newGroup .ui-btn-up-c, #newGroup .ui-btn-hover-c {
     border: 0;
-    background: transparent;
+    background: #ccced6;
     font-weight: 200;
     text-shadow: none;
-
 }
 
+#newGroup div.ui-submit.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-hover-c, #newGroup div.ui-submit.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-up-c {
+    background-color: #ccced6;
+    margin: 25px;
+    border-radius: 0.4em;
+}
+
+#newGroup span.ui-btn-text{
+    color: #414551;
+}
 
 #coursesMy,#coursesSug, #newGroup{
     background-color: #4d5361;
@@ -197,6 +168,7 @@ input[type="radio"] {
 #newGroup .ui-btn-text{
     color:white;
 }
+
 
 
 #newGroup .ui-btn-inner{
@@ -256,20 +228,24 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-.courseBtnOrange{
-    color: #ff954b;
-    border-top: 2px solid #ff954b;
+.courseBtn .ui-btn-inner{
+    padding-top: 30px;
+}
+
+.courseBtnPurple{
+    color: #bd81fd !important;
+    border-top: 2px solid #bd81fd;
 
 }
 
 .courseBtnBlue{
-    color: #3cceff;
+    color: #3cceff !important;
     border-top: 2px solid #3cceff;
 
 }
 
 .courseBtnRed{
-    color: #fd4646;
+    color: #fd4646 !important;
     border-top: 2px solid #fd4646;
 
 }
@@ -289,6 +265,7 @@ input[type="radio"] {
 .newCourse .ui-btn-inner{
     color:#aaaeb8;
     text-shadow: none;
+    line-height: 90px;
 }
 
 
@@ -381,5 +358,5 @@ a#addTaskBtn{
 
 #addTaskBtn .ui-btn-inner{
     line-height: 210px;
-margin-left: 40px;
+    margin-left: 40px;
 }
