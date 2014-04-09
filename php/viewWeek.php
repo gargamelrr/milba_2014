@@ -6,14 +6,15 @@ require_once __DIR__ . '/db_connect.php';
 // connecting to db
 $db = new DB_CONNECT;
 
-    session_start();
+session_start();
 
-$_SESSION["user"] = "ronnytest188@gmail.com";
-$_SESSION["name"] = "Ronny";
-$_SESSION["user_id"] = 19;
-$_SESSION["school"] = 2;
-$_SESSION["friends"] = array(16,17,20);
-
+if (!isset($_SESSION["user_id"])) {
+    $_SESSION["user"] = "ronnytest188@gmail.com";
+    $_SESSION["name"] = "Ronny";
+    $_SESSION["user_id"] = 19;
+    $_SESSION["school"] = 2;
+    $_SESSION["friends"] = array(16, 17, 20);
+}
 
 $user_id = $_SESSION["user_id"];
 $courses_str = "";

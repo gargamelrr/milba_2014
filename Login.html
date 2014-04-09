@@ -142,7 +142,7 @@ and open the template in the editor.
                 }
 
                 function me() {
-                    //var friendsList = friends();
+                    var friendsList = friends();
 
                     //console.log('Fetching your information from FB');
                     FB.api(
@@ -188,7 +188,7 @@ and open the template in the editor.
 
                 function friends() {
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
-
+                         alert(JSON.stringify(response));
                         if (response.error) {
                             return response.error;
                         } else {

@@ -355,9 +355,8 @@ a#addTaskBtn{
     width: 210px;
     margin-left: 25px;
     background-color: white;
-    
-        background-image: url('../images/pencil.png') !important;
-        background-repeat: no-repeat  !important;
+    background-image: url('../images/pencil.png') !important;
+    background-repeat: no-repeat  !important;
     background-position: 50% 40%;
 
 }
