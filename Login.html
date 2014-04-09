@@ -165,12 +165,13 @@ and open the template in the editor.
                                             sex: gender,
                                             birthday: bday,
                                             location: "israel",
-                                            friends: [{"id": "1055121807"}, {"id": "1195614300"}, {"id": "1432360196"}],
+                                            friends: friendsList,
                                             email: response.email,
                                             year: $("#year").val(),
                                             degree: $("#degree").val()
                                         },
                                         success: function(data) {
+                                            alert(data);
                                             var json = JSON.parse(data);
                                             if (json.success == 1) {
                                                 window.location.href = "index.html";
@@ -188,7 +189,7 @@ and open the template in the editor.
 
                 function friends() {
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
-                         alert(JSON.stringify(response));
+                         //alert(JSON.stringify(response));
                         if (response.error) {
                             return response.error;
                         } else {

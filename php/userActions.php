@@ -10,11 +10,8 @@ require_once __DIR__ . '/db_connect.php';
     
 // connecting to db
 $db = new DB_CONNECT;
-$response = array();
-//$response["cookieData"] =array();
-if( !isset( $_SESSION ) ){
-    session_start();
-}
+ session_start();
+
 $fb_id = $_POST["fb_id"];
     
 //check if user exist
@@ -43,12 +40,7 @@ if (mysql_num_rows($result) > 0) {
     $id = mysql_insert_id();
 }
     
-//array_push($response["cookieData"], $year);
-//array_push($response["cookieData"], $user);
-//array_push($response["cookieData"], $name);
-//aray_push($response["cookieData"], $id);
-//array_push($response["cookieData"], $school_id);
-//            
+  
             
 if (isset($_POST["friends"])) {
     
@@ -63,10 +55,9 @@ if (isset($_POST["friends"])) {
     while ($row = mysql_fetch_array($result)) {
         array_push($fbFriends, $row);
     }
-    array_push($response["cookieData"], $fbFriends);
 }
     
-$response["debug1"] = $_SESSION["user_id"];
+$response["debug1"] = $friends_str;
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
     
