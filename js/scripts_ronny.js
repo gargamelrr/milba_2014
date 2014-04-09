@@ -138,7 +138,7 @@ $(document).on("pageshow", "#login", function() {
         data: {
         },
         success: function(data) {
-            alert(data);
+            //alert(data);
             var json = JSON.parse(data);
             if (json.success == 1) {
                 parseProfile(json, true);
