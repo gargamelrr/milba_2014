@@ -349,7 +349,6 @@ input.ui-input-text {
 }
 
 a#addTaskBtn{
-    border: 2px solid #626878;
     border-radius: 0.5em;
     height: 210px;
     width: 210px;

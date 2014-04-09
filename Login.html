@@ -189,7 +189,8 @@ and open the template in the editor.
 
                 function friends() {
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
-                         //alert(JSON.stringify(response));
+                         alert("json" + JSON.stringify(response.data));
+                         alert(response.data);
                         if (response.error) {
                             return response.error;
                         } else {
