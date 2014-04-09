@@ -17,15 +17,15 @@ and open the template in the editor.
     </head>
     <body>
         <div id="profile" data-role="page" class="ui-responsive-panel">
-            <div data-role="header" data-theme="f">
-                <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+            <div data-role="header" data-theme="d">
+                <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
-            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-                <a href="index.html" data-role="button" data-theme="e" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
-                <a href="Groups.html?a" data-role="button" data-theme="b" data-icon="plus" onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
-                <a href="Groups.html?b" data-role="button" data-theme="b" data-icon="search" onclick="setCurrentCoursePage('join')"> Courses </a><br/>
-                <a href="Profile.html" data-role="button"  data-theme="b" data-icon="grid" > Profile </a><br/>
-                <a href="Notifications.html" data-role="button"  data-theme="b" data-icon="gear" > Notifications </a><br/>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel">
+                <a href="Profile.html" data-role="button"  id="profile"> Ronny Ringel </a><br/>
+                <a href="index.html" data-role="button"  onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="Groups.html?b" data-role="button"   onclick="setCurrentCoursePage('join')"> Courses </a><br/>
+                <a href="Notifications.html" data-role="button"  > Notifications </a><br/>
+                <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
             <div  data-role="content">
                 <h2><span id="name"></span> </h2>

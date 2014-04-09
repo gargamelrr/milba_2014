@@ -176,7 +176,7 @@ and open the template in the editor.
                                             degree: $("#degree").val()
                                         },
                                         success: function(data) {
-                                            alert(data);
+                                            //alert(data);
                                             var json = JSON.parse(data);
                                             if (json.success == 1) {
                                                 window.location.href = "index.html";
@@ -191,21 +191,6 @@ and open the template in the editor.
                                 }
                             });
                 }
-
-                function friends() {
-                    FB.api('/me/friends', {fields: 'id'}, function(response) {
-                        alert("json" + JSON.stringify(response.data));
-                        alert(response.data);
-                        if (response.error) {
-                            return response.error;
-                        } else {
-                            return response.data;
-                        }
-                    });
-                }
-
-
-
 
             </script>
         </div>
