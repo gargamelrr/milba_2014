@@ -54,25 +54,6 @@
     text-align: center;
 }
 
-.tasks-list thead th,
-.tasks-list tbody tr:last-child {
-    border-bottom: 1px solid #d6d6d6; /* non-RGBA fallback */
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
-.tasks-list tbody th,
-.tasks-list tbody td {
-    border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
-    border-bottom: 1px solid rgba(0,0,0,.05);
-}
-.tasks-list tbody tr:last-child th,
-.tasks-list tbody tr:last-child td {
-    border-bottom: 0;
-}
-.tasks-list tbody tr:nth-child(odd) td,
-.tasks-list tbody tr:nth-child(odd) th {
-    background-color: #eeeeee; /* non-RGBA fallback  */
-    background-color: rgba(0,0,0,.04);
-}
 
 .details{
     background-color:#ede;
@@ -102,10 +83,6 @@
 
 #name{
     font-size: 34px;
-}
-
-.btn-task{
-    cursor: pointer;
 }
 
 #noNotifications {
@@ -269,8 +246,16 @@ input.ui-input-text {
 }
 
 
-#profile{
-    margin:0;
+#profile {
+    //margin-left:60px;
+
+    background: url('https://graph.facebook.com/100008051852593/picture') !important;
+    background-repeat: no-repeat  !important;
+    background-position: left;
+    border:2px solid #a7adc3 ;
+    border-radius: 1em;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
 }
 
 #nav-panel{
@@ -281,7 +266,7 @@ input.ui-input-text {
 #nav-panel a{
     background-color: #4d5361;
     background-image: none;
-    color: #c3c5ce;
+    color: #ccced6;
     text-shadow: none;
     -webkit-box-shadow: none;
     box-shadow:none;
@@ -289,6 +274,7 @@ input.ui-input-text {
     text-align: left;
     border-radius: 0;
     -webkit-border-radius:0;
+    margin-left: 50px;
 }
 
 #nav-panel .ui-btn-inner{
@@ -356,11 +342,67 @@ a#addTaskBtn{
     background-image: url('../images/pencil.png') !important;
     background-repeat: no-repeat  !important;
     background-position: 50% 40%;
+}
+#profile span{
+    margin-left: 50px;
+    color:#a7adc3;
 
 }
+
 
 #addTaskBtn .ui-btn-inner{
     line-height: 190px;
     margin-left: 40px;
     color: #414551;
+}
+
+#coursePage{
+    background-color: white;
+    border-top: 2px solid #3cceff;
+    color: #3cceff !important;
+}
+
+div#teac_details {
+    background: white;
+}
+
+#email{
+    color: #89b6f9;
+}
+
+.btn-task {
+    border: 1px solid #3cceff;
+    border-radius: 1em;
+    margin: 15px;
+}
+
+a#join-course {
+    border: 0;
+    background: #3cceff;
+    font-weight: 200;
+    text-shadow: none;
+    color:white;
+    margin: 25px;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    border-radius: 0.4em;
+}
+
+a#leave-course {
+    border: 0;
+    background: #ccced6;
+    font-weight: 200;
+    text-shadow: none;
+    color:#9b9fab;
+    margin: 25px;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    border-radius: 0.4em;
+}
+
+#addTask{
+    border-radius: 0.4em;  
+    margin: 25px;
+    border: 1px solid #3cceff;
+
 }

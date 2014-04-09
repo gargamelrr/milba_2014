@@ -171,3 +171,13 @@ $(document).on("pageshow", "#login", function() {
         }
     });
 });
+
+$(document).on("pagebeforeshow", function(){
+    if(name == "" ){
+        setFb_id("100008051852593");
+        setName("Coral Landa");
+        
+    }
+   $("#profile span").text(name);
+   $('#nav-panel').trigger('create');
+});

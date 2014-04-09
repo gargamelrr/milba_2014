@@ -21,93 +21,90 @@ and open the template in the editor.
                 <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel">
-                <a href="Profile.html" data-role="button"  id="profile"> Ronny Ringel </a><br/>
+                <a href="Profile.html" data-role="button"  id="profile">  </a><br/>
                 <a href="index.html" data-role="button"  onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
                 <a href="Groups.html?b" data-role="button"   onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Notifications.html" data-role="button"  > Notifications </a><br/>
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
             <div data-role="content">
-                <div data-role="header" data-theme="b" class="ui-header ui-bar-b" role="banner" id="teac_details">
-                    <h1 class="ui-title" role="heading"><span id="name"></span></h1>
-                    <h4><span id="teac_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="email"></span></h4>
-                </div>
-                <br/>
-                <div id="tasks">
-                    <table data-role="table" id="tasks-table-custom"  class="tasks-list">
-                        <thead>
-                            <tr><td></td><td></td></tr>
-                        </thead>
-                    </table>
-                </div>
-                <br/>
-                <a href="#join" data-role="button" data-theme="b" data-icon="add" id="join-course" data-inline="true"> Join Course </a><br/>
+                <div id="coursePage">
+                    <div  class="ui-header"  id="teac_details">
+                        <h1 class="ui-title" role="heading"><span id="name"></span></h1>
+                        <h4><span id="teac_name"></span><span id="email"></span></h4>
+                    </div>
+                    <br/>
+                    <div id="tasks">
+                        <table data-role="table" id="tasks-table-custom"  class="tasks-list">
+                            <thead>
+                                <tr><td></td><td></td></tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <br/>
+                    <a href="#join" data-role="button" id="join-course" > Join Course </a><br/>
 
-                <form method="post">
-                    <div id="addTask" class="ui-body ui-body-b">
-                        <div id="elementsToOperateOn">
-                            <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
-                            <label>Task Name:</label>
-                            <input type="text" name="taskName" id="taskName" required/> 
-                            <label>Due Date:</label>
-                            <input type="date" name="date-1" id="date1" required/> 
-                            <label>Due Time:</label>
-                            <input type="time" name="taskTime" id="taskTime" required/> 
-                            <input type ="hidden" value="-1" id="editFlag"/>
-                            <label>Task Description:</label>
-                            <div data-role="fieldcontain">
-                                <textarea name="taskdetails" id="taskdetails"> </textarea>
+                    <form method="post">
+                        <div id="addTask">
+                            <div id="elementsToOperateOn">
+                                <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
+                                <input type="text" name="taskName" id="taskName" placeholder="Name" required/> 
+                                <input type="date" name="date-1" id="date1" required/> 
+                                <input type="time" name="taskTime" id="taskTime" required/> 
+                                <input type ="hidden" value="-1" id="editFlag"/>
+                                <div data-role="fieldcontain">
+                                    <textarea name="taskdetails" id="taskdetails" placeholder="Details"> </textarea>
+                                </div>
+                                <fieldset data-role="controlgroup" data-type="horizontal" >
+                                    <legend>Choose Task Difficulty:</legend>
+                                    <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
+                                    <label for="easy">Friendly Sheet</label>
+                                    <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
+                                    <label for="hard">Massive sheet</label>
+                                </fieldset><br> 
+
+                                <label><i>It’s always fun to share your Sheets with friends!</i></label>
+                                <input  type="submit" value="Add Sheet"  id="submit"/>
                             </div>
-                            <fieldset data-role="controlgroup" data-type="horizontal" >
-                                <legend>Choose Task Difficulty:</legend>
-                                <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
-                                <label for="easy">Friendly Sheet</label>
-                                <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
-                                <label for="hard">Massive sheet</label>
-                            </fieldset><br> 
-
-                            <label><i>It’s always fun to share your Sheets with friends!</i></label>
-                            <input  type="submit" value="Publish"  id="submit"/>
                         </div>
-                    </div>
-                    <br/><br/>
-                    <a href="#leave" data-rel="popup" data-role="button"  data-theme="b" data-icon="delete" id="leave-course" data-inline="true"> Leave Course </a><br/>
-                    <div data-role="popup" id="leave">
-                        <p>Are you sure you want to leave this course?<p>
-                        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
-                            <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
+                        <br/><br/>
+                        <a href="#leave" data-rel="popup" data-role="button" id="leave-course"> Leave Course </a><br/>
+                        <div data-role="popup" id="leave">
+                            <p>Are you sure you want to leave this course?<p>
+                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
+                                <a href="#" data-role="button"  data-theme="b" data-inline="true"> No </a>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <div id="friends">
-                    <table>
-                        <tr>
-                        </tr>
-                    </table>
+                    <div id="friends">
+                        <table>
+                            <tr>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-       
         <script>
             function Friends() {
-                    FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
-                        if (response.error) {
-                            alert(JSON.stringify(response.error));
-                        } else {
-                            var data = document.getElementById('data');
-                            fdata=response.data;
-                            console.log("fdata: "+fdata);
-                            var x = "";
-                            response.data.forEach(function(item) {
-                                x = x + item.id + item.name + "\n";
-                                
-                            });
-                            alert(x);
-                        }
-                    });
-                }
-            </script> 
+                FB.api('/me/friends', {fields: 'id, name, picture'}, function(response) {
+                    if (response.error) {
+                        alert(JSON.stringify(response.error));
+                    } else {
+                        var data = document.getElementById('data');
+                        fdata = response.data;
+                        console.log("fdata: " + fdata);
+                        var x = "";
+                        response.data.forEach(function(item) {
+                            x = x + item.id + item.name + "\n";
+
+                        });
+                        alert(x);
+                    }
+                });
+            }
+        </script> 
     </body>
 </html>

@@ -1,6 +1,8 @@
 var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
+var fb_id = -1;
+var name = "";
 
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
@@ -12,6 +14,14 @@ function setCurrentCourseId(val) {
 
 function setCurrentTaskId(val) {
     currentTaskId = val;
+}
+
+function setName(val) {
+    name = val;
+}
+
+function setFb_id(val) {
+    fb_id = val;
 }
 
 $(document).on("pageshow", "#courseDetails", function() {
@@ -38,8 +48,10 @@ $(document).on("pageshow", "#courseDetails", function() {
                 $('.actions').hide();
             }
             $('#name').text(json.courseDetails.name);
-            $('#teac_name').text(json.courseDetails.lecturer);
-            $('#email').text(json.courseDetails.teacherEmail);
+            var temp = json.courseDetails.lecturer == null ? "" : json.courseDetails.lecturer;
+            $('#teac_name').text(temp);
+            temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
+            $('#email').text(temp);
             $('.details').hide();
             $('.btn-task').click(function() {
                 $(this).find('.details').slideToggle(200);
@@ -251,18 +263,18 @@ function buildTasks(allTasks) {
         var cell1 = document.createElement("td");
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
-        cell1.appendChild(heading2);
         var dateTimeArray = (allTasks[i].due_date).split(" ");
         var date = reformatDate(dateTimeArray[0]);
         var time = dateTimeArray[1];
-        var cellText2 = document.createTextNode("Due: " + date + " at " + time);
+        var cellText2 = document.createTextNode(date + " " + time);
         var cell2Div = document.createElement("div");
-        cell2Div.setAttribute("class", "details");
+        //cell2Div.setAttribute("class", "details");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
         cell1.appendChild(cellText2);
+        cell1.appendChild(heading2);
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
-        row.appendChild(cell1Div);
+
         var cell3Div = document.createElement("div");
         cell3Div.setAttribute("class", "actions");
 
@@ -327,7 +339,8 @@ function buildTasks(allTasks) {
         cell2.appendChild(editLink);
         cell2.appendChild(delLink);
         cell3Div.appendChild(cell2);
-        row.appendChild(cell3Div);
+        cell1Div.appendChild(cell3Div);
+        row.appendChild(cell1Div);
         tblBody.appendChild(row);
     }
     table.appendChild(tblBody);

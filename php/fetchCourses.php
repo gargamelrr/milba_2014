@@ -43,7 +43,7 @@ if (mysql_num_rows($result_my) > 0) {
 }
 
 $response["courses"] = array();
-
+$courses_id = array();
 while ($row = mysql_fetch_array($result_friends)) {
 
     $course = array();
@@ -51,15 +51,19 @@ while ($row = mysql_fetch_array($result_friends)) {
     $course["courseID"] = $row["index"];
     $course["count"] = $row["num_fri"];
     array_push($response["courses"], $course);
+
+    $courses_id[$row["index"]] = 1;
 }
 
 while ($row = mysql_fetch_array($result_else)) {
 
-    $course = array();
-    $course["name"] = $row["name"];
-    $course["courseID"] = $row["index"];
-    $course["count"] = 0;
-    array_push($response["courses"], $course);
+    if (!array_key_exists($row["index"], $courses_id)) {
+        $course = array();
+        $course["name"] = $row["name"];
+        $course["courseID"] = $row["index"];
+        $course["count"] = 0;
+        array_push($response["courses"], $course);
+    }
 }
 $response["debug"] = "SELECT name, Courses.index FROM Courses, Users_Courses where Users_Courses.student_id not in ($friends_str) and Courses.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id) group by name";
 echo json_encode($response);
