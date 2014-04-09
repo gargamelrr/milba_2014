@@ -142,12 +142,11 @@ and open the template in the editor.
                 }
 
                 function me() {
+                    var friendsList;
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
-                        alert("json" + JSON.stringify(response.data));
-                        alert(response.data);
                         if (response.error) {
                         } else {
-                            var friendsList = response.data;
+                            friendsList = response.data;
                         }
                     });
                     alert(friendsList);
