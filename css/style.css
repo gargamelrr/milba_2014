@@ -82,7 +82,7 @@
 }
 
 #name{
-    font-size: 34px;
+    font-size: 24px;
 }
 
 #noNotifications {
@@ -405,4 +405,9 @@ a#leave-course {
     margin: 25px;
     border: 1px solid #3cceff;
 
+}
+
+.ui-header .ui-title{
+    white-space:normal;
+    margin:.6em 10% .8em;
 }
