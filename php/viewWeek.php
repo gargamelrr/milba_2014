@@ -48,7 +48,7 @@ while ($i < 8) {
     } else {
         $text = date('l', strtotime($date));
     }
-    $days[$date]["date"] = $text . " - " . date('d/m', $day);
+    $days[$date]["date"] = $text . " <span id='date'>" . date('d.m', $day) . "</span>";
     $days[$date]["tasks"]["count"] = 0;
     $i++;
 }

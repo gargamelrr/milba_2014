@@ -19,10 +19,28 @@
     max-height: 50px;
     max-width: 50px;
     margin-top: -10px;
+    margin-left: 50%;
+}
+
+#home{
+    min-height: 300px !important;
 }
 
 #days .ui-li .ui-btn-inner .ui-btn-text{
-    padding: 0px 70px 20px;
+    padding: 0px 0px 20px;
+}
+
+#days .ui-btn-up-c, #days .ui-btn-hover-c {
+    background-color: white;
+}
+
+#date{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+#days ul{
+    text-align: right;
 }
 
 .ui-mobile .ui-header{
@@ -103,16 +121,17 @@
     background-image: none;
 }
 
-div.ui-input-text {
+#newGroup div.ui-input-text {
     background-color: #565c6b;
     border: 2px solid #767b87;
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 15px;
-
+    -webkit-box-shadow:none;
+    box-shadow:none;
 }
 
-input.ui-input-text {
+#newGroup  input.ui-input-text {
     height: 48px;
     line-height: 48px;
     color: #ccced6;
@@ -360,6 +379,7 @@ a#addTaskBtn{
     background-color: white;
     border-top: 2px solid #3cceff;
     color: #3cceff !important;
+    margin-bottom: -15px;
 }
 
 div#teac_details {
@@ -410,4 +430,45 @@ a#leave-course {
 .ui-header .ui-title{
     white-space:normal;
     margin:.6em 10% .8em;
+}
+
+#elementsToOperateOn{
+    padding: 15px;
+}
+
+#elementsToOperateOn div.ui-input-text,  #elementsToOperateOn textarea.ui-input-text{
+    background-color: #e2f8ff;
+    border: 1px solid #3cceff;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+
+#elementsToOperateOn  input.ui-input-text,#elementsToOperateOn textarea.ui-input-text {
+    height: 48px;
+    line-height: 48px;
+    color: #3cceff;
+    text-align: center;
+    font-weight: normal;
+}
+
+#elementsToOperateOn ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #3cceff;
+}
+
+#elementsToOperateOn .ui-btn-up-c, #elementsToOperateOn .ui-btn-hover-c {
+    border: 0;
+    background: #3cceff;
+    font-weight: 200;
+    text-shadow: none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    border-radius: 0.4em;
+
+}
+
+#elementsToOperateOn span.ui-btn-inner{
+    color:white;
 }

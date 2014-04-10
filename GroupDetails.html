@@ -48,15 +48,12 @@ and open the template in the editor.
                         <div id="addTask">
                             <div id="elementsToOperateOn">
                                 <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
-                                <input type="text" name="taskName" id="taskName" placeholder="Name" required/> 
-                                <input type="date" name="date-1" id="date1" required/> 
+                                <input type="text" name="taskName" id="taskName" placeholder="Name"  required/> 
+                                <input type="date" name="date-1" id="date1"  data-role='datebox' placeholder="Due date" required/> 
                                 <input type="time" name="taskTime" id="taskTime" required/> 
                                 <input type ="hidden" value="-1" id="editFlag"/>
-                                <div data-role="fieldcontain">
-                                    <textarea name="taskdetails" id="taskdetails" placeholder="Details"> </textarea>
-                                </div>
+                                <textarea name="taskdetails" id="taskdetails" placeholder="Details"> </textarea>
                                 <fieldset data-role="controlgroup" data-type="horizontal" >
-                                    <legend>Choose Task Difficulty:</legend>
                                     <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
                                     <label for="easy">Friendly Sheet</label>
                                     <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
@@ -64,7 +61,7 @@ and open the template in the editor.
                                 </fieldset><br> 
 
                                 <label><i>It’s always fun to share your Sheets with friends!</i></label>
-                                <input  type="submit" value="Add Sheet"  id="submit"/>
+                                <input  type="submit" value="Publish Sheet"  id="submit"/>
                             </div>
                         </div>
                         <br/><br/>
