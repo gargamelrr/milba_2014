@@ -16,7 +16,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div id="profile" data-role="page" class="ui-responsive-panel">
+        <div id="profilePage" data-role="page" class="ui-responsive-panel">
             <div data-role="header" data-theme="d">
                 <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
@@ -27,20 +27,31 @@ and open the template in the editor.
                 <a href="Notifications.html" data-role="button"  > Notifications </a><br/>
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
-            <div  data-role="content">
-                <h2><span id="name"></span> </h2>
-              
-                Institue:
-                <select name="institue" id="institue" data-native-menu="false" data-theme="b">
-                 </select>
-                Degree:
-                <select name="degree" id="degree" data-native-menu="false" data-theme="b">
-                </select>
-                Year:
-                <select name="year" id="year" data-native-menu="false" data-theme="b">
-                </select>
+            <div data-role="content">
 
-                <h3>Notifications</h3>
+                <div style="text-align: center;">
+                    <h2><span id="nameProfile"></span> </h2>
+                </div>
+
+                <div  id="profileData">
+                    <select name="institue" id="institue" data-native-menu="false" data-theme="b">
+                    </select>
+
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a" style="width:70%">
+                            <select name="degree" id="degree" data-native-menu="false" data-theme="b">
+                            </select>
+                        </div>
+                        <div class="ui-block-b" style="width:30%">
+                            <select name="year" id="year" data-native-menu="false" data-theme="b">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="color:#ccced6;">
+                    <h3>Notifications</h3>
+                </div>
                 <div data-role="fieldcontain">
                     <label for="flip-group">Invitation to a group</label>
                     <select name="flip-group" id="flip-group" data-role="slider" >

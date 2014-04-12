@@ -108,8 +108,13 @@
 
 }
 
-#name{
-    font-size: 24px;
+#nameProfile{
+    text-align: center;
+    color:#ccced6;
+}
+
+#profilePage label{
+    color:#ccced6;
 }
 
 #noNotifications {
@@ -130,7 +135,7 @@
     background-image: none;
 }
 
-#newGroup div.ui-input-text {
+#newGroup div.ui-input-text, #profileData a  {
     background-color: #565c6b;
     border: 1px solid #ccced6;
     margin-left: 15px;
@@ -138,9 +143,10 @@
     margin-top: 15px;
     -webkit-box-shadow:none;
     box-shadow:none;
+    background-image: none;
 }
 
-#newGroup  input.ui-input-text {
+#newGroup  input.ui-input-text,#profilePage select.ui-input-text   {
     height: 48px;
     line-height: 48px;
     color: #ccced6;

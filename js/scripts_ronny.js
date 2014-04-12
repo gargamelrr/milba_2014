@@ -58,7 +58,7 @@ $(document).on("pageshow", "#home", function() {
     });
 });
 
-$(document).on("pageshow", "#profile", function() {
+$(document).on("pageshow", "#profilePage", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
         method: 'POST',
@@ -69,7 +69,7 @@ $(document).on("pageshow", "#profile", function() {
             var json = JSON.parse(data);
             console.log(data);
             if (json.success == 1) {
-                $("#name").text(json.user_name);
+                $("#nameProfile").text(json.user_name);
                 parseProfile(json, true);
             }
         },
