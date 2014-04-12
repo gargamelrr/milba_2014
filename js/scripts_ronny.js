@@ -1,59 +1,62 @@
+$(document).on("pageshow", "#home", function() {
+    $('.details').hide();
+    $('.ui-btn-text').click(function() {
+        $(this).find('.details').slideToggle(200);
+    });
 
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
+        method: 'POST',
+        cache: false,
+        data: {
+            //todo
+        },
+        success: function(data) {
+            //alert(data);
+            var json = JSON.parse(data);
+            var day = 0;
+            $.each(json.data, function(i, val) {
+                $("#day" + day + " h3").text("");
+                $("#day" + day + " h3").append(json.data[i].date);
+                $("#day" + day + " .details").text("");
+                if (json.data[i].tasks.count > 0) {
+                    var output = "";
+                    $.each(json.data[i].tasks.data, function(j, val) {
+                        output += '<li>' + json.data[i].tasks.data[j].course_name + '</li>';
+                        if (j + 1 == json.data[i].tasks.count) {
+                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
+                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
+                        } else {
+                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
+                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
+                        }
+                        if (json.data[i].tasks.count < 2) {
+                            $("#day" + day + " img").attr("src", "images/easy.png")
+                        } else {
+                            $("#day" + day + " img").attr("src", "images/hard.png")
+                        }
 
-//$(document).on("pageshow", "#home", function() {
-//    $('.details').hide();
-//    $('.ui-btn-text').click(function() {
-//        $(this).find('.details').slideToggle(500);
-//    });
-//
-//    $.ajax({
-//        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
-//        method: 'POST',
-//        cache: false,
-//        data: {
-//            //todo
-//        },
-//        success: function(data) {
-//            var json = JSON.parse(data);
-//            var day = 0;
-//            $.each(json.data, function(i, val) {
-//                $("#day" + day + " h3").append(json.data[i].date);
-//                if (json.data[i].tasks.count > 0) {
-//                    $.each(json.data[i].tasks.data, function(j, val) {
-//                        if (j + 1 == json.data[i].tasks.count) {
-//                            $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name);
-//                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-//                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
-//                        } else {
-//                            $("#day" + day + " p").append(json.data[i].tasks.data[j].course_name + ", ");
-//                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-//                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
-//                        }
-//                        if (json.data[i].tasks.count < 2) {
-//                            $("#day" + day + " img").attr("src", "images/easy.png")
-//                        } else {
-//                            $("#day" + day + " img").attr("src", "images/hard.png")
-//                        }
-//
-//                        $('#task' + i + "_" + j).click(function() {
-//                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
-//                        });
-//                    });
-//                } else {
-//                    $("#day" + day + " img").attr("src", "images/fun.png");
-//                }
-//                day++;
-//            });
-//            if (json.status == 2) {
-//                $("#empty").popup();
-//                $("#empty").trigger("create");
-//                $("#empty").popup("open");
-//            }
-//        },
-//        error: function() {
-//        }
-//    });
-//});
+                        $('#task' + i + "_" + j).click(function() {
+                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
+                            setCurrentTaskId(json.data[i].tasks.data[j].index);
+                        });
+                    });
+                    $("#day" + day + "-ul").append(output).trigger('create');
+                } else {
+                    $("#day" + day + " img").attr("src", "images/fun.png");
+                }
+                day++;
+            });
+            if (json.status == 2) {
+                $("#empty").popup();
+                $("#empty").trigger("create");
+                $("#empty").popup("open");
+            }
+        },
+        error: function() {
+        }
+    });
+});
 
 $(document).on("pageshow", "#profile", function() {
     $.ajax({
@@ -172,12 +175,13 @@ $(document).on("pageshow", "#login", function() {
     });
 });
 
-$(document).on("pagebeforeshow", function(){
-    if(name == "" ){
-        setFb_id("100008051852593");
-        setName("Coral Landa");
-        
+$(document).on("pageshow", function() {
+    if (name == "") {
+        setFb_id("1055121807");
+        setName("Tom Blotman");
+
     }
-   $("#profile span").text(name);
-   $('#nav-panel').trigger('create');
+    $("#profile span").text(name);
+    $('#profile').css('background', 'url(https://graph.facebook.com/' + fb_id + '/picture)');
+    $('#nav-panel').trigger('create');
 });

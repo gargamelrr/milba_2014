@@ -40,8 +40,9 @@ and open the template in the editor.
                                 <tr><td></td><td></td></tr>
                             </thead>
                         </table>
+                        <br/>
+
                     </div>
-                    <br/>
                     <a href="#join" data-role="button" id="join-course" > Join Course </a><br/>
 
                     <form method="post">
@@ -63,8 +64,8 @@ and open the template in the editor.
                                 <label><i>It’s always fun to share your Sheets with friends!</i></label>
                                 <input  type="submit" value="Publish Sheet"  id="submit"/>
                             </div>
+                            <br/><br/>
                         </div>
-                        <br/><br/>
                         <a href="#leave" data-rel="popup" data-role="button" id="leave-course"> Leave Course </a><br/>
                         <div data-role="popup" id="leave">
                             <p>Are you sure you want to leave this course?<p>
@@ -78,30 +79,12 @@ and open the template in the editor.
                     <div id="friends">
                         <table>
                             <tr>
+                                <td id="images"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            function Friends() {
-                FB.api('/me/friends', {fields: 'id, name, picture'}, function(response) {
-                    if (response.error) {
-                        alert(JSON.stringify(response.error));
-                    } else {
-                        var data = document.getElementById('data');
-                        fdata = response.data;
-                        console.log("fdata: " + fdata);
-                        var x = "";
-                        response.data.forEach(function(item) {
-                            x = x + item.id + item.name + "\n";
-
-                        });
-                        alert(x);
-                    }
-                });
-            }
-        </script> 
-    </body>
+     </body>
 </html>

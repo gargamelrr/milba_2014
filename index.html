@@ -37,7 +37,7 @@ and open the template in the editor.
                                     <h3 class="ui-li-heading"></h3>
                                     <img src="" class="ui-li-thumb">
                                     <div class="details"></div>
-                                    <ul id="day0-ul"></ul>
+                                    <ul id="day0-ul" class="ul-de"></ul>
                                 </div>
                             </div>
                         </li>
@@ -47,7 +47,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day1-ul"></ul>
+                                    <ul id="day1-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day2">
@@ -55,7 +55,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day2-ul"></ul>
+                                    <ul id="day2-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day3">
@@ -63,7 +63,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day3-ul"></ul>
+                                    <ul id="day3-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day4">
@@ -71,7 +71,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day4-ul"></ul>
+                                    <ul id="day4-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day5">
@@ -79,7 +79,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day5-ul"></ul>
+                                    <ul id="day5-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day6">
@@ -87,7 +87,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day6-ul"></ul>
+                                    <ul id="day6-ul" class="ul-de"></ul>
                                 </div></div></li>
                         <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
                             <div class="ui-btn-inner ui-li" id="day7">
@@ -95,7 +95,7 @@ and open the template in the editor.
                                     <img src="" class="ui-li-thumb">
                                     <h3 class="ui-li-heading"></h3>
                                     <div class="details"></div>
-                                    <ul id="day7-ul"></ul>
+                                    <ul id="day7-ul" class="ul-de"></ul>
                                 </div></div></li>
 
                     </ul>
@@ -108,68 +108,6 @@ and open the template in the editor.
                     </p>
                 </div>
             </div>
-
-            <script  type="text/javascript">
-                $(document).ready(function() {
-                    $('.details').hide();
-                    $('.ui-btn-text').click(function() {
-                        $(this).find('.details').slideToggle(200);
-                    });
-
-                    $.ajax({
-                        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
-                        method: 'POST',
-                        cache: false,
-                        data: {
-                            //todo
-                        },
-                        success: function(data) {
-                            //alert(data);
-                            var json = JSON.parse(data);
-                            var day = 0;
-                            $.each(json.data, function(i, val) {
-                                $("#day" + day + " h3").append(json.data[i].date);
-                                if (json.data[i].tasks.count > 0) {
-                                    var output = "";
-                                    $.each(json.data[i].tasks.data, function(j, val) {
-                                        output += '<li>' + json.data[i].tasks.data[j].course_name + '</li>';
-                                        if (j + 1 == json.data[i].tasks.count) {
-                                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-                                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
-                                        } else {
-                                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-                                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
-                                        }
-                                        if (json.data[i].tasks.count < 2) {
-                                            $("#day" + day + " img").attr("src", "images/easy.png")
-                                        } else {
-                                            $("#day" + day + " img").attr("src", "images/hard.png")
-                                        }
-
-                                        $('#task' + i + "_" + j).click(function() {
-                                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
-                                            setCurrentTaskId(json.data[i].tasks.data[j].index);
-                                        });
-                                    });
-                                    $("#day" + day + "-ul").append(output).trigger('create');
-                                } else {
-                                    $("#day" + day + " img").attr("src", "images/fun.png");
-                                }
-                                day++;
-                            });
-                            if (json.status == 2) {
-                                $("#empty").popup();
-                                $("#empty").trigger("create");
-                                $("#empty").popup("open");
-                            }
-                        },
-                        error: function() {
-                        }
-                    });
-                });
-            </script>
-
-
         </div>
     </body>
 </html>

@@ -52,14 +52,14 @@ $(document).on("pageshow", "#courseDetails", function() {
             $('#teac_name').text(temp);
             temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
             $('#email').text(temp);
-            $('.details').hide();
-            $('.btn-task').click(function() {
-                $(this).find('.details').slideToggle(200);
-            });
             if (currentTaskId != "") {
-                $("#" + currentTaskId).find('.details').slideToggle(200);
                 setCurrentTaskId("");
             }
+            
+            $('#images').text("");
+            $.each(json.friends, function(i, val) {
+                $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=70&height=70" />');
+            });
         },
         error: function() {
             alert("error");
@@ -264,9 +264,10 @@ function buildTasks(allTasks) {
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
         var dateTimeArray = (allTasks[i].due_date).split(" ");
-        var date = reformatDate(dateTimeArray[0]);
+        var date = dateTimeArray[0];
         var time = dateTimeArray[1];
-        var cellText2 = document.createTextNode(date + " " + time);
+        var cellText2 = document.createElement("span");
+        cellText2.innerHTML = "<b>" + date + "</b> " + time;
         var cell2Div = document.createElement("div");
         //cell2Div.setAttribute("class", "details");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
@@ -453,18 +454,6 @@ function dayNumberToString(number)
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
     return weekday[number];
-}
-
-function uriFriends() {
-    FB.api('/me/friends', function(response) {
-        if (response.data) {
-            $.each(response.data, function(index, friend) {
-                alert(friend.name + ' has id:' + friend.id);
-            });
-        } else {
-            alert("Erroooor!");
-        }
-    });
 }
 
 function monthNumberToString(number)
