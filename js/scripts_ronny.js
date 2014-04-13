@@ -19,6 +19,7 @@ $(document).on("pageshow", "#home", function() {
                 $("#day" + day + " h3").text("");
                 $("#day" + day + " h3").append(json.data[i].date);
                 $("#day" + day + " .details").text("");
+                $("#day" + day + " ul").text("");
                 if (json.data[i].tasks.count > 0) {
                     var output = "";
                     $.each(json.data[i].tasks.data, function(j, val) {
@@ -214,7 +215,7 @@ function onNotificationGCM(e) {
             $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
-            console.log("regID = " + e.regid);
+            alert("regID = " + e.regid);
         }
     break;
 
