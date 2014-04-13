@@ -1,3 +1,9 @@
+var gcm = "";
+
+function setGCM(val){
+    gcm = val;
+}
+
 $(document).on("pageshow", "#home", function() {
     $('.details').hide();
     $('.ui-btn-text').click(function() {
@@ -190,18 +196,18 @@ $(document).on("pageshow", function() {
 
 // result contains any message sent from the plugin call
 function successHandler (result) {
-    alert('result = ' + result);
+    console.log('result = ' + result);
 }
 
 // result contains any error description text returned from the plugin call
 function errorHandler (error) {
-    alert('error = ' + error);
+     console.log('error = ' + error);
 }
 
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    alert('device token = ' + result);
+     console.log('device token = ' + result);
 }
 
 function onNotificationGCM(e) {
@@ -216,6 +222,7 @@ function onNotificationGCM(e) {
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
             alert("regID = " + e.regid);
+                setGCM(e.regid);
         }
     break;
 

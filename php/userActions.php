@@ -33,10 +33,11 @@ if (mysql_num_rows($result) > 0) {
     $school_id = $_POST["degree"];
     $year = $_POST["year"];
     $user = $_POST["email"];
+    $gcm = $_POST["gcm"];
 
 
-    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`) "
-            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date')");
+    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`,`gcm`) "
+            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date','$gcm')");
     $id = mysql_insert_id();
 }
 
