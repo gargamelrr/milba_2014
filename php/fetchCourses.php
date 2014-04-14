@@ -65,6 +65,6 @@ while ($row = mysql_fetch_array($result_else)) {
         array_push($response["courses"], $course);
     }
 }
-$response["debug"] = "SELECT name, Courses.index FROM Courses, Users_Courses where Users_Courses.student_id not in ($friends_str) and Courses.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id) group by name";
+//$response["debug"] = "SELECT name, Courses.index FROM Courses, Users_Courses where Users_Courses.student_id not in ($friends_str) and Courses.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id) group by name";
 echo json_encode($response);
 ?>

@@ -31,6 +31,7 @@ and open the template in the editor.
 
                 <div style="text-align: center;">
                     <h2><span id="nameProfile"></span> </h2>
+                    <img src="" id="imgProfile"/>
                 </div>
 
                 <div  id="profileData">
@@ -52,39 +53,41 @@ and open the template in the editor.
                 <div style="color:#ccced6;">
                     <h3>Notifications</h3>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="flip-group">Invitation to a group</label>
-                    <select name="flip-group" id="flip-group" data-role="slider" >
-                        <option value="off" >Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
-                </div>
-
-                <div data-role="fieldcontain">
-                    <label for="flip-task">New task</label>
-                    <select name="flip-task" id="flip-task" data-role="slider" >
-                        <option value="off">Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
-                </div>
-
-                <div data-role="fieldcontain">
-                    <label for="test">Custom alert</label>
-                    <div id="test">
-                        <select name="flip-custom" id="flip-custom" data-role="slider" >
-                            <option value="off">Off</option>
-                            <option value="on" selected>On</option>
+                <div id="notification">
+                    <div data-role="fieldcontain">
+                        <label for="flip-group">Invitation to a group</label>
+                        <select name="flip-group" id="flip-group" data-role="slider" >
+                            <option value="off" ></option>
+                            <option value="on" selected></option>
                         </select> 
-                        <input type="number" name="days" id="days" value="" data-inline="true" style="float: left;"> days ahead
                     </div>
-                </div>
 
-                <div data-role="fieldcontain">
-                    <label for="flip-sound">Sound</label>
-                    <select name="flip-sound" id="flip-sound" data-role="slider" >
-                        <option value="off">Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
+                    <div data-role="fieldcontain">
+                        <label for="flip-task">New task</label>
+                        <select name="flip-task" id="flip-task" data-role="slider" >
+                            <option value="off"></option>
+                            <option value="on" selected></option>
+                        </select> 
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="test">Custom alert</label>
+                        <div id="test">
+                            <select name="flip-custom" id="flip-custom" data-role="slider" >
+                                <option value="off"></option>
+                                <option value="on" selected></option>
+                            </select> 
+                            <input type="number" name="days" id="days" value="" data-inline="true" style="float: left;"> days ahead
+                        </div>
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="flip-sound">Sound</label>
+                        <select name="flip-sound" id="flip-sound" data-role="slider" >
+                            <option value="off"></option>
+                            <option value="on" selected></option>
+                        </select> 
+                    </div>
                 </div>
             </div>
         </div>

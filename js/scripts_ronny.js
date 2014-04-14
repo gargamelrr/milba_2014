@@ -78,6 +78,8 @@ $(document).on("pageshow", "#profilePage", function() {
             if (json.success == 1) {
                 $("#nameProfile").text(json.user_name);
                 parseProfile(json, true);
+                $('#imgProfile').attr('src', 'https://graph.facebook.com/' + fb_id + '/picture?width=120&height=120');
+
             }
         },
         error: function() {

@@ -362,7 +362,7 @@ function fillUpFieldsAfterEdit(json) {
     $("input[name='radiodifficulty']").checkboxradio("refresh");
 }
 
-$(document).on("pageshow", "#addCourse", function() {
+$(document).on("pageshow", "#courses", function() {
     $('#submit').click(function() {
         $.ajax({
             //add full 

@@ -15,13 +15,14 @@ session_start();
 $fb_id = $_POST["fb_id"];
 
 //check if user exist
-$result = mysql_query("select `index`,first_name,last_name,email from Users where fb_id='$fb_id'");
+$result = mysql_query("select `index`,first_name,last_name,email,year from Users where fb_id='$fb_id'");
 $count = mysql_num_rows($result);
 if (mysql_num_rows($result) > 0) {
     $row = mysql_fetch_array($result);
     $id = $row["index"];
     $name = $row["first_name"] . " " . $row["last_name"];
     $user = $row["email"];
+    $year = $row["year"];
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
@@ -45,6 +46,7 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 $_SESSION["school"] = $school_id;
+$_SESSION["year"] = date("Y") + 1 - $year;
 
 
 if (isset($_POST["friends"])) {
@@ -61,7 +63,7 @@ if (isset($_POST["friends"])) {
     }
 }
 
-//$response["debug1"] = var_dump($_SESSION["friends"]);
+//$response["debug1"] = $gcm;
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
 $response["success"] = "1";
 
