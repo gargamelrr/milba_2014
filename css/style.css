@@ -518,3 +518,7 @@ a#leave-course {
     -webkit-box-shadow:none;
     box-shadow:none;
 }
+
+#notification div.ui-input-text.ui-shadow-inset.ui-corner-all.ui-btn-shadow.ui-body-c{
+    width: 60px;
+}
