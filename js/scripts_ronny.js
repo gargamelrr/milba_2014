@@ -198,7 +198,7 @@ $(document).on("pageshow", "#login", function() {
 });
 
 $(document).on("pageshow", function(e) {
-            alert("1" + name);
+            alert("1" + localStorage.getItem("Name"));
 
     if (e.target.id != "login") {
                 alert("2" + getName());
