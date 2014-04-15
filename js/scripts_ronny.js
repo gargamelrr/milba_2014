@@ -190,6 +190,7 @@ $(document).on("pageshow", function(e) {
             setFb_id("1055121807");
             setName("Tom Blotman");
         }
+        alert(name);
         $.mobile.activePage.find("#nameFB").text(name);
         $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + fb_id + '/picture');
         $.mobile.activePage.find('#nav-panel').trigger('create');
