@@ -184,16 +184,17 @@ $(document).on("pageshow", "#login", function() {
     });
 });
 
-$(document).on("pageshow", function() {
-    if (name == "") {
-        setFb_id("1055121807");
-        setName("Tom Blotman");
+$(document).on("pageshow", function(e) {
+    if (e.target.id != "login") {
+        if (name == "") {
+            setFb_id("1055121807");
+            setName("Tom Blotman");
 
+        }
+        $("#profile span").text(name);
+        $('#profile').css('background', 'url(https://graph.facebook.com/' + fb_id + '/picture)');
+        $('#nav-panel').trigger('create');
     }
-    $("#profile span").text(name);
-    $('#profile').css('background', 'url(https://graph.facebook.com/' + fb_id + '/picture)');
-    $('#nav-panel').trigger('create');
-
 });
 
 // result contains any message sent from the plugin call
