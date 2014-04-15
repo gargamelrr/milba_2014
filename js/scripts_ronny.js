@@ -1,20 +1,10 @@
 var gcm = "";
-var name = "";
-var fb_id = -1;
 
 function setGCM(val) {
     gcm = val;
 }
 function setName(val) {
     name = val;
-}
-
-function setFb_id(val) {
-    fb_id = val;
-}
-
-function getName(){
-    return name;
 }
 
 $(document).on("pageshow", "#home", function() {
@@ -198,18 +188,14 @@ $(document).on("pageshow", "#login", function() {
 });
 
 $(document).on("pageshow", function(e) {
-            alert("1" + localStorage.getItem("Name"));
 
     if (e.target.id != "login") {
-                alert("2" + getName());
-
-        if (name == "") {
-            setFb_id("1055121807");
-            setName("Tom Blotman");
+        if (localStorage.getItem("Name") == "") {
+            localStorage.setItem('Name', "Tom Blotman");
+            localStorage.setItem('ID', "1055121807");
         }
-        alert("3" + name);
-        $.mobile.activePage.find("#nameFB").text(name);
-        $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + fb_id + '/picture');
+        $.mobile.activePage.find("#nameFB").text(localStorage.getItem("Name"));
+        $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture');
         $.mobile.activePage.find('#nav-panel').trigger('create');
 
     }

@@ -202,7 +202,7 @@ and open the template in the editor.
                                             birthday: bday,
                                             location: "israel",
                                             friends: friendsList,
-                                            gcm:gcm,
+                                            gcm: gcm,
                                             email: response.email,
                                             year: $("#year").val(),
                                             degree: $("#degree").val()
@@ -211,11 +211,9 @@ and open the template in the editor.
                                             //alert(data);
                                             var json = JSON.parse(data);
                                             if (json.success == 1) {
+                                                localStorage.setItem('Name', response.first_name + " " + response.last_name);
+                                                localStorage.setItem('ID', response.id);
                                                 window.location.href = "index.html";
-                                                setFb_id(response.id);
-                                                setName(response.first_name + " " + response.last_name);
-                                                alert("name:" + name);
-                                                localStorage.setItem('Name',response.first_name + " " + response.last_name);
                                             }
                                         },
                                         error: function() {
