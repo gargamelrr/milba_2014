@@ -13,6 +13,10 @@ function setFb_id(val) {
     fb_id = val;
 }
 
+function getName(){
+    return name;
+}
+
 $(document).on("pageshow", "#home", function() {
     $('.details').hide();
     $('.ui-btn-text').click(function() {
@@ -197,7 +201,7 @@ $(document).on("pageshow", function(e) {
             alert("1" + name);
 
     if (e.target.id != "login") {
-                alert("2" + name);
+                alert("2" + getName());
 
         if (name == "") {
             setFb_id("1055121807");
