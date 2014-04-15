@@ -194,12 +194,16 @@ $(document).on("pageshow", "#login", function() {
 });
 
 $(document).on("pageshow", function(e) {
+            alert("1" + name);
+
     if (e.target.id != "login") {
+                alert("2" + name);
+
         if (name == "") {
             setFb_id("1055121807");
             setName("Tom Blotman");
         }
-        alert(name);
+        alert("3" + name);
         $.mobile.activePage.find("#nameFB").text(name);
         $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + fb_id + '/picture');
         $.mobile.activePage.find('#nav-panel').trigger('create');
