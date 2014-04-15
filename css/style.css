@@ -389,12 +389,19 @@ a#addTaskBtn{
     background-repeat: no-repeat  !important;
     background-position: 50% 40%;
 }
-#profile span{
-    margin-left: 50px;
+#nameFB{
+    margin-left: 20px;
     color:#a7adc3;
-
 }
 
+img#imgFB{
+     background-repeat: no-repeat  !important;
+    background-position: left;
+    border:2px solid #a7adc3 ;
+    border-radius: 1em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;  
+}
 
 #addTaskBtn .ui-btn-inner{
     line-height: 190px;
