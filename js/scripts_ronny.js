@@ -1,7 +1,16 @@
 var gcm = "";
+var name = "";
+var fb_id = -1;
 
 function setGCM(val) {
     gcm = val;
+}
+function setName(val) {
+    name = val;
+}
+
+function setFb_id(val) {
+    fb_id = val;
 }
 
 $(document).on("pageshow", "#home", function() {
