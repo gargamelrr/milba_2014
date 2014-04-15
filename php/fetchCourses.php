@@ -6,8 +6,6 @@ $db = new DB_CONNECT();
 
 session_start();
 
-$response["debug"] = $_SESSION["user_id"];
-
 $user_id = $_SESSION["user_id"];
 $user_school = $_SESSION["school"];
 
@@ -60,6 +58,6 @@ while ($row = mysql_fetch_array($result_else)) {
 }
 
 $response["success"] = 1;
-//$response["debug"] = "SELECT name, Courses.index FROM Courses, Users_Courses where Users_Courses.student_id not in ($friends_str) and Courses.school_id = $user_school and Courses.index not in (select course_id from Users_Courses where student_id = $user_id) group by name";
+$response["debug"] = $_SESSION["user_id"];
 echo json_encode($response);
 ?>

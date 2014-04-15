@@ -15,7 +15,7 @@ session_start();
 $fb_id = $_POST["fb_id"];
 
 //check if user exist
-$result = mysql_query("select `index`,first_name,last_name,email,year from Users where fb_id='$fb_id'");
+$result = mysql_query("select `index`,first_name,last_name,email,year,school_id from Users where fb_id='$fb_id'");
 $count = mysql_num_rows($result);
 if (mysql_num_rows($result) > 0) {
     $row = mysql_fetch_array($result);
@@ -23,6 +23,7 @@ if (mysql_num_rows($result) > 0) {
     $name = $row["first_name"] . " " . $row["last_name"];
     $user = $row["email"];
     $year = $row["year"];
+    $school_id = $row["school_id"];
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
