@@ -170,6 +170,7 @@ $(document).on("pageshow", "#courses", function() {
         $("#coursesMy").hide();
         $("#coursesSug").show();
         $("#newGroup").hide();
+        $('#MeBtn').show();
     });
 
     $("#but-my").click(function() {
@@ -178,6 +179,7 @@ $(document).on("pageshow", "#courses", function() {
         $("#coursesSug").hide();
         $("#coursesMy").show();
         $("#newGroup").hide();
+        $('#MeBtn').show();
     });
 
 
@@ -234,14 +236,33 @@ function createCoursesButtons(coursesList, div) {
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
+    
+    //button for the ME group
+    var subDiv = document.createElement("div");
+    subDiv.className = "ui-block-b";
+    var courseNewdiv = document.createElement("a");
+    courseNewdiv.id = "MeBtn";
+    courseNewdiv.className = "newCourse";
+    courseNewdiv.href = "";
+    courseNewdiv.onclick = function() {
+        $("#coursesSug").hide();
+        $("#coursesMy").show();
+        $("#newGroup").hide();
+    };
+    courseNewdiv.innerHTML = "ME";
+
+    subDiv.appendChild(courseNewdiv);
+    mainDiv.appendChild(subDiv);
+    
+    
 
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
         var courseDiv = document.createElement("a");
         if (i % 2 == 0) {
-            subDiv.className = "ui-block-b";
-        } else {
             subDiv.className = "ui-block-a";
+        } else {
+            subDiv.className = "ui-block-b";
         }
         courseDiv.href = "GroupDetails.html";
         courseDiv.id = "a" + coursesList[i].courseID;
