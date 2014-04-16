@@ -205,6 +205,10 @@
 
 }
 
+#addTask .ui-grid-a{
+    width: 400px;
+}
+
 #tabs .ui-btn{
     background-color: #5b6170;
     height: 48px;
@@ -507,6 +511,20 @@ a#leave-course {
 #elementsToOperateOn span.ui-btn-inner{
     color:white;
 }
+
+
+#elementsToOperateOn label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c,
+#elementsToOperateOn label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c.ui-btn-up-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c{
+    background-color: white;
+}
+
+#radioTask span.ui-btn-inner{
+    color:#3cceff;
+}
+
 
 #friends img{
     border-radius: 50%;
