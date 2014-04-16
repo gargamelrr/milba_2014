@@ -60,44 +60,6 @@ and open the template in the editor.
 
 
 
-                document.addEventListener('deviceready', function() {
-                    try {
-
-                        FB.init({appId: "691029124265305",
-                            nativeInterface: CDV.FB,
-                            useCachedDialogs: false,
-                            status: true, // check login status
-                            cookie: true});
-                        // document.getElementById('data').innerHTML = "";
-
-                        var pushNotification;
-                        pushNotification = window.plugins.pushNotification;
-                        if (device.platform == 'android' || device.platform == 'Android')
-                        {
-                            pushNotification.register(
-                                    successHandler,
-                                    errorHandler, {
-                                        "senderID": "965749566309",
-                                        "ecb": "onNotificationGCM"
-                                    });
-                        }
-                        else
-                        {
-                            pushNotification.register(
-                                    tokenHandler,
-                                    errorHandler, {
-                                        "badge": "true",
-                                        "sound": "true",
-                                        "alert": "true",
-                                        "ecb": "onNotificationAPN"
-                                    });
-                        }
-                    } catch (e) {
-                        console.log("e1");
-                    }
-                    console.log('Device is ready! ');
-                }, false);
-
                 FB.Event.subscribe('auth.login', function(response) {
                     console.log('auth.login event');
                 });
@@ -126,7 +88,6 @@ and open the template in the editor.
 //                            }
 //                        });
 //                        $.ajax({
-//                            //add full 
 //                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
 //                            method: 'POST',
 //                            data: {
@@ -137,9 +98,9 @@ and open the template in the editor.
 //                                console.log(data);
 //                                var json = JSON.parse(data);
 //                                if (json.success == 1) {
+//                                    localStorage.setItem('Name', response.first_name + " " + response.last_name);
+//                                    localStorage.setItem('ID', response.id);                                  
 //                                    window.location.href = "index.html";
-//                                    setFb_id(response.authResponse.userId);
-//                                    setName("todo");
 //                                }
 //                            },
 //                            error: function() {
@@ -176,6 +137,8 @@ and open the template in the editor.
                     var friendsList;
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
                         if (response.error) {
+                            alert(JSON.stringify(response));
+                            return;
                         } else {
                             friendsList = response.data;
                         }
@@ -186,7 +149,7 @@ and open the template in the editor.
                             function(response) {
                                 //console.log(JSON.stringify(response));
                                 if (response && !response.error) {
-                                    alert(response.name + ', Fetching your information from FB.');
+                                    //alert(response.name + ', Fetching your information from FB.');
                                     var gender = (response.gender === null) ? "male" : response.gender;
                                     var bday = (response.birthday === null) ? "1970-01-01" : response.birthday;
                                     //var location = (response.location.name === null) ? "none" : response.location.name;

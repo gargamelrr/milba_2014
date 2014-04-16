@@ -54,12 +54,18 @@ and open the template in the editor.
                                 <input type="time" name="taskTime" id="taskTime" required/> 
                                 <input type ="hidden" value="-1" id="editFlag"/>
                                 <textarea name="taskdetails" id="taskdetails" placeholder="Details"> </textarea>
-                                <fieldset data-role="controlgroup" data-type="horizontal" >
-                                    <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
-                                    <label for="easy">Friendly Sheet</label>
-                                    <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
-                                    <label for="hard">Massive sheet</label>
-                                </fieldset><br> 
+
+                                <div class="ui-grid-a" id="radioTask">
+                                    <div class="ui-block-a">
+                                        <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/> 
+                                        <label for="easy" data-role="none">Friendly Sheet</label>
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
+                                        <label for="hard" data-role="none">Massive sheet</label>
+                                    </div>
+                                </div>
+
 
                                 <label><i>It’s always fun to share your Sheets with friends!</i></label>
                                 <input  type="submit" value="Publish Sheet"  id="submit"/>
@@ -86,5 +92,5 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-     </body>
+    </body>
 </html>

@@ -205,6 +205,10 @@
 
 }
 
+#addTask .ui-grid-a{
+    width: 400px;
+}
+
 #tabs .ui-btn{
     background-color: #5b6170;
     height: 48px;
@@ -470,11 +474,15 @@ a#leave-course {
 #elementsToOperateOn div.ui-input-text,  #elementsToOperateOn textarea.ui-input-text{
     background-color: #e2f8ff;
     border: 1px solid #3cceff;
-    margin-left: 15px;
-    margin-right: 15px;
+/*    margin-left: 15px;
+    margin-right: 15px;*/
     margin-top: 15px;
     -webkit-box-shadow:none;
     box-shadow:none;
+}
+
+#elementsToOperateOn{
+    margin: 15px;
 }
 
 #elementsToOperateOn  input.ui-input-text,#elementsToOperateOn textarea.ui-input-text {
@@ -504,9 +512,23 @@ a#leave-course {
     color:white;
 }
 
+
+#elementsToOperateOn label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c,
+#elementsToOperateOn label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c.ui-btn-up-c,
+#elementsToOperateOn label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c{
+    background-color: white;
+}
+
+#radioTask span.ui-btn-inner{
+    color:#3cceff;
+}
+
+
 #friends img{
     border-radius: 50%;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 #notification span.ui-slider-label.ui-slider-label-b.ui-btn-down-c.ui-btn-corner-all {

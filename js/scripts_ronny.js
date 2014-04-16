@@ -204,12 +204,12 @@ $(document).on("pageshow", function(e) {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    console.log('result = ' + result);
+    alert('result = ' + result);
 }
 
 // result contains any error description text returned from the plugin call
 function errorHandler(error) {
-    console.log('error = ' + error);
+    alert('error = ' + error);
 }
 
 function tokenHandler(result) {
@@ -219,7 +219,6 @@ function tokenHandler(result) {
 }
 
 function onNotificationGCM(e) {
-
     switch (e.event)
     {
         case 'registered':
@@ -227,17 +226,17 @@ function onNotificationGCM(e) {
             {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
-                //alert("regID = " + e.regid);
+                alert("regID = " + e.regid);
                 setGCM(e.regid);
             }
             break;
 
         case 'message':
-            alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
+            alert('message = ' + e.payload.message);
             break;
 
         case 'error':
-            alert('GCM error = ' + e.msg);
+            alert('GCM error = ' + JSON.stringify(e));
             break;
 
         default:
@@ -245,3 +244,41 @@ function onNotificationGCM(e) {
             break;
     }
 }
+
+    document.addEventListener('deviceready', function() {
+                    try {
+
+                        FB.init({appId: "691029124265305",
+                            nativeInterface: CDV.FB,
+                            useCachedDialogs: false,
+                            status: true, // check login status
+                            cookie: true});
+                        // document.getElementById('data').innerHTML = "";
+
+                        var pushNotification;
+                        pushNotification = window.plugins.pushNotification;
+                        if (device.platform == 'android' || device.platform == 'Android')
+                        {
+                            pushNotification.register(
+                                    successHandler,
+                                    errorHandler, {
+                                        "senderID": "965749566309",
+                                        "ecb": "onNotificationGCM"
+                                    });
+                        }
+                        else
+                        {
+                            pushNotification.register(
+                                    tokenHandler,
+                                    errorHandler, {
+                                        "badge": "true",
+                                        "sound": "true",
+                                        "alert": "true",
+                                        "ecb": "onNotificationAPN"
+                                    });
+                        }
+                    } catch (e) {
+                        console.log("e1");
+                    }
+                    console.log('Device is ready! ');
+                }, false);
