@@ -106,6 +106,7 @@ $(document).on("pageshow", "#profilePage", function() {
         });
     });
 });
+
 function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();

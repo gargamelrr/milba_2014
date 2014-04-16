@@ -134,6 +134,33 @@ $(document).on("pageshow", "#courseDetails", function() {
 
 $(document).on("pageshow", "#courses", function() {
 
+    $( "#search" ).keyup(function(e) {
+        
+        //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
+        if(e.keyCode == 13) {
+            $.ajax({
+                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/search.php',
+                method: 'POST',
+                data: {
+                    keyword: $(this).val()
+                },
+                success: function(data) {
+                    var json = JSON.parse(data)
+
+                    if (json.success == 1) {
+                        updateSuggestedCourses(json.searchResult);
+                    } else {
+                        alert("error parsing json for search bar");
+                    }
+                },
+                error: function() {
+                    alert.data(data.message);
+                }
+            });
+        }
+        });
+    
+    
     if (currentCoursePage == "join") {
         $('#but-my').removeClass('ui-btn-active').trigger('create');
         $('#but-sug').addClass('ui-btn-active').trigger('create');
@@ -182,7 +209,18 @@ $(document).on("pageshow", "#courses", function() {
     //$("#coursesMy").hide();
 });
 
+function updateSuggestedCourses(courses) {
+    removeCurrentSuggestedCourses();
+    createCoursesButtons(courses, "coursesSug");
+}
 
+function removeCurrentSuggestedCourses() {
+    var children = $("coursesSug").children("div");
+    for(var i = 0; i<children.length; i++) {
+        var child = children[i];
+        child.remove();
+    }
+}
 
 function createCoursesButtons(coursesList, div) {
 
@@ -387,7 +425,6 @@ $(document).on("pageshow", "#addCourse", function() {
     });
 });
 
-
 $(document).on("pageshow", "#Notifications", function() {
     //uriFriends();
     $.ajax({
@@ -436,12 +473,6 @@ function buildNotifications(data) {
         }
     }
 }
-
-//<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
-//                                <p class="ui-li-desc">A new task added to</p>
-//                                <h2 class="ui-li-heading"><strong>אוטומטים</strong></h2>
-//                                <p class="ui-li-desc">Due Date is 1.9.13</p>
-//                            </div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
 
 function dayNumberToString(number)
 {
