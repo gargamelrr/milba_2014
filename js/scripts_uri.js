@@ -1,8 +1,6 @@
 var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
-var fb_id = -1;
-var name = "";
 
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
@@ -16,13 +14,6 @@ function setCurrentTaskId(val) {
     currentTaskId = val;
 }
 
-function setName(val) {
-    name = val;
-}
-
-function setFb_id(val) {
-    fb_id = val;
-}
 
 $(document).on("pageshow", "#courseDetails", function() {
     $.ajax({
@@ -400,7 +391,7 @@ function fillUpFieldsAfterEdit(json) {
     $("input[name='radiodifficulty']").checkboxradio("refresh");
 }
 
-$(document).on("pageshow", "#addCourse", function() {
+$(document).on("pageshow", "#courses", function() {
     $('#submit').click(function() {
         $.ajax({
             //add full 

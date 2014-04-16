@@ -3,6 +3,9 @@ var gcm = "";
 function setGCM(val) {
     gcm = val;
 }
+function setName(val) {
+    name = val;
+}
 
 $(document).on("pageshow", "#home", function() {
     $('.details').hide();
@@ -78,6 +81,8 @@ $(document).on("pageshow", "#profilePage", function() {
             if (json.success == 1) {
                 $("#nameProfile").text(json.user_name);
                 parseProfile(json, true);
+                $('#imgProfile').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=120&height=120');
+
             }
         },
         error: function() {
@@ -183,16 +188,18 @@ $(document).on("pageshow", "#login", function() {
     });
 });
 
-$(document).on("pageshow", function() {
-    if (name == "") {
-        setFb_id("1055121807");
-        setName("Tom Blotman");
+$(document).on("pageshow", function(e) {
+
+    if (e.target.id != "login") {
+        if (localStorage.getItem("Name") == null) {
+            localStorage.setItem('Name', "Tom Blotman");
+            localStorage.setItem('ID', "1055121807");
+        }
+        $.mobile.activePage.find("#nameFB").text(localStorage.getItem("Name"));
+        $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture');
+        $.mobile.activePage.find('#nav-panel').trigger('create');
 
     }
-    $("#profile span").text(name);
-    $('#profile').css('background', 'url(https://graph.facebook.com/' + fb_id + '/picture)');
-    $('#nav-panel').trigger('create');
-
 });
 
 // result contains any message sent from the plugin call

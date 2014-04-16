@@ -21,7 +21,7 @@ and open the template in the editor.
                 <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel">
-                <a href="Profile.html" data-role="button"  id="profile"> </a><br/>
+                <a href="Profile.html" data-role="button"  id="profile"><img src="" id="imgFB"/><span id="nameFB"></span>  </a><br/>
                 <a href="index.html" data-role="button"  onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
                 <a href="Groups.html?b" data-role="button"   onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Notifications.html" data-role="button"  > Notifications </a><br/>
@@ -31,6 +31,7 @@ and open the template in the editor.
 
                 <div style="text-align: center;">
                     <h2><span id="nameProfile"></span> </h2>
+                    <img src="" id="imgProfile"/>
                 </div>
 
                 <div  id="profileData">
@@ -52,39 +53,61 @@ and open the template in the editor.
                 <div style="color:#ccced6;">
                     <h3>Notifications</h3>
                 </div>
-                <div data-role="fieldcontain">
-                    <label for="flip-group">Invitation to a group</label>
-                    <select name="flip-group" id="flip-group" data-role="slider" >
-                        <option value="off" >Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
-                </div>
+                <div id="notification">
 
-                <div data-role="fieldcontain">
-                    <label for="flip-task">New task</label>
-                    <select name="flip-task" id="flip-task" data-role="slider" >
-                        <option value="off">Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
-                </div>
-
-                <div data-role="fieldcontain">
-                    <label for="test">Custom alert</label>
-                    <div id="test">
-                        <select name="flip-custom" id="flip-custom" data-role="slider" >
-                            <option value="off">Off</option>
-                            <option value="on" selected>On</option>
-                        </select> 
-                        <input type="number" name="days" id="days" value="" data-inline="true" style="float: left;"> days ahead
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <label for="flip-group">Invitation to a group</label>
+                        </div>
+                        <div class="ui-block-b">
+                            <select name="flip-group" id="flip-group" data-role="slider" >
+                                <option value="off" ></option>
+                                <option value="on" selected></option>
+                            </select> 
+                        </div>
                     </div>
-                </div>
 
-                <div data-role="fieldcontain">
-                    <label for="flip-sound">Sound</label>
-                    <select name="flip-sound" id="flip-sound" data-role="slider" >
-                        <option value="off">Off</option>
-                        <option value="on" selected>On</option>
-                    </select> 
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <label for="flip-task">New task</label>
+                        </div>                         
+                        <div class="ui-block-b">
+                            <select name="flip-task" id="flip-task" data-role="slider" >
+                                <option value="off"></option>
+                                <option value="on" selected></option>
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-c">
+                        <div class="ui-block-a" style="width:10%">
+                            <label for="days">Custom alert</label>
+                        </div>
+                        <div class="ui-block-b" style="width:6%">
+                            <input type="number" name="days" id="days" value="" data-inline="true"> 
+                        </div>
+                        <div class="ui-block-c" style="width:17.4%">
+                            <span>days ahead</span>
+                        </div>                
+                        <div class="ui-block-d">
+                            <select name="flip-custom" id="flip-custom" data-role="slider" >
+                                <option value="off"></option>
+                                <option value="on" selected></option>
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <label for="flip-sound">Sound</label>
+                        </div>
+                        <div class="ui-block-b">
+                            <select name="flip-sound" id="flip-sound" data-role="slider" >
+                                <option value="off"></option>
+                                <option value="on" selected></option>
+                            </select> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

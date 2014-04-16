@@ -45,14 +45,17 @@ if (isset($_POST["dataUser"])) {
     $response["user_year"] = $row_user["year"];
     $response["user_degree"] = $row_user["degree"];
 } else {
+
     session_start();
-    session_regenerate_id(true);
+    session_destroy();
+
     if (isset($_POST["field"]) && $_POST["field"] == "institue") {
         $name = urldecode($_POST["value"]);
-    }else{
+    } else {
         $name = !isset($_POST["school"]) ? $schools[0]["name"] : $_POST["school"];
     }
     $response["user_school"] = $name;
+    $response["debug"] = $_SESSION["user"];
 }
 
 $result = mysql_query("select `index`,degree from Schools where name='" . $name . "' order by degree");

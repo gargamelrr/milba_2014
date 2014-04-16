@@ -5,24 +5,10 @@
     <body>
         <?php
         if (isset($_POST['submit'])) {
-//            $con = mysql_connect("localhost", "root", "");
-//            if (!$con) {
-//                die('MySQL connection failed');
-//            }
-//            $db = mysql_select_db("GCMDemo");
-//            if (!$db) {
-//                die('Database selection failed');
-//            }
-//            $registatoin_ids = array();
-//            $sql = "SELECT *FROM tblregistration";
-//            $result = mysql_query($sql, $con);
-//            while ($row = mysql_fetch_assoc($result)) {
-//                array_push($registatoin_ids, $row['registration_id']);
-//            }
-            // Set POST variables
+
             $url = 'https://android.googleapis.com/gcm/send';
             $registatoin_ids = array();
-            $registatoin_ids[] = "APA91bEtbXEtsR2HPH936bn1mqCvRp6Jr6TQLOeCE8NivcVCsqECJcEuwl_CD8H_PcN8uC6toyXiifStvC-aoRYgk_zaQl6TZsVW5A6Ot1VOO7WXlkgZMt0r5vS7LpPP3CnmsUp51Sy5lXZTPj2tAxf1lK7rkT4gQ";
+            $registatoin_ids[] = "APA91bEtbXEtsR2HPH936bn1mqCvRp6Jr6TQLOeCE8NivcVCsqECJcEuwI_CD8H_PcN8uC6toyXiifStvC-aoRYgk_zaQIg6TZsVW5A6Ot1VOO7WXIkgZMt0r5vS7LpPP3CnmsUp51Sy5lXZTPj2tAxf1IK7rkT4gQ";
             $message = array("Notice" => $_POST['message']);
             $fields = array(
                 'registration_ids' => $registatoin_ids,

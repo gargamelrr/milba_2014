@@ -113,6 +113,19 @@
     color:#ccced6;
 }
 
+#imgProfile{
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:center center; 
+    border:4px solid #a7adc3 ;
+    border-radius: 1em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;   
+    width: 120px;
+    height: 120px;
+}
+
+
 #profilePage label{
     color:#ccced6;
 }
@@ -287,8 +300,8 @@
     background-position: left;
     border:2px solid #a7adc3 ;
     border-radius: 1em;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
 }
 
 #nav-panel{
@@ -376,12 +389,19 @@ a#addTaskBtn{
     background-repeat: no-repeat  !important;
     background-position: 50% 40%;
 }
-#profile span{
-    margin-left: 50px;
+#nameFB{
+    margin-left: 20px;
     color:#a7adc3;
-
 }
 
+img#imgFB{
+     background-repeat: no-repeat  !important;
+    background-position: left;
+    border:2px solid #a7adc3 ;
+    border-radius: 1em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;  
+}
 
 #addTaskBtn .ui-btn-inner{
     line-height: 190px;
@@ -487,4 +507,26 @@ a#leave-course {
 #friends img{
     border-radius: 50%;
     margin-left: 15px;
+}
+
+#notification span.ui-slider-label.ui-slider-label-b.ui-btn-down-c.ui-btn-corner-all {
+    background-color: #565c6b;
+    background-image: none;
+}
+
+#notification span.ui-slider-label.ui-slider-label-a.ui-btn-active.ui-btn-corner-all {
+    background-color: white;
+    background-image: none;
+}
+
+#notification a.ui-slider-handle.ui-slider-handle-snapping.ui-btn.ui-shadow.ui-btn-corner-all {
+    background-color: #19cfa7;
+    background-image: none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}
+
+#notification div.ui-input-text.ui-shadow-inset.ui-corner-all.ui-btn-shadow.ui-body-c{
+    width: 60px;
+    margin: 0;
 }
