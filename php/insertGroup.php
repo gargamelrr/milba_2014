@@ -10,7 +10,7 @@ session_start();
 $user_school = $_SESSION["school"];
 
 if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
-
+    
    $response = array();
     $name = $_POST['courseName'];
     $teacher = $_POST['teacherName'];

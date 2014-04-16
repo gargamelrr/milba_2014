@@ -11,9 +11,13 @@ session_start();
 $user_id = $_SESSION["user_id"];
 
 $idToEdit = $_POST["id"];
-
+$courseID = $_POST["courseID"];
+if($courseID == -1) {
+    $result = mysql_query("Select name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Users_PrivateTasks Where Users_PrivateTasks.index=$idToEdit");
+} else {
 $result = mysql_query("Select name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Tasks Where Tasks.index=$idToEdit");
-$response["debug"] = $idToEdit;
+}
+$response["debug"] = $courseID;
 $response["tasks"] = array();
 
 if(mysql_num_rows($result) == 1) {
