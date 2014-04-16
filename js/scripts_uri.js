@@ -30,6 +30,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             if (json.success == 1) {
                 buildTasks(json.allTasks);
             }
+            $('#images').text("");
 
             if (json.is_user == "1") {
                 $("#join-course").hide();
@@ -40,35 +41,43 @@ $(document).on("pageshow", "#courseDetails", function() {
                 $("#addTask").hide();
                 $('.actions').hide();
             }
+            if (currentCourseId == -1) {
+                $("#leave-course").hide();
+            }
+
             $('#name').text(json.courseDetails.name);
             var temp = json.courseDetails.lecturer == null ? "" : json.courseDetails.lecturer;
             $('#teac_name').text(temp);
-            temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
-            $('#email').text(temp);
+
+            if (currentCourseId != -1) {
+                temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
+                $('#email').text(temp);
+
+                if (json.is_user == "1") {
+                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=70&height=70" />');
+                }
+                $.each(json.friends, function(i, val) {
+                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=70&height=70" />');
+                });
+            }
+
             if (currentTaskId != "") {
                 setCurrentTaskId("");
             }
 
-            $('#images').text("");
-            if (json.is_user == "1") {
-                $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=70&height=70" />');
-            }
-            $.each(json.friends, function(i, val) {
-                $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=70&height=70" />');
-            });
+
         },
         error: function() {
             alert("error");
         }
     });
     $('#submit').click(function() {
-        
-        if($("#taskName").val() == ""||$("#date1").val() == ""||$("#taskTime").val() == ""){
+
+        if ($("#taskName").val() == "" || $("#date1").val() == "" || $("#taskTime").val() == "") {
             return false;
         }
-        
-        $.ajax({
 
+        $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
             data: {
@@ -247,26 +256,31 @@ function createCoursesButtons(coursesList, div) {
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
 
+    var mod = 1;
     //button for the ME group
-    var subDiv = document.createElement("div");
-    var courseNewdiv = document.createElement("a");
-    courseNewdiv.id = "MeBtn";
-    subDiv.className = "ui-block-b";
-    courseNewdiv.href = "GroupDetails.html";
-    
-    courseNewdiv.onclick = function() {
-        setCurrentCourseId($(this).attr("data-ID"));
-    };
-    $(courseNewdiv).attr("data-ID", "-1");
-    courseNewdiv.innerHTML = "ME";
+    if (div == "coursesMy") {
+        mod = 0;
+        var subDiv = document.createElement("div");
+        var courseNewdiv = document.createElement("a");
+        courseNewdiv.id = "MeBtn";
+        subDiv.className = "ui-block-b";
+        courseNewdiv.href = "GroupDetails.html";
 
-    subDiv.appendChild(courseNewdiv);
-    mainDiv.appendChild(subDiv);
-    
+        courseNewdiv.onclick = function() {
+            setCurrentCourseId($(this).attr("data-ID"));
+        };
+        $(courseNewdiv).attr("data-ID", "-1");
+        courseNewdiv.innerHTML = "ME";
+        courseNewdiv.className = "courseBtn courseBtnPurple";
+
+        subDiv.appendChild(courseNewdiv);
+        mainDiv.appendChild(subDiv);
+    }
+
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
         var courseDiv = document.createElement("a");
-        if (i % 2 == 0) {
+        if (i % 2 == mod) {
             subDiv.className = "ui-block-a";
         } else {
             subDiv.className = "ui-block-b";
@@ -371,7 +385,7 @@ function buildTasks(allTasks) {
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
-        
+
         $(delLink).click(function() {
             $(document).load();
             $.ajax({
@@ -423,11 +437,11 @@ function fillUpFieldsAfterEdit(json) {
 
 $(document).on("pageshow", "#courses", function() {
     $('#submit').click(function() {
-        
-        if($("#courseName").val() == ""){
+
+        if ($("#courseName").val() == "") {
             return false;
         }
-        
+
         $.ajax({
             //add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
