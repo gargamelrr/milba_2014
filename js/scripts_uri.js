@@ -46,8 +46,11 @@ $(document).on("pageshow", "#courseDetails", function() {
             if (currentTaskId != "") {
                 setCurrentTaskId("");
             }
-            
+
             $('#images').text("");
+            if (json.is_user == "1") {
+                $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=70&height=70" />');
+            }
             $.each(json.friends, function(i, val) {
                 $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=70&height=70" />');
             });
@@ -125,10 +128,10 @@ $(document).on("pageshow", "#courseDetails", function() {
 
 $(document).on("pageshow", "#courses", function() {
 
-    $( "#search" ).keyup(function(e) {
-        
+    $("#search").keyup(function(e) {
+
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
-        if(e.keyCode == 13) {
+        if (e.keyCode == 13) {
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/search.php',
                 method: 'POST',
@@ -149,9 +152,9 @@ $(document).on("pageshow", "#courses", function() {
                 }
             });
         }
-        });
-    
-    
+    });
+
+
     if (currentCoursePage == "join") {
         $('#but-my').removeClass('ui-btn-active').trigger('create');
         $('#but-sug').addClass('ui-btn-active').trigger('create');
@@ -209,7 +212,7 @@ function updateSuggestedCourses(courses) {
 
 function removeCurrentSuggestedCourses() {
     var children = $("coursesSug").children("div");
-    for(var i = 0; i<children.length; i++) {
+    for (var i = 0; i < children.length; i++) {
         var child = children[i];
         child.remove();
     }
@@ -236,7 +239,7 @@ function createCoursesButtons(coursesList, div) {
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
-    
+
     //button for the ME group
     var subDiv = document.createElement("div");
     subDiv.className = "ui-block-b";
@@ -253,8 +256,8 @@ function createCoursesButtons(coursesList, div) {
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
-    
-    
+
+
 
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
