@@ -126,7 +126,6 @@ and open the template in the editor.
 //                            }
 //                        });
 //                        $.ajax({
-//                            //add full 
 //                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
 //                            method: 'POST',
 //                            data: {
@@ -137,9 +136,9 @@ and open the template in the editor.
 //                                console.log(data);
 //                                var json = JSON.parse(data);
 //                                if (json.success == 1) {
+//                                    localStorage.setItem('Name', response.first_name + " " + response.last_name);
+//                                    localStorage.setItem('ID', response.id);                                  
 //                                    window.location.href = "index.html";
-//                                    setFb_id(response.authResponse.userId);
-//                                    setName("todo");
 //                                }
 //                            },
 //                            error: function() {

@@ -60,8 +60,13 @@ $(document).on("pageshow", "#courseDetails", function() {
         }
     });
     $('#submit').click(function() {
+        
+        if($("#taskName").val() == ""||$("#date1").val() == ""||$("#taskTime").val() == ""){
+            return false;
+        }
+        
         $.ajax({
-            //add full 
+
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
             data: {
@@ -417,6 +422,11 @@ function fillUpFieldsAfterEdit(json) {
 
 $(document).on("pageshow", "#courses", function() {
     $('#submit').click(function() {
+        
+        if($("#courseName").val() == ""){
+            return false;
+        }
+        
         $.ajax({
             //add full 
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertGroup.php',
