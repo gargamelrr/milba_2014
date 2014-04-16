@@ -11,7 +11,7 @@ $user_school = $_SESSION["school"];
 $user_id = $_SESSION["user_id"];
 
 if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
-
+    
    $response = array();
     $name = $_POST['courseName'];
     $teacher = $_POST['teacherName'];

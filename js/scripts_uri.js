@@ -15,6 +15,8 @@ function setCurrentTaskId(val) {
 }
 
 
+
+
 $(document).on("pageshow", "#courseDetails", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
@@ -247,23 +249,20 @@ function createCoursesButtons(coursesList, div) {
 
     //button for the ME group
     var subDiv = document.createElement("div");
-    subDiv.className = "ui-block-b";
     var courseNewdiv = document.createElement("a");
     courseNewdiv.id = "MeBtn";
-    courseNewdiv.className = "newCourse";
-    courseNewdiv.href = "";
+    subDiv.className = "ui-block-b";
+    courseNewdiv.href = "GroupDetails.html";
+    
     courseNewdiv.onclick = function() {
-        $("#coursesSug").hide();
-        $("#coursesMy").show();
-        $("#newGroup").hide();
+        setCurrentCourseId($(this).attr("data-ID"));
     };
+    $(courseNewdiv).attr("data-ID", "-1");
     courseNewdiv.innerHTML = "ME";
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
-
-
-
+    
     for (var i = 0; i < coursesList.length; i++) {
         var subDiv = document.createElement("div");
         var courseDiv = document.createElement("a");
@@ -351,7 +350,8 @@ function buildTasks(allTasks) {
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/editTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).attr('id')
+                    id: $(this).attr('id'),
+                    courseID: currentCourseId
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
@@ -371,14 +371,15 @@ function buildTasks(allTasks) {
         var delLink = document.createElement("a");
         delLink.href = "";
         delLink.innerHTML = "delete";
-
+        
         $(delLink).click(function() {
             $(document).load();
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/deleteTask.php',
                 method: 'POST',
                 data: {
-                    id: $(this).prev().attr('id')
+                    id: $(this).prev().attr('id'),
+                    courseID: currentCourseId
                 },
                 success: function(data) {
                     var json = JSON.parse(data)
