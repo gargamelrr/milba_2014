@@ -204,12 +204,12 @@ $(document).on("pageshow", function(e) {
 
 // result contains any message sent from the plugin call
 function successHandler(result) {
-    console.log('result = ' + result);
+    alert('result = ' + result);
 }
 
 // result contains any error description text returned from the plugin call
 function errorHandler(error) {
-    console.log('error = ' + error);
+    alert('error = ' + error);
 }
 
 function tokenHandler(result) {
@@ -219,7 +219,6 @@ function tokenHandler(result) {
 }
 
 function onNotificationGCM(e) {
-    alert(e);
     switch (e.event)
     {
         case 'registered':
@@ -233,11 +232,11 @@ function onNotificationGCM(e) {
             break;
 
         case 'message':
-            alert('message = ' + e.message);
+            alert('message = ' + e.payload.message);
             break;
 
         case 'error':
-            alert('GCM error = ' + e.msg);
+            alert('GCM error = ' + JSON.stringify(e));
             break;
 
         default:
