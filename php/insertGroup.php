@@ -8,6 +8,7 @@ $db = new DB_CONNECT();
 
 session_start();
 $user_school = $_SESSION["school"];
+$user_id = $_SESSION["user_id"];
 
 if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
 
@@ -16,12 +17,16 @@ if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
     $teacher = $_POST['teacherName'];
     $email = $_POST['teacherMail'];
     $duration = $_POST['duration'];
-    $year = date("Y");
+    $year = $_SESSION["year"];
     $date = date("Y-m-d");
     $user = $_SESSION["user_id"];
 
     $result = mysql_query("INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`,`created`,`duration`) "
             . "VALUES (NULL,'$name', '$teacher','$user','$user_school',$year,'active','$email','$date','$duration')");
+
+    $courseID = mysql_insert_id();
+    
+    $result1 = mysql_query("insert into Users_Courses (student_id,course_id) values ($user_id,$courseID)");
 
 // check if row inserted or not
     if ($result) {

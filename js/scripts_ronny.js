@@ -136,7 +136,8 @@ function parseProfile(json, isYear) {
     if (isYear) {
         var sel = $("#year");
         sel.empty();
-        for (var i = 2020; i > 2010; i--) {
+        var year = new Date().getFullYear();
+        for (var i = 2009; i <= year; i++) {
             if (i == json.user_year) {
                 sel.append('<option value="' + i + '" selected>' + i + '</option>');
             } else {
@@ -209,7 +210,7 @@ function successHandler(result) {
 
 // result contains any error description text returned from the plugin call
 function errorHandler(error) {
-    alert('error = ' + error);
+    console.log('error = ' + error);
 }
 
 function tokenHandler(result) {
@@ -226,7 +227,7 @@ function onNotificationGCM(e) {
             {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
-                alert("regID = " + e.regid);
+                //alert("regID = " + e.regid);
                 setGCM(e.regid);
             }
             break;
