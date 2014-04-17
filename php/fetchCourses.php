@@ -29,9 +29,11 @@ $response["userCourses"] = array();
 
 while ($row = mysql_fetch_array($result_my)) {
     $course = array();
+    $cid = $row["course_id"];
+    $result_specific = mysql_query("SELECT count(*) as num_fri from `Users_Courses` where Users_Courses.course_id = $cid and student_id in ($friends_str)");
     $course["name"] = $row["name"];
     $course["courseID"] = $row["course_id"];
-    $course["count"] = 0;
+    $course["count"] = mysql_fetch_row($result_specific);
     array_push($response["userCourses"], $course);
 }
 

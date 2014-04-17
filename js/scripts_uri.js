@@ -270,7 +270,7 @@ function createCoursesButtons(coursesList, div) {
             setCurrentCourseId($(this).attr("data-ID"));
         };
         $(courseNewdiv).attr("data-ID", "-1");
-        courseNewdiv.innerHTML = "ME";
+        courseNewdiv.innerHTML = "<img src='images/man.png'/><br/>ME";
         courseNewdiv.className = "courseBtn courseBtnPurple";
 
         subDiv.appendChild(courseNewdiv);
@@ -295,8 +295,9 @@ function createCoursesButtons(coursesList, div) {
 
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
-        subsubDiv.innerHTML = "<b>" + coursesList[i].count + "</b> Friends";
+        subsubDiv.innerHTML = "<img src='images/man.png'/> <b>" + coursesList[i].count + "</b> Friends";
         subsubDiv.className = "count_friend";
+        subDiv.id = "count";
 
         if (i % 3 == 0) {
             courseDiv.className = "courseBtn courseBtnRed";
