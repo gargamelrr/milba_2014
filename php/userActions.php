@@ -24,6 +24,9 @@ if (mysql_num_rows($result) > 0) {
     $user = $row["email"];
     $year = $row["year"];
     $school_id = $row["school_id"];
+    //update gcm
+    $gcm = $_POST["gcm"];
+    mysql_query("update Users set gcm='$gcm' where fb_id='$fb_id'");
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
