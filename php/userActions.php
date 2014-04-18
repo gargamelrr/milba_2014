@@ -27,6 +27,7 @@ if (mysql_num_rows($result) > 0) {
     //update gcm
     $gcm = $_POST["gcm"];
     mysql_query("update Users set gcm='$gcm' where fb_id='$fb_id'");
+    $response["name"] = $name;
 } else {
     $first = $_POST["first_name"];
     $last = $_POST["last_name"];
