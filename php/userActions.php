@@ -70,7 +70,8 @@ if (isset($_POST["friends"])) {
 
 //$response["debug1"] = $gcm;
 //$response["debug"] = $_SESSION["user"] . " " . $_SESSION["user_id"];
-$response["success"] = "1";
-
+if ($id != 0) {
+    $response["success"] = "1";
+}
 echo json_encode($response);
 ?>
