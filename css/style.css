@@ -582,3 +582,7 @@ a#moreFB {
     color:#3cceff;
     padding: 0;
 }
+
+#notification div.ui-slider.ui-slider-switch{
+    float: right;
+}
