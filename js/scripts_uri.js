@@ -54,11 +54,19 @@ $(document).on("pageshow", "#courseDetails", function() {
                 $('#email').text(temp);
 
                 if (json.is_user == "1") {
-                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=70&height=70" />');
+                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
                 }
                 $.each(json.friends, function(i, val) {
-                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=70&height=70" />');
-                });
+                    if(i == 3)
+                         return false; 
+                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                })
+
+                if (json.friends.length > 3) {
+                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
+                    $('#images').trigger('create');
+                }
+                ;
             }
 
             if (currentTaskId != "") {

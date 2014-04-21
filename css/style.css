@@ -214,6 +214,7 @@
 
 #addTask .ui-grid-a{
     width: 300px;
+    margin-left: -20px;
 }
 
 #tabs .ui-btn{
@@ -538,6 +539,8 @@ a#leave-course {
 #friends img{
     border-radius: 50%;
     margin-left: 10px;
+    width: 55px;
+    height: 55px;
 }
 
 #notification span.ui-slider-label.ui-slider-label-b.ui-btn-down-c.ui-btn-corner-all {
@@ -560,4 +563,22 @@ a#leave-course {
 #notification div.ui-input-text.ui-shadow-inset.ui-corner-all.ui-btn-shadow.ui-body-c{
     width: 60px;
     margin: 0;
+}
+
+a#moreFB {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: white;
+    background: none;
+    box-shadow: none;
+    margin-top: -35px;
+    margin-left: 10px;
+    border: 1px solid #3cceff;
+}
+
+#moreFB .ui-btn-inner{
+    margin-top: 10px;
+    color:#3cceff;
+    padding: 0;
 }
