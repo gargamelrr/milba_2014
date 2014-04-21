@@ -246,40 +246,48 @@ function onNotificationGCM(e) {
     }
 }
 
-    document.addEventListener('deviceready', function() {
-                    try {
+document.addEventListener('deviceready', function() {
+    try {
 
-                        FB.init({appId: "691029124265305",
-                            nativeInterface: CDV.FB,
-                            useCachedDialogs: false,
-                            status: true, // check login status
-                            cookie: true});
-                        // document.getElementById('data').innerHTML = "";
+        FB.init({appId: "691029124265305",
+            nativeInterface: CDV.FB,
+            useCachedDialogs: false,
+            status: true, // check login status
+            cookie: true});
+        // document.getElementById('data').innerHTML = "";
 
-                        var pushNotification;
-                        pushNotification = window.plugins.pushNotification;
-                        if (device.platform == 'android' || device.platform == 'Android')
-                        {
-                            pushNotification.register(
-                                    successHandler,
-                                    errorHandler, {
-                                        "senderID": "965749566309",
-                                        "ecb": "onNotificationGCM"
-                                    });
-                        }
-                        else
-                        {
-                            pushNotification.register(
-                                    tokenHandler,
-                                    errorHandler, {
-                                        "badge": "true",
-                                        "sound": "true",
-                                        "alert": "true",
-                                        "ecb": "onNotificationAPN"
-                                    });
-                        }
-                    } catch (e) {
-                        console.log("e1");
-                    }
-                    console.log('Device is ready! ');
-                }, false);
+        var pushNotification;
+        pushNotification = window.plugins.pushNotification;
+        if (device.platform == 'android' || device.platform == 'Android')
+        {
+            pushNotification.register(
+                    successHandler,
+                    errorHandler, {
+                        "senderID": "965749566309",
+                        "ecb": "onNotificationGCM"
+                    });
+        }
+        else
+        {
+            pushNotification.register(
+                    tokenHandler,
+                    errorHandler, {
+                        "badge": "true",
+                        "sound": "true",
+                        "alert": "true",
+                        "ecb": "onNotificationAPN"
+                    });
+        }
+    } catch (e) {
+        console.log("e1");
+    }
+    console.log('Device is ready! ');
+}, false);
+
+function invite() {
+    FB.ui({method: 'apprequests',
+        message: 'My Great Request'
+    }, function (){
+        alert("success");
+    });
+}
