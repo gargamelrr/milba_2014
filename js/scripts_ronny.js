@@ -286,9 +286,11 @@ document.addEventListener('deviceready', function() {
 
 function invite() {
     alert("im inside");
-    FB.ui({method: 'apprequests',
-        message: 'My Great Request'
-    }, function (response){
-        alert(JSON.stringify(response));
-    });
+    FB.ui({
+        method: 'apprequests',
+        message: 'Learn how to make your mobile web app social',
+    },
+            function(response) {
+                alert('sendRequestBoth response: ', response);
+            });
 }
