@@ -39,9 +39,9 @@
     font-weight: 400;
 }
 
-/*#days .ul-de{
-        margin-top: -30px;
-}*/
+.ul-de {
+    margin-right: -60px;
+}
 
 #days ul{
     text-align: right;
@@ -155,7 +155,7 @@
     background-image: none;
 }
 
-#newGroup div.ui-input-text, #profileData a  {
+#newGroup div.ui-input-text, #profileData a ,#invite div.ui-btn.ui-shadow.ui-btn-corner-all {
     background-color: #565c6b;
     border: 1px solid #ccced6;
     margin-left: 15px;
@@ -166,7 +166,8 @@
     background-image: none;
 }
 
-#newGroup  input.ui-input-text,#profilePage select.ui-input-text   {
+
+#newGroup  input.ui-input-text,#profilePage select.ui-input-text  {
     height: 48px;
     line-height: 48px;
     color: #ccced6;
@@ -181,14 +182,29 @@
     text-shadow: none;
 }
 
+
 #newGroup div.ui-submit.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-hover-c, #newGroup div.ui-submit.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-up-c {
     background-color: #ccced6;
-    margin: 25px;
+    margin: 15px;
     border-radius: 0.4em;
 }
 
 #newGroup span.ui-btn-text{
     color: #414551;
+}
+
+#addGroupRadio span.ui-btn-text{
+    color:#ccced6;
+}
+
+div#addGroupText {
+    color: #ccced6;
+    margin-left: 20px;
+    font-style: italic;
+}
+
+div#newGroup {
+padding-bottom: 10px;
 }
 
 #coursesMy,#coursesSug, #newGroup{
@@ -198,6 +214,14 @@
 
 #newGroup .ui-btn-text{
     color:white;
+}
+
+#newGroup label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c,
+#newGroup label.ui-radio-off.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#newGroup label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c,
+#newGroup label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-hover-c.ui-btn-up-c,
+#newGroup label.ui-radio-on.ui-btn.ui-btn-corner-all.ui-fullsize.ui-btn-icon-left.ui-btn-up-c{
+    background-color: #4d5361;
 }
 
 
@@ -210,6 +234,16 @@
 #newGroup .ui-grid-a{
     width: 300px;
 
+}
+
+
+#invite div.ui-btn{
+    border-radius: 0.4em;    
+}
+#invite span.ui-btn-text{
+    color: #ccced6;
+    text-align: center;
+    font-weight: normal;   
 }
 
 #addTask .ui-grid-a{
