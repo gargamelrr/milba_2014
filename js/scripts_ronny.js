@@ -285,9 +285,10 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
+    alert("im here");
     FB.ui({method: 'apprequests',
         message: 'My Great Request'
-    }, function (){
-        alert("success");
+    }, function (response){
+        alert(JSON.stringify(response));
     });
 }
