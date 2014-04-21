@@ -14,6 +14,11 @@ and open the template in the editor.
         <script src="js/scripts_ronny.js" type="text/javascript"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="PushNotification.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
     </head>
     <body>
         <div id="courses" data-role="page" class="ui-responsive-panel">
@@ -59,7 +64,8 @@ and open the template in the editor.
                             </div>
                             <br/>
                             <div id="invite">
-                                <input type="button" value="Add Friends" id="invitebtn" onclick="alert('im here');invite()"/>
+                                <input type="button" value="Add Friends" id="invitebtn" onclick="alert('im here');
+                                        invite()"/>
                             </div>
                             <input type="submit" value="Add Course" id="submit"/>
                         </form>
