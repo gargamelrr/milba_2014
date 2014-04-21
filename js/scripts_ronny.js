@@ -285,7 +285,7 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
-    alert("im inside");
+    alert(FB);
     FB.ui({
         method: 'apprequests',
         message: 'Learn how to make your mobile web app social',
