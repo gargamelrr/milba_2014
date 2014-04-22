@@ -285,12 +285,11 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
-    alert(FB);
     FB.ui({
         method: 'apprequests',
         message: 'Learn how to make your mobile web app social',
     },
             function(response) {
-                alert(JSON.stringify(response));
+                alert(response.to);
             });
 }
