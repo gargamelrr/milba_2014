@@ -286,7 +286,7 @@ document.addEventListener('deviceready', function() {
 
 function invite() {
     FB.ui({
-        meth: 'apprequests',
+        method: 'apprequests',
         title: 'Friend Smash Challenge!',
         message: 'Learn how to make your mobile web app social',
     },fbCallback);
