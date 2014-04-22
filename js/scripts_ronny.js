@@ -291,6 +291,6 @@ function invite() {
         message: 'Learn how to make your mobile web app social',
     },
             function(response) {
-                alert('sendRequestBoth response: ', response);
+                alert(JSON.stringify(response));
             });
 }
