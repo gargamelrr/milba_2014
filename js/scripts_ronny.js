@@ -294,5 +294,5 @@ function invite() {
 }
 
 function fbCallback(response) {
-alert(response);
+alert("test " + response);
 }
