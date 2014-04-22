@@ -285,6 +285,7 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
+    debugger;
     FB.ui({
         method: 'apprequests',
         title: 'Friend Smash Challenge!',
