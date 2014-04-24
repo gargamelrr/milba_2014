@@ -233,7 +233,7 @@ function onNotificationGCM(e) {
             break;
 
         case 'message':
-            alert('message = ' + e.payload.message);
+            alert(e.payload.message);
             break;
 
         case 'error':
