@@ -9,7 +9,7 @@
             $url = 'https://android.googleapis.com/gcm/send';
             //$registatoin_ids = array();
             $registatoin_ids[] = "APA91bEtbXEtsR2HPH936bn1mqCvRp6Jr6TQLOeCE8NivcVCsqECJcEuwI_CD8H_PcN8uC6toyXiifStvC-aoRYgk_zaQIg6TZsVW5A6Ot1VOO7WXIkgZMt0r5vS7LpPP3CnmsUp51Sy5lXZTPj2tAxf1IK7rkT4gQ";
-            $message = array("Notice" => $_POST['message']);
+            $message = array("message" => $_POST['message']);
             $fields = array(
                 'registration_ids' => $registatoin_ids,
                 'data' => $message,
