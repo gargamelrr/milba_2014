@@ -51,7 +51,7 @@ and open the template in the editor.
             <div id="fb-root"></div>
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
- 
+
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
                     console.log('auth.authResponseChange event');
                     //console.log(JSON.stringify(response));
@@ -91,22 +91,23 @@ and open the template in the editor.
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
                     try {
-                        FB.login(
-                                function(response) {
-                                    if (response.session) {
-                                        console.log('logged in');
-                                    } else {
-                                        console.log('not logged in');
-                                    }
-                                },
-                                {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
-                        );
+                        FB.getLoginStatus(function(status) {
+                            if (status.status != "connected") {
+                                FB.login(
+                                        function(response) {
+                                            if (response.session) {
+                                                console.log('logged in');
+                                            } else {
+                                                console.log('not logged in');
+                                            }
+                                        },
+                                        {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
+                                );
+                            }
+                        });
                     } catch (e) {
                         alert(e);
                     }
-                    FB.getLoginStatus(function(response) {
-                        alert(JSON.stringify(response));
-                    });
                     me();
                 }
 
