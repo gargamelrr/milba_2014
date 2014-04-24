@@ -92,6 +92,7 @@ and open the template in the editor.
                     $('#face_but').attr("disabled", "disabled");
                     try {
                         FB.getLoginStatus(function(status) {
+                            alert(JSON.stringify(status));
                             if (status.status != "connected") {
                                 FB.login(
                                         function(response) {
