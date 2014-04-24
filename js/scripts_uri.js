@@ -303,7 +303,9 @@ function createCoursesButtons(coursesList, div) {
 
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
-        subsubDiv.innerHTML = "<img src='images/man.png'/> <b>" + coursesList[i].count + "</b> Friends";
+        if(coursesList[i].count > 0){
+        subsubDiv.innerHTML = "<img src='images/man.png'/> <b>" + coursesList[i].count + "</b> Mutual Friends";
+        }
         subsubDiv.className = "count_friend";
         subDiv.id = "count";
 

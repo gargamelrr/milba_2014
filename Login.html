@@ -51,30 +51,6 @@ and open the template in the editor.
             <div id="fb-root"></div>
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
-                if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
-                    console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
-                if (typeof CDV == 'undefined')
-                    console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-                if (typeof FB == 'undefined')
-                    console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-
-
-                FB.Event.subscribe('auth.login', function(response) {
-                    console.log('auth.login event');
-                });
-
-                FB.Event.subscribe('auth.logout', function(response) {
-                    console.log('auth.logout event');
-                });
-
-                FB.Event.subscribe('auth.sessionChange', function(response) {
-                    console.log('auth.sessionChange event');
-                });
-
-                FB.Event.subscribe('auth.statusChange', function(response) {
-                    console.log('auth.statusChange event');
-                });
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
                     console.log('auth.authResponseChange event');
@@ -115,22 +91,24 @@ and open the template in the editor.
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
                     try {
-                        FB.login(
-                                function(response) {
-                                    if (response.session) {
-                                        console.log('logged in');
-                                    } else {
-                                        console.log('not logged in');
-                                    }
-                                },
-                                {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
-                        );
+                        FB.getLoginStatus(function(status) {
+                            alert(JSON.stringify(status));
+                            if (status.status != "connected") {
+                                FB.login(
+                                        function(response) {
+                                            if (response.session) {
+                                                console.log('logged in');
+                                            } else {
+                                                console.log('not logged in');
+                                            }
+                                        },
+                                        {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
+                                );
+                            }
+                        });
                     } catch (e) {
                         alert(e);
                     }
-                    FB.getLoginStatus(function(response) {
-                        //alert(JSON.stringify(response));
-                    });
                     me();
                 }
 
