@@ -248,7 +248,31 @@ function onNotificationGCM(e) {
 
 document.addEventListener('deviceready', function() {
     try {
+        if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
+            console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
+        if (typeof CDV == 'undefined')
+            console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+        if (typeof FB == 'undefined')
+            console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
+
+
+        FB.Event.subscribe('auth.login', function(response) {
+            console.log('auth.login event');
+        });
+
+        FB.Event.subscribe('auth.logout', function(response) {
+            console.log('auth.logout event');
+        });
+
+        FB.Event.subscribe('auth.sessionChange', function(response) {
+            console.log('auth.sessionChange event');
+        });
+
+        FB.Event.subscribe('auth.statusChange', function(response) {
+            console.log('auth.statusChange event');
+        });
+        
         FB.init({appId: "691029124265305",
             nativeInterface: CDV.FB,
             useCachedDialogs: false,
@@ -289,9 +313,9 @@ function invite() {
         method: 'apprequests',
         title: 'Friend Smash Challenge!',
         message: 'Learn how to make your mobile web app social',
-    },fbCallback);
+    }, fbCallback);
 }
 
 function fbCallback(response) {
-alert("test " + response);
+    alert("test " + response);
 }

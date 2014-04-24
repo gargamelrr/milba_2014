@@ -51,31 +51,7 @@ and open the template in the editor.
             <div id="fb-root"></div>
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
-                if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
-                    console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
-                if (typeof CDV == 'undefined')
-                    console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-                if (typeof FB == 'undefined')
-                    console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-
-
-                FB.Event.subscribe('auth.login', function(response) {
-                    console.log('auth.login event');
-                });
-
-                FB.Event.subscribe('auth.logout', function(response) {
-                    console.log('auth.logout event');
-                });
-
-                FB.Event.subscribe('auth.sessionChange', function(response) {
-                    console.log('auth.sessionChange event');
-                });
-
-                FB.Event.subscribe('auth.statusChange', function(response) {
-                    console.log('auth.statusChange event');
-                });
-
+ 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
                     console.log('auth.authResponseChange event');
                     //console.log(JSON.stringify(response));
@@ -129,7 +105,7 @@ and open the template in the editor.
                         alert(e);
                     }
                     FB.getLoginStatus(function(response) {
-                        //alert(JSON.stringify(response));
+                        alert(JSON.stringify(response));
                     });
                     me();
                 }
