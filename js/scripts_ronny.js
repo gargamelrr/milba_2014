@@ -255,7 +255,14 @@ document.addEventListener('deviceready', function() {
         if (typeof FB == 'undefined')
             console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-
+  
+        FB.init({appId: "691029124265305",
+            nativeInterface: CDV.FB,
+            useCachedDialogs: false,
+            status: true, // check login status
+            cookie: true});
+        // document.getElementById('data').innerHTML = "";
+           
 
         FB.Event.subscribe('auth.login', function(response) {
             console.log('auth.login event');
@@ -272,13 +279,6 @@ document.addEventListener('deviceready', function() {
         FB.Event.subscribe('auth.statusChange', function(response) {
             console.log('auth.statusChange event');
         });
-        
-        FB.init({appId: "691029124265305",
-            nativeInterface: CDV.FB,
-            useCachedDialogs: false,
-            status: true, // check login status
-            cookie: true});
-        // document.getElementById('data').innerHTML = "";
 
         var pushNotification;
         pushNotification = window.plugins.pushNotification;

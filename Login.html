@@ -103,6 +103,7 @@ and open the template in the editor.
                         alert(JSON.stringify(status));
                         if (status.status != "connected") {
                             try {
+                                alert("login");
                                 FB.login(
                                         function(response) {
                                             if (response.session) {
