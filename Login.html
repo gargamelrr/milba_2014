@@ -20,6 +20,12 @@ and open the template in the editor.
         <script src="js/scripts_ronny.js" type="text/javascript"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="PushNotification.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+
     </head>
     <body>
         <div id="login" data-role="page" data-role="content">
@@ -37,7 +43,7 @@ and open the template in the editor.
                     <select name="year" id="year" data-native-menu="false" data-theme="b">
                     </select>
                     <br/>
-                    <button onclick="promptLogin()" id='face_but'>Login with Facebook</button>
+                    <button onclick="promptLogin()" data-role="none" id='face_but'></button>
 
                     <!--<button onclick="me()">Facebook test</button>-->
 
