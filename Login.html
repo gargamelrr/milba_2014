@@ -98,13 +98,14 @@ and open the template in the editor.
 
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
-                    try {
-                        FB.getLoginStatus(function(status) {
-                            alert(JSON.stringify(status));
-                            if (status.status != "connected") {
+
+                    FB.getLoginStatus(function(status) {
+                        alert(JSON.stringify(status));
+                        if (status.status != "connected") {
+                            try {
                                 FB.login(
                                         function(response) {
-                                             alert(JSON.stringify(response));
+                                            alert(JSON.stringify(response));
                                             if (response.session) {
                                                 console.log('logged in');
                                             } else {
@@ -113,11 +114,14 @@ and open the template in the editor.
                                         },
                                         {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                                 );
+                            } catch (e) {
+                                alert(e);
+                                $('#face_but').attr("enabled", "enabled");
+                                return;
                             }
-                        });
-                    } catch (e) {
-                        alert(e);
-                    }
+                        }
+                    });
+
                     me();
                 }
 
