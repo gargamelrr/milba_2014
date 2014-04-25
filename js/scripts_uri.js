@@ -18,6 +18,28 @@ function setCurrentTaskId(val) {
 
 
 $(document).on("pageshow", "#courseDetails", function() {
+
+  function add() {
+    if($(this).val() === ' '){
+      $(this).val($(this).attr('placeholder')).addClass('placeholder');
+    }
+  }
+
+  function remove() {
+    if($(this).val() === $(this).attr('placeholder')){
+      $(this).val('').removeClass('placeholder');
+    }
+  }
+
+    // Select the elements that have a placeholder attribute
+    $('textarea[placeholder]').blur(add).focus(remove).each(add);
+
+    // Remove the placeholder text before the form is submitted
+    $('form').submit(function(){
+      $(this).find('textarea[placeholder]').each(remove);
+    });
+  
+
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
         method: 'GET',
@@ -57,8 +79,8 @@ $(document).on("pageshow", "#courseDetails", function() {
                     $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
                 }
                 $.each(json.friends, function(i, val) {
-                    if(i == 3)
-                         return false; 
+                    if (i == 3)
+                        return false;
                     $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
                 })
 
@@ -303,8 +325,8 @@ function createCoursesButtons(coursesList, div) {
 
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
-        if(coursesList[i].count > 0){
-        subsubDiv.innerHTML = "<img src='images/man.png'/> <b>" + coursesList[i].count + "</b> Mutual Friends";
+        if (coursesList[i].count > 0) {
+            subsubDiv.innerHTML = "<img src='images/man.png'/> <b>" + coursesList[i].count + "</b> Mutual Friends";
         }
         subsubDiv.className = "count_friend";
         subDiv.id = "count";

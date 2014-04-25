@@ -8,8 +8,14 @@ $result = mysql_query("select distinct name from Schools order by name");
 
 while ($row = mysql_fetch_array($result)) {
     $school["name"] = $row["name"];
-    $schools[] = $school;
+    if($row["name"] == "הבינתחומי"){  //TODO: fix name
+        array_unshift($schools,$school);
+    }else{
+        $schools[] = $school;
+    }
+    
 }
+
 
 if (isset($_POST["dataUser"])) {
     session_start();
