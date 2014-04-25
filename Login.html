@@ -102,27 +102,24 @@ and open the template in the editor.
                     FB.getLoginStatus(function(status) {
                         alert(JSON.stringify(status));
                         if (status.status != "connected") {
-                            try {
-                                alert("login");
-                                FB.login(
-                                        function(response) {
-                                            if (response.session) {
-                                                console.log('logged in');
-                                            } else {
-                                                console.log('not logged in');
-                                            }
-                                        },
-                                        {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
-                                );
-                            } catch (e) {
-                                alert(e + "im here");
-                                $('#face_but').attr("enabled", "enabled");
-                                return;
-                            }
+                            alert("login");
+                            FB.login(
+                                    function(response) {
+                                        alert("in");
+                                        if (response.session) {
+                                            console.log('logged in');
+                                        } else {
+                                            console.log('not logged in');
+                                        }
+                                    },
+                                    {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
+                            );
+                            $('#face_but').attr("enabled", "enabled");
                         }
+
                     });
 
-                    me();
+                    //me();
                 }
 
                 function me() {
