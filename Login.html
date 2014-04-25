@@ -118,7 +118,13 @@ and open the template in the editor.
                         }
 
                     });
+                    
+                    alert("test");
 
+                    //me();
+                }
+
+                function me() {
                     var friendsList;
                     FB.api('/me/friends', {fields: 'id'}, function(response) {
                         if (response.error) {
@@ -128,12 +134,6 @@ and open the template in the editor.
                             friendsList = response.data;
                         }
                     });
-
-                    //me();
-                }
-
-                function me() {
-
                     //console.log('Fetching your information from FB');
                     FB.api(
                             "/me",
