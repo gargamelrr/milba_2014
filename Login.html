@@ -105,17 +105,15 @@ and open the template in the editor.
                             alert("login");
                             FB.login(
                                     function(response) {
-                                        alert("in");
                                         if (response.session) {
                                             console.log('logged in');
+                                            me();
                                         } else {
                                             console.log('not logged in');
                                         }
                                     },
                                     {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                             );
-                            alert("test");
-
                             $('#face_but').attr("enabled", "enabled");
                         }
 
