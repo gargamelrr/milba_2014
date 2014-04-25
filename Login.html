@@ -104,6 +104,7 @@ and open the template in the editor.
                             if (status.status != "connected") {
                                 FB.login(
                                         function(response) {
+                                             alert(JSON.stringify(response));
                                             if (response.session) {
                                                 console.log('logged in');
                                             } else {
