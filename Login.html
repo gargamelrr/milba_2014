@@ -105,7 +105,6 @@ and open the template in the editor.
                             try {
                                 FB.login(
                                         function(response) {
-                                            alert(JSON.stringify(response));
                                             if (response.session) {
                                                 console.log('logged in');
                                             } else {
@@ -115,7 +114,7 @@ and open the template in the editor.
                                         {scope: 'basic_info, email, public_profile, user_about_me, user_birthday, user_friends'}
                                 );
                             } catch (e) {
-                                alert(e);
+                                alert(e + "im here");
                                 $('#face_but').attr("enabled", "enabled");
                                 return;
                             }
