@@ -19,17 +19,17 @@ $(document).on("pageshow", "#home", function() {
 
     var open = false;
     $('.details').hide();
-    $('.ui-btn-text').click(function() {
+    $('#days .ui-btn-text').click(function() {
         open = !open;
         $(this).find('.details').slideToggle(100);
         if (open) {
             $(".count_tasks").hide();
-            $("img").hide();
+            $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
         } else {
             $(".count_tasks").show();
-            $("img").show();
+            $("#days img").show();
             $(".date").show();
             $(".ul-de").show();
         }
