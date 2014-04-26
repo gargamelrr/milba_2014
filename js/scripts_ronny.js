@@ -275,7 +275,13 @@ function onNotificationGCM(e) {
     }
 }
 
+function backKeyDown() {
+    alert("madafaka");
+        //navigator.app.exitApp(); // To exit the app!
+    }
+
 document.addEventListener('deviceready', function() {
+    document.addEventListener("backbutton", backKeyDown, true);
     try {
         if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
             console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');

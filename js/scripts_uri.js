@@ -15,6 +15,19 @@ function setCurrentTaskId(val) {
 }
 
 
+function arrowLeft() {
+    var num = document.getElementById("customAlert").innerHTML;
+    if (num == 1)
+        return;
+    document.getElementById("customAlert").innerHTML = --num;
+}
+
+function arrowRight() {
+    var num = document.getElementById("customAlert").innerHTML;
+    if (num == 20)
+        return;
+    document.getElementById("customAlert").innerHTML = ++num;
+}
 
 
 $(document).on("pageshow", "#courseDetails", function() {

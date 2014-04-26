@@ -84,11 +84,12 @@ and open the template in the editor.
                             <label for="days">Custom alert</label>
                         </div>
                         <div class="ui-block-b" >
-                            <input type="range" name="days" id="days" value="3" min="1" max="20" data-highlight="true" /> 
-                        </div>
-                        <div class="ui-block-c" >
-                            <span>days ahead</span>
+                            <div class="arrow-left" onclick="arrowLeft()" style="float: left; cursor: pointer;"></div>
+                            <div id="customAlert" style="float: left; width:30px; color:#fff; text-align: center">1</div>
+                            <div class="arrow-right" onclick="arrowRight()" style="float: left; cursor: pointer;"></div>
+                            <div style="float: left; padding-left: 10px;   color:#fff">days ahead</div>
                         </div>                
+                        <div class="ui-block-c"></div>
                         <div class="ui-block-d">
                             <select name="flip-custom" id="flip-custom" data-role="slider" >
                                 <option value="off"></option>
