@@ -275,7 +275,12 @@ function onNotificationGCM(e) {
     }
 }
 
+function backKeyDown() {
+        //navigator.app.exitApp();
+    }
+
 document.addEventListener('deviceready', function() {
+    document.addEventListener("backbutton", backKeyDown, true);
     try {
         if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
             console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
