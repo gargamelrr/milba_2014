@@ -12,14 +12,15 @@
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     //max-height: 45px;
     padding-left: 10px;
-    min-height: 30px;
+    min-height: 40px;
+    padding-bottom: 20px;
+
 }
 
 .ui-li-thumb{
     max-height: 50px;
     max-width: 50px;
-    margin-top: -10px;
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 #home{
@@ -27,29 +28,86 @@
 }
 
 #days .ui-li .ui-btn-inner .ui-btn-text{
-    padding: 0px 0px 10px;
+    padding: 0px 0px 0px;
+    color:#3cceff;
+
+}
+
+#days .ui-li-heading{
+    margin: .2em 0;
+    white-space: normal;
+    overflow: visible;
+}
+
+.left{
+    float: left;
+    margin-left: -10px;
+}
+.right{
+    float: right;
 }
 
 #days .ui-btn-up-c, #days .ui-btn-hover-c {
     background-color: white;
 }
 
-#date{
+.date{
     font-size: 12px;
     font-weight: 400;
 }
 
 .ul-de {
-    margin-right: -60px;
+    margin-right: -65px;
+    padding-top: 3px;
+    font-size: 14px;
+}
+
+.count_tasks {
+    font-size: 14px;
+}
+
+.homeTask {
+    border: 1px solid #19cfa7;
+    border-radius: 1em;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#pvTask .ui-btn-up-c, #pvTask .ui-btn-hover-c {
+    border: 0;
+    background: #19cfa7;
+    font-weight: 200;
+    text-shadow: none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    border-radius: 1em;
+    margin: 10px;
+
+}
+
+
+#pvTask span.ui-btn-text{
+    color: white !important;
 }
 
 #days ul{
     text-align: right;
     list-style-type: disc;
     direction: rtl;
-    color:red;
+    color:#3cceff;
 }
 
+.taskHeader{
+    float: right;
+    background: url(../images/arrow.png) right 5px no-repeat;
+    padding-right: 20px;
+    max-width: 120px;
+    white-space: normal;
+    text-align: center;
+
+}
 
 
 .ui-mobile .ui-header{
@@ -91,8 +149,11 @@
 
 .details{
     background-color:white;
-    text-align: center;
+    text-align: left;
     font-weight: normal;
+    padding-top: 30px;
+    color:#19cfa7;
+
 }
 
 #tasks-table-custom td{

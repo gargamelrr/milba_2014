@@ -1,16 +1,38 @@
 var gcm = "";
+var datePv = "";
 
 function setGCM(val) {
     gcm = val;
 }
-function setName(val) {
-    name = val;
+
+function setDatePv(val) {
+    datePv = val;
+}
+
+function addPvTask(date) {
+    setCurrentCourseId("-1");
+    setDatePv(date);
+    $.mobile.changePage("GroupDetails.html");
 }
 
 $(document).on("pageshow", "#home", function() {
+
+    var open = false;
     $('.details').hide();
     $('.ui-btn-text').click(function() {
-        $(this).find('.details').slideToggle(200);
+        open = !open;
+        $(this).find('.details').slideToggle(100);
+        if (open) {
+            $(".count_tasks").hide();
+            $("img").hide();
+            $(".date").hide();
+            $(".ul-de").hide();
+        } else {
+            $(".count_tasks").show();
+            $("img").show();
+            $(".date").show();
+            $(".ul-de").show();
+        }
     });
 
     $.ajax({
@@ -28,18 +50,20 @@ $(document).on("pageshow", "#home", function() {
                 $("#day" + day + " h3").text("");
                 $("#day" + day + " h3").append(json.data[i].date);
                 $("#day" + day + " .details").text("");
+                $("#day" + day + " .count_tasks").text("");
                 $("#day" + day + " ul").text("");
                 if (json.data[i].tasks.count > 0) {
                     var output = "";
                     $.each(json.data[i].tasks.data, function(j, val) {
-                        output += '<li>' + json.data[i].tasks.data[j].course_name + '</li>';
-                        if (j + 1 == json.data[i].tasks.count) {
-                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date);
-                        } else {
-                            $("#day" + day + " .details").append("<b><u><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></u><br/><br/>" +
-                                    json.data[i].tasks.data[j].task_name + "</b><br/><br/>" + json.data[i].tasks.data[j].due_date + "<br/><hr>");
+                        if (j < 2) {
+                            var name = (json.data[i].tasks.data[j].course_name.length > 10) ? json.data[i].tasks.data[j].course_name.substring(0, 14) + "..." : json.data[i].tasks.data[j].course_name;
+                            output += '<li>' + name + '</li>';
                         }
+                        //$("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></b></div>" +
+                        //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
+                        $("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
+                                json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
+
                         if (json.data[i].tasks.count < 2) {
                             $("#day" + day + " img").attr("src", "images/easy.png")
                         } else {
@@ -51,10 +75,15 @@ $(document).on("pageshow", "#home", function() {
                             setCurrentTaskId(json.data[i].tasks.data[j].index);
                         });
                     });
+
+                    $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
                     $("#day" + day + "-ul").append(output).trigger('create');
                 } else {
+                    $("#day" + day + " .count_tasks").append("Free");
                     $("#day" + day + " img").attr("src", "images/fun.png");
                 }
+                $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" +  'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
+                $("#day" + day + " .details").trigger("create");
                 day++;
             });
             if (json.status == 2) {
@@ -255,14 +284,14 @@ document.addEventListener('deviceready', function() {
         if (typeof FB == 'undefined')
             console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
-  
+
         FB.init({appId: "691029124265305",
             nativeInterface: CDV.FB,
             useCachedDialogs: false,
             status: true, // check login status
             cookie: true});
         // document.getElementById('data').innerHTML = "";
-           
+
 
         FB.Event.subscribe('auth.login', function(response) {
             console.log('auth.login event');

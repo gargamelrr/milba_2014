@@ -19,26 +19,26 @@ function setCurrentTaskId(val) {
 
 $(document).on("pageshow", "#courseDetails", function() {
 
-  function add() {
-    if($(this).val() === ' '){
-      $(this).val($(this).attr('placeholder')).addClass('placeholder');
+    function add() {
+        if ($(this).val() === ' ') {
+            $(this).val($(this).attr('placeholder')).addClass('placeholder');
+        }
     }
-  }
 
-  function remove() {
-    if($(this).val() === $(this).attr('placeholder')){
-      $(this).val('').removeClass('placeholder');
+    function remove() {
+        if ($(this).val() === $(this).attr('placeholder')) {
+            $(this).val('').removeClass('placeholder');
+        }
     }
-  }
 
     // Select the elements that have a placeholder attribute
     $('textarea[placeholder]').blur(add).focus(remove).each(add);
 
     // Remove the placeholder text before the form is submitted
-    $('form').submit(function(){
-      $(this).find('textarea[placeholder]').each(remove);
+    $('form').submit(function() {
+        $(this).find('textarea[placeholder]').each(remove);
     });
-  
+
 
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
@@ -65,6 +65,11 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
             if (currentCourseId == -1) {
                 $("#leave-course").hide();
+
+                if (datePv != "") {
+                    $("#date1").val(datePv);
+                    setDatePv("");
+                }
             }
 
             $('#name').text(json.courseDetails.name);
@@ -88,7 +93,6 @@ $(document).on("pageshow", "#courseDetails", function() {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
                     $('#images').trigger('create');
                 }
-                ;
             }
 
             if (currentTaskId != "") {
