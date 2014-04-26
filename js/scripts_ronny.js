@@ -276,8 +276,7 @@ function onNotificationGCM(e) {
 }
 
 function backKeyDown() {
-    alert("madafaka");
-        //navigator.app.exitApp(); // To exit the app!
+        //navigator.app.exitApp();
     }
 
 document.addEventListener('deviceready', function() {
