@@ -14,6 +14,7 @@ if (!isset($_SESSION["user_id"])) {
     $_SESSION["user_id"] = 16;
     $_SESSION["school"] = 2;
     $_SESSION["friends"] = array(19, 17, 20);
+    
 }
 
 $user_id = $_SESSION["user_id"];
