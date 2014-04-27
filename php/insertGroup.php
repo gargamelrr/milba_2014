@@ -9,30 +9,24 @@ $db = new DB_CONNECT();
 session_start();
 $user_school = $_SESSION["school"];
 $user_id = $_SESSION["user_id"];
+$year = $_SESSION["year"];
 
 if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
-    
-   $response = array();
+
+    $response = array();
     $name = $_POST['courseName'];
     $teacher = $_POST['teacherName'];
     $email = $_POST['teacherMail'];
     $duration = $_POST['duration'];
-    $year = $_SESSION["year"];
     $date = date("Y-m-d");
     $user = $_SESSION["user_id"];
 
     $result = mysql_query("INSERT INTO `Courses`(`index`, `name`, `lecturer`, `admin`, `school_id`, `year`, `status`, `teacherEmail`,`created`,`duration`) "
-            . "VALUES (NULL,'$name', '$teacher','$user','$user_school',$year,'active','$email','$date','$duration')");
+            . "VALUES (NULL,'$name', '$teacher','$user','$user_school','$year','active','$email','$date','$duration')");
 
     $courseID = mysql_insert_id();
-    
-    $result1 = mysql_query("insert into Users_Courses (student_id,course_id) values ($user_id,$courseID)");
-    $response["debug1"] = $result;
-    $response["debug2"] = $courseID;
-    $response["debug3"] = $result1;
-    $response["debug4"] = $year;
-    $response["debug5"] = $user;
-    $response["debug6"] = $user_school;
+
+    //$result1 = mysql_query("insert into Users_Courses (student_id,course_id) values ($user_id,$courseID)");
 // check if row inserted or not
     if ($result) {
         // successfully updated
@@ -41,7 +35,7 @@ if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
     } else {
         //error
         $response["success"] = 0;
-        $response["message"] = mysql_error();
+        $response["message"] = $year;
     }
 } else {
     //error

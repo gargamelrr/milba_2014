@@ -19,20 +19,21 @@ $(document).on("pageshow", "#home", function() {
 
     var open = false;
     $('.details').hide();
-    $('.ui-btn-text').click(function() {
+    $('#days .ui-btn-text').click(function() {
         open = !open;
-        $(this).find('.details').slideToggle(100);
         if (open) {
             $(".count_tasks").hide();
-            $("img").hide();
+            $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
         } else {
             $(".count_tasks").show();
-            $("img").show();
+            $("#days img").show();
             $(".date").show();
             $(".ul-de").show();
         }
+        $(this).find('.details').slideToggle(100);
+
     });
 
     $.ajax({
@@ -82,7 +83,7 @@ $(document).on("pageshow", "#home", function() {
                     $("#day" + day + " .count_tasks").append("Free");
                     $("#day" + day + " img").attr("src", "images/fun.png");
                 }
-                $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" +  'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
+                $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" + 'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
                 $("#day" + day + " .details").trigger("create");
                 day++;
             });
@@ -276,8 +277,8 @@ function onNotificationGCM(e) {
 }
 
 function backKeyDown() {
-        //navigator.app.exitApp();
-    }
+    //navigator.app.exitApp();
+}
 
 document.addEventListener('deviceready', function() {
     document.addEventListener("backbutton", backKeyDown, true);
