@@ -63,7 +63,7 @@
     border-top: 1px solid #3cceff;
     background-image: url(../images/paper.png);
     background-repeat: no-repeat;
-    background-position: right top;
+    background-position: right -1px;
 }
 
 .date{
