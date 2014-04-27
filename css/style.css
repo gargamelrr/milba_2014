@@ -51,10 +51,10 @@
 .paper {
     border: 0;
     width: 15px;
-    top: -12px;
+    top: -13px;
     background: white;
     position: absolute;
-    height: 1px;
+    height: 2px;
     right: -41px;
 }
 
