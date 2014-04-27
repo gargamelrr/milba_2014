@@ -27,7 +27,7 @@
     min-height: 300px !important;
 }
 
-#days .ui-li .ui-btn-inner .ui-btn-text{
+#days .ui-li .ui-btn-text{
     padding: 0px 0px 0px;
     color:#3cceff;
 
@@ -41,14 +41,29 @@
 
 .left{
     float: left;
-    margin-left: -10px;
+    margin-left: 10px;
 }
 .right{
     float: right;
+    margin-right: 10px;
+}
+
+.paper {
+    border: 0;
+    width: 15px;
+    top: -12px;
+    background: white;
+    position: absolute;
+    height: 1px;
+    right: -41px;
 }
 
 #days .ui-btn-up-c, #days .ui-btn-hover-c {
     background-color: white;
+    border-top: 1px solid #3cceff;
+    background-image: url(../images/paper.png);
+    background-repeat: no-repeat;
+    background-position: right top;
 }
 
 .date{
@@ -168,13 +183,6 @@
 
 }
 
-#face_but:hover{
-    width: 202px;
-    height: 46px;
-    background-image: url(../images/pressed_404.png) no-repeat;
-    border: none;
-
-}
 
 #nameProfile{
     text-align: center;
@@ -715,18 +723,18 @@ a#moreFB {
 
 
 .arrow-right {
-	width: 0; 
-	height: 0; 
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;
-	border-left: 10px solid #fff;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
 }
 
 .arrow-left {
-	width: 0; 
-	height: 0; 
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent; 
-	
-	border-right:10px solid #fff; 
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+
+    border-right:10px solid #fff; 
 }
