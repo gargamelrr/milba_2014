@@ -28,7 +28,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
         while($row = mysql_fetch_array($newTasks)) {
             $new_date = date( "m-d-Y H:i:s", strtotime( $row["due_date"] ) );
             $msg = 
-                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
+                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
                 '<p class="ui-li-desc"> A new task ' . $row["tName"] . ' was added to:</p> ' .
                 '<h2 class="ui-li-heading"> <strong> ' . $row["cName"] . '</strong></h2> ' .
                 '<p class="ui-li-desc"> by: <strong>' . $row["creator"] . '</strong> </p>' .
@@ -40,7 +40,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
             while($row2 = mysql_fetch_array($editedTasks)) {
                 $new_date = date( "m-d-Y H:i:s", strtotime( $row2["due_date"] ) );
                 $msg = 
-                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
+                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
                 '<p class="ui-li-desc">The task ' . $row2["tName"] . ' was edited in:</p> ' .
                 '<h2 class="ui-li-heading"> <strong> ' . $row2["cName"] . '</strong></h2> ' .
                 '<p class="ui-li-desc"> by: <strong>' . $row2["creator"] . '</strong> </p>' .
@@ -52,7 +52,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
             
             while($row3 = mysql_fetch_array($deletedTasks)) {
                 $msg = 
-                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
+                '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
                 '<p class="ui-li-desc">'. $row3["msg"] .' From: </p> ' .
                 '<h2 class="ui-li-heading"> <strong> ' . $row3["cName"] . '</strong></h2> ' .
                 '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';

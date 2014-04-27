@@ -27,7 +27,12 @@ if (isset($_POST["courseName"]) && isset($_POST["teacherName"])) {
     $courseID = mysql_insert_id();
     
     $result1 = mysql_query("insert into Users_Courses (student_id,course_id) values ($user_id,$courseID)");
-
+    $response["debug1"] = $result;
+    $response["debug2"] = $courseID;
+    $response["debug3"] = $result1;
+    $response["debug4"] = $year;
+    $response["debug5"] = $user;
+    $response["debug6"] = $user_school;
 // check if row inserted or not
     if ($result) {
         // successfully updated
