@@ -730,3 +730,13 @@ a#moreFB {
 	
 	border-right:10px solid #fff; 
 }
+
+.No-Courses-Found {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}

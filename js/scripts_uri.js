@@ -31,7 +31,6 @@ function arrowRight() {
 
 
 $(document).on("pageshow", "#courseDetails", function() {
-
     function add() {
         if ($(this).val() === ' ') {
             $(this).val($(this).attr('placeholder')).addClass('placeholder');
@@ -51,8 +50,7 @@ $(document).on("pageshow", "#courseDetails", function() {
     $('form').submit(function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
-
-
+    
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
         method: 'GET',
@@ -190,7 +188,8 @@ $(document).on("pageshow", "#courseDetails", function() {
 });
 
 $(document).on("pageshow", "#courses", function() {
-
+    $("#noCoursesFound").attr('hidden','true');
+    $("#noCoursesFound").toggle();
     $("#search").keyup(function(e) {
 
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
@@ -207,7 +206,9 @@ $(document).on("pageshow", "#courses", function() {
                     if (json.success == 1) {
                         updateSuggestedCourses(json.searchResult);
                     } else {
-                        alert("error parsing json for search bar");
+                        updateSuggestedCourses("");
+                        $("#noCoursesFound").attr('hidden','false');
+                        $("#noCoursesFound").toggle();
                     }
                 },
                 error: function() {
@@ -231,6 +232,7 @@ $(document).on("pageshow", "#courses", function() {
     }
 
     $("#but-sug").click(function() {
+        
         $('#but-my').removeClass('ui-btn-active').trigger('create');
         $('#but-sug').addClass('ui-btn-active').trigger('create');
         $("#coursesMy").hide();
@@ -240,6 +242,7 @@ $(document).on("pageshow", "#courses", function() {
     });
 
     $("#but-my").click(function() {
+        
         $('#but-sug').removeClass('ui-btn-active').trigger('create');
         $('#but-my').addClass('ui-btn-active').trigger('create');
         $("#coursesSug").hide();
@@ -507,7 +510,8 @@ $(document).on("pageshow", "#courses", function() {
                 var json = JSON.parse(data);
                 
                 if (json.success == 1) {
-                    window.location.href = "index.html";
+                    setCurrentCourseId(json.id);
+                    $.mobile.changePage("GroupDetails.html");
                 } else {
                     alert("error parsing jason");
                 }

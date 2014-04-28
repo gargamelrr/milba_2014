@@ -33,7 +33,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
                 '<h2 class="ui-li-heading"> <strong> ' . $row["cName"] . '</strong></h2> ' .
                 '<p class="ui-li-desc"> by: <strong>' . $row["creator"] . '</strong> </p>' .
                      '<p class="ui-li-desc"> Due: <strong>' . $new_date . '</strong> </p>' .
-                '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';
+                '</div></div></li>';
             
              array_push($response["allTasks"][$x], $msg);
         }
@@ -45,7 +45,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
                 '<h2 class="ui-li-heading"> <strong> ' . $row2["cName"] . '</strong></h2> ' .
                 '<p class="ui-li-desc"> by: <strong>' . $row2["creator"] . '</strong> </p>' .
                         '<p class="ui-li-desc"> Due: <strong>' . $new_date . '</strong> </p>' .
-                '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';
+                '</div></div></li>';
     
                 array_push($response["allTasks"][$x], $msg);
             }
@@ -55,7 +55,7 @@ for($x = 0; $x < $NUMBER_OF_DAYS; $x++) {
                 '<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">' .
                 '<p class="ui-li-desc">'. $row3["msg"] .' From: </p> ' .
                 '<h2 class="ui-li-heading"> <strong> ' . $row3["cName"] . '</strong></h2> ' .
-                '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>';
+                '</div></div></li>';
     
                 array_push($response["allTasks"][$x], $msg);
             }         

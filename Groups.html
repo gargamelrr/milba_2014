@@ -39,6 +39,7 @@ and open the template in the editor.
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
             <div data-role="content" >
+                <h1 class="No-Courses-Found" id="noCoursesFound" hidden="true"> No Courses Found </h1>
                 <form method="post">
                     <input type="search" name="search" id="search" value="" placeholder="Type Course / teacher / Friend" />
                     <br/><br/>
@@ -56,11 +57,11 @@ and open the template in the editor.
                             <input type="text" name="teacherEmail" id="teacherEmail" placeholder="Teacher's e-mail"/>
                             <div class="ui-grid-a" id="addGroupRadio">
                                 <div class="ui-block-a">
-                                    <input type="radio" name="dur" id="radio-year" value="1" checked="checked">
+                                    <input type="radio" name="dur" id="radio-year" value="1" >
                                     <label for="radio-year"  data-role="none">All Year</label>
                                 </div>
                                 <div class="ui-block-b">
-                                    <input type="radio" name="dur" id="radio-sem" value="0">
+                                    <input type="radio" name="dur" id="radio-sem" value="0" checked="checked">
                                     <label for="radio-sem"  data-role="none">Semester</label>
                                 </div>
                             </div>
