@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.css" />
+        <link rel="stylesheet" type="text/css" href="css/jqm-datebox.min.css" /> 
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+        <script src="js/scripts_uri.js" type="text/javascript"></script>
+        <script src="js/scripts_ronny.js" type="text/javascript"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="PushNotification.js"></script>
+        <script type="text/javascript" src="facebook-js-sdk.js"></script>
+        <script type="text/javascript" src="cdv-plugin-fb-connect.js"></script>
+    </head>
+    <body>
+        <div id="home" data-role="page" class="ui-responsive-panel" >
+            <div data-role="header" data-theme="d">
+                <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> 
+                <span id="sheets">Sheets</span>
+                <span id="title">Uh oh… Mountains of sheets ahead</span>
+            </div>
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel">
+                <a href="Profile.html" data-role="button"  id="profile"><img src="" id="imgFB"/><span id="nameFB"></span>  </a><br/>
+                <a href="index.html" data-role="button" class="icon-home" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="Groups.html?b" data-role="button" class="icon-courses" data-icon="courses"  onclick="setCurrentCoursePage('join')"> Courses </a><br/>
+                <a href="Notifications.html" data-role="button"  class="icon-noti" data-icon="noti"> Notifications </a><br/>
+                <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
+            </div>
+
+            <div data-role="content">
+                <div id="days">
+                    <ul data-role="listview" class="ui-listview" id="days-list">
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day0">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>
+                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day0-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day1">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day1-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day2">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day2-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day3">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day3-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day4">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day4-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day5">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day5-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day6">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day6-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-corners="false" data-shadow="false"  data-wrapperels="div"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+                            <div class="ui-li" id="day7">
+                                <div class="ui-btn-text" >
+                                    <div class="left">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a">
+                                                <h3 class="task_date ui-li-heading"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_num_tasks"></h3>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <h3 class="task_date_full"></h3>
+                                            </div>
+                                        </div>                                        <div class="count_tasks"></div>
+                                        <img src="" class="ui-li-thumb">
+                                    </div>
+                                    <div class="right"><div class="paper"></div>
+                                        <ul id="day7-ul" class="ul-de"></ul>
+                                    </div>
+                                    <div class="details"></div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div data-role="popup" id="empty" class="ui-content">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <p>Your week is empty<br/><br/>Add  some courses<br/>
+                        <a href="Groups.html?b" data-role="button" data-theme="a" onclick="setCurrentCoursePage('join')">Add</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
