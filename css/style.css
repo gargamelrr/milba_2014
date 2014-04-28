@@ -49,6 +49,12 @@
     margin-right: 10px;
 }
 
+.closed{
+    padding: 0px 10px !important;
+    margin: 0;
+    min-height: 30px !important;
+}
+
 #days .ui-btn-up-c, #days .ui-btn-hover-c {
     background-color: white;
     border-top: 1px solid #3cceff;
@@ -171,6 +177,8 @@
     font-weight: normal;
     padding-top: 30px;
     color:#19cfa7;
+    margin-right: -20px;
+
 
 }
 
@@ -535,6 +543,10 @@ img#imgFB{
     color: #414551;
 }
 
+input#search {
+    text-align: center;
+}
+
 #coursePage{
     background-color: white;
     border-top: 2px solid #3cceff;
@@ -731,18 +743,18 @@ a#moreFB {
 
 
 .arrow-right {
-	width: 0; 
-	height: 0; 
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;
-	border-left: 10px solid #fff;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
 }
 
 .arrow-left {
-	width: 0; 
-	height: 0; 
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent; 
-	
-	border-right:10px solid #fff; 
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+
+    border-right:10px solid #fff; 
 }

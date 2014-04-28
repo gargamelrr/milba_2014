@@ -26,14 +26,17 @@ $(document).on("pageshow", "#home", function() {
             $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
+            $("li").addClass("closed");
+            $(this).parent().parent().removeClass("closed");
         } else {
             $(".count_tasks").show();
             $("#days img").show();
             $(".date").show();
             $(".ul-de").show();
+            $("li").removeClass("closed");
         }
         $(this).find('.details').slideToggle(100);
-
+        $("#days").trigger("create");
     });
 
     $.ajax({
