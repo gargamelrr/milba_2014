@@ -27,7 +27,7 @@
     min-height: 300px !important;
 }
 
-#days .ui-li .ui-btn-text{
+#days .ui-li .ui-btn-inner .ui-btn-text{
     padding: 0px 0px 0px;
     color:#3cceff;
 
@@ -41,11 +41,21 @@
 
 .left{
     float: left;
-    margin-left: 10px;
+    color:#3cceff;
+    //margin-left: -10px;
 }
 .right{
     float: right;
     margin-right: 10px;
+}
+
+#days .ui-btn-up-c, #days .ui-btn-hover-c {
+    background-color: white;
+    border-top: 1px solid #3cceff;
+    background-image: url(../images/paper.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+
 }
 
 .paper {
@@ -58,13 +68,6 @@
     right: -41px;
 }
 
-#days .ui-btn-up-c, #days .ui-btn-hover-c {
-    background-color: white;
-    border-top: 1px solid #3cceff;
-    background-image: url(../images/paper.png);
-    background-repeat: no-repeat;
-    background-position: right top;
-}
 
 .date{
     font-size: 12px;
@@ -130,7 +133,7 @@
 }
 
 .ui-btn-icon-right>.ui-btn-inner>.ui-icon{
-    // margin-top: -19px;
+    margin-right: 19px;
 }
 
 .ui-li{
@@ -182,7 +185,6 @@
     border: none;
 
 }
-
 
 #nameProfile{
     text-align: center;
@@ -475,6 +477,12 @@ div#newGroup {
 
 }
 
+#title{
+    padding-left: 30px;
+    color: white;
+    text-shadow: none;
+    font-size: 12px;
+}
 
 /*.ui-btn-up-c{
     background-color: white;
@@ -486,7 +494,7 @@ div#newGroup {
 }
 
 #sheets{
-    padding-left: 80px;
+    padding-left: 40px;
     color: #414551;
     text-shadow: none;
     line-height:40px;

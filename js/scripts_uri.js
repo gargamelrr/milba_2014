@@ -503,9 +503,13 @@ $(document).on("pageshow", "#courses", function() {
                 teacherMail: $("#teacherEmail").val()
             },
             success: function(data) {
+                
                 var json = JSON.parse(data);
+                
                 if (json.success == 1) {
                     window.location.href = "index.html";
+                } else {
+                    alert("error parsing jason");
                 }
             },
             error: function() {
