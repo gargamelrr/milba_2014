@@ -26,14 +26,14 @@ $(document).on("pageshow", "#home", function() {
             $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
-            $("li").addClass("closed");
+            $("#days li").addClass("closed").addClass("withoutPaper");
             $(this).parent().parent().removeClass("closed");
         } else {
             $(".count_tasks").show();
             $("#days img").show();
             $(".date").show();
             $(".ul-de").show();
-            $("li").removeClass("closed");
+            $("#days li").removeClass("closed").removeClass("withoutPaper");
         }
         $(this).find('.details').slideToggle(100);
         $("#days").trigger("create");
@@ -50,9 +50,11 @@ $(document).on("pageshow", "#home", function() {
             //alert(data);
             var json = JSON.parse(data);
             var day = 0;
+            $("#days .task_num_tasks").hide();
+            $("#days .task_date_full").hide();
             $.each(json.data, function(i, val) {
                 $("#day" + day + " h3").text("");
-                $("#day" + day + " h3").append(json.data[i].date);
+                $("#day" + day + " .task_date").append(json.data[i].date);
                 $("#day" + day + " .details").text("");
                 $("#day" + day + " .count_tasks").text("");
                 $("#day" + day + " ul").text("");
@@ -86,6 +88,8 @@ $(document).on("pageshow", "#home", function() {
                     $("#day" + day + " .count_tasks").append("Free");
                     $("#day" + day + " img").attr("src", "images/fun.png");
                 }
+                $("#day" + day + " .task_num_tasks").append(json.data[i].date_full);
+                $("#day" + day + " .task_date_full").append(json.data[i].tasks.count + " Tasks");
                 $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" + 'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
                 $("#day" + day + " .details").trigger("create");
                 day++;

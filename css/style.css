@@ -43,6 +43,8 @@
     float: left;
     color:#3cceff;
     //margin-left: -10px;
+    width: 400px;
+
 }
 .right{
     float: right;
@@ -53,6 +55,10 @@
     padding: 0px 10px !important;
     margin: 0;
     min-height: 30px !important;
+}
+
+.withoutPaper{
+    background-image:none !important;
 }
 
 #days .ui-btn-up-c, #days .ui-btn-hover-c {
@@ -232,6 +238,10 @@
 .ui-body-c, .ui-content, .ui-header,.ui-panel-animate.ui-panel-content-wrap{
     background-color: #6a7080;
     background-image: none;
+}
+.ui-content{
+    min-height: 500px;
+
 }
 
 #newGroup div.ui-input-text, #profileData a ,#invite div.ui-btn.ui-shadow.ui-btn-corner-all {
