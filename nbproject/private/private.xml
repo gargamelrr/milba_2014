@@ -4,15 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/fetchCourses.php</file>
-            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/insertGroup.php</file>
-            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/css/jquery.mobile-1.4.1.min.css</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/db_connect.php</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/css/jquery.mobile-1.4.1.min.css</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/editTask.php</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/fetchNotifications.php</file>
-            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/css/style.css</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/Profile.html</file>
-            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/deleteTask.php</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/GroupDetails.html</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/search.php</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/deleteTask.php</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/insertGroup.php</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/css/style.css</file>
+            <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/Groups.html</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/js/scripts_uri.js</file>
             <file>file:/C:/Users/Uri/Documents/GitHub/milab_2014/php/insertTask.php</file>
         </group>
