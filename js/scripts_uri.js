@@ -297,8 +297,8 @@ function createCoursesButtons(coursesList, div) {
     courseNewdiv.className = "newCourse";
     courseNewdiv.href = "";
     courseNewdiv.onclick = function() {
-        //$("#coursesSug").hide();
-        //$("#coursesMy").hide();
+        $("#coursesSug").hide();
+        $("#coursesMy").hide();
         $("#newGroup").show();
     };
     courseNewdiv.innerHTML = "Add a Course";
