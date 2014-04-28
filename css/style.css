@@ -467,6 +467,12 @@ div#newGroup {
 
 }
 
+#title{
+    padding-left: 30px;
+    color: white;
+    text-shadow: none;
+    font-size: 12px;
+}
 
 /*.ui-btn-up-c{
     background-color: white;
@@ -478,7 +484,7 @@ div#newGroup {
 }
 
 #sheets{
-    padding-left: 80px;
+    padding-left: 40px;
     color: #414551;
     text-shadow: none;
     line-height:40px;
