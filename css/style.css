@@ -41,7 +41,7 @@
 
 .left{
     color:#3cceff;
-    margin-right: -10px;
+    //margin-right: -10px;
 }
 
 
@@ -86,7 +86,7 @@
     background: white;
     position: absolute;
     height: 2px;
-    right: -41px;
+    right: -6px;
 }
 
 .date{
@@ -95,13 +95,17 @@
 }
 
 .ul-de {
-    margin-right: -25px;
+    //margin-right: -25px;
     padding-top: 3px;
     font-size: 14px;
 }
 
 .count_tasks {
     font-size: 14px;
+}
+
+#days li.ui-btn.ui-btn-icon-right.ui-li-has-arrow.ui-li.ui-li-has-thumb {
+padding-right: 5px;
 }
 
 .homeTask {
