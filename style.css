@@ -40,11 +40,12 @@
 }
 
 .left{
+    float: left;
     color:#3cceff;
-    margin-right: -10px;
+    //margin-left: -10px;
+    width: 400px;
+
 }
-
-
 .right{
     float: right;
     margin-right: 10px;
@@ -58,14 +59,6 @@
 
 .withoutPaper{
     background-image:none !important;
-}
-
-.left .ui-block-b {
-    text-align: center;
-    direction: ltr;
-}
-.left .ui-block-c {
-    text-align: right;
 }
 
 #days .ui-btn-up-c, #days .ui-btn-hover-c {
@@ -94,7 +87,7 @@
 }
 
 .ul-de {
-    margin-right: -25px;
+    margin-right: -65px;
     padding-top: 3px;
     font-size: 14px;
 }
