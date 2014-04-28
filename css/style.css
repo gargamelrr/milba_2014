@@ -34,9 +34,10 @@
 }
 
 #days .ui-li-heading{
-    margin: .2em 0;
+    margin: .1em 0;
     white-space: normal;
     overflow: visible;
+    font-size: 15px;
 }
 
 .left{
@@ -97,11 +98,12 @@
 .ul-de {
     //margin-right: -25px;
     padding-top: 3px;
-    font-size: 14px;
+    font-size: 13px;
+    white-space: nowrap;
 }
 
 .count_tasks {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #days li.ui-btn.ui-btn-icon-right.ui-li-has-arrow.ui-li.ui-li-has-thumb {
