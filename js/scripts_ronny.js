@@ -370,7 +370,7 @@ function invite() {
     FB.ui({
         method: 'apprequests',
         title: 'Friend Smash Challenge!',
-        message: 'Learn how to make your mobile web app social',
+        message: 'Learn how to make your mobile web app social'
     }, fbCallback);
 }
 
