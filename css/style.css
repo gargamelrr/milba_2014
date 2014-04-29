@@ -107,7 +107,7 @@
 }
 
 #days li.ui-btn.ui-btn-icon-right.ui-li-has-arrow.ui-li.ui-li-has-thumb {
-padding-right: 5px;
+    padding-right: 5px;
 }
 
 .homeTask {
@@ -679,9 +679,14 @@ a#leave-course {
 
 #friends img{
     border-radius: 50%;
+    border:3px solid #a7adc3 ;
     margin-left: 10px;
     width: 55px;
     height: 55px;
+}
+
+div#friends {
+padding-bottom: 10px;
 }
 
 #notification span.ui-slider-label.ui-slider-label-b.ui-btn-down-c.ui-btn-corner-all {
@@ -713,15 +718,17 @@ a#moreFB {
     background-color: white;
     background: none;
     box-shadow: none;
-    margin-top: -35px;
+    margin-top: -37px;
     margin-left: 10px;
-    border: 1px solid #3cceff;
+    border:3px solid #a7adc3;
 }
 
 #moreFB .ui-btn-inner{
     margin-top: 10px;
-    color:#3cceff;
+    color:#a7adc3;
     padding: 0;
+    border:0;
+    text-shadow: none;
 }
 
 #notification div.ui-slider.ui-slider-switch{

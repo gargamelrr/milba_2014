@@ -50,7 +50,7 @@ $(document).on("pageshow", "#courseDetails", function() {
     $('form').submit(function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
-    
+
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
         method: 'GET',
@@ -95,15 +95,17 @@ $(document).on("pageshow", "#courseDetails", function() {
                     $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
                 }
                 $.each(json.friends, function(i, val) {
-                    if (i == 3)
+                    if (i == 2)
                         return false;
                     $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
                 })
 
-                if (json.friends.length > 3) {
+                if (json.friends.length > 2) {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
-                    $('#images').trigger('create');
                 }
+                $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> Add friends</a>");
+                $('#images').trigger('create');
+
             }
 
             if (currentTaskId != "") {
@@ -188,7 +190,7 @@ $(document).on("pageshow", "#courseDetails", function() {
 });
 
 $(document).on("pageshow", "#courses", function() {
-    $("#noCoursesFound").attr('hidden','true');
+    $("#noCoursesFound").attr('hidden', 'true');
     $("#noCoursesFound").toggle();
     $("#search").keyup(function(e) {
 
@@ -207,7 +209,7 @@ $(document).on("pageshow", "#courses", function() {
                         updateSuggestedCourses(json.searchResult);
                     } else {
                         updateSuggestedCourses("");
-                        $("#noCoursesFound").attr('hidden','false');
+                        $("#noCoursesFound").attr('hidden', 'false');
                         $("#noCoursesFound").toggle();
                     }
                 },
@@ -232,7 +234,7 @@ $(document).on("pageshow", "#courses", function() {
     }
 
     $("#but-sug").click(function() {
-        
+
         $('#but-my').removeClass('ui-btn-active').trigger('create');
         $('#but-sug').addClass('ui-btn-active').trigger('create');
         $("#coursesMy").hide();
@@ -242,7 +244,7 @@ $(document).on("pageshow", "#courses", function() {
     });
 
     $("#but-my").click(function() {
-        
+
         $('#but-sug').removeClass('ui-btn-active').trigger('create');
         $('#but-my').addClass('ui-btn-active').trigger('create');
         $("#coursesSug").hide();
@@ -506,9 +508,9 @@ $(document).on("pageshow", "#courses", function() {
                 teacherMail: $("#teacherEmail").val()
             },
             success: function(data) {
-                
+
                 var json = JSON.parse(data);
-                
+
                 if (json.success == 1) {
                     setCurrentCourseId(json.id);
                     $.mobile.changePage("GroupDetails.html");

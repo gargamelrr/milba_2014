@@ -27,7 +27,7 @@ and open the template in the editor.
     </head>
     <body>
         <div id="courseDetails" data-role="page" class="ui-responsive-panel">
-            <div data-role="header" data-theme="d">
+            <div data-role="header" data-theme="d" data-position="fixed">
                 <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel">
@@ -38,6 +38,13 @@ and open the template in the editor.
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
             <div data-role="content">
+                                    <div id="friends">
+                        <table>
+                            <tr>
+                                <td id="images"></td>
+                            </tr>
+                        </table>
+                    </div>
                 <div id="coursePage">
                     <div  class="ui-header"  id="teac_details">
                         <h1 class="ui-title" role="heading"><span id="name"></span></h1>
@@ -94,13 +101,6 @@ and open the template in the editor.
                         </div>
                     </form>
 
-                    <div id="friends">
-                        <table>
-                            <tr>
-                                <td id="images"></td>
-                            </tr>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
