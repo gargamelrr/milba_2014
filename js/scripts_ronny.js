@@ -368,8 +368,7 @@ document.addEventListener('deviceready', function() {
 
 function invite() {
 FB.ui({method: 'apprequests',
-        message: 'YOUR_MESSAGE_HERE',
-        to: 'USER_ID'
+        message: 'YOUR_MESSAGE_HERE'
     }, requestCallback);
 }
 
