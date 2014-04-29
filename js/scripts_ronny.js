@@ -367,10 +367,14 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
+    try{
 FB.ui({method: 'apprequests',
         message: 'YOUR_MESSAGE_HERE',
         to: 'USER_ID'
     }, requestCallback);
+    }catch (e){
+        alert(e);
+    }
 }
 
 function requestCallback(response) {
