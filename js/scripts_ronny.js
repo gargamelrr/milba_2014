@@ -1,6 +1,5 @@
 var gcm = "";
 var datePv = "";
-
 function setGCM(val) {
     gcm = val;
 }
@@ -42,7 +41,6 @@ $(document).on("pageshow", "#home", function() {
         $(this).find('.details').slideToggle(100);
         $("#days").trigger("create");
     });
-
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
         method: 'POST',
@@ -73,7 +71,6 @@ $(document).on("pageshow", "#home", function() {
                         //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
                         $("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
                                 json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
-
                         if (json.data[i].tasks.count < 2) {
                             $("#day" + day + " img").attr("src", "images/easy.png")
                         } else {
@@ -85,7 +82,6 @@ $(document).on("pageshow", "#home", function() {
                             setCurrentTaskId(json.data[i].tasks.data[j].index);
                         });
                     });
-
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
                     $("#day" + day + "-ul").append(output).trigger('create');
                 } else {
@@ -113,7 +109,6 @@ $(document).on("pageshow", "#home", function() {
         }
     });
 });
-
 $(document).on("pageshow", "#profilePage", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
@@ -128,7 +123,6 @@ $(document).on("pageshow", "#profilePage", function() {
                 $("#nameProfile").text(json.user_name);
                 parseProfile(json, true);
                 $('#imgProfile').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=120&height=120');
-
             }
         },
         error: function() {
@@ -157,13 +151,12 @@ $(document).on("pageshow", "#profilePage", function() {
         });
     });
 });
-
 function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();
     for (var i = 0; i < json.schools.length; i++) {
-        if(json.schools[i].name == "Institute"){
-             sel.append('<option value="" disabled selected>' + json.schools[i].name + '</option>');
+        if (json.schools[i].name == "Institute") {
+            sel.append('<option value="" disabled selected>' + json.schools[i].name + '</option>');
         }
         else if (json.schools[i].name == json.user_school) {
             sel.append('<option value="' + json.schools[i].name + '" selected>' + json.schools[i].name + '</option>');
@@ -175,8 +168,8 @@ function parseProfile(json, isYear) {
     var sel = $("#degree");
     sel.empty();
     for (var i = 0; i < json.degrees.length; i++) {
-        if(json.degrees[i].name == "School"){
-             sel.append('<option value="" disabled selected>' + json.degrees[i].name + '</option>');
+        if (json.degrees[i].name == "School") {
+            sel.append('<option value="" disabled selected>' + json.degrees[i].name + '</option>');
         }
         else if (json.degrees[i].name == json.user_degree) {
             sel.append('<option value="' + json.degrees[i].index + '" selected>' + json.degrees[i].name + '</option>');
@@ -241,7 +234,6 @@ $(document).on("pageshow", "#login", function() {
         }
     });
 });
-
 $(document).on("pageshow", function(e) {
 
     if (e.target.id != "login") {
@@ -252,10 +244,8 @@ $(document).on("pageshow", function(e) {
         $.mobile.activePage.find("#nameFB").text(localStorage.getItem("Name"));
         $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture');
         $.mobile.activePage.find('#nav-panel').trigger('create');
-
     }
 });
-
 // result contains any message sent from the plugin call
 function successHandler(result) {
     console.log('result = ' + result);
@@ -267,8 +257,8 @@ function errorHandler(error) {
 }
 
 function tokenHandler(result) {
-    // Your iOS push server needs to know the token before it can push to this device
-    // here is where you might want to send it the token for later use.
+// Your iOS push server needs to know the token before it can push to this device
+// here is where you might want to send it the token for later use.
     console.log('device token = ' + result);
 }
 
@@ -278,21 +268,18 @@ function onNotificationGCM(e) {
         case 'registered':
             if (e.regid.length > 0)
             {
-                // Your GCM push server needs to know the regID before it can push to this device
-                // here is where you might want to send it the regID for later use.
-                //alert("regID = " + e.regid);
+// Your GCM push server needs to know the regID before it can push to this device
+// here is where you might want to send it the regID for later use.
+//alert("regID = " + e.regid);
                 setGCM(e.regid);
             }
             break;
-
         case 'message':
             alert(e.payload.message);
             break;
-
         case 'error':
             alert('GCM error = ' + JSON.stringify(e));
             break;
-
         default:
             alert('An unknown GCM event has occurred');
             break;
@@ -300,7 +287,7 @@ function onNotificationGCM(e) {
 }
 
 function backKeyDown() {
-    //navigator.app.exitApp();
+//navigator.app.exitApp();
 }
 
 document.addEventListener('deviceready', function() {
@@ -312,8 +299,6 @@ document.addEventListener('deviceready', function() {
             console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
         if (typeof FB == 'undefined')
             console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-
         FB.init({appId: "691029124265305",
             nativeInterface: CDV.FB,
             useCachedDialogs: false,
@@ -325,19 +310,15 @@ document.addEventListener('deviceready', function() {
         FB.Event.subscribe('auth.login', function(response) {
             console.log('auth.login event');
         });
-
         FB.Event.subscribe('auth.logout', function(response) {
             console.log('auth.logout event');
         });
-
         FB.Event.subscribe('auth.sessionChange', function(response) {
             console.log('auth.sessionChange event');
         });
-
         FB.Event.subscribe('auth.statusChange', function(response) {
             console.log('auth.statusChange event');
         });
-
         var pushNotification;
         pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android')
@@ -366,12 +347,13 @@ document.addEventListener('deviceready', function() {
     console.log('Device is ready! ');
 }, false);
 
-function invite() {
-FB.ui({method: 'apprequests',
-        message: 'YOUR_MESSAGE_HERE'
-    }, requestCallback);
-}
 
-function requestCallback(response) {
-    alert("test " + response.to);
+function invite() {
+    FB.ui({method: 'apprequests',
+        message: 'lalala'
+    },
+    function(response) {
+        alert(response);
+    }
+    );
 }
