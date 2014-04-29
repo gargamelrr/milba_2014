@@ -252,7 +252,9 @@ padding-right: 5px;
     background-image: none;
 }
 
-#newGroup div.ui-input-text, #profileData a ,#invite div.ui-btn.ui-shadow.ui-btn-corner-all {
+#newGroup div.ui-input-text, #profileData a ,#invite div.ui-btn.ui-shadow.ui-btn-corner-all,
+#loginForm  .ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-icon-right,
+#profilePage  .ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-icon-right{
     background-color: #565c6b;
     border: 1px solid #ccced6;
     margin-left: 15px;
@@ -264,7 +266,7 @@ padding-right: 5px;
 }
 
 
-#newGroup  input.ui-input-text,#profilePage select.ui-input-text  {
+#newGroup  input.ui-input-text,#profilePage select.ui-input-text, #loginForm   span.ui-btn-inner{
     height: 48px;
     line-height: 48px;
     color: #ccced6;
@@ -782,4 +784,13 @@ a#moreFB {
     margin-left: -50px;
     width: 100px;
     height: 100px;
+}
+
+.loginText{
+    text-align: center;
+    color:#ccced6;
+}
+
+.gray{
+    background-color: #414551;
 }

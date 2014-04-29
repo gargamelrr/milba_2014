@@ -8,12 +8,11 @@ $result = mysql_query("select distinct name from Schools order by name");
 
 while ($row = mysql_fetch_array($result)) {
     $school["name"] = $row["name"];
-    if($row["name"] == "הבינתחומי"){  //TODO: fix name
-        array_unshift($schools,$school);
-    }else{
-        $schools[] = $school;
-    }
-    
+//    if($row["name"] == "הבינתחומי"){  //TODO: fix name
+//        array_unshift($schools,$school);
+//    }else{
+    $schools[] = $school;
+//    }
 }
 
 
@@ -58,18 +57,29 @@ if (isset($_POST["dataUser"])) {
     if (isset($_POST["field"]) && $_POST["field"] == "institue") {
         $name = urldecode($_POST["value"]);
     } else {
-        $name = !isset($_POST["school"]) ? $schools[0]["name"] : $_POST["school"];
+        $name = null;
     }
     $response["user_school"] = $name;
     $response["debug"] = $_SESSION["user"];
 }
 
-$result = mysql_query("select `index`,degree from Schools where name='" . $name . "' order by degree");
-while ($row = mysql_fetch_array($result)) {
-    $degree["name"] = $row["degree"];
-    $degree["index"] = $row["index"];
-    $degrees[] = $degree;
+$degrees = array();
+if ($name != null) {
+    $result = mysql_query("select `index`,degree from Schools where name='" . $name . "' order by degree");
+    while ($row = mysql_fetch_array($result)) {
+        $degree["name"] = $row["degree"];
+        $degree["index"] = $row["index"];
+        $degrees[] = $degree;
+    }
 }
+if (!isset($_POST["dataUser"])) {
+    $school["name"] = "Institute";
+    array_unshift($schools, $school);
+    $degree["name"] = "School";
+    $degree["index"] = 0;
+    array_unshift($degrees, $degree);
+}
+
 $response["schools"] = $schools;
 $response["degrees"] = $degrees;
 $response["success"] = 1;

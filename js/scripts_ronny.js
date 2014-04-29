@@ -162,7 +162,10 @@ function parseProfile(json, isYear) {
     var sel = $("#institue");
     sel.empty();
     for (var i = 0; i < json.schools.length; i++) {
-        if (json.schools[i].name == json.user_school) {
+        if(json.schools[i].name == "Institute"){
+             sel.append('<option value="" disabled selected>' + json.schools[i].name + '</option>');
+        }
+        else if (json.schools[i].name == json.user_school) {
             sel.append('<option value="' + json.schools[i].name + '" selected>' + json.schools[i].name + '</option>');
         } else {
             sel.append('<option value="' + json.schools[i].name + '">' + json.schools[i].name + '</option>');
@@ -172,7 +175,10 @@ function parseProfile(json, isYear) {
     var sel = $("#degree");
     sel.empty();
     for (var i = 0; i < json.degrees.length; i++) {
-        if (json.degrees[i].name == json.user_degree) {
+        if(json.degrees[i].name == "School"){
+             sel.append('<option value="" disabled selected>' + json.degrees[i].name + '</option>');
+        }
+        else if (json.degrees[i].name == json.user_degree) {
             sel.append('<option value="' + json.degrees[i].index + '" selected>' + json.degrees[i].name + '</option>');
         } else {
             sel.append('<option value="' + json.degrees[i].index + '">' + json.degrees[i].name + '</option>');
@@ -183,6 +189,7 @@ function parseProfile(json, isYear) {
         var sel = $("#year");
         sel.empty();
         var year = new Date().getFullYear();
+        sel.append('<option value="" disabled selected>' + "Year of Start" + '</option>');
         for (var i = 2009; i <= year; i++) {
             if (i == json.user_year) {
                 sel.append('<option value="' + i + '" selected>' + i + '</option>');
