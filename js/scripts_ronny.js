@@ -367,13 +367,12 @@ document.addEventListener('deviceready', function() {
 }, false);
 
 function invite() {
-    FB.ui({
-        method: 'apprequests',
-        title: 'Friend Smash Challenge!',
-        message: 'Learn how to make your mobile web app social'
-    }, fbCallback);
+FB.ui({method: 'apprequests',
+        message: 'YOUR_MESSAGE_HERE',
+        to: 'USER_ID'
+    }, requestCallback);
 }
 
-function fbCallback(response) {
+function requestCallback(response) {
     alert("test " + response);
 }
