@@ -21,22 +21,22 @@ $courseID = "";
 // go over all the tasks and get courses
 while ($row = mysql_fetch_array($tasksSql)) {
     $courseID .= ", " . $row["course_id"];
+    $tasks[] = $row;
 }
 $courseID = substr($courseID, 1);
 
 $userIdSql = mysql_query("select Users.index,Users.alertDays, course_id,gcm from Users join Users_Courses on Users.index = Users_Courses.student_id and course_id in ($courseID)");
-$usersID = mysql_fetch_array($userIdSql);
-var_dump($usersID);
 
-//
-//
-//foreach ($tasks as $key => $value) {
-//    foreach ($usersID as $user => $settings) {
-//        if ($settings["course_id"] == $value["course_id"]) {
-//            // calc date and send if needed
-//            if (date("Y-m-d") + $settings["alertDays"] == date("Y-m-d", $settings["due_time"])) {
-//                //sendGCM(array($settings["gcm"]), "Dont forget to finish up your sheet in $courseName");
-//            }
-//        }
-//    }
-//}
+foreach ($tasks as $task) {
+    mysql_data_seek($userIdSql, 0);
+    $dateTask = strtotime(date("Y-m-d", strtotime($task["due_date"]))) . "\n";
+    while ($row = mysql_fetch_array($userIdSql)) {
+        if ($row["course_id"] == $task["course_id"]) {
+            // calc date and send if needed
+            $datePlusAlert = strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +" . $row["alertDays"] . "day") . "\n";
+            if ($datePlusAlert == $dateTask) {
+                sendGCM(array($row["gcm"]), "Dont forget to finish up your sheet in $courseName");
+            }
+        }
+    }
+}
