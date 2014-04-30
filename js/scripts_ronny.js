@@ -1,5 +1,13 @@
 var gcm = "";
 var datePv = "";
+
+var easyWeekText = ["Sheets Happen", "Confront your Sheet!", "Dont be careless about your sheets",
+    "Will the sheets hit the fan?", "Let's beat the sheets out of it!"];
+var hardWeekText = ["common, pull your sheets together!",
+    "Uh oh… Mountains of sheets ahead", "Sheets Happen",
+    "Pretty Sheety situation here, huh?", "It seems  you're in a pile of sheets",
+    "Will the sheets hit the fan?"];
+
 function setGCM(val) {
     gcm = val;
 }
@@ -51,6 +59,11 @@ $(document).on("pageshow", "#home", function() {
         success: function(data) {
             //alert(data);
             var json = JSON.parse(data);
+            if (json.count < 4) {
+                $('#title').text(easyWeekText[Math.floor(Math.random() * easyWeekText.length)]);
+            } else {
+                $('#title').text(hardWeekText[Math.floor(Math.random() * hardWeekText.length)]);
+            }
             var day = 0;
             $("#days .task_num_tasks").hide();
             $("#days .task_date_full").hide();
@@ -244,6 +257,7 @@ $(document).on("pageshow", function(e) {
         $.mobile.activePage.find("#nameFB").text(localStorage.getItem("Name"));
         $.mobile.activePage.find('#imgFB').attr('src', 'https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture');
         $.mobile.activePage.find('#nav-panel').trigger('create');
+
     }
 });
 // result contains any message sent from the plugin call
