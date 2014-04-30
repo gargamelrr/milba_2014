@@ -103,7 +103,7 @@ $(document).on("pageshow", "#courseDetails", function() {
                 if (json.friends.length > 2) {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
                 }
-                $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> Add friends</a>");
+                $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");
                 $('#images').trigger('create');
 
             }
