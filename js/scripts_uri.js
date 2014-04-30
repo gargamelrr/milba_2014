@@ -74,7 +74,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
-                    window.location.href = "index.html";
+                    $.mobile.changePage("GroupDetails.html");
                 }
                 else {
                     alert("Error Inserting the Task");
@@ -97,7 +97,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    window.location.href = "index.html";
+                   $.mobile.changePage("GroupDetails.html");
                 }
             },
             error: function() {
@@ -117,7 +117,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    window.location.href = "index.html";
+                    $.mobile.changePage("GroupDetails.html");
                 }
             },
             error: function() {
