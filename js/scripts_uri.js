@@ -50,74 +50,9 @@ $(document).on("pageshow", "#courseDetails", function() {
     $('form').submit(function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
-
-    $.ajax({
-        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
-        method: 'GET',
-        data: {
-            courseID: currentCourseId
-        },
-        success: function(data) {
-            var json = JSON.parse(data);
-
-            if (json.success == 1) {
-                buildTasks(json.allTasks);
-            }
-            $('#images').text("");
-
-            if (json.is_user == "1") {
-                $("#join-course").hide();
-                $("#addTask").show();
-                $("#leave-course").show();
-            } else {
-                $("#leave-course").hide();
-                $("#addTask").hide();
-                $('.actions').hide();
-            }
-            if (currentCourseId == -1) {
-                $("#leave-course").hide();
-
-                if (datePv != "") {
-                    $("#date1").val(datePv);
-                    setDatePv("");
-                }
-            }
-
-            $('#name').text(json.courseDetails.name);
-            var temp = json.courseDetails.lecturer == null ? "" : json.courseDetails.lecturer;
-            $('#teac_name').text(temp);
-
-            if (currentCourseId != -1) {
-                temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
-                $('#email').text(temp);
-
-                if (json.is_user == "1") {
-                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
-                }
-                $.each(json.friends, function(i, val) {
-                    if (i == 2)
-                        return false;
-                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
-                })
-
-                if (json.friends.length > 2) {
-                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
-                }
-                $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> Add friends</a>");
-                $('#images').trigger('create');
-
-            }
-
-            if (currentTaskId != "") {
-                setCurrentTaskId("");
-            }
-
-
-        },
-        error: function() {
-            alert("error");
-        }
-    });
+    
+    fetchTasks();
+    
     $('#submit').click(function() {
 
         if ($("#taskName").val() == "" || $("#date1").val() == "" || $("#taskTime").val() == "") {
@@ -140,6 +75,9 @@ $(document).on("pageshow", "#courseDetails", function() {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
                     window.location.href = "index.html";
+                }
+                else {
+                    alert("Error Inserting the Task");
                 }
             },
             error: function() {
@@ -273,6 +211,8 @@ $(document).on("pageshow", "#courses", function() {
     //$("#coursesMy").hide();
 });
 
+
+
 function updateSuggestedCourses(courses) {
     removeCurrentSuggestedCourses();
     createCoursesButtons(courses, "coursesSug");
@@ -289,6 +229,11 @@ function removeCurrentSuggestedCourses() {
 function createCoursesButtons(coursesList, div) {
 
     var mainDiv = document.getElementById(div);
+    
+    if (coursesList.length == 0) {
+        mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
+        return;
+    }
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
     // button for create new group
@@ -453,8 +398,11 @@ function buildTasks(allTasks) {
                 success: function(data) {
                     var json = JSON.parse(data)
                     if (json.success == 1) {
+                        alert("callin fetch:...");
+                        fetchTasks();
+                        // $.mobile.changePage("GroupDetails.html");
                         
-                         $.mobile.changePage("GroupDetails.html");
+                         
                     } else {
                         alert("error parsing json");
 
@@ -592,4 +540,75 @@ function monthNumberToString(number)
 {
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[number];
+}
+
+function fetchTasks() {
+    
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
+        method: 'GET',
+        data: {
+            courseID: currentCourseId
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+
+            if (json.success == 1) {
+                buildTasks(json.allTasks);
+            }
+            $('#images').text("");
+
+            if (json.is_user == "1") {
+                $("#join-course").hide();
+                $("#addTask").show();
+                $("#leave-course").show();
+            } else {
+                $("#leave-course").hide();
+                $("#addTask").hide();
+                $('.actions').hide();
+            }
+            if (currentCourseId == -1) {
+                $("#leave-course").hide();
+
+                if (datePv != "") {
+                    $("#date1").val(datePv);
+                    setDatePv("");
+                }
+            }
+
+            $('#name').text(json.courseDetails.name);
+            var temp = json.courseDetails.lecturer == null ? "" : json.courseDetails.lecturer;
+            $('#teac_name').text(temp);
+
+            if (currentCourseId != -1) {
+                temp = json.courseDetails.teacherEmail == null ? "" : " / " + json.courseDetails.teacherEmail;
+                $('#email').text(temp);
+
+                if (json.is_user == "1") {
+                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
+                }
+                $.each(json.friends, function(i, val) {
+                    if (i == 2)
+                        return false;
+                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                })
+
+                if (json.friends.length > 2) {
+                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
+                }
+                $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> Add friends</a>");
+                $('#images').trigger('create');
+
+            }
+
+            if (currentTaskId != "") {
+                setCurrentTaskId("");
+            }
+
+
+        },
+        error: function() {
+            alert("error");
+        }
+    });
 }
