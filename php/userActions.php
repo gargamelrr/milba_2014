@@ -51,7 +51,7 @@ $_SESSION["user"] = $user;
 $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 $_SESSION["school"] = $school_id;
-$_SESSION["year"] = date("Y") + 1 - $year;
+$_SESSION["year"] = date("Y") - $year;
 
 
 if (isset($_POST["friends"])) {
