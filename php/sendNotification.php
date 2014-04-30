@@ -25,7 +25,7 @@ while ($row = mysql_fetch_array($tasksSql)) {
 }
 $courseID = substr($courseID, 1);
 
-$userIdSql = mysql_query("select Users.index,Users.alertDays, course_id,gcm from Users join Users_Courses on Users.index = Users_Courses.student_id and course_id in ($courseID)");
+$userIdSql = mysql_query("select Users.index,Users.alertDays, course_id,gcm,Courses.name as course_name from Users join Users_Courses on Users.index = Users_Courses.student_id join Courses on Courses.index = Users_Courses.course_id where course_id in ($courseID)");
 
 foreach ($tasks as $task) {
     mysql_data_seek($userIdSql, 0);
@@ -35,7 +35,7 @@ foreach ($tasks as $task) {
             // calc date and send if needed
             $datePlusAlert = strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +" . $row["alertDays"] . "day") . "\n";
             if ($datePlusAlert == $dateTask) {
-                sendGCM(array($row["gcm"]), "Dont forget to finish up your sheet in $courseName");
+                sendGCM(array($row["gcm"]), "Dont forget to finish up your sheet in " . $row["course_name"]);
             }
         }
     }
