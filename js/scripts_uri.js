@@ -453,7 +453,8 @@ function buildTasks(allTasks) {
                 success: function(data) {
                     var json = JSON.parse(data)
                     if (json.success == 1) {
-                        window.location.href = "index.html";
+                        
+                         $.mobile.changePage("GroupDetails.html");
                     } else {
                         alert("error parsing json");
 
