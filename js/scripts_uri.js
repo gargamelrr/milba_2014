@@ -258,7 +258,7 @@ $(document).on("pageshow", "#courses", function() {
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchCourses.php',
         method: 'POST',
         success: function(data) {
-            //alert("debug-ignore: " + data);
+            alert(data);
             var json = JSON.parse(data);
             if (json.success == 1) {
                 createCoursesButtons(json.userCourses, "coursesMy");
