@@ -711,7 +711,7 @@ div#friends {
     margin: 0;
 }
 
-a#moreFB {
+a#moreFB ,a#addFB{
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -727,12 +727,17 @@ input#search {
     text-align: center;
 }
 
-#moreFB .ui-btn-inner{
+#moreFB .ui-btn-inner,#addFB .ui-btn-inner{
     margin-top: 10px;
     color:#a7adc3;
     padding: 0;
     border:0;
     text-shadow: none;
+}
+
+#addFB .ui-btn-inner{
+    font-size: 12px;
+    white-space: normal;
 }
 
 #notification div.ui-slider.ui-slider-switch{
