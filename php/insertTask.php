@@ -48,8 +48,10 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
         //notify all users in course
         $message = "$nameUser just gave a sheet in $courseID";
         //bring all registerID
-        $resultGCM = mysql_query("select gcm from Users join Users_Courses where Users.index = Users_Courses.student_id and course_id = $courseID and student_id <> $user_id");
-        $regIDArray = mysql_fetch_array($resultGCM);
+        $resultGCM = mysql_query("select gcm from Users join Users_Courses on Users.index = Users_Courses.student_id Users.index = Users_Courses.student_id where course_id = $courseID and student_id <> $user_id");
+        while($row = mysql_fetch_array($resultGCM)){
+            $regIDArray[] = $row["gcm"];
+        }
         sendGCM($regIDArray, $message);
     }
 

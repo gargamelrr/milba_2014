@@ -54,14 +54,12 @@ $(document).on("pageshow", "#courseDetails", function() {
     });
     
     fetchTasks();
-    alert("why is this not called??");
+    
     $("#submit").click(function() {
-        alert("why is this not calleeeeed??");
         
         if ($("#taskName").val() == "" || $("#date1").val() == "" || $("#taskTime").val() == "") {
             return false;
         }
-        alert("passing ajaxx");
         $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
@@ -75,15 +73,9 @@ $(document).on("pageshow", "#courseDetails", function() {
                 taskID: $("#editFlag").val()
             },
             success: function(data) {
-                alert("trying to parse");
                 var json = JSON.parse(data);
-                alert("parse made");
                 if (json.success == 1) {
-                    alert("json parsed successfuly");
-                    window.location.href = "index.html";
-                }
-                else {
-                    alert("Error Inserting the Task");
+                    $.mobile.changePage("GroupDetails.html");
                 }
             },
             error: function() {
@@ -112,7 +104,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    window.location.href = "index.html";
+                    $.mobile.changePage("GroupDetails.html");
                 }
             },
             error: function() {
@@ -132,7 +124,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    window.location.href = "index.html";
+                    $.mobile.changePage("GroupDetails.html");
                 }
             },
             error: function() {
@@ -619,7 +611,7 @@ function fetchTasks() {
                 if (json.friends.length > 2) {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
                 }
-                $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> Add friends</a>");
+                $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");
                 $('#images').trigger('create');
 
             }
