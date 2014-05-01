@@ -810,3 +810,17 @@ input#search {
 .gray{
     background-color: #414551;
 }
+
+div#leave, div#empty{
+    background: #ccced6;
+    color:#414551;
+}
+
+#emptyWeek{
+    color:#ccced6;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #4d5361;
+    display: none;
+}

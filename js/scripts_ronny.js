@@ -33,6 +33,7 @@ $(document).on("pageshow", "#home", function() {
             $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
+            $(".paper").hide();
             $("#days li").addClass("closed").addClass("withoutPaper");
             $(this).find(".task_date_full").show();
             $(this).find(".task_num_tasks").show();
@@ -42,6 +43,7 @@ $(document).on("pageshow", "#home", function() {
             $("#days img").show();
             $(".date").show();
             $(".ul-de").show();
+            $(".paper").show();
             $("#days .task_num_tasks").hide();
             $("#days .task_date_full").hide();
             $("#days li").removeClass("closed").removeClass("withoutPaper");
