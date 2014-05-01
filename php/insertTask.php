@@ -63,7 +63,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     } else {
         //error
         $response["success"] = 0;
-        $response["message"] = "sql failed nigger";
+        $response["message"] = "sql failed";
     }
 } else {
     //error

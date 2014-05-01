@@ -29,10 +29,13 @@ function arrowRight() {
     document.getElementById("customAlert").innerHTML = ++num;
 }
 
+$(document).on("pagebeforeshow", "#courseDetails", function() {
+    $("#deleteAlert").hide();
+});
 
 $(document).on("pageshow", "#courseDetails", function() {
     
-    $("#deleteAlert").hide();
+    
     function add() {
         if ($(this).val() === ' ') {
             $(this).val($(this).attr('placeholder')).addClass('placeholder');
@@ -509,6 +512,119 @@ $(document).on("pageshow", "#Notifications", function() {
         }
     });
 });
+
+$(document).on("pageshow", "#profilePage", function() {
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchProfileInfo.php',
+        method: 'GET',
+        success: function(data) {
+            var json = JSON.parse(data);
+
+            if (json.success == 1) {
+                updateProfileInfo(json.userAlerts);
+            } else {
+
+            }
+        },
+        error: function() {
+            alert("error");
+        }
+    });
+    
+    function updateProfileInfo(userAlerts) {
+        
+        if(userAlerts[0] == 1) {
+            $('#flip-sound').val('on').slider("refresh");
+        } else {
+            $('#flip-sound').val('off').slider("refresh");
+        }
+        
+        if(userAlerts[1] == 1) {
+            $('#flip-custom').val('on').slider("refresh");
+            var customAlert = document.getElementById("customAlert");
+            customAlert.innerHTML= userAlerts[2];
+        } else {
+            $('#flip-custom').val('off').slider("refresh");
+        }
+        
+        if(userAlerts[3] == 1) {
+            $('#flip-task').val('on').slider("refresh");
+        } else {
+            $('#flip-task').val('off').slider("refresh");
+        }
+        
+        if(userAlerts[4] == 1) {
+            $('#flip-group').val('on').slider("refresh");
+        } else {
+            $('#flip-group').val('off').slider("refresh");
+        }
+        
+        
+    }
+});
+
+$(document).on("pagebeforehide", "#profilePage", function() {
+    var sound;
+    var custom;
+    var days;
+    var task;
+    var group;
+    
+    if($('#flip-sound').val() == "on") {
+            sound = 1;
+        } else {
+            sound = 0;
+        }
+        
+        if( $('#flip-custom').val() == 'on') {
+            custom = 1;
+            var customAlert = document.getElementById("customAlert");
+            days = customAlert.innerHTML;
+        } else {
+            custom = 0;
+            days = 2;
+        }
+        
+        if($('#flip-task').val() == 'on') {
+            task = 1;
+        } else {
+            task = 0;
+        }
+        
+        if($('#flip-group').val() == 'on') {
+            group = 1;
+        } else {
+            group = 0;
+        }
+        
+        $.ajax({
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertProfileInfo.php',
+            method: 'POST',
+            data: {
+                sound: sound,
+                custom: custom,
+                days: days,
+                task: task,
+                group: group,
+            },
+            success: function(data) {
+                var json = JSON.parse(data);
+                if (json.success == 1) {
+                    alert("OK");
+                }
+                else {
+                    alert("Error Inserting the Alerts");
+                }
+            },
+            error: function() {
+                alert(data.message);
+            }
+        });
+        
+});
+
+
+
 
 function buildNotifications(data) {
     for (var i = 0; i <= 6; i++) {
