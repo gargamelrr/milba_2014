@@ -31,6 +31,8 @@ function arrowRight() {
 
 
 $(document).on("pageshow", "#courseDetails", function() {
+    
+    $("#deleteAlert").hide();
     function add() {
         if ($(this).val() === ' ') {
             $(this).val($(this).attr('placeholder')).addClass('placeholder');
@@ -42,7 +44,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             $(this).val('').removeClass('placeholder');
         }
     }
-
+    
     // Select the elements that have a placeholder attribute
     $('textarea[placeholder]').blur(add).focus(remove).each(add);
 
@@ -52,13 +54,14 @@ $(document).on("pageshow", "#courseDetails", function() {
     });
     
     fetchTasks();
-    
-    $('#submit').click(function() {
-
+    alert("why is this not called??");
+    $("#submit").click(function() {
+        alert("why is this not calleeeeed??");
+        
         if ($("#taskName").val() == "" || $("#date1").val() == "" || $("#taskTime").val() == "") {
             return false;
         }
-
+        alert("passing ajaxx");
         $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
@@ -72,8 +75,11 @@ $(document).on("pageshow", "#courseDetails", function() {
                 taskID: $("#editFlag").val()
             },
             success: function(data) {
+                alert("trying to parse");
                 var json = JSON.parse(data);
+                alert("parse made");
                 if (json.success == 1) {
+                    alert("json parsed successfuly");
                     window.location.href = "index.html";
                 }
                 else {
@@ -84,7 +90,16 @@ $(document).on("pageshow", "#courseDetails", function() {
                 alert(data.message);
             }
         });
+        
+        var that = this;
+        $(this).attr("disabled", true);
+        setTimeout(function() { enableSubmit(that) }, 1000);
     });
+    
+    var enableSubmit = function(ele) {
+    $(ele).removeAttr("disabled");
+    }
+    
     $('#join-course').click(function() {
         $.ajax({
             //add full 
@@ -204,7 +219,7 @@ $(document).on("pageshow", "#courses", function() {
             createCoursesButtons(json.courses, "coursesSug");
         },
         error: function() {
-            console.log("error");
+            console.log("error 1");
         }
     });
 
@@ -372,6 +387,8 @@ function buildTasks(allTasks) {
 
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
+                        
+                         scrollAfterEdit();   
                     } else {
                         alert("error parsing json");
                     }
@@ -381,6 +398,14 @@ function buildTasks(allTasks) {
                 }
             });
         });
+        
+        function scrollAfterEdit() {
+            event.preventDefault();
+            var target = "#elementsToOperateOn" 
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 1000);
+        }
 
         var delLink = document.createElement("a");
         delLink.href = "";
@@ -398,11 +423,9 @@ function buildTasks(allTasks) {
                 success: function(data) {
                     var json = JSON.parse(data)
                     if (json.success == 1) {
-                        alert("callin fetch:...");
+                        $("#deleteAlert").show();
+                        $('#deleteAlert').fadeOut('slow');
                         fetchTasks();
-                        // $.mobile.changePage("GroupDetails.html");
-                        
-                         
                     } else {
                         alert("error parsing json");
 
@@ -608,7 +631,7 @@ function fetchTasks() {
 
         },
         error: function() {
-            alert("error");
+            alert("error in fetch tasks");
         }
     });
 }
