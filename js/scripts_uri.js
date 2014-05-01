@@ -570,6 +570,8 @@ function fetchTasks() {
 
             if (json.success == 1) {
                 buildTasks(json.allTasks);
+            }else{
+                $("#tasks-table-custom").text("");
             }
             $('#images').text("");
 

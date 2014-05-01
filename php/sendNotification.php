@@ -31,7 +31,7 @@ foreach ($tasks as $task) {
     mysql_data_seek($userIdSql, 0);
     $dateTask = strtotime(date("Y-m-d", strtotime($task["due_date"]))) . "\n";
     while ($row = mysql_fetch_array($userIdSql)) {
-        if ($row["course_id"] == $task["course_id"]) {
+        if ($row["customAlert"] == 1 && $row["course_id"] == $task["course_id"]) {
             // calc date and send if needed
             $datePlusAlert = strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +" . $row["alertDays"] . "day") . "\n";
             if ($datePlusAlert == $dateTask) {
