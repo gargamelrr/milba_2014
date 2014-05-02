@@ -498,7 +498,6 @@ $(document).on("pageshow", "#courses", function() {
 });
 
 $(document).on("pageshow", "#Notifications", function() {
-    //uriFriends();
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchNotifications.php',
         method: 'GET',
@@ -507,7 +506,7 @@ $(document).on("pageshow", "#Notifications", function() {
 
             if (json.success == 1) {
 
-                buildNotifications(json.allTasks);
+                buildNotifications(json);
             } else {
 
             }
@@ -632,31 +631,49 @@ $(document).on("pagebeforehide", "#profilePage", function() {
 
 
 function buildNotifications(data) {
-    for (var i = 0; i <= 6; i++) {
+//    for (var i = 0; i <= 6; i++) {
+//
+//        var currentDayLi = document.getElementById("" + i);
+//
+//        if (data[i] == null || data[i].length == 0) {
+//            $(currentDayLi).hide();
+//            continue;
+//        }
+//
+//        var currentDate = new Date();
+//        currentDate.setDate(currentDate.getDate() - i);
+//        var currentDay = dayNumberToString(currentDate.getDay());
+//        var currentMonth = monthNumberToString(currentDate.getMonth());
+//        var currentMonthDay = currentDate.getDate();
+//        var currentYear = currentDate.getFullYear();
+//        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
+//        currentDayLi.innerHTML = finalDateToDisplay;
+//
+//        for (var j = 0; j <= data[i].length; j++) {
+//            $("#noNotifications").hide();
+//            for (var j = 0; j < data[i].length; j++) {
+//                currentDayLi.innerHTML += data[i][j];
+//            }
+//        }
+//    }
+    
+    var table = document.getElementById("notifi-table-custom");
+    table.innerHTML = "";
+    var tblBody = document.createElement("tbody");
+    for (var i = 0; i < data.allNoti.length; i++) {
+        var row = document.createElement("tr");
+        var cell1Div = document.createElement("div");
+        cell1Div.setAttribute("class", "btn-noti");
+        var cell1 = document.createElement("td");
+        var cell2Div = document.createElement("div");
+        cell2Div.innerHTML = data.allNoti[i];
+        cell1.appendChild(cell2Div);
+        cell1Div.appendChild(cell1);
 
-        var currentDayLi = document.getElementById("" + i);
-
-        if (data[i] == null || data[i].length == 0) {
-            $(currentDayLi).hide();
-            continue;
-        }
-
-        var currentDate = new Date();
-        currentDate.setDate(currentDate.getDate() - i);
-        var currentDay = dayNumberToString(currentDate.getDay());
-        var currentMonth = monthNumberToString(currentDate.getMonth());
-        var currentMonthDay = currentDate.getDate();
-        var currentYear = currentDate.getFullYear();
-        var finalDateToDisplay = currentDay + ", " + currentMonth + " " + currentMonthDay + " " + currentYear;
-        currentDayLi.innerHTML = finalDateToDisplay;
-
-        for (var j = 0; j <= data[i].length; j++) {
-            $("#noNotifications").hide();
-            for (var j = 0; j < data[i].length; j++) {
-                currentDayLi.innerHTML += data[i][j];
-            }
-        }
+        row.appendChild(cell1Div);
+        tblBody.appendChild(row);
     }
+    table.appendChild(tblBody);
 }
 
 function dayNumberToString(number)

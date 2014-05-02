@@ -585,6 +585,28 @@ div#teac_details {
     margin: 15px;
 }
 
+.btn-noti {
+    border: 1px solid #ccced6;
+    border-radius: 1em;
+    margin: 15px;
+    padding: 10px;
+    color:#ccced6;
+}
+
+#Notifications .ui-body-c, #courses div.ui-body-c{
+      background: #4d5361;  
+}
+
+div#notiPage {
+    margin: -15px;
+    background: #4d5361;
+}
+
+.ui-panel-animate.ui-panel-content-wrap{
+    -webkit-backface-visibility: visible;
+ -webkit-transform: none;
+}
+
 a#join-course {
     border: 0;
     background: #3cceff;
