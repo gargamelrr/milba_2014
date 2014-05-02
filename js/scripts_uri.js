@@ -85,6 +85,8 @@ $(document).on("pageshow", "#courseDetails", function() {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
                     fetchTasks();
+                    $('#addTaskForm').get(0).reset();
+                    $('textarea[placeholder]').blur(add).focus(remove).each(add);
                     scrollAfterEdit("#friends");
                 }
             },
