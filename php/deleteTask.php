@@ -12,6 +12,7 @@ session_start();
 $user_id = $_SESSION["user_id"];
 
 $idToEdit = $_POST["id"];
+$nameUsre = $_SESSION["name"];
 
 $courseID = $_POST["courseID"];
 
@@ -41,7 +42,7 @@ if(mysql_num_rows($result) == 1) {
     }
 
 if (mysql_affected_rows() > 0) {
-    $insertion = mysql_query("Insert into Events(`course_id`, `msg`) Values ('$courseID', 'The task $name was deleted')");
+    $insertion = mysql_query("Insert into Events(`course_id`, `msg`) Values ('$courseID', 'The task $name was deleted by $nameUsre')");
     if (mysql_affected_rows() > 0) {
         $response["success"] = 1;
     } else {

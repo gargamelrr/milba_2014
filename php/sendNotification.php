@@ -4,6 +4,8 @@
  * this scripts run every night at 00:00 
  */
 
+date_default_timezone_set("Asia/Jerusalem");
+
 require_once __DIR__ . '/Global_Func.php';
 require_once __DIR__ . '/db_connect.php';
 
@@ -36,7 +38,7 @@ foreach ($tasks as $task) {
             $datePlusAlert = strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +" . $row["alertDays"] . "day") . "\n";
             if ($datePlusAlert == $dateTask) {
                 sendGCM(array($row["gcm"]), "Don't forget to finish up your sheet in " . $row["course_name"]);
-                echo "send notification to " . $row["index"] . " for " . $row["course_name"];
+                echo "send notification to " . $row["index"] . " for " . $row["course_name"] . "\n";
             }
         }
     }
