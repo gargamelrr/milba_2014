@@ -85,6 +85,7 @@ $(document).on("pageshow", "#courseDetails", function() {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
                     fetchTasks();
+                    scrollAfterEdit("#friends");
                 }
             },
             error: function() {
@@ -388,7 +389,7 @@ function buildTasks(allTasks) {
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
 
-                        scrollAfterEdit();
+                        scrollAfterEdit("#elementsToOperateOn");
                     } else {
                         alert("error parsing json");
                     }
@@ -398,14 +399,6 @@ function buildTasks(allTasks) {
                 }
             });
         });
-
-        function scrollAfterEdit() {
-            event.preventDefault();
-            var target = "#elementsToOperateOn"
-            $('html, body').animate({
-                scrollTop: $(target).offset().top
-            }, 1000);
-        }
 
         var delLink = document.createElement("a");
         delLink.href = "";
@@ -447,12 +440,19 @@ function buildTasks(allTasks) {
     table.appendChild(tblBody);
 }
 
+function scrollAfterEdit(target) {
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $(target).offset().top
+    }, 1000);
+}
+
 function fillUpFieldsAfterEdit(json) {
 
     $("#taskName").val(json.name);
     $("#date1").val(json.date);
     $("#taskTime").val(json.time);
-    $("#taskdetails").text(json.description);
+    $("#taskdetails").val(json.description);
     if (json.difficulty == 1) {
         $('#hard').attr('checked', 'checked');
     }
@@ -656,7 +656,7 @@ function buildNotifications(data) {
 //            }
 //        }
 //    }
-    
+
     var table = document.getElementById("notifi-table-custom");
     table.innerHTML = "";
     var tblBody = document.createElement("tbody");

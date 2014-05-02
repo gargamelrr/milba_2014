@@ -39,11 +39,11 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     if ($courseID == -1) {
         $result = mysql_query("INSERT INTO `Users_PrivateTasks`(`index`,`student_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
                 . "VALUES ('$taskID', '$user_id', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', '$user_id', '1', '$date')"
-                . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails'  ");
+                . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails', modified='$date' ");
     } else {
         $result = mysql_query("INSERT INTO `Tasks`(`index`, `course_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
                 . "VALUES ('$taskID', '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', '$user_id', '1', '$date')"
-                . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails'  ");
+                . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails' , modified='$date' ,creator = '$user_id'  ");
 
         //notify all users in course
         $message = "$nameUser just gave a sheet in $courseID";
