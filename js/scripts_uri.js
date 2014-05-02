@@ -111,7 +111,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    $.mobile.changePage("GroupDetails.html");
+                    $.mobile.changePage("GroupDetails.html?a");
                 }
             },
             error: function() {
@@ -131,7 +131,8 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    $.mobile.changePage("GroupDetails.html", { reloadPage: true, transition: "none"});
+                    setCurrentCoursePage('join');
+                    $.mobile.changePage("Groups.html?b");
                 }
             },
             error: function() {
@@ -614,10 +615,10 @@ $(document).on("pagebeforehide", "#profilePage", function() {
         success: function(data) {
             var json = JSON.parse(data);
             if (json.success == 1) {
-                alert("OK");
+                //alert("OK");
             }
             else {
-                alert("Error Inserting the Alerts");
+                //alert("Error Inserting the Alerts");
             }
         },
         error: function() {
