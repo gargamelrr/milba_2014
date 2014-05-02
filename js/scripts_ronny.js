@@ -84,7 +84,7 @@ $(document).on("pageshow", "#home", function() {
                         }
                         //$("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></b></div>" +
                         //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
-                        $("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
+                        $("#day" + day + " .details").append("<div class='homeTask' id='task" + i + "_" + j + "'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
                                 json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
                         if (json.data[i].tasks.count < 2) {
                             $("#day" + day + " img").attr("src", "images/easy.png")
@@ -95,6 +95,7 @@ $(document).on("pageshow", "#home", function() {
                         $('#task' + i + "_" + j).click(function() {
                             setCurrentCourseId(json.data[i].tasks.data[j].course_id);
                             setCurrentTaskId(json.data[i].tasks.data[j].index);
+                            $.mobile.changePage('GroupDetails.html');
                         });
                     });
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
