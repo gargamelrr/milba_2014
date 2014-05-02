@@ -39,12 +39,12 @@ and open the template in the editor.
             </div>
             <div data-role="content">
                 <div id="friends">
-                        <table>
-                            <tr>
-                                <td id="images"></td>
-                            </tr>
-                        </table>
-                    </div>
+                    <table>
+                        <tr>
+                            <td id="images"></td>
+                        </tr>
+                    </table>
+                </div>
                 <div id="coursePage">
                     <div  class="ui-header"  id="teac_details">
                         <h1 class="ui-title" role="heading"><span id="name"></span></h1>
@@ -57,14 +57,15 @@ and open the template in the editor.
                                 <tr><td></td><td></td></tr>
                             </thead>
                         </table>
-                        <br/>
                     </div>
-                    <a href="#join" data-role="button" id="join-course" > Join Course </a><br/>
-
+                    <a href="#join" data-role="button" id="join-course" > Join Course </a>
+                    <div class="share">
+                        <i>"Sharing your sheet with others is always a nice thing to do."</i>
+                    </div>
                     <form method="post" id="addTaskForm">
                         <div id="addTask">
                             <div id="elementsToOperateOn">
-                                <i><b>Sharing your sheet with others is always a nice thing to do.</b></i><br/><br/>
+                                <b>Add Sheet</b><br/>
                                 <input type="text" name="taskName" id="taskName" placeholder="Name"  required/> 
                                 <input id="date1" type="text" placeholder='Due Date' data-role="datebox" readonly="readonly" data-options="{&quot;mode&quot;:&quot;datebox&quot;, &quot;useNewStyle&quot;:true}" class="ui-input-text ui-body-c ui-corner-all">
                                 <input id="taskTime" type="text" placeholder='Time' data-role="datebox" readonly="readonly" data-options="{&quot;mode&quot;:&quot;timebox&quot;, &quot;useNewStyle&quot;:true}" class="ui-input-text ui-body-c ui-corner-all">
@@ -81,8 +82,7 @@ and open the template in the editor.
                                         <label for="hard" data-role="none">Massive<br/> sheet</label>
                                     </div>
                                 </div>
-
-                                <label><i>It’s always fun to share your Sheets with friends!</i></label>
+                                <input type="button" value="Add Friends" id="invitebtn" onclick="invite()"/>
                                 <input  type="submit" value="Publish Sheet"  id="submit"/>
                             </div>
                             <br/><br/>
@@ -103,6 +103,6 @@ and open the template in the editor.
             </div>
             <h1 class="No-Courses-Found" id="deleteAlert" style="display: none">Task Was Deleted</h1>
         </div>
-        
+
     </body>
 </html>

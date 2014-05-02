@@ -372,7 +372,7 @@ function buildTasks(allTasks) {
         var editLink = document.createElement("a");
         $(editLink).attr('id', allTasks[i].index);
         editLink.href = "";
-        editLink.innerHTML = "edit | ";
+        editLink.innerHTML = "<img src='images/edit.png'/>";
 
         $(editLink).click(function() {
 
@@ -404,7 +404,7 @@ function buildTasks(allTasks) {
 
         var delLink = document.createElement("a");
         delLink.href = "";
-        delLink.innerHTML = "delete";
+        delLink.innerHTML = "<img src='images/garbage.png'/>";
 
         $(delLink).click(function() {
             $(document).load();
@@ -723,6 +723,7 @@ function fetchTasks() {
                 $("#leave-course").hide();
                 $("#addTask").hide();
                 $('.actions').hide();
+                $('.share').hide();
             }
             if (currentCourseId == -1) {
                 $("#leave-course").hide();
@@ -745,13 +746,19 @@ function fetchTasks() {
                     $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
                 }
                 $.each(json.friends, function(i, val) {
-                    if (i == 2)
-                        return false;
-                    $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
-                })
+                    if (i == 2) {
+                        $('#images').append("<div id='moreFBdiv'></div>");
+                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                    } else if (i > 2) {
+                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                    } else {
+                        $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                    }
+                });
 
                 if (json.friends.length > 2) {
-                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
+                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB' onclick='more(true)'> + " + (json.friends.length - 2) + "</a>");
+                     $('#moreFBdiv').append("<br/><a href='' id='closeFB' onclick='more(false);'>X Close</a>");
                 }
                 if (json.is_user == "1") {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");
@@ -770,4 +777,16 @@ function fetchTasks() {
             alert("error in fetch tasks");
         }
     });
+}
+
+function more(bool) {
+    if (bool) {
+        $('#moreFBdiv').show();
+        $('#moreFB').hide();
+        $('#addFB').hide();
+    } else {
+        $('#moreFBdiv').hide();
+        $('#moreFB').show();
+        $('#addFB').show();
+    }
 }

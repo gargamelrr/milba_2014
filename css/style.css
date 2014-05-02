@@ -350,6 +350,10 @@ div#newGroup {
     margin-left: -20px;
 }
 
+.ui-input-search{
+    background: #6a7080 !important;
+}
+
 #tabs .ui-btn{
     background-color: #5b6170;
     height: 48px;
@@ -594,7 +598,7 @@ div#teac_details {
 }
 
 #Notifications .ui-body-c, #courses div.ui-body-c{
-      background: #4d5361;  
+    background: #4d5361;  
 }
 
 div#notiPage {
@@ -604,7 +608,7 @@ div#notiPage {
 
 .ui-panel-animate.ui-panel-content-wrap{
     -webkit-backface-visibility: visible;
- -webkit-transform: none;
+    -webkit-transform: none;
 }
 
 a#join-course {
@@ -654,10 +658,19 @@ a#leave-course {
     box-shadow:none;
 }
 
-#elementsToOperateOn{
+#elementsToOperateOn, .share{
     margin: 15px;
+    text-align: center;
 }
 
+#moreFBdiv{
+    display: none;
+}
+
+#moreFBdiv a.ui-link{
+    color: #414551 !important;
+    text-decoration: none;
+}
 #elementsToOperateOn  input.ui-input-text,#elementsToOperateOn textarea.ui-input-text {
     height: 48px;
     line-height: 48px;
