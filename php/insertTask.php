@@ -18,7 +18,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     $dueDate = $_POST['date1'];
     $taskTime = $_POST['taskTime'];
     $radioDifficulty = $_POST['radiodifficulty'];
-    $taskDetails = $_POST['taskdetails'];
+    $taskDetails = mysql_escape_string($_POST['taskdetails']);
     $courseID = $_POST['courseID'];
     $taskID = $_POST['taskID'];
     // $date = date('Y-m-d H:i:s', time());
@@ -63,7 +63,9 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
     } else {
         //error
         $response["success"] = 0;
-        $response["message"] = "sql failed";
+        $response["message"] = "INSERT INTO `Tasks`(`index`, `course_id`, `name`, `due_date`, `description`, `difficulty`, `creator`, `status`, `created`) "
+                . "VALUES ('$taskID', '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', '$user_id', '1', '$date')"
+                . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails'  ";
     }
 } else {
     //error

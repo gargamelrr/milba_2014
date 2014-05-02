@@ -34,8 +34,8 @@ $(document).on("pagebeforeshow", "#courseDetails", function() {
 });
 
 $(document).on("pageshow", "#courseDetails", function() {
-    
-    
+
+
     function add() {
         if ($(this).val() === ' ') {
             $(this).val($(this).attr('placeholder')).addClass('placeholder');
@@ -47,7 +47,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             $(this).val('').removeClass('placeholder');
         }
     }
-    
+
     // Select the elements that have a placeholder attribute
     $('textarea[placeholder]').blur(add).focus(remove).each(add);
 
@@ -55,14 +55,20 @@ $(document).on("pageshow", "#courseDetails", function() {
     $('form').submit(function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
-    
+
     fetchTasks();
-    
+
     $("#submit").click(function() {
-        
+
         if ($("#taskName").val() == "" || $("#date1").val() == "" || $("#taskTime").val() == "") {
             return false;
         }
+
+        var that = this;
+        $(this).attr("disabled", true);
+        setTimeout(function() {
+            enableSubmit(that)
+        }, 1000);
         $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
@@ -78,23 +84,21 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 1) {
-                    $.mobile.changePage("GroupDetails.html");
+                    fetchTasks();
                 }
             },
             error: function() {
                 alert(data.message);
             }
         });
-        
-        var that = this;
-        $(this).attr("disabled", true);
-        setTimeout(function() { enableSubmit(that) }, 1000);
+
+
     });
-    
+
     var enableSubmit = function(ele) {
-    $(ele).removeAttr("disabled");
+        $(ele).removeAttr("disabled");
     }
-    
+
     $('#join-course').click(function() {
         $.ajax({
             //add full 
@@ -127,7 +131,7 @@ $(document).on("pageshow", "#courseDetails", function() {
             success: function(data) {
                 var json = JSON.parse(data);
                 if (json.success == 0) {
-                    $.mobile.changePage("GroupDetails.html");
+                    $.mobile.changePage("GroupDetails.html", { reloadPage: true, transition: "none"});
                 }
             },
             error: function() {
@@ -239,7 +243,7 @@ function removeCurrentSuggestedCourses() {
 function createCoursesButtons(coursesList, div) {
 
     var mainDiv = document.getElementById(div);
-    
+
     if (coursesList.length == 0) {
         mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
         return;
@@ -382,8 +386,8 @@ function buildTasks(allTasks) {
 
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
-                        
-                         scrollAfterEdit();   
+
+                        scrollAfterEdit();
                     } else {
                         alert("error parsing json");
                     }
@@ -393,10 +397,10 @@ function buildTasks(allTasks) {
                 }
             });
         });
-        
+
         function scrollAfterEdit() {
             event.preventDefault();
-            var target = "#elementsToOperateOn" 
+            var target = "#elementsToOperateOn"
             $('html, body').animate({
                 scrollTop: $(target).offset().top
             }, 1000);
@@ -530,36 +534,36 @@ $(document).on("pageshow", "#profilePage", function() {
             alert("error");
         }
     });
-    
+
     function updateProfileInfo(userAlerts) {
-        
-        if(userAlerts[0] == 1) {
+
+        if (userAlerts[0] == 1) {
             $('#flip-sound').val('on').slider("refresh");
         } else {
             $('#flip-sound').val('off').slider("refresh");
         }
-        
-        if(userAlerts[1] == 1) {
+
+        if (userAlerts[1] == 1) {
             $('#flip-custom').val('on').slider("refresh");
             var customAlert = document.getElementById("customAlert");
-            customAlert.innerHTML= userAlerts[2];
+            customAlert.innerHTML = userAlerts[2];
         } else {
             $('#flip-custom').val('off').slider("refresh");
         }
-        
-        if(userAlerts[3] == 1) {
+
+        if (userAlerts[3] == 1) {
             $('#flip-task').val('on').slider("refresh");
         } else {
             $('#flip-task').val('off').slider("refresh");
         }
-        
-        if(userAlerts[4] == 1) {
+
+        if (userAlerts[4] == 1) {
             $('#flip-group').val('on').slider("refresh");
         } else {
             $('#flip-group').val('off').slider("refresh");
         }
-        
-        
+
+
     }
 });
 
@@ -569,58 +573,58 @@ $(document).on("pagebeforehide", "#profilePage", function() {
     var days;
     var task;
     var group;
-    
-    if($('#flip-sound').val() == "on") {
-            sound = 1;
-        } else {
-            sound = 0;
-        }
-        
-        if( $('#flip-custom').val() == 'on') {
-            custom = 1;
-            var customAlert = document.getElementById("customAlert");
-            days = customAlert.innerHTML;
-        } else {
-            custom = 0;
-            days = 2;
-        }
-        
-        if($('#flip-task').val() == 'on') {
-            task = 1;
-        } else {
-            task = 0;
-        }
-        
-        if($('#flip-group').val() == 'on') {
-            group = 1;
-        } else {
-            group = 0;
-        }
-        
-        $.ajax({
-            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertProfileInfo.php',
-            method: 'POST',
-            data: {
-                sound: sound,
-                custom: custom,
-                days: days,
-                task: task,
-                group: group,
-            },
-            success: function(data) {
-                var json = JSON.parse(data);
-                if (json.success == 1) {
-                    alert("OK");
-                }
-                else {
-                    alert("Error Inserting the Alerts");
-                }
-            },
-            error: function() {
-                alert(data.message);
+
+    if ($('#flip-sound').val() == "on") {
+        sound = 1;
+    } else {
+        sound = 0;
+    }
+
+    if ($('#flip-custom').val() == 'on') {
+        custom = 1;
+        var customAlert = document.getElementById("customAlert");
+        days = customAlert.innerHTML;
+    } else {
+        custom = 0;
+        days = 2;
+    }
+
+    if ($('#flip-task').val() == 'on') {
+        task = 1;
+    } else {
+        task = 0;
+    }
+
+    if ($('#flip-group').val() == 'on') {
+        group = 1;
+    } else {
+        group = 0;
+    }
+
+    $.ajax({
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertProfileInfo.php',
+        method: 'POST',
+        data: {
+            sound: sound,
+            custom: custom,
+            days: days,
+            task: task,
+            group: group,
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+            if (json.success == 1) {
+                alert("OK");
             }
-        });
-        
+            else {
+                alert("Error Inserting the Alerts");
+            }
+        },
+        error: function() {
+            alert(data.message);
+        }
+    });
+
 });
 
 
@@ -674,7 +678,7 @@ function monthNumberToString(number)
 }
 
 function fetchTasks() {
-    
+
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/fetchTasks.php',
         method: 'GET',
@@ -686,7 +690,7 @@ function fetchTasks() {
 
             if (json.success == 1) {
                 buildTasks(json.allTasks);
-            }else{
+            } else {
                 $("#tasks-table-custom").text("");
             }
             $('#images').text("");
