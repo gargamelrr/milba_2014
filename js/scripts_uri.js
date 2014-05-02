@@ -751,7 +751,9 @@ function fetchTasks() {
                 if (json.friends.length > 2) {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB'> + " + (json.friends.length - 3) + "</a>");
                 }
-                $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");
+                if (json.is_user == "1") {
+                    $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");
+                }
                 $('#images').trigger('create');
 
             }

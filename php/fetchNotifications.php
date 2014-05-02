@@ -34,8 +34,8 @@ if (mysql_num_rows($newTasks) >= 0 || mysql_num_rows($editedTasks) >= 0 || mysql
     while ($row2 = mysql_fetch_array($editedTasks)) {
         $new_date = date("m.d.Y", strtotime($row2["due_date"]));
         $msg = " <div class='ui-grid-a'><div class='ui-block-a' style='width:37%'><img src='https://graph.facebook.com/" . $row2["fb_id"] . "/picture?width=60&height=60'></div>"
-                . "<div class='ui-block-b'><b>" .$row2["first_name"] . " " . $row2["last_name"] . '</b> edited task in: <br/>' .
-                '"' . $row2["cName"] . '" <br/>' .
+                . "<div class='ui-block-b'><b>" .$row2["first_name"] . " " . $row2["last_name"] . '</b> Karin made changes in: <br/>' .
+                '"' . $row2["tName"] . '" <br/>' .
                 ' Due: <strong>' . $new_date . '</strong></div></div>';
 
 
