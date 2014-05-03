@@ -265,6 +265,7 @@ span#name {
 #nameProfile{
     text-align: center;
     color:#ccced6;
+    font-family: 'Asap';
 }
 
 #imgProfile{
@@ -777,7 +778,7 @@ a#leave-course {
     color:#3cceff;
 }
 
-div#notifi {
+div#notifi,#notification {
     font-family: 'Asap';
 }
 
