@@ -1,3 +1,6 @@
+.ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c{
+    font-family: 'Asap';
+}
 .ui-li>.ui-btn-inner {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -8,6 +11,18 @@
     margin: 2em auto;   
 }
 
+#days .ui-btn-up-c:first-child,#days .ui-btn-down-c:first-child,#days .ui-btn-hover-c:first-child{
+    background: #0f7192;
+    border-top: 0;
+}
+
+#days .ui-btn:first-child .left ,#days .ui-btn:first-child ul{
+    color: white;
+}
+#days .ui-btn ul{
+    font-family: 'Alef';
+
+}
 
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     //max-height: 45px;

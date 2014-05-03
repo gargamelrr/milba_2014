@@ -58,7 +58,7 @@ while ($i < 8) {
 $last_date = $date;
 
 if ($status != 2) {
-    $result = mysql_query("SELECT Tasks.`index`, `course_id`, Tasks.`name` as task_name, `due_date`, `description`,Courses.`name` as course_name ,Date_format(due_date, '%H:%i') as time "
+    $result = mysql_query("SELECT Tasks.`index`, `course_id`, Tasks.`name` as task_name, `due_date`, `description`,Courses.`name` as course_name ,Date_format(due_date, '%H:%i') as time, difficulty "
             . "FROM `Tasks` join Courses on Tasks.course_id=Courses.index where due_date between DATE(NOW()) and '$last_date 23:59:00' $courses_str_or");
 
     while ($row = mysql_fetch_array($result)) {
@@ -68,7 +68,7 @@ if ($status != 2) {
     }
     $count = mysql_num_rows($result);
 
-    $resultME = mysql_query("SELECT Users_PrivateTasks.`index`, -1 as course_id, Users_PrivateTasks.`name` as task_name, `due_date`, `description`, 'ME' as course_name ,Date_format(due_date, '%H:%i') as time"
+    $resultME = mysql_query("SELECT Users_PrivateTasks.`index`, -1 as course_id, Users_PrivateTasks.`name` as task_name, `due_date`, `description`, 'ME' as course_name ,Date_format(due_date, '%H:%i') as time,difficulty"
             . "FROM `Users_PrivateTasks` where due_date between DATE(NOW()) and '$last_date 23:59:00' and student_id = $user_id");
 
     while ($row = mysql_fetch_array($resultME)) {

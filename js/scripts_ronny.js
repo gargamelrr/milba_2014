@@ -61,12 +61,8 @@ $(document).on("pageshow", "#home", function() {
         success: function(data) {
             //alert(data);
             var json = JSON.parse(data);
-            if (json.count < 4) {
-                $('#title').text(easyWeekText[Math.floor(Math.random() * easyWeekText.length)]);
-            } else {
-                $('#title').text(hardWeekText[Math.floor(Math.random() * hardWeekText.length)]);
-            }
             var day = 0;
+            var easy = 0;
             $("#days .task_num_tasks").hide();
             $("#days .task_date_full").hide();
             $.each(json.data, function(i, val) {
@@ -86,18 +82,42 @@ $(document).on("pageshow", "#home", function() {
                         //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
                         $("#day" + day + " .details").append("<div class='homeTask' id='task" + i + "_" + j + "'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
                                 json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
-                        if (json.data[i].tasks.count < 2) {
-                            $("#day" + day + " img").attr("src", "images/easy.png")
-                        } else {
-                            $("#day" + day + " img").attr("src", "images/hard.png")
-                        }
 
                         $('#task' + i + "_" + j).click(function() {
                             setCurrentCourseId(json.data[i].tasks.data[j].course_id);
                             setCurrentTaskId(json.data[i].tasks.data[j].index);
                             $.mobile.changePage('GroupDetails.html');
                         });
+                        if (json.data[i].tasks.data[j].difficulty == 0) {
+                            easy++;
+                        } else {
+                            easy = easy + 3;
+                        }
                     });
+                    if (day == 0) {
+                        if (json.data[i].tasks.count < 2) {
+                            $("#day" + day + " img").attr("src", "images/easy_0.png");
+                        } else {
+                            $("#day" + day + " img").attr("src", "images/hard_0.png");
+                        }
+                    }
+                    else {
+                        if (json.data[i].tasks.count < 2) {
+                            $("#day" + day + " img").attr("src", "images/easy_2.png");
+                            $("#day" + day + " .left").css("color", "#28a9d4");
+                            $("#day" + day + " ul").css("color", "#28a9d4");
+                            $("#days li:nth-child(" + (day + 1) + ")").css("border-top", "1px solid #28a9d4");
+                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_2.png)");
+
+                        } else {
+                            $("#day" + day + " img").attr("src", "images/hard_3.png");
+                            $("#day" + day + " .left").css("color", "#0f7192");
+                            $("#day" + day + " ul").css("color", "#0f7192");
+                            $("#days li:nth-child(" + (day + 1) + ")").css("border-top", "1px solid #0f7192");
+                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_3.png)");
+
+                        }
+                    }
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
                     $("#day" + day + "-ul").append(output).trigger('create');
                 } else {
@@ -115,6 +135,11 @@ $(document).on("pageshow", "#home", function() {
                 $("#day" + day + " .details").trigger("create");
                 day++;
             });
+            if (easy < 3) {
+                $('#title').text(easyWeekText[Math.floor(Math.random() * easyWeekText.length)]);
+            } else {
+                $('#title').text(hardWeekText[Math.floor(Math.random() * hardWeekText.length)]);
+            }
             if (json.status == 2) {
                 $("#empty").popup();
                 $("#empty").trigger("create");
