@@ -15,7 +15,7 @@ if ($courseID == -1) {
     $result = mysql_query("SELECT `index`,name, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Users_PrivateTasks` Where Users_PrivateTasks.student_id=$user_id and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
 } else {
     $resultUser = mysql_query("SELECT * FROM Users_Courses Where course_id='$courseID' and student_id='$user_id'");
-    $result = mysql_query("SELECT `index`,name, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Tasks` Where course_id = '$courseID' and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
+    $result = mysql_query("SELECT `index`,name, difficulty, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Tasks` Where course_id = '$courseID' and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
     $resultCourse = mysql_query("SELECT name, lecturer, teacherEmail FROM `Courses` Where `index` = '$courseID'");
     $resultFriends = mysql_query("SELECT fb_id FROM Users_Courses join Users on Users.index = Users_Courses.student_id Where course_id='$courseID' and student_id <> '$user_id'");
 }
@@ -36,6 +36,7 @@ if (mysql_num_rows($result) > 0) {
         $task["index"] = $row["index"];
         $task["name"] = $row["name"];
         $task["due_date"] = $row["due_date"];
+        $task["difficulty"] = $row["difficulty"];
         $task["description"] = $row["description"];
         array_push($response["allTasks"], $task);
     }

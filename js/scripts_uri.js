@@ -68,7 +68,8 @@ $(document).on("pageshow", "#courseDetails", function() {
         $(this).attr("disabled", true);
         setTimeout(function() {
             enableSubmit(that)
-        }, 1000);
+        }, 5000);
+        
         $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
@@ -352,16 +353,26 @@ function buildTasks(allTasks) {
         var cell1 = document.createElement("td");
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
+        var heading2Div = document.createElement("div");
+        
+        var difficulty = "";
+        if(allTasks[i].difficulty == 1) {
+            difficulty = "Massive";
+        } else {
+            difficulty = "Lite";
+        }
+        
+        heading2Div.appendChild(document.createTextNode(difficulty));
         var dateTimeArray = (allTasks[i].due_date).split(" ");
         var date = dateTimeArray[0];
         var time = dateTimeArray[1];
         var cellText2 = document.createElement("span");
         cellText2.innerHTML = "<b>" + date + "</b> " + time;
         var cell2Div = document.createElement("div");
-        //cell2Div.setAttribute("class", "details");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
         cell1.appendChild(cellText2);
         cell1.appendChild(heading2);
+        cell1.appendChild(heading2Div);
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
 
