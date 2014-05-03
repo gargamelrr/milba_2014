@@ -9,7 +9,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.css" />
         <link rel="stylesheet" type="text/css" href="css/jqm-datebox.min.css" /> 
         <link rel="stylesheet" href="css/style.css" />
-        
+        <link href='http://fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Alef:400,700' rel='stylesheet' type='text/css'>
+
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.js"></script>
@@ -39,14 +41,14 @@ and open the template in the editor.
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
             </div>
             <div data-role="content" >
-                
+
                 <form method="post">
                     <input type="search" name="search" id="search" value="" placeholder="Type Course / teacher / Friend" />
                     <br/><br/>
                     <div data-role="navbar" id="tabs">
                         <ul>
-                            <li><a href=""  id="but-sug" >Suggested courses</a></li>
-                            <li><a href=""  id="but-my" >Your courses</a></li>
+                            <li><a href=""  id="but-sug" >Suggested Courses</a></li>
+                            <li><a href=""  id="but-my" >Your Courses</a></li>
                         </ul>
                     </div>
                     <div id="newGroup" style="display: none">
@@ -67,7 +69,7 @@ and open the template in the editor.
                             </div>
                             <br/>
                             <div id="addGroupText">
-                                Sharing your sheet with others is always a nice thing to do.
+                                "Sharing your sheet with others is always a nice thing to do."
                             </div>
                             <br/>
                             <div id="invite">
@@ -79,13 +81,13 @@ and open the template in the editor.
                     </div>
 
                     <div class="ui-grid-a" id="coursesMy">
-                    
+
                     </div>
 
                     <div class="ui-grid-a" id="coursesSug">
-                        
+
                     </div>
-                    
+
                     <div id="emptyWeek">
                         Your week is empty<br/>Add/Join courses
                     </div>

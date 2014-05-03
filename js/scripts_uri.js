@@ -306,7 +306,7 @@ function createCoursesButtons(coursesList, div) {
             setCurrentCourseId($(this).attr("data-ID"));
         };
         $(courseDiv).attr("data-ID", coursesList[i].courseID);
-        courseDiv.innerHTML = "<b>" + coursesList[i].name + "</b>";
+        courseDiv.innerHTML = coursesList[i].name;
 
         var br = document.createElement("br");
         var subsubDiv = document.createElement("div");
@@ -743,21 +743,21 @@ function fetchTasks() {
                 $('#email').text(temp);
 
                 if (json.is_user == "1") {
-                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" />');
+                    $('#images').append('<img src="https://graph.facebook.com/' + localStorage.getItem("ID") + '/picture?width=60&height=60" class="FBimg"/>');
                 }
                 $.each(json.friends, function(i, val) {
                     if (i == 2) {
                         $('#images').append("<div id='moreFBdiv'></div>");
-                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" class="FBimg"/>');
                     } else if (i > 2) {
-                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                        $('#moreFBdiv').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" class="FBimg"/>');
                     } else {
-                        $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" />');
+                        $('#images').append('<img src="https://graph.facebook.com/' + val + '/picture?width=60&height=60" class="FBimg"/>');
                     }
                 });
 
                 if (json.friends.length > 2) {
-                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB' onclick='more(true)'> + " + (json.friends.length - 2) + "</a>");
+                    $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB' onclick='more(true)'><img src='images/man_purple.png'><br/> + " + (json.friends.length - 2) + "</a>");
                      $('#moreFBdiv').append("<br/><a href='' id='closeFB' onclick='more(false);'>X Close</a>");
                 }
                 if (json.is_user == "1") {

@@ -1,5 +1,7 @@
-.ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c{
+.ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c, input.ui-input-text{
     font-family: 'Asap';
+    font-weight: normal;
+
 }
 .ui-li>.ui-btn-inner {
     padding-top: 0px;
@@ -11,11 +13,14 @@
     margin: 2em auto;   
 }
 
-#days .ui-btn-up-c:first-child,#days .ui-btn-down-c:first-child,#days .ui-btn-hover-c:first-child{
+#days .ui-btn:first-child{
     background-color: #0f7192;
     border-top: 0;
-    background-image: url(../images/paper_3.png);
+    background-image: url(../images/paper_first.png);
+}
 
+#days .ui-btn:nth-child(2){
+    background-image: url(../images/paper_second.png);
 }
 
 #days .ui-btn:first-child .left ,#days .ui-btn:first-child ul{
@@ -60,6 +65,7 @@
 .left{
     color:#3cceff;
     //margin-right: -10px;
+    text-shadow: none;
 }
 
 
@@ -105,6 +111,10 @@
     position: absolute;
     height: 2px;
     right: -6px;
+}
+
+.paper-blue {
+    background: #0f7192 !important;
 }
 
 .date{
@@ -153,6 +163,12 @@
 
 #pvTask span.ui-btn-text{
     color: white !important;
+    font-family: 'Asap-bold';
+
+}
+
+div#pvTask {
+    padding: 5px;
 }
 
 #days ul{
@@ -166,7 +182,7 @@
     float: right;
     background: url(../images/arrow.png) right 5px no-repeat;
     padding-right: 20px;
-    max-width: 120px;
+    max-width: 150px;
     white-space: normal;
     text-align: center;
     font-family: 'Alef Bold';
@@ -196,7 +212,8 @@
 }
 
 .count_friend{
-    font-size: 0.7em;
+    font-size: 0.8em;
+    font-family: 'Asap';
     //background: url(../images/man.png) left center no-repeat;
 }
 
@@ -209,6 +226,12 @@
 
 #teac_details, #tasks{
     text-align: center;
+    font-family: 'Alef';
+    font-weight: bold;
+}
+
+span#name {
+    font-size: 18px;
 }
 
 .details{
@@ -225,11 +248,18 @@
 }
 
 #face_but{
-    width: 202px;
-    height: 46px;
-    background: url(../images/active_404.png) no-repeat;
+    background: #629df7;
     border: none;
+    text-shadow: none;
+    font-family: 'Asap-bold';
+    margin: 15px;
+    color:white;
 
+}
+
+#face_but .ui-btn-inner {
+    color: white !important;
+    font-size: 18px;
 }
 
 #nameProfile{
@@ -318,8 +348,10 @@
 
 div#addGroupText {
     color: #ccced6;
-    margin-left: 20px;
-    font-style: italic;
+    //margin-left: 20px;
+    font-family: 'Asap-italic';
+    text-align: center;
+    font-size: 14px;
 }
 
 div#newGroup {
@@ -385,13 +417,13 @@ div#newGroup {
 
 #tabs .ui-btn-text{
     line-height: 35px;
+    font-size: 18px;
 }
 
 #tabs .ui-btn-active{
     background-color: #4d5361;
     height: 58px;
     color:#ccced6;
-    font-weight: bold;
     margin-top: -10px;
     border-top-right-radius: 1em;
 }
@@ -419,6 +451,8 @@ div#newGroup {
     height: 118px;
     background-image:none;
     cursor: pointer;
+    font-family: 'Alef';
+
 }
 
 .courseBtn .ui-btn-inner{
@@ -492,6 +526,7 @@ div#newGroup {
     border-radius: 0;
     -webkit-border-radius:0;
     margin-left: 25px;
+    font-weight: normal;
 }
 
 #nav-panel .ui-btn-inner{
@@ -508,6 +543,7 @@ div#newGroup {
     width: 18px;
     height: 18px;
     border: none !important;
+    margin-top: 5px;
 }
 .ui-icon-custom {
     background: url(../images/sidebar.png) no-repeat;
@@ -542,17 +578,24 @@ div#newGroup {
 #sheets{
     padding-left: 40px;
     color: #414551;
-    text-shadow: none;
+    text-shadow: 0px 1px #a7adc3;
     line-height:40px;
-    font-size: 130%;
+    font-family: 'Asap';
+    font-size: 18px;
+    font-style: italic;
 }
 
 #title{
-    padding-left: 30px;
-    color: white;
+    color: #a7adc3;
     text-shadow: none;
     font-size: 12px;
+    font-family: 'Asap';
+    font-style: italic;
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
 }
+
 
 .ui-panel-display-reveal{
     -webkit-box-shadow:none;
@@ -573,6 +616,8 @@ a#addTaskBtn{
     margin-left: 10px;
     color:#a7adc3;
     line-height: 60px;
+    font-weight: bold;
+
 }
 
 img#imgFB{
@@ -586,6 +631,7 @@ img#imgFB{
 #addTaskBtn .ui-btn-inner{
     line-height: 190px;
     color: #414551;
+    font-weight: bold;
 }
 
 #coursePage{
@@ -731,8 +777,12 @@ a#leave-course {
     color:#3cceff;
 }
 
+div#notifi {
+    font-family: 'Asap';
+}
 
-#friends img, #notiPage img{
+
+.FBimg, #notiPage img{
     border-radius: 50%;
     border:3px solid #a7adc3 ;
     margin-left: 10px;
@@ -788,6 +838,7 @@ input#search {
     padding: 0;
     border:0;
     text-shadow: none;
+    font-weight: bold;
 }
 
 #addFB .ui-btn-inner{
@@ -860,6 +911,7 @@ input#search {
 .loginText{
     text-align: center;
     color:#ccced6;
+    font-family: 'Asap';
 }
 
 .gray{

@@ -1,12 +1,12 @@
 var gcm = "";
 var datePv = "";
 
-var easyWeekText = ["Sheets Happen", "Confront your Sheet!", "Dont be careless about your sheets",
-    "Will the sheets hit the fan?", "Let's beat the sheets out of it!"];
-var hardWeekText = ["common, pull your sheets together!",
-    "Uh oh… Mountains of sheets ahead", "Sheets Happen",
-    "Pretty Sheety situation here, huh?", "It seems  you're in a pile of sheets",
-    "Will the sheets hit the fan?"];
+var easyWeekText = ["\"Sheets Happen\"", "\"Confront your Sheet!\"", "\"Dont be careless about your sheets\"",
+    "\"Will the sheets hit the fan?\"", "\"Let's beat the sheets out of it!\""];
+var hardWeekText = ["\"common, pull your sheets together!\"",
+    "\"Uh oh… Mountains of sheets ahead\"", "\"Sheets Happen\"",
+    "\"Pretty Sheety situation here, huh?\"", "\"It seems  you're in a pile of sheets\"",
+    "\"Will the sheets hit the fan?\""];
 
 function setGCM(val) {
     gcm = val;
@@ -118,11 +118,22 @@ $(document).on("pageshow", "#home", function() {
 
                         }
                     }
+                    if (day == 1) {
+                        if (json.data[i].tasks.count < 2) {
+                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_2.png)");
+                        } else {
+                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_3.png)");
+                        }
+                    }
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
                     $("#day" + day + "-ul").append(output).trigger('create');
                 } else {
                     $("#day" + day + " .count_tasks").append("Free");
                     $("#day" + day + " img").attr("src", "images/fun.png");
+                }
+                if (day == 1) {
+                    $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue");
+
                 }
                 var d = new Date(json.data[i].date_full);
                 var curr_date = d.getDate();
