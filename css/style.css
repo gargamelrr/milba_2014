@@ -12,8 +12,10 @@
 }
 
 #days .ui-btn-up-c:first-child,#days .ui-btn-down-c:first-child,#days .ui-btn-hover-c:first-child{
-    background: #0f7192;
+    background-color: #0f7192;
     border-top: 0;
+    background-image: url(../images/paper_3.png);
+
 }
 
 #days .ui-btn:first-child .left ,#days .ui-btn:first-child ul{
@@ -108,6 +110,7 @@
 .date{
     font-size: 12px;
     font-weight: 400;
+    font-family: 'Asap-Italic';
 }
 
 .ul-de {
@@ -132,11 +135,12 @@
     margin: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    font-family: 'Alef';
 }
 
 #pvTask .ui-btn-up-c, #pvTask .ui-btn-hover-c {
     border: 0;
-    background: #19cfa7;
+    background: #19cfa7 !important;
     font-weight: 200;
     text-shadow: none;
     -webkit-box-shadow:none;
@@ -165,6 +169,7 @@
     max-width: 120px;
     white-space: normal;
     text-align: center;
+    font-family: 'Alef Bold';
 
 }
 
