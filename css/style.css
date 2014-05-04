@@ -276,7 +276,7 @@ span#name {
 
 #face_but .ui-btn-inner {
     color: white !important;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 #nameProfile{
@@ -692,6 +692,11 @@ div#teac_details {
 div#notiPage {
     margin: -15px;
     background: #4d5361;
+}
+
+div#login{
+    margin: -15px;
+    background: #414551;    
 }
 
 .ui-panel-animate.ui-panel-content-wrap{
