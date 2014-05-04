@@ -47,11 +47,11 @@
     //max-height: 45px;
     padding-left: 10px;
     min-height: 40px;
-    padding-bottom: 13px;
+    padding-bottom: 15px;
 }
 
 .ui-li-static.ui-li {
-    padding: 13px 15px;
+    padding: 15px 15px;
 }
 
 .ui-li-thumb{
@@ -695,7 +695,6 @@ div#notiPage {
 }
 
 div#login{
-    margin: -15px;
     background: #414551;    
 }
 
