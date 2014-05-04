@@ -175,11 +175,12 @@ $(document).on("pageshow", "#courseDetails", function() {
 
 $(document).on("pageshow", "#courses", function() {
     $("#noCoursesFound").hide();
-    
+
     $("#search").keyup(function(e) {
 
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
         if (e.keyCode == 13) {
+            alert("im here");
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/search.php',
                 method: 'POST',
@@ -275,10 +276,6 @@ function createCoursesButtons(coursesList, div) {
 
     var mainDiv = document.getElementById(div);
 
-    if (coursesList.length == 0) {
-        mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
-        return;
-    }
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
     // button for create new group
@@ -297,6 +294,11 @@ function createCoursesButtons(coursesList, div) {
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
+
+    if (coursesList.length == 0) {
+        mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
+        return;
+    }
 
     var mod = 1;
     //button for the ME group
