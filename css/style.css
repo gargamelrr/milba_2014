@@ -31,6 +31,18 @@
 
 }
 
+#diffiImg img{
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    padding-bottom: 10px;
+    padding-right: 85%;
+}
+
+.btn-task h3 {
+    margin: 5px;
+}
+
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     //max-height: 45px;
     padding-left: 10px;
@@ -406,6 +418,10 @@ div#newGroup {
 #addTask .ui-grid-a{
     width: 300px;
     margin-left: -20px;
+}
+
+#addTask .ui-block-a{
+    margin-right: -30px;
 }
 
 .ui-input-search{

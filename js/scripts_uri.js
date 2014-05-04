@@ -56,6 +56,8 @@ $(document).on("pageshow", "#courseDetails", function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
 
+    $("#deletetask").parent().hide();
+
     fetchTasks();
 
     $("#submit").click(function() {
@@ -384,15 +386,15 @@ function buildTasks(allTasks) {
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
         var heading2Div = document.createElement("div");
-
+        heading2Div.id = "diffiImg";
         var difficulty = "";
         if (allTasks[i].difficulty == 1) {
-            difficulty = "Massive";
+            difficulty = "<img src='images/hard_1.png'>";
         } else {
-            difficulty = "Lite";
+            difficulty = "<img src='images/easy_1.png'>";
         }
 
-        heading2Div.appendChild(document.createTextNode(difficulty));
+        heading2Div.innerHTML = difficulty;
         var dateTimeArray = (allTasks[i].due_date).split(" ");
         var date = dateTimeArray[0];
         var time = dateTimeArray[1];
@@ -401,8 +403,8 @@ function buildTasks(allTasks) {
         var cell2Div = document.createElement("div");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
         cell1.appendChild(cellText2);
-        cell1.appendChild(heading2);
         cell1.appendChild(heading2Div);
+        cell1.appendChild(heading2);
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
 
@@ -431,7 +433,7 @@ function buildTasks(allTasks) {
 
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
-                        $("#deletetask").show();
+                        $("#deletetask").parent().show();
                         setCurrentTaskId(json.tasks[0].index);
                         scrollAfterEdit("#elementsToOperateOn");
                     } else {
