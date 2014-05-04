@@ -295,7 +295,10 @@ function createCoursesButtons(coursesList, div) {
     mainDiv.appendChild(subDiv);
 
     if (coursesList.length == 0) {
-        mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
+        $("#noCourses").show();
+        $('#' + div + ' a').attr("data-role", "button");
+        $("#a div").attr("class", "count_friend");
+        $('#' + div).trigger('create');
         return;
     }
 

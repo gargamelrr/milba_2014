@@ -925,11 +925,12 @@ div#leave, div#empty{
     color:#414551;
 }
 
-#emptyWeek{
+#emptyWeek,#noCourses{
     color:#ccced6;
     font-size: 28px;
     text-align: center;
     font-weight: bold;
     background-color: #4d5361;
     display: none;
+    font-family: 'Asap';
 }
