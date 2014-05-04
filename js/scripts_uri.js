@@ -188,7 +188,6 @@ $(document).on("pageshow", "#courses", function() {
                 },
                 success: function(data) {
                     $("#noCoursesFound").hide();
-                    alert(data);
                     var json = JSON.parse(data)
                     if (json.success == 1) {
                         updateSuggestedCourses(json.searchResult);
