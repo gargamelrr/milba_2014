@@ -35,14 +35,18 @@
     //max-height: 45px;
     padding-left: 10px;
     min-height: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 13px;
+}
 
+.ui-li-static.ui-li {
+    padding: 13px 15px;
 }
 
 .ui-li-thumb{
     max-height: 50px;
     max-width: 50px;
     margin-left: 40%;
+    margin-top: -3px;
 }
 
 #home{
@@ -106,7 +110,7 @@
 .paper {
     border: 0;
     width: 15px;
-    top: -13px;
+    top: -15px;
     background: white;
     position: absolute;
     height: 2px;
