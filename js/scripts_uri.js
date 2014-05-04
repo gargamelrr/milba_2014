@@ -180,7 +180,6 @@ $(document).on("pageshow", "#courses", function() {
 
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
         if (e.keyCode == 13) {
-            alert("im here");
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/search.php',
                 method: 'POST',
@@ -189,6 +188,7 @@ $(document).on("pageshow", "#courses", function() {
                 },
                 success: function(data) {
                     $("#noCoursesFound").hide();
+                    alert(data);
                     var json = JSON.parse(data)
                     if (json.success == 1) {
                         updateSuggestedCourses(json.searchResult);
