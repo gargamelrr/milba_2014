@@ -12,7 +12,7 @@ $user_id = $_SESSION["user_id"];
 $courseID = $_GET['courseID'];
 $response["debug2"] = $courseID;
 if ($courseID == -1) {
-    $result = mysql_query("SELECT `index`,name, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Users_PrivateTasks` Where Users_PrivateTasks.student_id=$user_id and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
+    $result = mysql_query("SELECT `index`,name,difficulty, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Users_PrivateTasks` Where Users_PrivateTasks.student_id=$user_id and DATEDIFF(NOW(), due_date) <= 2 order by due_date");
 } else {
     $resultUser = mysql_query("SELECT * FROM Users_Courses Where course_id='$courseID' and student_id='$user_id'");
     $result = mysql_query("SELECT `index`,name, difficulty, DATE_FORMAT(due_date, '%d.%m.%y %H:%i') as due_date ,description FROM `Tasks` Where course_id = '$courseID' and DATEDIFF(NOW(), due_date) <= 2 order by due_date");

@@ -234,7 +234,7 @@ function parseProfile(json, isYear) {
         var sel = $("#year");
         sel.empty();
         var year = new Date().getFullYear();
-        sel.append('<option value="" disabled selected>' + "Year of Start" + '</option>');
+        sel.append('<option value="" disabled selected>' + "Initial Year" + '</option>');
         for (var i = 2009; i <= year; i++) {
             if (i == json.user_year) {
                 sel.append('<option value="' + i + '" selected>' + i + '</option>');
