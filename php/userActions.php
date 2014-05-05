@@ -26,7 +26,9 @@ if (mysql_num_rows($result) > 0) {
     $school_id = $row["school_id"];
     //update gcm
     $gcm = $_POST["gcm"];
-    mysql_query("update Users set gcm='$gcm' where fb_id='$fb_id'");
+    if ($gcm != "") {
+        mysql_query("update Users set gcm='$gcm' where fb_id='$fb_id'");
+    }
     $response["name"] = $name;
 } else {
     $first = $_POST["first_name"];
@@ -42,8 +44,8 @@ if (mysql_num_rows($result) > 0) {
     $gcm = $_POST["gcm"];
 
 
-    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`,`gcm`) "
-            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date','$gcm')");
+    $result = mysql_query("INSERT INTO `Users`(`index`,`fb_id`, `email`, `first_name`, `last_name`, `country`, `sex`, `bday`, `school_id`,`year`, `status`, `created`,`gcm`,`sound`, `customAlert`, `alertDays`, `taskNoti`, `groupNoti`) "
+            . "VALUES (NULL,'$fb_id','$user','$first','$last','$location','$gender','$bday',$school_id,'$year','1','$date','$gcm',1,1,2,1,1)");
     $id = mysql_insert_id();
 }
 

@@ -31,18 +31,34 @@
 
 }
 
+#diffiImg img{
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    padding-bottom: 10px;
+    padding-right: 85%;
+}
+
+.btn-task h3 {
+    margin: 5px;
+}
+
 .ui-li-has-thumb, .ui-li-static.ui-li-has-thumb{
     //max-height: 45px;
     padding-left: 10px;
     min-height: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 14px;
+}
 
+.ui-li-static.ui-li {
+    padding: 14px 15px;
 }
 
 .ui-li-thumb{
     max-height: 50px;
     max-width: 50px;
     margin-left: 40%;
+    margin-top: -3px;
 }
 
 #home{
@@ -106,7 +122,7 @@
 .paper {
     border: 0;
     width: 15px;
-    top: -13px;
+    top: -16px;
     background: white;
     position: absolute;
     height: 2px;
@@ -260,7 +276,7 @@ span#name {
 
 #face_but .ui-btn-inner {
     color: white !important;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 #nameProfile{
@@ -402,6 +418,10 @@ div#newGroup {
 #addTask .ui-grid-a{
     width: 300px;
     margin-left: -20px;
+}
+
+#addTask .ui-block-a{
+    margin-right: -30px;
 }
 
 .ui-input-search{
@@ -674,6 +694,10 @@ div#notiPage {
     background: #4d5361;
 }
 
+div#login{
+    background: #414551;    
+}
+
 .ui-panel-animate.ui-panel-content-wrap{
     -webkit-backface-visibility: visible;
     -webkit-transform: none;
@@ -925,11 +949,12 @@ div#leave, div#empty{
     color:#414551;
 }
 
-#emptyWeek{
+#emptyWeek,#noCourses{
     color:#ccced6;
     font-size: 28px;
     text-align: center;
     font-weight: bold;
     background-color: #4d5361;
     display: none;
+    font-family: 'Asap';
 }

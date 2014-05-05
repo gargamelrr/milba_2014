@@ -56,6 +56,8 @@ $(document).on("pageshow", "#courseDetails", function() {
         $(this).find('textarea[placeholder]').each(remove);
     });
 
+    $("#deletetask").parent().hide();
+
     fetchTasks();
 
     $("#submit").click(function() {
@@ -69,7 +71,7 @@ $(document).on("pageshow", "#courseDetails", function() {
         setTimeout(function() {
             enableSubmit(that)
         }, 5000);
-        
+
         $.ajax({
             url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/insertTask.php',
             method: 'POST',
@@ -144,11 +146,38 @@ $(document).on("pageshow", "#courseDetails", function() {
             }
         });
     });
+
+    $("#deletetask").click(function() {
+        $.ajax({
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/deleteTask.php',
+            method: 'POST',
+            data: {
+                id: currentTaskId,
+                courseID: currentCourseId
+            },
+            success: function(data) {
+                var json = JSON.parse(data)
+                if (json.success == 1) {
+                    // $("#deleteAlert").show();
+                    //$('#deleteAlert').fadeOut('slow');
+                    fetchTasks();
+                    $('#addTaskForm').get(0).reset();
+                    scrollAfterEdit("#friends");
+                } else {
+                    alert("error parsing json");
+
+                }
+            },
+            error: function() {
+                alert.data(data.message);
+            }
+        });
+    });
 });
 
 $(document).on("pageshow", "#courses", function() {
-    $("#noCoursesFound").attr('hidden', 'true');
-    $("#noCoursesFound").toggle();
+    $("#noCoursesFound").hide();
+
     $("#search").keyup(function(e) {
 
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
@@ -160,14 +189,13 @@ $(document).on("pageshow", "#courses", function() {
                     keyword: $(this).val()
                 },
                 success: function(data) {
+                    $("#noCoursesFound").hide();
                     var json = JSON.parse(data)
-
                     if (json.success == 1) {
                         updateSuggestedCourses(json.searchResult);
                     } else {
                         updateSuggestedCourses("");
-                        $("#noCoursesFound").attr('hidden', 'false');
-                        $("#noCoursesFound").toggle();
+                        $("#noCoursesFound").show();
                     }
                 },
                 error: function() {
@@ -249,10 +277,6 @@ function createCoursesButtons(coursesList, div) {
 
     var mainDiv = document.getElementById(div);
 
-    if (coursesList.length == 0) {
-        mainDiv.innerHTML = '<h1 class="No-Courses-Found" id="noCoursesFound" hidden="false"> No Courses Found </h1>';
-        return;
-    }
     mainDiv.innerHTML = "";
     console.log(mainDiv.id);
     // button for create new group
@@ -271,6 +295,14 @@ function createCoursesButtons(coursesList, div) {
 
     subDiv.appendChild(courseNewdiv);
     mainDiv.appendChild(subDiv);
+
+    if (coursesList.length == 0) {
+        $("#noCourses").show();
+        $('#' + div + ' a').attr("data-role", "button");
+        $("#a div").attr("class", "count_friend");
+        $('#' + div).trigger('create');
+        return;
+    }
 
     var mod = 1;
     //button for the ME group
@@ -354,25 +386,25 @@ function buildTasks(allTasks) {
         var heading2 = document.createElement("h3");
         heading2.innerHTML = allTasks[i].name;
         var heading2Div = document.createElement("div");
-        
+        heading2Div.id = "diffiImg";
         var difficulty = "";
-        if(allTasks[i].difficulty == 1) {
-            difficulty = "Massive";
+        if (allTasks[i].difficulty == 1) {
+            difficulty = "<img src='images/hard_1.png'>";
         } else {
-            difficulty = "Lite";
+            difficulty = "<img src='images/easy_1.png'>";
         }
-        
-        heading2Div.appendChild(document.createTextNode(difficulty));
+
+        heading2Div.innerHTML = difficulty;
         var dateTimeArray = (allTasks[i].due_date).split(" ");
         var date = dateTimeArray[0];
         var time = dateTimeArray[1];
         var cellText2 = document.createElement("span");
-        cellText2.innerHTML = "<b>" + date + "</b> " + time;
+        cellText2.innerHTML = "<b>" + date + "</b> &nbsp;&nbsp;&nbsp;&nbsp;" + time;
         var cell2Div = document.createElement("div");
         cell2Div.appendChild(document.createTextNode(allTasks[i].description));
         cell1.appendChild(cellText2);
-        cell1.appendChild(heading2);
         cell1.appendChild(heading2Div);
+        cell1.appendChild(heading2);
         cell1.appendChild(cell2Div);
         cell1Div.appendChild(cell1);
 
@@ -401,7 +433,8 @@ function buildTasks(allTasks) {
 
                     if (json.success == 1) {
                         fillUpFieldsAfterEdit(json.tasks[0]);
-
+                        $("#deletetask").parent().show();
+                        setCurrentTaskId(json.tasks[0].index);
                         scrollAfterEdit("#elementsToOperateOn");
                     } else {
                         alert("error parsing json");
@@ -413,38 +446,8 @@ function buildTasks(allTasks) {
             });
         });
 
-        var delLink = document.createElement("a");
-        delLink.href = "";
-        delLink.innerHTML = "<img src='images/garbage.png'/>";
-
-        $(delLink).click(function() {
-            $(document).load();
-            $.ajax({
-                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/deleteTask.php',
-                method: 'POST',
-                data: {
-                    id: $(this).prev().attr('id'),
-                    courseID: currentCourseId
-                },
-                success: function(data) {
-                    var json = JSON.parse(data)
-                    if (json.success == 1) {
-                        $("#deleteAlert").show();
-                        $('#deleteAlert').fadeOut('slow');
-                        fetchTasks();
-                    } else {
-                        alert("error parsing json");
-
-                    }
-                },
-                error: function() {
-                    alert.data(data.message);
-                }
-            });
-        });
 
         cell2.appendChild(editLink);
-        cell2.appendChild(delLink);
         cell3Div.appendChild(cell2);
         cell1Div.appendChild(cell3Div);
         row.appendChild(cell1Div);
@@ -769,7 +772,7 @@ function fetchTasks() {
 
                 if (json.friends.length > 2) {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='moreFB' onclick='more(true)'><img src='images/man_purple.png'><br/> + " + (json.friends.length - 2) + "</a>");
-                     $('#moreFBdiv').append("<br/><a href='' id='closeFB' onclick='more(false);'>X Close</a>");
+                    $('#moreFBdiv').append("<br/><a href='' id='closeFB' onclick='more(false);'>X Close</a>");
                 }
                 if (json.is_user == "1") {
                     $('#images').append("<a href='' data-role='button' data-inline='true' id='addFB' onclick='invite()'> Add friends</a>");

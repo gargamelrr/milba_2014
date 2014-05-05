@@ -24,32 +24,58 @@ function addPvTask(date) {
 
 $(document).on("pageshow", "#home", function() {
 
-    var open = false;
-    $('.details').hide();
-    $('#days .ui-btn-text').click(function() {
-        open = !open;
-        if (open) {
+    function openOrClose(obj, toOpen) {
+        if (toOpen) {
             $(".count_tasks").hide();
             $("#days img").hide();
             $(".date").hide();
             $(".ul-de").hide();
             $(".paper").hide();
             $("#days li").addClass("closed").addClass("withoutPaper");
-            $(this).find(".task_date_full").show();
-            $(this).find(".task_num_tasks").show();
-            $(this).parent().parent().removeClass("closed");
+            $(obj).find(".task_date_full").show();
+            $(obj).find(".task_num_tasks").show();
+            $(obj).removeClass("closed");
         } else {
-            $(".count_tasks").show();
-            $("#days img").show();
-            $(".date").show();
-            $(".ul-de").show();
-            $(".paper").show();
-            $("#days .task_num_tasks").hide();
-            $("#days .task_date_full").hide();
-            $("#days li").removeClass("closed").removeClass("withoutPaper");
+            //check if all close
+            var allClose = true;
+            $('#days li').each(function() {
+                var bool = $(this).hasClass("open");
+                if ($(this).hasClass("open")) {
+                    allClose = false;
+                    return;
+                }
+            });
+
+            if (allClose) {
+                $(".count_tasks").show();
+                $("#days img").show();
+                $(".date").show();
+                $(".ul-de").show();
+                $(".paper").show();
+                $("#days .task_num_tasks").hide();
+                $("#days .task_date_full").hide();
+                $("#days li").removeClass("closed").removeClass("withoutPaper");
+            } else {
+                $(obj).find(".task_date_full").hide();
+                $(obj).find(".task_num_tasks").hide();
+                //$(obj).parent().parent().addClass("closed");
+            }
         }
-        $(this).find('.details').slideToggle(100);
+        $(obj).find('.details').slideToggle(100);
         $("#days").trigger("create");
+    }
+
+    $('.details').hide();
+    $('#days li').click(function() {
+        if ($(this).hasClass("open")) {
+            // already open then close it.
+            $(this).removeClass("open");
+            openOrClose(this, false);
+        } else {
+            $(this).addClass("open");
+            openOrClose(this, true);
+        }
+
     });
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
@@ -234,7 +260,7 @@ function parseProfile(json, isYear) {
         var sel = $("#year");
         sel.empty();
         var year = new Date().getFullYear();
-        sel.append('<option value="" disabled selected>' + "Year of Start" + '</option>');
+        sel.append('<option value="" disabled selected>' + "Initial Year" + '</option>');
         for (var i = 2009; i <= year; i++) {
             if (i == json.user_year) {
                 sel.append('<option value="' + i + '" selected>' + i + '</option>');

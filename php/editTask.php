@@ -12,17 +12,17 @@ $user_id = $_SESSION["user_id"];
 
 $idToEdit = $_POST["id"];
 $courseID = $_POST["courseID"];
-if($courseID == -1) {
-    $result = mysql_query("Select name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Users_PrivateTasks Where Users_PrivateTasks.index=$idToEdit");
+if ($courseID == -1) {
+    $result = mysql_query("Select Users_PrivateTasks.index,name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Users_PrivateTasks Where Users_PrivateTasks.index=$idToEdit");
 } else {
-$result = mysql_query("Select name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Tasks Where Tasks.index=$idToEdit");
+    $result = mysql_query("Select Tasks.index,name, date(due_date) as date1, time(due_date) as time1, description, difficulty From Tasks Where Tasks.index=$idToEdit");
 }
 $response["debug"] = $courseID;
 $response["tasks"] = array();
 
-if(mysql_num_rows($result) == 1) {
+if (mysql_num_rows($result) == 1) {
     $row = mysql_fetch_array($result);
-    
+
     $task = array();
     $task["index"] = $row["index"];
     $task["name"] = $row["name"];
@@ -30,7 +30,7 @@ if(mysql_num_rows($result) == 1) {
     $task["time"] = $row["time1"];
     $task["difficulty"] = $row["difficulty"];
     $task["description"] = $row["description"];
-    
+
     array_push($response["tasks"], $task);
     $response["success"] = 1;
 } else {
@@ -39,6 +39,5 @@ if(mysql_num_rows($result) == 1) {
 }
 
 echo json_encode($response);
-
 ?>
 
