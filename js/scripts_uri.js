@@ -163,6 +163,7 @@ $(document).on("pageshow", "#courseDetails", function() {
                     fetchTasks();
                     $('#addTaskForm').get(0).reset();
                     scrollAfterEdit("#friends");
+                    $("#deletetask").parent().hide();
                 } else {
                     alert("error parsing json");
 
@@ -440,8 +441,8 @@ function buildTasks(allTasks) {
                         alert("error parsing json");
                     }
                 },
-                error: function() {
-                    alert.data(data.message);
+                error: function(data) {
+                    alert(data.message);
                 }
             });
         });

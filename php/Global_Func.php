@@ -9,7 +9,7 @@
 function sendGCM($regIDArray, $message) {
     $url = 'https://android.googleapis.com/gcm/send';
 
-    $message = array("message" => $message);
+    $message = array("message" => $message, "title" => "Sheets");
     $fields = array(
         'registration_ids' => $regIDArray,
         'data' => $message,

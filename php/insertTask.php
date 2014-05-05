@@ -45,11 +45,15 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
                 . "VALUES ('$taskID', '$courseID', '$taskName', '$dueDate . $taskTime', '$taskDetails', '$radioDifficulty', '$user_id', '1', '$date')"
                 . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails' , modified='$date' ,creator = '$user_id'  ");
 
+
+        $courseNameSql = mysql_query("Select Courses.name From Tasks, Courses Where Tasks.index=$idDel and Courses.index = Tasks.course_id");
+        $courseName = mysql_fetch_array($courseNameSql);
+        $courseName = $courseName["name"];
         //notify all users in course
-        $message = "$nameUser just gave a sheet in $courseID";
+        $message = "$nameUser just gave a Sheet in $courseName";
         //bring all registerID
         $resultGCM = mysql_query("select gcm from Users join Users_Courses on Users.index = Users_Courses.student_id where course_id = $courseID and student_id <> $user_id");
-        while($row = mysql_fetch_array($resultGCM)){
+        while ($row = mysql_fetch_array($resultGCM)) {
             $regIDArray[] = $row["gcm"];
         }
         sendGCM($regIDArray, $message);
