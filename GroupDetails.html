@@ -69,7 +69,7 @@ and open the template in the editor.
                             <div id="elementsToOperateOn">
                                 <b>Add Sheet</b><br/>
                                 <input type="text" name="taskName" id="taskName" placeholder="Name"  required/> 
-                                <input id="date1" type="text" placeholder='Due Date' data-role="datebox" readonly="readonly" data-options="{&quot;mode&quot;:&quot;datebox&quot;, &quot;useNewStyle&quot;:true}" class="ui-input-text ui-body-c ui-corner-all">
+                                <input id="date1" type="text" placeholder='Due Date' data-role="datebox" readonly="readonly" data-options="{&quot;mode&quot;:&quot;datebox&quot;, &quot;useNewStyle&quot;:true,&quot;overrideDateFieldOrder&quot;: [&quot;d&quot;,&quot;m&quot;, &quot;y&quot;]}" class="ui-input-text ui-body-c ui-corner-all">
                                 <input id="taskTime" type="text" placeholder='Time' data-role="datebox" readonly="readonly" data-options="{&quot;mode&quot;:&quot;timebox&quot;, &quot;useNewStyle&quot;:true}" class="ui-input-text ui-body-c ui-corner-all">
                                 <input type ="hidden" value="-1" id="editFlag"/>
                                 <textarea name="taskdetails" id="taskdetails" placeholder="Details"> </textarea>
