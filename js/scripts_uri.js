@@ -29,10 +29,6 @@ function arrowRight() {
     document.getElementById("customAlert").innerHTML = ++num;
 }
 
-$(document).on("pagebeforeshow", "#courseDetails", function() {
-    $("#deleteAlert").hide();
-});
-
 $(document).on("pageshow", "#courseDetails", function() {
 
 
@@ -196,7 +192,7 @@ $(document).on("pageshow", "#courses", function() {
                         updateSuggestedCourses(json.searchResult);
                     } else {
                         updateSuggestedCourses("");
-                        $("#noCoursesFound").show();
+                        $("#noCourses").show();
                     }
                 },
                 error: function() {
@@ -298,9 +294,7 @@ function createCoursesButtons(coursesList, div) {
     mainDiv.appendChild(subDiv);
 
     if (coursesList.length == 0) {
-        $("#noCourses").show();
         $('#' + div + ' a').attr("data-role", "button");
-        $("#a div").attr("class", "count_friend");
         $('#' + div).trigger('create');
         return;
     }
@@ -525,7 +519,7 @@ $(document).on("pageshow", "#Notifications", function() {
 
                 buildNotifications(json);
             } else {
-
+                $("#noNoti").show();
             }
         },
         error: function() {

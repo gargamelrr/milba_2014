@@ -949,7 +949,7 @@ div#leave, div#empty{
     color:#414551;
 }
 
-#emptyWeek,#noCourses{
+#emptyWeek,#noCourses,#noNoti{
     color:#ccced6;
     font-size: 28px;
     text-align: center;
