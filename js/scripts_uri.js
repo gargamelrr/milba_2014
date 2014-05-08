@@ -178,7 +178,7 @@ $(document).on("pageshow", "#courseDetails", function() {
 });
 
 $(document).on("pageshow", "#courses", function() {
-    $("#noCoursesFound").hide();
+    $("#noCourses").hide();
 
     $("#search").keyup(function(e) {
 
@@ -192,7 +192,11 @@ $(document).on("pageshow", "#courses", function() {
                     keyword: $(this).val()
                 },
                 success: function(data) {
-                    $("#noCoursesFound").hide();
+                    $("#noCourses").hide();
+                    $("#coursesSug").show();
+                    $("#coursesMy").hide();
+                    $('#but-my').removeClass('ui-btn-active').trigger('create');
+                    $('#but-sug').addClass('ui-btn-active').trigger('create');
                     var json = JSON.parse(data)
                     if (json.success == 1) {
                         updateSuggestedCourses(json.searchResult);
