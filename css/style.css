@@ -19,6 +19,10 @@
     background-image: url(../images/paper_first.png);
 }
 
+.ui-btn-inner{
+    border-top: 0;
+}
+
 #days .ui-btn:nth-child(2){
     background-image: url(../images/paper_second.png);
 }
@@ -720,7 +724,7 @@ a#leave-course {
     background: #ccced6;
     font-weight: 200;
     text-shadow: none;
-    color:#9b9fab;
+    color:#6a7080;
     margin: 25px;
     -webkit-box-shadow:none;
     box-shadow:none;
@@ -751,7 +755,7 @@ a#leave-course {
 }
 
 #elementsToOperateOn, .share{
-    margin: 15px;
+    //margin: 15px;
     text-align: center;
 }
 
@@ -944,7 +948,7 @@ input#search {
     background-color: #414551;
 }
 
-div#leave, div#empty{
+div#empty{
     background: #ccced6;
     color:#414551;
 }
@@ -957,4 +961,75 @@ div#leave, div#empty{
     background-color: #4d5361;
     display: none;
     font-family: 'Asap';
+}
+
+#leave{
+    background: white;
+    text-align: center;
+    color:#3cceff;
+    display: none;
+}
+
+#leave a{
+
+    background:#3cceff;
+    color:white;    
+    box-shadow: none;
+    border-radius: 0.4em;
+    width: 43%;
+}
+
+a#leavenow{
+    background:#ccced6;
+    color:#6a7080;  
+}
+
+#inviteDiv span.ui-btn-inner, #actionsTask span.ui-btn-inner{
+    height: 48px;
+    line-height: 48px;
+    color: #3cceff;
+    text-align: center;
+    font-weight: normal;
+}
+
+#inviteDiv .ui-btn,#actionsTask .ui-btn{
+    background-color: #e2f8ff;
+    border: 1px solid #3cceff;
+    margin-top: 15px;
+    -webkit-box-shadow:none;
+    box-shadow:none; 
+}
+
+#actionsTask .ui-submit{
+    background-color: #3cceff !important;
+    border:0;
+
+}
+
+#actionsTask .ui-btn{
+    background-color: #ccced6;
+    border:0;
+
+
+}
+
+#actionsTask .ui-submit span.ui-btn-inner{
+    color: white;
+    font-weight: bold;
+
+}
+
+#actionsTask  span.ui-btn-inner{
+    color: #6a7080;
+    font-weight: bold;
+
+}
+
+div#actionsTask {
+    background: #e2f8ff;
+    margin: -15px;
+    padding: 15px;
+    border-top: 1px solid #3cceff;
+    margin-top: 10px;
+
 }

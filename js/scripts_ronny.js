@@ -272,7 +272,7 @@ function parseProfile(json, isYear) {
     }
 }
 
-$(document).on("pageshow", "#login", function() {
+$(document).on("pagebeforeshow", "#login", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',
         method: 'POST',

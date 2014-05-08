@@ -2,6 +2,10 @@ var currentCoursePage = "";
 var currentCourseId = "";
 var currentTaskId = "";
 
+
+
+
+
 function setCurrentCoursePage(val) {
     currentCoursePage = val;
 }
@@ -141,6 +145,7 @@ $(document).on("pageshow", "#courseDetails", function() {
                 alert(data.message);
             }
         });
+        $('#leave').hide();
     });
 
     $("#deletetask").click(function() {
@@ -179,6 +184,7 @@ $(document).on("pageshow", "#courses", function() {
 
         //try bind event with blur cuz maybe keyCode 13 wont work on mobile! 
         if (e.keyCode == 13) {
+            e.preventDefault();
             $.ajax({
                 url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/search.php',
                 method: 'POST',
@@ -258,7 +264,7 @@ $(document).on("pageshow", "#courses", function() {
 
 
 function updateSuggestedCourses(courses) {
-    removeCurrentSuggestedCourses();
+    //removeCurrentSuggestedCourses();
     createCoursesButtons(courses, "coursesSug");
 }
 
@@ -722,6 +728,7 @@ function fetchTasks() {
             } else {
                 $("#tasks-table-custom").text("");
             }
+
             $('#images').text("");
 
             if (json.is_user == "1") {
@@ -733,6 +740,7 @@ function fetchTasks() {
                 $("#addTask").hide();
                 $('.actions').hide();
                 $('.share').hide();
+                $("#join-course").show();
             }
             if (currentCourseId == -1) {
                 $("#leave-course").hide();

@@ -84,30 +84,29 @@ and open the template in the editor.
                                         <label for="hard" data-role="none">Massive Sheet</label>
                                     </div>
                                 </div>
-                                <input type="button" value="Add Friends" id="invitebtn" onclick="invite()"/>
+                                <div id="inviteDiv">
+                                    <input type="button" value="Add Friends" id="invitebtn" onclick="invite()"/>
+                                </div>
                                 <br/>
-                                <input  type="submit" value="Publish Sheet"  id="submit"/>
-                                <input type="button" value="Delete Sheet" id="deletetask"/>
+                                <div id="actionsTask">
+                                    <input type="submit" value="Publish Sheet"  id="submit"/>
+                                    <input type="button" value="Delete Sheet" id="deletetask"/>
+                                </div>
                             </div>
-                            <br/><br/>
                         </div>
 
 
-                        <a href="#leave" data-rel="popup" data-role="button" id="leave-course"> Leave Course </a><br/>
-                        <div data-role="popup" id="leave">
-                            <p>Leaving the course means you won't be taking anymore of its sheets. Are you positive?<p>
-                            <div data-role="controlgroup" data-type="horizontal" data-mini="true">
-                                <a href="" data-role="button" id="leavenow" data-theme="b" data-inline="true"> Yes </a>
-                                <a href="" data-rel="back" data-role="button"  data-theme="b" data-inline="true"> No </a>
-                            </div>
+                        <a href="" data-role="button" id="leave-course" onclick="$('#leave').show();"> Leave Course </a>
+                        <div id="leave">
+                            <b>Sure you want to leave this course?</b><br/>
+                            <a href="" data-role="button"  data-theme="c" data-inline="true" onclick="$('#leave').hide();"> Stay </a>
+                            <a href="" data-role="button" id="leavenow"  data-theme="c" data-inline="true" > Leave </a>
                         </div>
+                        <br/>
                     </form>
 
                 </div>
             </div>
-            <h1 class="No-Courses-Found" id="deleteAlert" style="display: none">Task Was Deleted</h1>
-            <h1 class="No-Courses-Found" id="CreateTask" style="display: none">Task Was Created</h1>
-
         </div>
 
 
