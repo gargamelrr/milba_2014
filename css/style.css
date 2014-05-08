@@ -949,8 +949,12 @@ input#search {
 }
 
 div#empty{
-    background: #ccced6;
-    color:#414551;
+    background: white;
+    color: #2fb5e2;
+    box-shadow: none;
+    border-top: 2px solid #3cceff;
+    border-radius: 0;
+    text-align: center;
 }
 
 #emptyWeek,#noCourses,#noNoti{
@@ -971,7 +975,6 @@ div#empty{
 }
 
 #leave a{
-
     background:#3cceff;
     color:white;    
     box-shadow: none;
@@ -982,6 +985,16 @@ div#empty{
 a#leavenow{
     background:#ccced6;
     color:#6a7080;  
+}
+
+#empty .ui-btn{
+    background:#3cceff;
+    color:white;    
+    box-shadow: none;
+    border-radius: 0.4em;
+    border:0;
+    text-shadow: none;
+    font-family: 'Asap';
 }
 
 #inviteDiv span.ui-btn-inner, #actionsTask span.ui-btn-inner{
