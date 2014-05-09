@@ -63,7 +63,41 @@ and open the template in the editor.
             <!-- Facebook JavaScript -->
             <script type="text/javascript">
 
+                FB.Event.subscribe('auth.authResponseChange', function(response) {
+                    console.log('auth.authResponseChange event');
+                    //console.log(JSON.stringify(response));
+                    if (response.status === 'connected') {
+                        var friendsList;
+                        FB.api('/me/friends', {fields: 'id'}, function(response) {
+                            if (response.error) {
+                            } else {
+                                friendsList = response.data;
+                            }
+                        });
+                        $.ajax({
+                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userActions.php',
+                            method: 'POST',
+                            data: {
+                                friends: friendsList,
+                                gcm: gcm,
+                                fb_id: response.authResponse.userId
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                var json = JSON.parse(data);
+                                if (json.success == 1) {
+                                    localStorage.setItem('Name', json.name);
+                                    localStorage.setItem('ID', response.authResponse.userId);
+                                    window.location.href = "index.html";
+                                }
+                            },
+                            error: function() {
+                                console.log(data);
+                            }
+                        });
+                    }
 
+                });
 
                 function promptLogin() {
                     $('#face_but').attr("disabled", "disabled");
