@@ -15,6 +15,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION["year"])) {
     $_SESSION["school"] = 2;
     $_SESSION["friends"] = array(19, 17, 20);
     $_SESSION["year"] = 3;
+    $_SESSION["fb_id"] = "1055121807";
 }
 
 $user_id = $_SESSION["user_id"];

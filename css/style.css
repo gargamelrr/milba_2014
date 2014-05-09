@@ -1046,3 +1046,13 @@ div#actionsTask {
     margin-top: 10px;
 
 }
+
+a.joinCourse.ui-btn {
+    background: #ccced6;
+    border: 0;
+    box-shadow: none;
+    text-shadow: none;
+    color: #4d5361;
+    border-radius: 0.5em;
+    font-family: 'Asap-bold';
+}

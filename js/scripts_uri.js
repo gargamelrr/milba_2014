@@ -106,25 +106,9 @@ $(document).on("pageshow", "#courseDetails", function() {
     }
 
     $('#join-course').click(function() {
-        $.ajax({
-            //add full 
-            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
-            method: 'GET',
-            data: {
-                action: "join",
-                courseID: currentCourseId
-            },
-            success: function(data) {
-                var json = JSON.parse(data);
-                if (json.success == 0) {
-                    $.mobile.changePage("GroupDetails.html?a");
-                }
-            },
-            error: function() {
-                alert(data.message);
-            }
-        });
+        joinCourse(currentCourseId);
     });
+    
     $('#leavenow').click(function() {
         $.ajax({
             //add full 
@@ -686,15 +670,15 @@ function buildNotifications(data) {
         var cell1Div = document.createElement("div");
         cell1Div.setAttribute("class", "btn-noti");
         var cell1 = document.createElement("td");
-        var cell2Div = document.createElement("div");
-        cell2Div.innerHTML = data.allNoti[i];
-        cell1.appendChild(cell2Div);
+
+        cell1.innerHTML = data.allNoti[i];
         cell1Div.appendChild(cell1);
 
         row.appendChild(cell1Div);
         tblBody.appendChild(row);
     }
     table.appendChild(tblBody);
+    $("#notifi-table-custom").trigger('create');
 }
 
 function dayNumberToString(number)
@@ -810,4 +794,26 @@ function more(bool) {
         $('#moreFB').show();
         $('#addFB').show();
     }
+}
+
+function joinCourse(id) {
+    $.ajax({
+        //add full 
+        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/coursesActions.php',
+        method: 'GET',
+        data: {
+            action: "join",
+            courseID: id
+        },
+        success: function(data) {
+            var json = JSON.parse(data);
+            if (json.success == 0) {
+                setCurrentCourseId(id);
+                $.mobile.changePage("GroupDetails.html?a");
+            }
+        },
+        error: function() {
+            alert(data.message);
+        }
+    });
 }

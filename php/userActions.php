@@ -54,6 +54,7 @@ $_SESSION["name"] = $name;
 $_SESSION["user_id"] = $id;
 $_SESSION["school"] = $school_id;
 $_SESSION["year"] = date("Y") - $year;
+$_SESSION["fb_id"] = $fb_id;
 
 
 if (isset($_POST["friends"])) {
