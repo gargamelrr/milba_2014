@@ -439,37 +439,37 @@ alert(course);
             friendsList = response.data;
 
             // needs to split the array to sets of 50
-            var length = friendsList.length;
-            var numSets = Math.floor(length / 50) + 1;
-            var sets = new Array(numSets);
-            for (var i = 0; i < numSets; i++) {
-                sets[i] = new Array();
-            }
-            for (var i = 0; i < length; i++) {
-                sets[i % numSets].push(friendsList.id);
-            }
-            for(i in friendsList){
-                sets[i % numSets].push(friendsList[i].id);
-            }
-            alert(JSON.stringify(sets));
-            for (var i = 0; i < numSets; i++) {
-                FB.ui({method: 'apprequests',
-                    message: 'I invites you to share your sheets with me in ' + course,
-                    to: sets[i]
-                },
-                function(response) {
-                    console.log(response);
-                }
-                );
-            }
-
-//            FB.ui({method: 'apprequests',
-//                message: 'Join course ' + course,
-//            },
-//            function(response) {
-//                alert(response);
+//            var length = friendsList.length;
+//            var numSets = Math.floor(length / 50) + 1;
+//            var sets = new Array(numSets);
+//            for (var i = 0; i < numSets; i++) {
+//                sets[i] = new Array();
 //            }
-//            );
+//            for (var i = 0; i < length; i++) {
+//                sets[i % numSets].push(friendsList.id);
+//            }
+//            for(i in friendsList){
+//                sets[i % numSets].push(friendsList[i].id);
+//            }
+//            alert(JSON.stringify(sets));
+//            for (var i = 0; i < numSets; i++) {
+//                FB.ui({method: 'apprequests',
+//                    message: 'I invites you to share your sheets with me in ' + course,
+//                    to: sets[i]
+//                },
+//                function(response) {
+//                    console.log(response);
+//                }
+//                );
+//            }
+
+            FB.ui({method: 'apprequests',
+                message: 'Join course ' + course,
+            },
+            function(response) {
+                alert(response);
+            }
+            );
 
             // add notification for all friends
             $.ajax({
