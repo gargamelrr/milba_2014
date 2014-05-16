@@ -454,11 +454,13 @@ function invite(course) {
                 sets[i] = new Array();
             }
             for (var i = 0; i < length; i++) {
-                alert(friendsList);
-                alert(JSON.stringify(friendsList));
-                sets[i % numSets].push(friendsList.id[i]);
+                sets[i % numSets].push(friendsList.id);
             }
-            alert(sets);
+            for(i in friendsList){
+                sets[i % numSets].push(friendsList[i].id);
+                alert(friendsList[i].id);
+            }
+            alert(JSON.stringify(sets));
             for (var i = 0; i < numSets; i++) {
                 FB.ui({method: 'apprequests',
                     message: 'Join course ' + course,
