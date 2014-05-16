@@ -476,6 +476,7 @@ function invite(course) {
                                 course: currentCourseId
                             },
                             success: function(data) {
+                                alert(data);
                                 var json = JSON.parse(data);
                                 if (json.success == 1) {
                                     console.log("OK");
