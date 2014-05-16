@@ -429,7 +429,7 @@ document.addEventListener('deviceready', function() {
 
 function invite(course) {
 
-
+alert(course);
 // send invites to all user friends
     var friendsList;
     FB.api('/me/friends', {fields: 'id'}, function(response) {
@@ -454,7 +454,7 @@ function invite(course) {
             alert(JSON.stringify(sets));
             for (var i = 0; i < numSets; i++) {
                 FB.ui({method: 'apprequests',
-                    message: 'Join course ' + course,
+                    message: 'I invites you to share your sheets with me in ' + course,
                     to: sets[i]
                 },
                 function(response) {
