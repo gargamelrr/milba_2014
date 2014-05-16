@@ -440,8 +440,10 @@ function invite(course) {
     var friendsList;
     FB.api('/me/friends', {fields: 'id'}, function(response) {
         if (response.error) {
+            alert("error");
         } else {
             friendsList = response.data;
+            alert("ok");
         }
     });
 
