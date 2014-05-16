@@ -815,7 +815,7 @@ div#notifi,#notification {
 .FBimg, #notiPage img{
     border-radius: 50%;
     border:3px solid #a7adc3 ;
-    margin-left: 10px;
+    margin-left: 3px;
     width: 55px;
     height: 55px;
 }
@@ -854,8 +854,9 @@ a#moreFB ,a#addFB{
     background: none;
     box-shadow: none;
     margin-top: -37px;
-    margin-left: 10px;
+    margin-left: 3px;
     border:3px solid #a7adc3;
+    margin-right: 0;
 }
 
 input#search {
