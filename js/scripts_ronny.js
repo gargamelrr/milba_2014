@@ -454,7 +454,8 @@ function invite(course) {
                 sets[i] = new Array();
             }
             for (var i = 0; i < length; i++) {
-                alert(friendsList.id);
+                alert(friendsList);
+                alert(JSON.stringify(friendsList));
                 sets[i % numSets].push(friendsList.id[i]);
             }
             alert(sets);
