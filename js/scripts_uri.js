@@ -732,6 +732,7 @@ function fetchTasks() {
             }
             if (currentCourseId == -1) {
                 $("#leave-course").hide();
+                $("#inviteDiv").hide();
 
                 if (datePv != "") {
                     $("#date1").val(datePv);

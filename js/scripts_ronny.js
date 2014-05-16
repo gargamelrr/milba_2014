@@ -438,6 +438,7 @@ function invite(course) {
 
 // send invites to all user friends
     var friendsList;
+    alert(FB);
     FB.api('/me/friends', {fields: 'id'}, function(response) {
         if (response.error) {
             alert("error");
