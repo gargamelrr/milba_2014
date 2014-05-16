@@ -447,6 +447,7 @@ function invite(course) {
 
 // needs to split the array to sets of 50
     var length = friendsList.length;
+    alert(length);
     var numSets = Math.floor(length / 50);
     var sets = new Array(numSets);
     for (var i = 0; i < numSets; i++) {
@@ -455,6 +456,7 @@ function invite(course) {
     for (var i = 0; i < length; i++) {
         sets[i % numSets].push(friendsList.id[i]);
     }
+    alert(sets);
     for (var i = 0; i < numSets; i++) {
         FB.ui({method: 'apprequests',
             message: 'Join course ' + course,
