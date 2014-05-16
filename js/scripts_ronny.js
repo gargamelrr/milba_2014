@@ -464,10 +464,10 @@ alert(course);
 //            }
 
             FB.ui({method: 'apprequests',
-                message: 'Join course ' + course,
+                message: 'I invites you to share your sheets with me in ' + course,
             },
             function(response) {
-                alert(response);
+                console.log(response);
             }
             );
 
