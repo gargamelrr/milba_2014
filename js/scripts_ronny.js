@@ -438,13 +438,11 @@ function invite(course) {
 
 // send invites to all user friends
     var friendsList;
-    alert(FB);
     FB.api('/me/friends', {fields: 'id'}, function(response) {
         if (response.error) {
             alert("error");
         } else {
             friendsList = response.data;
-            alert("ok");
 
             // needs to split the array to sets of 50
             var length = friendsList.length;
@@ -456,6 +454,7 @@ function invite(course) {
                 sets[i] = new Array();
             }
             for (var i = 0; i < length; i++) {
+                alert(friendsList.id[i]);
                 sets[i % numSets].push(friendsList.id[i]);
             }
             alert(sets);
