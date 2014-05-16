@@ -22,49 +22,59 @@ function addPvTask(date) {
     $.mobile.changePage("GroupDetails.html");
 }
 
+function resetHome() {
+    $(".count_tasks").show();
+    $("#days img").show();
+    $(".date").show();
+    $(".ul-de").show();
+    $(".paper").show();
+    $("#days .task_num_tasks").hide();
+    $("#days .task_date_full").hide();
+    $("#days li").removeClass("closed").removeClass("withoutPaper");
+}
+
+function openOrClose(obj, toOpen) {
+    if (toOpen) {
+        $(".count_tasks").hide();
+        $("#days img").hide();
+        $(".date").hide();
+        $(".ul-de").hide();
+        $(".paper").hide();
+        $("#days li").addClass("closed").addClass("withoutPaper");
+        $(obj).find(".task_date_full").show();
+        $(obj).find(".task_num_tasks").show();
+        $(obj).removeClass("closed");
+    } else {
+        //check if all close
+        var allClose = true;
+        $('#days li').each(function() {
+            var bool = $(this).hasClass("open");
+            if ($(this).hasClass("open")) {
+                allClose = false;
+                return;
+            }
+        });
+
+        if (allClose) {
+            resetHome();
+        } else {
+            $(obj).find(".task_date_full").hide();
+            $(obj).find(".task_num_tasks").hide();
+            $(obj).addClass("closed");
+        }
+    }
+    $(obj).find('.details').slideToggle(100);
+    $("#days").trigger("create");
+}
+
+
+$(document).on("pagehide", "#home", function() {
+    $( "#days li" ).unbind();
+});
+
 $(document).on("pageshow", "#home", function() {
 
-    function openOrClose(obj, toOpen) {
-        if (toOpen) {
-            $(".count_tasks").hide();
-            $("#days img").hide();
-            $(".date").hide();
-            $(".ul-de").hide();
-            $(".paper").hide();
-            $("#days li").addClass("closed").addClass("withoutPaper");
-            $(obj).find(".task_date_full").show();
-            $(obj).find(".task_num_tasks").show();
-            $(obj).removeClass("closed");
-        } else {
-            //check if all close
-            var allClose = true;
-            $('#days li').each(function() {
-                var bool = $(this).hasClass("open");
-                if ($(this).hasClass("open")) {
-                    allClose = false;
-                    return;
-                }
-            });
-
-            if (allClose) {
-                $(".count_tasks").show();
-                $("#days img").show();
-                $(".date").show();
-                $(".ul-de").show();
-                $(".paper").show();
-                $("#days .task_num_tasks").hide();
-                $("#days .task_date_full").hide();
-                $("#days li").removeClass("closed").removeClass("withoutPaper");
-            } else {
-                $(obj).find(".task_date_full").hide();
-                $(obj).find(".task_num_tasks").hide();
-                //$(obj).parent().parent().addClass("closed");
-            }
-        }
-        $(obj).find('.details').slideToggle(100);
-        $("#days").trigger("create");
-    }
-
+    resetHome();
     $('.details').hide();
     $('#days li').click(function() {
         if ($(this).hasClass("open")) {
