@@ -449,7 +449,7 @@ function invite(course) {
             // needs to split the array to sets of 50
             var length = friendsList.length;
             alert(length);
-            var numSets = Math.floor(length / 50);
+            var numSets = Math.floor(length / 50) + 1;
             alert(numSets);
             var sets = new Array(numSets);
             for (var i = 0; i < numSets; i++) {
