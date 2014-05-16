@@ -445,48 +445,49 @@ function invite(course) {
         } else {
             friendsList = response.data;
             alert("ok");
-        }
-    });
 
-// needs to split the array to sets of 50
-    var length = friendsList.length;
-    alert(length);
-    var numSets = Math.floor(length / 50);
-    var sets = new Array(numSets);
-    for (var i = 0; i < numSets; i++) {
-        sets[i] = new Array();
-    }
-    for (var i = 0; i < length; i++) {
-        sets[i % numSets].push(friendsList.id[i]);
-    }
-    alert(sets);
-    for (var i = 0; i < numSets; i++) {
-        FB.ui({method: 'apprequests',
-            message: 'Join course ' + course,
-            to: sets[i]
-        },
-        function(response) {
-            console.log(response);
-        }
-        );
-    }
-
-    // add notification for all friends
-    $.ajax({
-        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/inviteFriends.php',
-        method: 'POST',
-        data: {
-            friends: friendsList,
-            course:currentCourseId
-        },
-        success: function(data) {
-            var json = JSON.parse(data);
-            if (json.success == 1) {
-                console.log("OK");
+            // needs to split the array to sets of 50
+            var length = friendsList.length;
+            alert(length);
+            var numSets = Math.floor(length / 50);
+            var sets = new Array(numSets);
+            for (var i = 0; i < numSets; i++) {
+                sets[i] = new Array();
             }
-        },
-        error: function() {
-            alert(data.message);
+            for (var i = 0; i < length; i++) {
+                sets[i % numSets].push(friendsList.id[i]);
+            }
+            alert(sets);
+            for (var i = 0; i < numSets; i++) {
+                FB.ui({method: 'apprequests',
+                    message: 'Join course ' + course,
+                    to: sets[i]
+                },
+                function(response) {
+                    console.log(response);
+                }
+                );
+            }
+
+            // add notification for all friends
+            $.ajax({
+                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/inviteFriends.php',
+                method: 'POST',
+                data: {
+                    friends: friendsList,
+                    course: currentCourseId
+                },
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.success == 1) {
+                        console.log("OK");
+                    }
+                },
+                error: function() {
+                    alert(data.message);
+                }
+            });
         }
     });
+
 }
