@@ -429,7 +429,6 @@ document.addEventListener('deviceready', function() {
 
 function invite(course) {
 
-alert(course);
 // send invites to all user friends
     var friendsList;
     FB.api('/me/friends', {fields: 'id'}, function(response) {
@@ -480,6 +479,7 @@ alert(course);
                     course: currentCourseId
                 },
                 success: function(data) {
+                    alert(data);
                     var json = JSON.parse(data);
                     if (json.success == 1) {
                         console.log("OK");
