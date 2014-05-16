@@ -465,30 +465,29 @@ function invite(course) {
             FB.ui({method: 'apprequests',
                 message: 'I invites you to share your sheets with me in ' + course,
             },
-            function(response) {
-                console.log(response);
-            }
+                    function(response) {
+                        console.log(response);
+                        // add notification for all friends
+                        $.ajax({
+                            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/inviteFriends.php',
+                            method: 'POST',
+                            data: {
+                                friends: friendsList,
+                                course: currentCourseId
+                            },
+                            success: function(data) {
+                                var json = JSON.parse(data);
+                                if (json.success == 1) {
+                                    console.log("OK");
+                                }
+                            },
+                            error: function() {
+                                alert(data.message);
+                            }
+                        });
+                    }
             );
 
-            // add notification for all friends
-            $.ajax({
-                url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/inviteFriends.php',
-                method: 'POST',
-                data: {
-                    friends: friendsList,
-                    course: currentCourseId
-                },
-                success: function(data) {
-                    alert(data);
-                    var json = JSON.parse(data);
-                    if (json.success == 1) {
-                        console.log("OK");
-                    }
-                },
-                error: function() {
-                    alert(data.message);
-                }
-            });
         }
     });
 
