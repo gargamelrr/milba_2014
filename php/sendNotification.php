@@ -38,7 +38,7 @@ foreach ($tasks as $task) {
             $datePlusAlert = strtotime(date("Y-m-d", strtotime(date("Y-m-d"))) . " +" . $row["alertDays"] . "day") . "\n";
             if ($datePlusAlert == $dateTask) {
                 sendGCM(array($row["gcm"]), "Don't forget to finish up your sheet in " . $row["course_name"]);
-                echo "send notification to " . $row["index"] . " for " . $row["course_name"] . "\n";
+                echo date("Y-m-d  H:i") . " send notification to " . $row["index"] . " for " . $row["course_id"] . "\n";
             }
         }
     }

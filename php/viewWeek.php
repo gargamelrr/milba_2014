@@ -7,13 +7,12 @@ require_once __DIR__ . '/db_connect.php';
 $db = new DB_CONNECT;
 
 session_start();
-
 if (!isset($_SESSION["user_id"]) || !isset($_SESSION["year"])) {
     $_SESSION["user"] = "tom@gmail.com";
     $_SESSION["name"] = "Tom";
     $_SESSION["user_id"] = 16;
     $_SESSION["school"] = 2;
-    $_SESSION["friends"] = array(19, 17, 20);
+    $_SESSION["friends"] = array(19, 30, 36);
     $_SESSION["year"] = 3;
     $_SESSION["fb_id"] = "1055121807";
 }
