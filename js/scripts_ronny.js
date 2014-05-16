@@ -446,9 +446,7 @@ function invite(course) {
 
             // needs to split the array to sets of 50
             var length = friendsList.length;
-            alert(length);
             var numSets = Math.floor(length / 50) + 1;
-            alert(numSets);
             var sets = new Array(numSets);
             for (var i = 0; i < numSets; i++) {
                 sets[i] = new Array();
@@ -458,7 +456,6 @@ function invite(course) {
             }
             for(i in friendsList){
                 sets[i % numSets].push(friendsList[i].id);
-                alert(friendsList[i].id);
             }
             alert(JSON.stringify(sets));
             for (var i = 0; i < numSets; i++) {
