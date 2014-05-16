@@ -450,13 +450,11 @@ function invite(course) {
             var numSets = Math.floor(length / 50) + 1;
             alert(numSets);
             var sets = new Array(numSets);
-            alert("here");
             for (var i = 0; i < numSets; i++) {
                 sets[i] = new Array();
             }
-            alert("here2");
             for (var i = 0; i < length; i++) {
-                alert(friendsList.id[i]);
+                alert(friendsList.id);
                 sets[i % numSets].push(friendsList.id[i]);
             }
             alert(sets);
