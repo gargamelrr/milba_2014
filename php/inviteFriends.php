@@ -24,9 +24,10 @@ if (isset($_POST["friends"])) {
     }
     $friends_str = substr($friends_str, 1);
 
-    $result = mysql_query("select gcm from Users join Users_Courses on Users.index = Users_Courses.student_id "
-            . "where fb_id in ($friends_str) and course_id=$course_id and `index` not in (Users_Courses.student_id)");
-    while ($row = mysql_fetch_array($result)) {
+    $resultGCM = mysql_query("select `index`,gcm from Users join Users_Courses on Users.index = Users_Courses.student_id "
+            . " where fb_id in ($friends_str) and `index` not in (select `student_id` from Users_Courses where `index`=student_id  and course_id = $course_id)");
+
+    while ($row = mysql_fetch_array($resultGCM)) {
         $regIDArray[] = $row["gcm"];
     }
 
@@ -50,5 +51,5 @@ if (isset($_POST["friends"])) {
 }
 
 $response["success"] = 1;
-$response["debug"] = "select gcm from Users join Users_Courses on Users.index = Users_Courses.student_id "
-            . "where fb_id in ($friends_str) and course_id=$course_id and `index` not in (Users_Courses.student_id)";
+
+echo json_encode($response);
