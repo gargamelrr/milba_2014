@@ -3,6 +3,10 @@
     font-weight: normal;
 
 }
+
+.ui-btn-inner{
+    font-size: 18px;
+}
 .ui-li>.ui-btn-inner {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -280,7 +284,9 @@ span#name {
 
 #face_but .ui-btn-inner {
     color: white !important;
-    font-size: 25px;
+    font-size: 20px;
+    background: url(../images/facebook.png) no-repeat;
+    background-position: 8%;
 }
 
 #nameProfile{
@@ -339,8 +345,8 @@ span#name {
 
 
 #newGroup  input.ui-input-text,#profilePage select.ui-input-text, #loginForm   span.ui-btn-inner{
-    height: 48px;
-    line-height: 48px;
+    height: 30px;
+    line-height: 30px;
     color: #ccced6;
     text-align: center;
     font-weight: normal;
@@ -768,8 +774,8 @@ a#leave-course {
     text-decoration: none;
 }
 #elementsToOperateOn  input.ui-input-text,#elementsToOperateOn textarea.ui-input-text {
-    height: 48px;
-    line-height: 48px;
+    height: 30px;
+    line-height: 30px;
     color: #3cceff;
     text-align: center;
     font-weight: normal;
@@ -950,8 +956,8 @@ input#search {
 }
 
 div#empty{
-    background: white;
-    color: #2fb5e2;
+    background: #2fb5e2;
+    color: white;
     box-shadow: none;
     border-top: 2px solid #3cceff;
     border-radius: 0;
@@ -989,8 +995,8 @@ a#leavenow{
 }
 
 #empty .ui-btn{
-    background:#3cceff;
-    color:white;    
+    background:white;
+    color:#3cceff;    
     box-shadow: none;
     border-radius: 0.4em;
     border:0;
@@ -999,8 +1005,8 @@ a#leavenow{
 }
 
 #inviteDiv span.ui-btn-inner, #actionsTask span.ui-btn-inner{
-    height: 48px;
-    line-height: 48px;
+    height: 30px;
+    line-height: 30px;
     color: #3cceff;
     text-align: center;
     font-weight: normal;
