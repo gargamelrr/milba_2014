@@ -24,7 +24,7 @@ $invitaions = mysql_query("Select user_id,course_id, Users.fb_id as fb_id_orig, 
 if (mysql_num_rows($newTasks) > 0 || mysql_num_rows($editedTasks) > 0 || mysql_num_rows($deletedTasks) > 0 || mysql_num_rows($invitaions) > 0) {
     $checkInput = 1;
     while ($row = mysql_fetch_array($newTasks)) {
-        $new_date = date("m.d.Y", strtotime($row["due_date"]));
+        $new_date = date("d.m.Y", strtotime($row["due_date"]));
         $msg = " <div class='ui-grid-a'><div class='ui-block-a' style='width:35%'><img src='https://graph.facebook.com/" . $row["fb_id"] . "/picture?width=60&height=60'></div>"
                 . "<div class='ui-block-b' style='width:65%'><b>" . $row["first_name"] . " " . $row["last_name"] . '</b> added a new task to: <br/>' .
                 '"' . $row["cName"] . '" <br/>' .
@@ -34,7 +34,7 @@ if (mysql_num_rows($newTasks) > 0 || mysql_num_rows($editedTasks) > 0 || mysql_n
     }
 
     while ($row2 = mysql_fetch_array($editedTasks)) {
-        $new_date = date("m.d.Y", strtotime($row2["due_date"]));
+        $new_date = date("d.m.Y", strtotime($row2["due_date"]));
         $msg = " <div class='ui-grid-a'><div class='ui-block-a' style='width:35%'><img src='https://graph.facebook.com/" . $row2["fb_id"] . "/picture?width=60&height=60'></div>"
                 . "<div class='ui-block-b' style='width:65%'><b>" . $row2["first_name"] . " " . $row2["last_name"] . '</b> made changes in: <br/>' .
                 '"' . $row2["tName"] . '" <br/>' .
@@ -52,7 +52,7 @@ if (mysql_num_rows($newTasks) > 0 || mysql_num_rows($editedTasks) > 0 || mysql_n
     }
 
     while ($row4 = mysql_fetch_array($invitaions)) {
-        $new_date = date("m.d.Y", strtotime($row4["due_date"]));
+        $new_date = date("d.m.Y", strtotime($row4["due_date"]));
         $msg = " <div class='ui-grid-a'><div class='ui-block-a' style='width:35%'><img src='https://graph.facebook.com/" . $row4["fb_id_orig"] . "/picture?width=60&height=60'></div>"
                 . "<div class='ui-block-b' style='width:65%'><b>" . $row4["first_name"] . " " . $row4["last_name"] . '</b> asked you to join: <br/>' .
                 '"' . $row4["Cname"] . '" <br/>' .

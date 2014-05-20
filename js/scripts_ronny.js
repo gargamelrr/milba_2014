@@ -69,7 +69,7 @@ function openOrClose(obj, toOpen) {
 
 
 $(document).on("pagehide", "#home", function() {
-    $( "#days li" ).unbind();
+    $("#days li").unbind();
 });
 
 $(document).on("pageshow", "#home", function() {
@@ -102,6 +102,7 @@ $(document).on("pageshow", "#home", function() {
             $("#days .task_num_tasks").hide();
             $("#days .task_date_full").hide();
             $.each(json.data, function(i, val) {
+                var color = "#3cceff";
                 $("#day" + day + " h3").text("");
                 $("#day" + day + " .task_date").append(json.data[i].date);
                 $("#day" + day + " .details").text("");
@@ -133,25 +134,38 @@ $(document).on("pageshow", "#home", function() {
                     if (day == 0) {
                         if (json.data[i].tasks.count < 2) {
                             $("#day" + day + " img").attr("src", "images/easy_0.png");
+                            $("#day" + day).parent().css("background-color", "#28a9d4");
+                            $("#day" + day + " .details").css("color", "#28a9d4");
+                            $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
+                            color = "#28a9d4";
                         } else {
                             $("#day" + day + " img").attr("src", "images/hard_0.png");
+                            $("#day" + day + " .homeTask").css("border-color", "#0f7192");
+                            $("#day" + day + " .details").css("color", "#0f7192");
+                            $("#day" + day).parent().css("background-color", "#0f7192");
+                            color = "#0f7192";
                         }
                     }
                     else {
                         if (json.data[i].tasks.count < 2) {
                             $("#day" + day + " img").attr("src", "images/easy_2.png");
                             $("#day" + day + " .left").css("color", "#28a9d4");
+                            $("#day" + day + " .details").css("color", "#28a9d4");
+                            $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
                             $("#day" + day + " ul").css("color", "#28a9d4");
                             $("#days li:nth-child(" + (day + 1) + ")").css("border-top", "1px solid #28a9d4");
                             $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_2.png)");
+                            color = "#28a9d4";
 
                         } else {
                             $("#day" + day + " img").attr("src", "images/hard_3.png");
                             $("#day" + day + " .left").css("color", "#0f7192");
+                            $("#day" + day + " .details").css("color", "#0f7192");
+                            $("#day" + day + " .homeTask").css("border-color", "#0f7192");
                             $("#day" + day + " ul").css("color", "#0f7192");
                             $("#days li:nth-child(" + (day + 1) + ")").css("border-top", "1px solid #0f7192");
                             $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_3.png)");
-
+                            color = "#0f7192";
                         }
                     }
                     if (day == 1) {
@@ -164,12 +178,14 @@ $(document).on("pageshow", "#home", function() {
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
                     $("#day" + day + "-ul").append(output).trigger('create');
                 } else {
+                    if (day == 0) {
+                        $("#day" + day).parent().css("background-color", "#3cceff");
+                    }
                     $("#day" + day + " .count_tasks").append("Free");
                     $("#day" + day + " img").attr("src", "images/fun.png");
                 }
                 if (day == 1) {
                     $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue");
-
                 }
                 var d = new Date(json.data[i].date_full);
                 var curr_date = d.getDate();
@@ -180,6 +196,7 @@ $(document).on("pageshow", "#home", function() {
                 $("#day" + day + " .task_num_tasks").append("<b>" + json.data[i].tasks.count + "</b> Tasks");
                 $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" + 'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
                 $("#day" + day + " .details").trigger("create");
+                $("#day" + day + " .details").find("#pvTask .ui-btn").css("background-color", color);
                 day++;
             });
             if (easy < 3) {

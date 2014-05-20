@@ -18,7 +18,7 @@
 }
 
 #days .ui-btn:first-child{
-    background-color: #0f7192;
+    //background-color: #0f7192;
     border-top: 0;
     background-image: url(../images/paper_first.png);
 }
@@ -173,9 +173,10 @@
     font-family: 'Alef';
 }
 
-#pvTask .ui-btn-up-c, #pvTask .ui-btn-hover-c {
+#pvTask .ui-btn{
     border: 0;
-    background: #19cfa7 !important;
+    background-color: #3cceff;
+    background-image: none !important;
     font-weight: 200;
     text-shadow: none;
     -webkit-box-shadow:none;

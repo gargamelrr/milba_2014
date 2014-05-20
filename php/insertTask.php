@@ -46,7 +46,7 @@ if (isset($_POST["taskName"]) && isset($_POST["date1"]) && isset($_POST["taskTim
                 . "ON DUPLICATE KEY UPDATE `name` = '$taskName', `due_date`= '$dueDate . $taskTime', `description` = '$taskDetails' , modified='$date' ,creator = '$user_id'  ");
 
 
-        $courseNameSql = mysql_query("Select Courses.name From Tasks, Courses Where Tasks.index=$idDel and Courses.index = Tasks.course_id");
+        $courseNameSql = mysql_query("Select Courses.name From Courses Where Courses.index = $courseID");
         $courseName = mysql_fetch_array($courseNameSql);
         $courseName = $courseName["name"];
         //notify all users in course
