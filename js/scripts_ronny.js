@@ -170,9 +170,9 @@ $(document).on("pageshow", "#home", function() {
                     }
                     if (day == 1) {
                         if (json.data[i].tasks.count < 2) {
-                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_2.png)");
+                           // $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_2.png)");
                         } else {
-                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_3.png)");
+                           // $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_second_3.png)");
                         }
                     }
                     $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
