@@ -395,7 +395,7 @@ div#newGroup {
     padding-bottom: 10px;
 }
 
-#coursesMy,#coursesSug, #newGroup{
+#coursesMy,#coursesSug, #newGroup,#coursesSearch{
     background-color: #4d5361;
     width:100%;
 }

@@ -108,7 +108,7 @@ $(document).on("pageshow", "#courseDetails", function() {
     $('#join-course').click(function() {
         joinCourse(currentCourseId);
     });
-    
+
     $('#leavenow').click(function() {
         $.ajax({
             //add full 
@@ -177,15 +177,16 @@ $(document).on("pageshow", "#courses", function() {
                 },
                 success: function(data) {
                     $("#noCourses").hide();
-                    $("#coursesSug").show();
+                    $("#coursesSug").hide();
                     $("#coursesMy").hide();
                     $('#but-my').removeClass('ui-btn-active').trigger('create');
                     $('#but-sug').addClass('ui-btn-active').trigger('create');
                     var json = JSON.parse(data)
                     if (json.success == 1) {
-                        updateSuggestedCourses(json.searchResult);
+                        createCoursesButtons(json.searchResult, "coursesSearch");
+                        $("#coursesSearch").show();
                     } else {
-                        updateSuggestedCourses("");
+                        createCoursesButtons("", "coursesSearch");
                         $("#noCourses").show();
                     }
                 },
@@ -217,6 +218,7 @@ $(document).on("pageshow", "#courses", function() {
         $("#coursesSug").show();
         $("#newGroup").hide();
         $('#MeBtn').show();
+        $("#coursesSearch").hide();
     });
 
     $("#but-my").click(function() {
@@ -227,6 +229,7 @@ $(document).on("pageshow", "#courses", function() {
         $("#coursesMy").show();
         $("#newGroup").hide();
         $('#MeBtn').show();
+        $("#coursesSearch").hide();
     });
 
 
@@ -249,20 +252,6 @@ $(document).on("pageshow", "#courses", function() {
     //$("#coursesMy").hide();
 });
 
-
-
-function updateSuggestedCourses(courses) {
-    //removeCurrentSuggestedCourses();
-    createCoursesButtons(courses, "coursesSug");
-}
-
-function removeCurrentSuggestedCourses() {
-    var children = $("coursesSug").children("div");
-    for (var i = 0; i < children.length; i++) {
-        var child = children[i];
-        child.remove();
-    }
-}
 
 function createCoursesButtons(coursesList, div) {
 
