@@ -137,8 +137,16 @@
     right: -6px;
 }
 
-.paper-blue {
-    background: #0f7192 !important;
+.paper-blue3 {
+    background: #0f7192  !important;
+}
+
+.paper-blue2 {
+    background: #28a9d4  !important;
+}
+
+.paper-blue1 {
+    background:  #3cceff !important;
 }
 
 .date{
