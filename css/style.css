@@ -27,9 +27,6 @@
     border-top: 0;
 }
 
-#days .ui-btn:nth-child(2){
-    background-image: url(../images/paper_second.png);
-}
 
 #days .ui-btn:first-child .left ,#days .ui-btn:first-child ul{
     color: white;

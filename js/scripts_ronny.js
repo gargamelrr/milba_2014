@@ -166,27 +166,27 @@ $(document).on("pageshow", "#home", function() {
                             $("#day" + day + " .details").css("color", "#0f7192");
                             $("#day" + day + " .homeTask").css("border-color", "#0f7192");
                             $("#day" + day + " ul").css("color", "#0f7192");
-                            $("#days li:nth-child(" + (day + 1) + ")").css("border-top", "1px solid #0f7192");
-                            $("#days li:nth-child(" + (day + 1) + ")").css("background-image", "url(images/paper_3.png)");
+                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("border-top", "1px solid #0f7192");
+                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_3.png)");
                             color = "#0f7192";
                         }
                     }
                     if (day == 1) {
                         if (json.data[i].tasks.count < 2) {
                             if (last == 2) {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_2_2.png)");
+                                 $("#day1").parent().css("background-image", "url(images/paper_second_2_2.png)");
                             } else if (last == 3) {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_3_2.png)");
+                                $("#day1").parent().css("background-image", "url(images/paper_second_3_2.png)");
                             } else {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_1_2.png)");
+                                 $("#day1").parent().css("background-image", "url(images/paper_second_1_2.png)");
                             }
                         } else {
                             if (last == 2) {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_2_3.png)");
+                                 $("#day1").parent().css("background-image", "url(images/paper_second_2_3.png)");
                             } else if (last == 3) {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_3_3.png)");
+                                 $("#day1").parent().css("background-image", "url(images/paper_second_3_3.png)");
                             } else {
-                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_1_3.png)");
+                                 $("#day1").parent().css("background-image", "url(images/paper_second_1_3.png)");
                             }
                         }
                     }
@@ -198,11 +198,11 @@ $(document).on("pageshow", "#home", function() {
                     }
                     if (day == 1) {
                         if (last == 2) {
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_2_1.png)");
+                             $("#day1").parent().css("background-image", "url(images/paper_second_2_1.png)");
                         } else if (last == 3) {
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_3_1.png)");
+                             $("#day1").parent().css("background-image", "url(images/paper_second_3_1.png)");
                         } else {
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_second_1_1.png)");
+                             $("#day1").parent().css("background-image", "url(images/paper_second_1_1.png)");
                         }
                     }
                     $("#day" + day + " .count_tasks").append("Free");
