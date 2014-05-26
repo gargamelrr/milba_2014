@@ -33,11 +33,16 @@ while ($row = mysql_fetch_array($result_my)) {
     $cid = $row["course_id"];
     $result_specific = mysql_query("SELECT count(*) as num_fri from `Users_Courses` where Users_Courses.course_id = $cid and student_id in ($friends_str)");
     $course["name"] = $row["name"];
+
+    if (strlen($row["name"]) > 55) {
+        $text = mb_substr($row["name"], 0, 62, "UTF-8") . "...";
+        $course["name"] = $text;
+    }
+
     $course["courseID"] = $row["course_id"];
     $course["count"] = mysql_fetch_row($result_specific);
     array_push($response["userCourses"], $course);
 }
-
 
 $response["courses"] = array();
 $courses_id = array();
@@ -45,6 +50,10 @@ while ($row = mysql_fetch_array($result_friends)) {
 
     $course = array();
     $course["name"] = $row["name"];
+    if (strlen($row["name"]) > 55) {
+        $text = mb_substr($row["name"], 0, 62, "UTF-8") . "...";
+        $course["name"] = $text;
+    }
     $course["courseID"] = $row["index"];
     $course["count"] = $row["num_fri"];
     array_push($response["courses"], $course);
@@ -57,6 +66,11 @@ while ($row = mysql_fetch_array($result_else)) {
     if (!array_key_exists($row["index"], $courses_id)) {
         $course = array();
         $course["name"] = $row["name"];
+        if (strlen($row["name"]) > 65) {
+            $text = mb_substr($row["name"], 0, 62, "UTF-8") . "...";
+            $course["name"] = $text;
+            //$response["debug"][$row["index"]] = $text . strlen($row["name"]);
+        }
         $course["courseID"] = $row["index"];
         $course["count"] = 0;
         array_push($response["courses"], $course);
