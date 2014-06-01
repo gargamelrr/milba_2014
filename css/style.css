@@ -226,7 +226,7 @@ div#pvTask {
 }
 
 .ui-btn-icon-right>.ui-btn-inner>.ui-icon{
-    margin-right: 19px;
+    //margin-right: 19px;
 }
 
 .ui-li{
@@ -347,6 +347,15 @@ span#name {
     -webkit-box-shadow:none;
     box-shadow:none;
     background-image: none;
+}
+
+#profilePage .ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-icon-right
+{
+    margin: 5px;
+}
+
+#profileData .ui-btn-inner{
+    font-size: 14px;
 }
 
 
