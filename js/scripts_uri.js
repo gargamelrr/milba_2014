@@ -459,7 +459,7 @@ function fillUpFieldsAfterEdit(json) {
 $(document).on("pageshow", "#courses", function() {
     $('#submit').click(function() {
 
-        if ($("#courseName").val() == "") {
+        if ($("#courseName").val() == "" || $("#teacherName").val() == "") {
             return false;
         }
 

@@ -87,163 +87,172 @@ $(document).on("pageshow", "#home", function() {
         }
 
     });
-    $.ajax({
-        url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
-        method: 'POST',
-        cache: false,
-        data: {
-            //todo
-        },
-        success: function(data) {
-            //alert(data);
-            var json = JSON.parse(data);
-            var day = 0;
-            var easy = 0;
-            var last = 1;
-            $("#days .task_num_tasks").hide();
-            $("#days .task_date_full").hide();
-            $.each(json.data, function(i, val) {
-                var color = "#3cceff";
-                $("#day" + day + " h3").text("");
-                $("#day" + day + " .task_date").append(json.data[i].date);
-                $("#day" + day + " .details").text("");
-                $("#day" + day + " .count_tasks").text("");
-                $("#day" + day + " ul").text("");
-                if (json.data[i].tasks.count > 0) {
-                    var output = "";
-                    $.each(json.data[i].tasks.data, function(j, val) {
-                        if (j < 2) {
-                            var name = (json.data[i].tasks.data[j].course_name.length > 10) ? json.data[i].tasks.data[j].course_name.substring(0, 14) + "..." : json.data[i].tasks.data[j].course_name;
-                            output += '<li>' + name + '</li>';
-                        }
-                        //$("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></b></div>" +
-                        //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
-                        $("#day" + day + " .details").append("<div class='homeTask' id='task" + i + "_" + j + "'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
-                                json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
 
-                        $('#task' + i + "_" + j).click(function() {
-                            setCurrentCourseId(json.data[i].tasks.data[j].course_id);
-                            setCurrentTaskId(json.data[i].tasks.data[j].index);
-                            $.mobile.changePage('GroupDetails.html');
+    function doAjax() {
+        $.ajax({
+            url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/viewWeek.php',
+            method: 'POST',
+            cache: false,
+            data: {
+                //todo
+            },
+            success: function(data) {
+                //alert(data);
+                var json = JSON.parse(data);
+                var day = 0;
+                var easy = 0;
+                var last = 1;
+                $("#days .task_num_tasks").hide();
+                $("#days .task_date_full").hide();
+                $.each(json.data, function(i, val) {
+                    var color = "#3cceff";
+                    $("#day" + day + " h3").text("");
+                    $("#day" + day + " .task_date").append(json.data[i].date);
+                    $("#day" + day + " .details").text("");
+                    $("#day" + day + " .count_tasks").text("");
+                    $("#day" + day + " ul").text("");
+                    if (json.data[i].tasks.count > 0) {
+                        var output = "";
+                        $.each(json.data[i].tasks.data, function(j, val) {
+                            if (j < 2) {
+                                var name = (json.data[i].tasks.data[j].course_name.length > 10) ? json.data[i].tasks.data[j].course_name.substring(0, 14) + "..." : json.data[i].tasks.data[j].course_name;
+                                output += '<li>' + name + '</li>';
+                            }
+                            //$("#day" + day + " .details").append("<div class='homeTask'><div class='taskHeader'><b><a href='GroupDetails.html' id='task" + i + "_" + j + "'>" + json.data[i].tasks.data[j].course_name + "</a></b></div>" +
+                            //        json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
+                            $("#day" + day + " .details").append("<div class='homeTask' id='task" + i + "_" + j + "'><div class='taskHeader'><b>" + json.data[i].tasks.data[j].course_name + "</b></div>" +
+                                    json.data[i].tasks.data[j].task_name + "<br/><br/>" + json.data[i].tasks.data[j].time + "</div>");
+
+                            $('#task' + i + "_" + j).click(function() {
+                                setCurrentCourseId(json.data[i].tasks.data[j].course_id);
+                                setCurrentTaskId(json.data[i].tasks.data[j].index);
+                                $.mobile.changePage('GroupDetails.html');
+                            });
+                            if (json.data[i].tasks.data[j].difficulty == 0) {
+                                easy++;
+                            } else {
+                                easy = easy + 3;
+                            }
                         });
-                        if (json.data[i].tasks.data[j].difficulty == 0) {
-                            easy++;
-                        } else {
-                            easy = easy + 3;
+                        if (day == 0) {
+                            if (json.data[i].tasks.count < 2) {
+                                $("#day" + day + " img").attr("src", "images/easy_0.png");
+                                $("#day" + day).parent().css("background-color", "#28a9d4");
+                                $("#day" + day + " .details").css("color", "#28a9d4");
+                                $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
+                                color = "#28a9d4";
+                                last = 2;
+                            } else {
+                                $("#day" + day + " img").attr("src", "images/hard_0.png");
+                                $("#day" + day + " .homeTask").css("border-color", "#0f7192");
+                                $("#day" + day + " .details").css("color", "#0f7192");
+                                $("#day" + day).parent().css("background-color", "#0f7192");
+                                color = "#0f7192";
+                                last = 3;
+                            }
                         }
-                    });
-                    if (day == 0) {
-                        if (json.data[i].tasks.count < 2) {
-                            $("#day" + day + " img").attr("src", "images/easy_0.png");
-                            $("#day" + day).parent().css("background-color", "#28a9d4");
-                            $("#day" + day + " .details").css("color", "#28a9d4");
-                            $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
-                            color = "#28a9d4";
-                            last = 2;
-                        } else {
-                            $("#day" + day + " img").attr("src", "images/hard_0.png");
-                            $("#day" + day + " .homeTask").css("border-color", "#0f7192");
-                            $("#day" + day + " .details").css("color", "#0f7192");
-                            $("#day" + day).parent().css("background-color", "#0f7192");
-                            color = "#0f7192";
-                            last = 3;
-                        }
-                    }
-                    else {
-                        if (json.data[i].tasks.count < 2) {
-                            $("#day" + day + " img").attr("src", "images/easy_2.png");
-                            $("#day" + day + " .left").css("color", "#28a9d4");
-                            $("#day" + day + " .details").css("color", "#28a9d4");
-                            $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
-                            $("#day" + day + " ul").css("color", "#28a9d4");
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("border-top", "1px solid #28a9d4");
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_2.png)");
-                            color = "#28a9d4";
+                        else {
+                            if (json.data[i].tasks.count < 2) {
+                                $("#day" + day + " img").attr("src", "images/easy_2.png");
+                                $("#day" + day + " .left").css("color", "#28a9d4");
+                                $("#day" + day + " .details").css("color", "#28a9d4");
+                                $("#day" + day + " .homeTask").css("border-color", "#28a9d4");
+                                $("#day" + day + " ul").css("color", "#28a9d4");
+                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("border-top", "1px solid #28a9d4");
+                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_2.png)");
+                                color = "#28a9d4";
 
-                        } else {
-                            $("#day" + day + " img").attr("src", "images/hard_3.png");
-                            $("#day" + day + " .left").css("color", "#0f7192");
-                            $("#day" + day + " .details").css("color", "#0f7192");
-                            $("#day" + day + " .homeTask").css("border-color", "#0f7192");
-                            $("#day" + day + " ul").css("color", "#0f7192");
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("border-top", "1px solid #0f7192");
-                            $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_3.png)");
-                            color = "#0f7192";
-                        }
-                    }
-                    if (day == 1) {
-                        if (json.data[i].tasks.count < 2) {
-                            if (last == 2) {
-                                 $("#day1").parent().css("background-image", "url(images/paper_second_2_2.png)");
-                            } else if (last == 3) {
-                                $("#day1").parent().css("background-image", "url(images/paper_second_3_2.png)");
                             } else {
-                                 $("#day1").parent().css("background-image", "url(images/paper_second_1_2.png)");
-                            }
-                        } else {
-                            if (last == 2) {
-                                 $("#day1").parent().css("background-image", "url(images/paper_second_2_3.png)");
-                            } else if (last == 3) {
-                                 $("#day1").parent().css("background-image", "url(images/paper_second_3_3.png)");
-                            } else {
-                                 $("#day1").parent().css("background-image", "url(images/paper_second_1_3.png)");
+                                $("#day" + day + " img").attr("src", "images/hard_3.png");
+                                $("#day" + day + " .left").css("color", "#0f7192");
+                                $("#day" + day + " .details").css("color", "#0f7192");
+                                $("#day" + day + " .homeTask").css("border-color", "#0f7192");
+                                $("#day" + day + " ul").css("color", "#0f7192");
+                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("border-top", "1px solid #0f7192");
+                                $("#days li:nth-child(" + (day + 1) + ") .ui-li-has-thumb").css("background-image", "url(images/paper_3.png)");
+                                color = "#0f7192";
                             }
                         }
-                    }
-                    $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
-                    $("#day" + day + "-ul").append(output).trigger('create');
-                } else {
-                    if (day == 0) {
-                        $("#day" + day).parent().css("background-color", "#3cceff");
+                        if (day == 1) {
+                            if (json.data[i].tasks.count < 2) {
+                                if (last == 2) {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_2_2.png)");
+                                } else if (last == 3) {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_3_2.png)");
+                                } else {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_1_2.png)");
+                                }
+                            } else {
+                                if (last == 2) {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_2_3.png)");
+                                } else if (last == 3) {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_3_3.png)");
+                                } else {
+                                    $("#day1").parent().css("background-image", "url(images/paper_second_1_3.png)");
+                                }
+                            }
+                        }
+                        $("#day" + day + " .count_tasks").append(json.data[i].tasks.count);
+                        $("#day" + day + "-ul").append(output).trigger('create');
+                    } else {
+                        if (day == 0) {
+                            $("#day" + day).parent().css("background-color", "#3cceff");
+                        }
+                        if (day == 1) {
+                            if (last == 2) {
+                                $("#day1").parent().css("background-image", "url(images/paper_second_2_1.png)");
+                            } else if (last == 3) {
+                                $("#day1").parent().css("background-image", "url(images/paper_second_3_1.png)");
+                            } else {
+                                $("#day1").parent().css("background-image", "url(images/paper_second_1_1.png)");
+                            }
+                        }
+                        $("#day" + day + " .count_tasks").append("Free");
+                        $("#day" + day + " img").attr("src", "images/fun.png");
                     }
                     if (day == 1) {
                         if (last == 2) {
-                             $("#day1").parent().css("background-image", "url(images/paper_second_2_1.png)");
+                            $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue2");
                         } else if (last == 3) {
-                             $("#day1").parent().css("background-image", "url(images/paper_second_3_1.png)");
+                            $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue3");
                         } else {
-                             $("#day1").parent().css("background-image", "url(images/paper_second_1_1.png)");
+                            $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue1");
                         }
                     }
-                    $("#day" + day + " .count_tasks").append("Free");
-                    $("#day" + day + " img").attr("src", "images/fun.png");
+                    var d = new Date(json.data[i].date_full);
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth();
+                    curr_month++;
+                    var curr_year = d.getFullYear();
+                    $("#day" + day + " .task_date_full").append("<b>" + curr_date + "." + curr_month + "." + curr_year + "</b>");
+                    $("#day" + day + " .task_num_tasks").append("<b>" + json.data[i].tasks.count + "</b> Tasks");
+                    $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" + 'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
+                    $("#day" + day + " .details").trigger("create");
+                    $("#day" + day + " .details").find("#pvTask .ui-btn").css("background-color", color);
+                    day++;
+                });
+                if (easy < 3) {
+                    $('#title').text(easyWeekText[Math.floor(Math.random() * easyWeekText.length)]);
+                } else {
+                    $('#title').text(hardWeekText[Math.floor(Math.random() * hardWeekText.length)]);
                 }
-                if (day == 1) {
-                    if (last == 2) {
-                        $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue2");
-                    } else if (last == 3) {
-                        $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue3");
-                    } else {
-                        $("#days li:nth-child(" + (day + 1) + ") .paper").addClass("paper-blue1");
-                    }
+                if (json.status == 2) {
+                    $("#empty").popup();
+                    $("#empty").trigger("create");
+                    $("#empty").popup("open");
                 }
-                var d = new Date(json.data[i].date_full);
-                var curr_date = d.getDate();
-                var curr_month = d.getMonth();
-                curr_month++;
-                var curr_year = d.getFullYear();
-                $("#day" + day + " .task_date_full").append("<b>" + curr_date + "." + curr_month + "." + curr_year + "</b>");
-                $("#day" + day + " .task_num_tasks").append("<b>" + json.data[i].tasks.count + "</b> Tasks");
-                $("#day" + day + " .details").append("<div id='pvTask'><input type='button' value='Add a personal Sheet'" + 'onclick="addPvTask(\'' + json.data[i].date_full + '\')"/></div>');
-                $("#day" + day + " .details").trigger("create");
-                $("#day" + day + " .details").find("#pvTask .ui-btn").css("background-color", color);
-                day++;
-            });
-            if (easy < 3) {
-                $('#title').text(easyWeekText[Math.floor(Math.random() * easyWeekText.length)]);
-            } else {
-                $('#title').text(hardWeekText[Math.floor(Math.random() * hardWeekText.length)]);
+            },
+            error: function() {
+            },
+            complete: function() {
+                setTimeout(doAjax, 30000); //now that the request is complete, do it again in 1 second
             }
-            if (json.status == 2) {
-                $("#empty").popup();
-                $("#empty").trigger("create");
-                $("#empty").popup("open");
-            }
-        },
-        error: function() {
-        }
-    });
+        });
+
+    }
+    doAjax();
 });
+
 $(document).on("pageshow", "#profilePage", function() {
     $.ajax({
         url: 'http://ronnyuri.milab.idc.ac.il/milab_2014/php/userProfile.php',

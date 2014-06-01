@@ -292,7 +292,7 @@ span#name {
     color: white !important;
     font-size: 20px;
     background: url(../images/facebook.png) no-repeat;
-    background-position: 8%;
+    background-position: 3%;
 }
 
 #nameProfile{
@@ -538,6 +538,9 @@ div#newGroup {
     line-height: 90px;
 }
 
+div.ui-slider-switch{
+    width: 3.5em;
+}
 
 #profile {
     //margin-left:60px;
@@ -548,6 +551,7 @@ div#newGroup {
     border-radius: 1em;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
+    margin-top: 30px;
 }
 
 #nav-panel{

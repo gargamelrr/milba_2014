@@ -28,7 +28,7 @@ and open the template in the editor.
                 <a href="#nav-panel" data-iconpos="notext" id="sidebar" data-icon="custom"></a> <span id="sheets">Sheets</span>
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="true" data-display="reveal" id="nav-panel">
-                <a href="Profile.html" data-role="button"  id="profile"><img src="" id="imgFB"/><span id="nameFB"></span>  </a><br/>
+                <a href="Profile.html" data-role="button"  id="profile"><img src="" id="imgFB"/><span id="nameFB"></span>  </a>
                 <a href="index.html" data-role="button" class="icon-home" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
                 <a href="Groups.html?b" data-role="button" class="icon-courses" data-icon="courses"  onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Notifications.html" data-role="button"  class="icon-noti" data-icon="noti"> Notifications </a><br/>
@@ -86,18 +86,17 @@ and open the template in the editor.
                         </div>
                     </div>
 
-                    <div class="ui-grid-c">
+                    <div class="ui-grid-b">
                         <div class="ui-block-a" >
-                            <label for="days">Custom alert</label>
+                            <label for="days">Custom <br/>alert</label>
                         </div>
                         <div class="ui-block-b" >
                             <div class="arrow-left" onclick="arrowLeft()" style="float: left; cursor: pointer;"></div>
-                            <div id="customAlert" style="float: left; width:30px; color:#fff; text-align: center">1</div>
+                            <div id="customAlert" style="float: left; width:20px; color:#fff; text-align: center">1</div>
                             <div class="arrow-right" onclick="arrowRight()" style="float: left; cursor: pointer;"></div>
-                            <div style="float: left; padding-left: 10px;   color:#fff">days ahead</div>
+                            <div style="float: left; padding-left: 10px;color:#fff;white-space: nowrap;font-size: 14px;">days ahead</div>
                         </div>                
-                        <div class="ui-block-c"></div>
-                        <div class="ui-block-d">
+                        <div class="ui-block-c">
                             <select name="flip-custom" id="flip-custom" data-role="slider" >
                                 <option value="off"></option>
                                 <option value="on" selected></option>
