@@ -27,11 +27,9 @@ if (mysql_num_rows($resultFriends) > 0) {
 }
 
 if (mysql_num_rows($result) > 0) {
-
+    
     $response["allTasks"] = array();
-
     while ($row = mysql_fetch_array($result)) {
-
         $task = array();
         $task["index"] = $row["index"];
         $task["name"] = $row["name"];
@@ -43,7 +41,6 @@ if (mysql_num_rows($result) > 0) {
 
     $response["success"] = 1;
 } else {
-
     $response["success"] = 0;
     $response["message"] = "No tasks found";
 }
@@ -52,7 +49,7 @@ $response["is_user"] = ((mysql_num_rows($resultUser) > 0) || ($courseID == -1)) 
 $response["friends"] = $friends;
 
 if ($courseID == -1) {
-    $course["name"] = "ME";
+    $course["name"] = "Personal";
     $course["lecturer"] = $_SESSION["name"];
     $response["courseDetails"] = $course;
 } else {

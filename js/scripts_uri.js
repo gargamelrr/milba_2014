@@ -34,7 +34,10 @@ function arrowRight() {
 }
 
 $(document).on("pageshow", "#courseDetails", function() {
-
+    
+    if(currentCourseId == -1) {
+        $("#personalSentence").html("<i>Any sheet you post here will be visible only for you</i>");
+    }
 
     function add() {
         if ($(this).val() === ' ') {

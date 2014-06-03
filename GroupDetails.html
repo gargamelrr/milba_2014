@@ -34,7 +34,7 @@ and open the template in the editor.
             </div>
             <div data-role="panel" data-position="left" data-position-fixed="true" data-display="reveal" id="nav-panel">
                 <a href="Profile.html" data-role="button"  id="profile"><img src="" id="imgFB"/><span id="nameFB"></span>  </a>
-                <a href="index.html" data-role="button" class="icon-home" data-icon="home" onclick="setCurrentCoursePage('')"> My Sheety Week </a><br/>
+                <a href="index.html" data-role="button" class="icon-home" data-icon="home" onclick="setCurrentCoursePage('')"> My Week </a><br/>
                 <a href="Groups.html?b" data-role="button" class="icon-courses" data-icon="courses"  onclick="setCurrentCoursePage('join')"> Courses </a><br/>
                 <a href="Notifications.html" data-role="button"  class="icon-noti" data-icon="noti"> Notifications </a><br/>
                 <a href="Groups.html?a" data-role="button" id="addTaskBtn"  onclick="setCurrentCoursePage('task')"> Add a Sheet</a><br/>
@@ -51,6 +51,7 @@ and open the template in the editor.
                     <div  class="ui-header"  id="teac_details">
                         <h1 class="ui-title" role="heading"><span id="name"></span></h1>
                         <h4><span id="teac_name"></span><span id="email"></span></h4>
+                        <h4><span id="personalSentence"></span></h4>
                     </div>
                     <br/>
                     <div id="tasks">
@@ -77,11 +78,11 @@ and open the template in the editor.
                                 <div class="ui-grid-a" id="radioTask">
                                     <div class="ui-block-a">
                                         <input type="radio" name="radiodifficulty" id="easy" value="easy" checked="checked"/>
-                                        <label for="easy" data-role="none">Friendly Sheet</label>
+                                        <label for="easy" data-role="none">Easy</label>
                                     </div>
                                     <div class="ui-block-b">
                                         <input type="radio" name="radiodifficulty" id="hard" value="hard"/>
-                                        <label for="hard" data-role="none">Massive Sheet</label>
+                                        <label for="hard" data-role="none">Hard</label>
                                     </div>
                                 </div>
                                 <div id="inviteDiv">
