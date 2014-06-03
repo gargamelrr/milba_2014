@@ -68,7 +68,7 @@
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->
-    <gap:splash src="Splash.jpg" gap:role="default"/>
+    <gap:splash src="splash.png" gap:role="default"/>
 
     <!--
         Define access to external domains.
