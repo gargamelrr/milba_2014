@@ -299,7 +299,7 @@ function createCoursesButtons(coursesList, div) {
             setCurrentCourseId($(this).attr("data-ID"));
         };
         $(courseNewdiv).attr("data-ID", "-1");
-        courseNewdiv.innerHTML = "<img src='images/man.png'/><br/>ME";
+        courseNewdiv.innerHTML = "<img src='images/man.png'/><br/>Personal";
         courseNewdiv.className = "courseBtn courseBtnPurple";
 
         subDiv.appendChild(courseNewdiv);
